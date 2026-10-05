@@ -199,6 +199,12 @@ form {
   padding: 24px;
 }
 
+.report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .muted {
   max-width: 680px;
   margin-bottom: 0;
@@ -487,6 +493,7 @@ code {
 
   .input-row,
   .report-header,
+  .report-actions,
   .panel-heading,
   .filter-topline,
   .active-filter-row {

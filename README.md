@@ -13,6 +13,7 @@ See [`METRICS.md`](METRICS.md) for exact formulas, counting rules, heuristic thr
 - Lexical agreement, challenge, and coordination signals
 - Deterministic heuristic flags for dominance, sparse interaction, unresolved questions, challenge-heavy discourse, and high context load
 - Message-level data export as JSON for downstream analysis
+- Optional Inspect Scout export for semantic collaboration scanners
 
 The heuristic signals are research prompts, not judgments of task quality or causal claims about collaboration.
 
@@ -33,6 +34,20 @@ npm test
 ```
 
 The React UI uses Observable Plot for the timeline, contribution chart, and transition matrix. Linked filters support agent selection, turn ranges, transition selection, text search, and expandable messages. Summary cards, failure-mode prompts, and the message explorer use native HTML.
+
+## Inspect Scout bridge
+
+After analyzing a trace, select **Export for Scout** to download a stable bridge
+record. The optional files in [`scout/`](scout/) import that record into a local
+Inspect Scout transcript database and provide starter scanners for:
+
+- Duplicated work
+- Weak or failed handoffs
+- Relevant information that was not integrated
+
+See [`scout/README.md`](scout/README.md) for setup and commands. Scout findings
+are semantic model judgments and should be validated against human labels
+before being used as research measures.
 
 ## Current scope
 

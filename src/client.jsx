@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import * as Plot from "@observablehq/plot";
+import { buildScoutTranscript } from "./scout.js";
 import "./styles.css";
 
 const exampleUrl = "https://www.sharednet.ai/s/shr_iNiJPLkMnu4c5b7wYTfqVW4xf_CJBYWtNUBNyrof4Zg";
@@ -100,11 +101,11 @@ function PanelHeading({ eyebrow, title, note }) {
   );
 }
 
-function downloadReport(report) {
-  const blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+function downloadJson(value, filename) {
+  const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json" });
   const anchor = document.createElement("a");
   anchor.href = URL.createObjectURL(blob);
-  anchor.download = "multi-agent-trace-analysis.json";
+  anchor.download = filename;
   anchor.click();
   URL.revokeObjectURL(anchor.href);
 }
@@ -245,7 +246,25 @@ function App() {
                 {report.conversation.description || "Public trace"}
               </p>
             </div>
-            <button className="secondary" type="button" onClick={() => downloadReport(report)}>Export JSON</button>
+            <div className="report-actions">
+              <button
+                className="secondary"
+                type="button"
+                onClick={() => downloadJson(report, "multi-agent-trace-analysis.json")}
+              >
+                Export JSON
+              </button>
+              <button
+                className="secondary"
+                type="button"
+                onClick={() => downloadJson(
+                  buildScoutTranscript(report),
+                  "tracescope-scout-transcript.json"
+                )}
+              >
+                Export for Scout
+              </button>
+            </div>
           </section>
 
           <section className="metric-grid" aria-label="Summary metrics">

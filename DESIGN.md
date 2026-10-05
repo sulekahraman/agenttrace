@@ -231,6 +231,29 @@ The export should preserve enough message-level information to reproduce every d
 
 The downloaded file must be the exact report object returned by the analysis API. The browser must not recalculate or mutate report metrics for export.
 
+## Phase 2: Semantic Analysis Bridge
+
+Phase 2 remains optional and does not change the deterministic report. The
+browser can derive a versioned Inspect Scout bridge record from the report and
+download it separately.
+
+The bridge preserves:
+
+- Stable transcript and source identifiers
+- Ordered message text
+- Agent identity, runtime, turn number, and timestamp
+- Deterministic message metrics and lexical signals
+- Conversation metrics, transitions, and structural flags as metadata
+
+A small Python importer converts the bridge into a local Inspect Scout
+transcript database. Starter scanners inspect duplicated work, weak handoffs,
+and visible information that was not integrated. These are semantic model
+judgments and require human-labeled validation before use as research metrics.
+
+Phase 2 does not add model calls to the TraceScope server or browser. API keys,
+scanner execution, result storage, and validation stay in the separate Scout
+environment.
+
 ## Future Scaling Path
 
 Large-scale analysis should reuse the normalized model and metric functions:

@@ -1,4 +1,8 @@
 node_modules/
 dist/
+.venv-scout/
+transcripts/
+scans/
 .DS_Store
 npm-debug.log*
+.env

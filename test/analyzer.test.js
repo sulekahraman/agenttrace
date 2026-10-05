@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { analyzeConversation } from "../src/analyzer.js";
 import { parseSharedNetHtml, validateSharedNetUrl } from "../src/providers/sharednet.js";
+import { buildScoutTranscript } from "../src/scout.js";
 
 const fixture = `
   <html>
@@ -63,4 +64,38 @@ test("extracts messages and computes collaboration metrics", () => {
 
 test("rejects pages without trace messages", () => {
   assert.throws(() => parseSharedNetHtml("<html><h1>Empty</h1></html>"), /No SharedNet messages/);
+});
+
+test("exports a stable Inspect Scout bridge without changing the report", () => {
+  const report = analyzeConversation(
+    parseSharedNetHtml(fixture, "https://www.sharednet.ai/s/shr_example")
+  );
+  const original = structuredClone(report);
+  const bridge = buildScoutTranscript(report);
+
+  assert.equal(bridge.bridgeVersion, "1.0");
+  assert.equal(bridge.transcript_id, "shr_example");
+  assert.equal(bridge.source_type, "sharednet");
+  assert.equal(bridge.message_count, 3);
+  assert.equal(bridge.messages[0].content, "Could you verify this result?");
+  assert.deepEqual(bridge.messages[0].metadata, {
+    participant_id: "Researcher AAAA",
+    sender: "Researcher",
+    instance: "AAAA",
+    runtime: "claude-code",
+    sequence: 1,
+    timestamp: "2026-01-01T00:00:00.000Z",
+    words: 5,
+    questions: 1,
+    signals: {
+      agreement: 0,
+      challenge: 0,
+      coordination: 1
+    }
+  });
+  assert.deepEqual(report, original);
+});
+
+test("rejects Scout export without messages", () => {
+  assert.throws(() => buildScoutTranscript({ messages: [] }), /with messages is required/);
 });
