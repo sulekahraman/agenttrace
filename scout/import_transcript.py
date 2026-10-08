@@ -22,11 +22,13 @@ def load_bridge(path: Path) -> dict:
 def format_message(message: dict) -> ChatMessageAssistant:
     metadata = message.get("metadata") or {}
     participant = metadata.get("participant_id", "unknown-agent")
-    runtime = metadata.get("runtime", "unknown-runtime")
-    sequence = metadata.get("sequence", "?")
-    timestamp = metadata.get("timestamp") or "unknown-time"
-    header = f"[Agent: {participant} | Runtime: {runtime} | Turn: {sequence} | Time: {timestamp}]"
-    return ChatMessageAssistant(content=f"{header}\n{message.get('content', '')}")
+    return ChatMessageAssistant(
+        content=message.get("content", ""),
+        metadata={
+            **metadata,
+            "role_label": f"AGENT {participant}",
+        },
+    )
 
 
 async def transcript_source(bridge: dict) -> AsyncIterator[Transcript]:

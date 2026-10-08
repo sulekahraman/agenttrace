@@ -78,7 +78,10 @@ test("exports a stable Inspect Scout bridge without changing the report", () => 
   assert.equal(bridge.source_type, "sharednet");
   assert.equal(bridge.message_count, 3);
   assert.equal(bridge.messages[0].content, "Could you verify this result?");
-  assert.deepEqual(bridge.messages[0].metadata, {
+  assert.deepEqual({
+    ...bridge.messages[0].metadata,
+    annotation_context: undefined
+  }, {
     participant_id: "Researcher AAAA",
     sender: "Researcher",
     instance: "AAAA",
@@ -91,8 +94,21 @@ test("exports a stable Inspect Scout bridge without changing the report", () => 
       agreement: 0,
       challenge: 0,
       coordination: 1
-    }
+    },
+    annotation_context: undefined
   });
+  assert.deepEqual(
+    bridge.messages[1].metadata.annotation_context.hints.cites,
+    []
+  );
+  assert.equal(
+    bridge.messages[1].metadata.annotation_context.previous_messages[0].index,
+    1
+  );
+  assert.equal(
+    bridge.messages[1].metadata.annotation_context.roster.length,
+    2
+  );
   assert.deepEqual(report, original);
 });
 

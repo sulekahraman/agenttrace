@@ -23,21 +23,34 @@ scanning.
      --output ./transcripts
    ```
 
-5. Run the starter scanners with a configured Inspect model:
+   Re-import bridges created before the message-annotation integration. Older
+   transcript databases do not contain the bounded annotation context.
+
+5. Generate reusable message annotations:
+
+   ```bash
+   scout scan scout/message_annotations.py \
+     -T ./transcripts \
+     --model openai/gpt-5 \
+     --cache
+   ```
+
+6. Run the annotation-guided collaboration scanner:
 
    ```bash
    scout scan scout/scanners.py \
      -T ./transcripts \
-     --model openai/gpt-5
+     --model openai/gpt-5 \
+     --cache
    ```
 
-6. Review transcripts, cited evidence, and scan results:
+7. Review transcripts, cited evidence, and scan results:
 
    ```bash
    scout view
    ```
 
-The starter scanners cover duplicated work, weak handoffs, and visible
-information that was not integrated. Their outputs are model judgments, not
-ground truth. Create a human-labeled validation set before using them as
-research measures.
+See [`MESSAGE_ANNOTATION.md`](../MESSAGE_ANNOTATION.md) for the taxonomy,
+bounded context, labeling rules, and scanner architecture. Annotations and
+findings are model judgments, not ground truth. Create a human-labeled
+validation set before using them as research measures.

@@ -3,6 +3,7 @@
 A small local web app for turning a public SharedNet multi-agent conversation into an inspectable collaboration trace.
 
 See [`METRICS.md`](METRICS.md) for exact formulas, counting rules, heuristic thresholds, and interpretation limitations.
+See [`MESSAGE_ANNOTATION.md`](MESSAGE_ANNOTATION.md) for the optional semantic annotation and Inspect Scout workflow.
 
 ## What it measures
 
