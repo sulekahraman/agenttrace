@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "commsfail/trace.v1",
+  "title": "Normalized multi-agent trace",
+  "description": "JSON representation of commsfail.Trace, with a schema discriminator.",
+  "type": "object",
+  "required": ["schema", "room", "seats", "posts", "artifacts", "ops", "checks", "wakes", "episode", "source"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "commsfail/trace.v1"},
+    "room": {"type": "object"},
+    "seats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["handle"],
+        "properties": {"handle": {"type": ["string", "null"]}}
+      }
+    },
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["seq", "who", "text", "created_at"],
+        "properties": {
+          "seq": {"type": "integer", "minimum": 1},
+          "who": {"type": "string"},
+          "text": {"type": "string"},
+          "created_at": {"type": ["string", "null"]},
+          "reply_to": {"type": ["integer", "null"]},
+          "role": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "artifacts": {"type": "array"},
+    "ops": {"type": "object"},
+    "checks": {"type": "array"},
+    "wakes": {"type": "array"},
+    "episode": {"type": "object"},
+    "source": {"type": "object"}
+  }
+}

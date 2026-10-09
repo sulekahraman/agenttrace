@@ -2,9 +2,23 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import * as Plot from "@observablehq/plot";
 import { buildScoutTranscript } from "./scout.js";
+import { ingestTrace, requestJson, startAnalysis } from "./api.js";
+import { AnalysisResults } from "./analysis-results.jsx";
 import "./styles.css";
 
 const exampleUrl = "https://www.sharednet.ai/s/shr_iNiJPLkMnu4c5b7wYTfqVW4xf_CJBYWtNUBNyrof4Zg";
+const offlineLabels = {
+  regex_v1: {
+    order: 0,
+    title: "Conversation patterns",
+    description: "Find repetition, coordination gaps and other communication signals in the messages."
+  },
+  facts_v1: {
+    order: 1,
+    title: "Claims vs. actions",
+    description: "Compare agents' claims with execution logs to find unsupported reviews, success claims and contradictions."
+  }
+};
 const colors = [
   "#73f2b7",
   "#e8ff7a",
@@ -39,7 +53,7 @@ function formatTimestamp(value) {
   }).format(new Date(value));
 }
 
-function PlotChart({ build, onDatumClick, label }) {
+function PlotChart({ build, data, onDatumClick, label }) {
   const containerRef = useRef(null);
   const [width, setWidth] = useState(0);
 
@@ -62,8 +76,9 @@ function PlotChart({ build, onDatumClick, label }) {
       if (!onDatumClick) return;
       let target = event.target;
       while (target && target !== plot) {
-        if (target.__data__ && typeof target.__data__ === "object") {
-          onDatumClick(target.__data__);
+        if (target.closest?.('g[aria-label="bar"], g[aria-label="cell"], g[aria-label="text"]') && target.__data__ != null) {
+          const datum = typeof target.__data__ === "number" ? data[target.__data__] : target.__data__;
+          if (datum) onDatumClick(datum);
           return;
         }
         target = target.parentNode;
@@ -75,7 +90,7 @@ function PlotChart({ build, onDatumClick, label }) {
       plot.removeEventListener("click", handleClick);
       plot.remove();
     };
-  }, [build, onDatumClick, width]);
+  }, [build, data, onDatumClick, width]);
 
   return <div ref={containerRef} className="plot-container" aria-label={label} />;
 }
@@ -101,6 +116,51 @@ function PanelHeading({ eyebrow, title, note }) {
   );
 }
 
+function ScoutSetupDialog({ setup, onClose }) {
+  const dialogRef = useRef(null);
+  useEffect(() => {
+    dialogRef.current.showModal();
+  }, []);
+  const openai = setup.model.startsWith("openai/");
+  const missingPackage = setup.issues.some((issue) => issue.code === "scout_not_installed");
+  return (
+    <dialog ref={dialogRef} className="setup-dialog" aria-labelledby="scout-setup-title" onCancel={onClose}>
+      <h2 id="scout-setup-title">{setup.ready ? "Scout provider setup" : "Set up Scout"}</h2>
+      <p>Selected model: <code>{setup.model}</code></p>
+      {setup.issues.map((issue) => <p role="alert" className="analysis-error" key={issue.code}>{issue.message}</p>)}
+      {setup.ready && <p>{openai
+        ? "Key detected. Access is checked when Scout runs."
+        : "Scout is installed. Configure your provider's credentials on the server."}</p>}
+      <p>From the repo root, activate the Python environment where AgentTrace is installed.</p>
+      <ol>
+        {missingPackage && <li>Install Scout from the repository root:
+          <pre><code>{setup.install_command}</code></pre>
+        </li>}
+        {openai ? <li>Create a key in the <a href="https://platform.openai.com/api-keys" target="_blank" rel="noreferrer">OpenAI API dashboard</a> (API billing required).</li> :
+          <li>Set your provider's credentials using the <a href="https://inspect.aisi.org.uk/providers.html" target="_blank" rel="noreferrer">Inspect provider guide</a>.</li>}
+        <li>Stop AgentTrace, then run:
+          {openai && <pre><code>{`read -s "OPENAI_API_KEY?Paste your OpenAI API key: "; echo\nexport OPENAI_API_KEY\n${setup.start_command}`}</code></pre>}
+          {!openai && <pre><code>{setup.start_command}</code></pre>}
+        </li>
+        <li>Keep that terminal open. Refresh and click <strong>Run Scout</strong>.</li>
+      </ol>
+      <p className="muted">Keys stay on the server. Scout sends trace content to your provider; API charges apply.</p>
+      <details>
+        <summary>{openai ? "Other shells & details" : "More details"}</summary>
+        <p>For the default environment, activate with <code>source .venv/bin/activate</code>. Use your environment's name if different.</p>
+        {openai && <>
+          <p>Bash/Linux:</p>
+          <pre><code>{`read -r -s -p "Paste your OpenAI API key: " OPENAI_API_KEY; echo\nexport OPENAI_API_KEY\n${setup.start_command}`}</code></pre>
+          <p>A ChatGPT subscription does not include API usage.</p>
+        </>}
+        <p>Use Ctrl+C to stop a foreground server. For a background server, identify its current AgentTrace process first.</p>
+        <p>Keys entered with these commands are hidden and not saved to a file. Never share them or commit them to Git.</p>
+      </details>
+      <button type="button" autoFocus onClick={onClose}>Close</button>
+    </dialog>
+  );
+}
+
 function downloadJson(value, filename) {
   const blob = new Blob([JSON.stringify(value, null, 2)], { type: "application/json" });
   const anchor = document.createElement("a");
@@ -122,8 +182,82 @@ function App() {
   const [turnEnd, setTurnEnd] = useState("");
   const [transition, setTransition] = useState(null);
   const [expandedMessages, setExpandedMessages] = useState([]);
+  const [model, setModel] = useState("");
+  const [scoutRun, setScoutRun] = useState(null);
+  const [analysisError, setAnalysisError] = useState("");
+  const [scoutSetup, setScoutSetup] = useState(null);
+  const [startingAnalysis, setStartingAnalysis] = useState(false);
+  const [analyzers, setAnalyzers] = useState([]);
+  const [offlineAnalyzer, setOfflineAnalyzer] = useState("regex_v1");
+  const [sourceType, setSourceType] = useState("sharednet_share");
+  const [upload, setUpload] = useState(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    requestJson("/api/analyzers", { signal: controller.signal }).then((available) => {
+      setAnalyzers(available);
+      const scout = available.find((analyzer) => analyzer.name === "scout_collaboration_v1");
+      if (scout?.default_model) setModel((current) => current || scout.default_model);
+    }).catch((error) => {
+      if (error.name !== "AbortError") setAnalysisError(error.message);
+    });
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    if (!scoutRun || !["queued", "running"].includes(scoutRun.status)) return undefined;
+    const controller = new AbortController();
+    let timer;
+    async function poll() {
+      try {
+        const updated = await requestJson(`/api/analysis-runs/${scoutRun.id}`, { signal: controller.signal });
+        if (controller.signal.aborted) return;
+        if (["queued", "running"].includes(updated.status)) {
+          timer = setTimeout(poll, 1500);
+        } else {
+          setScoutRun(updated);
+          setReport((current) => current?.traceId === updated.trace_id ? {
+            ...current,
+            analyses: { ...current.analyses, scout_collaboration_v1: updated }
+          } : current);
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") setAnalysisError(`Scout status could not be loaded: ${error.message}`);
+      }
+    }
+    timer = setTimeout(poll, 500);
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
+  }, [scoutRun?.id, scoutRun?.status]);
+
+  useEffect(() => {
+    const identifier = new URLSearchParams(window.location.search).get("trace");
+    if (!identifier) return undefined;
+    const controller = new AbortController();
+    requestJson(`/api/traces/${encodeURIComponent(identifier)}`, { signal: controller.signal }).then((body) => {
+      setReport(body);
+      setScoutRun(body.analyses.scout_collaboration_v1 || null);
+      if (body.analyses.scout_collaboration_v1?.provenance.model) {
+        setModel(body.analyses.scout_collaboration_v1.provenance.model);
+      }
+      setStatus(`Loaded ${body.metrics.totalMessages} messages from saved trace.`);
+    }).catch((error) => {
+      if (error.name !== "AbortError") {
+        setStatusType("error");
+        setStatus(error.message);
+      }
+    });
+    return () => controller.abort();
+  }, []);
 
   const agentIds = report?.participants.map((participant) => participant.id) || [];
+  const traceAnalyzers = report?.analyzers || analyzers;
+  const selectedOfflineAnalyzer = traceAnalyzers.find((analyzer) => analyzer.name === offlineAnalyzer);
+  useEffect(() => {
+    if (report && selectedOfflineAnalyzer && !selectedOfflineAnalyzer.available) setOfflineAnalyzer("regex_v1");
+  }, [report?.traceId, selectedOfflineAnalyzer?.available]);
   const colorScale = useMemo(() => ({
     domain: agentIds,
     range: agentIds.map((_, index) => colors[index % colors.length]),
@@ -184,19 +318,23 @@ function App() {
     event.preventDefault();
     setLoading(true);
     setReport(null);
+    setScoutRun(null);
+    setAnalysisError("");
     resetFilters();
     setStatusType("loading");
     setStatus("Fetching and analyzing the conversation...");
 
     try {
-      const response = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ url })
-      });
-      const body = await response.json();
-      if (!response.ok) throw new Error(body.error || "Analysis failed.");
+      let value = url;
+      if (sourceType === "share_json") {
+        if (!upload) throw new Error("Choose a SharedNet share JSON file.");
+        if (upload.size > 5_000_000) throw new Error("Share JSON must be smaller than 5 MB.");
+        value = JSON.parse(await upload.text());
+      }
+      const body = await ingestTrace({ type: sourceType, value });
       setReport(body);
+      setScoutRun(body.analyses.scout_collaboration_v1 || null);
+      window.history.replaceState(null, "", `?trace=${encodeURIComponent(body.traceId)}`);
       setStatusType("");
       setStatus(`Analyzed ${body.metrics.totalMessages} messages from ${body.metrics.participantCount} agents.`);
     } catch (error) {
@@ -207,28 +345,71 @@ function App() {
     }
   }
 
+  async function runAnalysis(name) {
+    setStartingAnalysis(true);
+    setAnalysisError("");
+    try {
+      const analysis = await startAnalysis(report.traceId, name, name === "scout_collaboration_v1" ? model.trim() : undefined);
+      if (name === "scout_collaboration_v1") setScoutRun(analysis);
+      setReport((current) => ({
+        ...current, analyses: { ...current.analyses, [name]: analysis }
+      }));
+    } catch (error) {
+      setAnalysisError(error.message);
+      if (error.code === "scout_setup_required" && error.setup) setScoutSetup(error.setup);
+    } finally {
+      setStartingAnalysis(false);
+    }
+  }
+
+  async function showScoutSetup() {
+    setAnalysisError("");
+    try {
+      setScoutSetup(await requestJson(`/api/scout/setup?model=${encodeURIComponent(model.trim())}`));
+    } catch (error) {
+      setAnalysisError(error.message);
+    }
+  }
+
+  function showEvidence(number) {
+    resetFilters();
+    setTurnStart(String(number));
+    setTurnEnd(String(number));
+    setExpandedMessages([number]);
+    document.querySelector("#message-explorer")?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <main>
+      {scoutSetup && <ScoutSetupDialog setup={scoutSetup} onClose={() => setScoutSetup(null)} />}
       <header className="app-header">
         <div className="brand">
           <p className="eyebrow">Multi-agent post-training research</p>
-          <h1>TraceScope</h1>
+          <h1>AgentTrace</h1>
           <p className="lede">Explore participation, communication structure, response dynamics, and structural failure-mode signals.</p>
         </div>
         <form onSubmit={analyze}>
-          <label htmlFor="conversation-url">SharedNet conversation link</label>
+          <label htmlFor="source-type">Trace source
+            <select id="source-type" value={sourceType} onChange={(event) => setSourceType(event.target.value)}>
+              <option value="sharednet_share">SharedNet public share link</option>
+              <option value="share_json">SharedNet share JSON file</option>
+              <option value="local">Local goal-run directory or export</option>
+            </select>
+          </label>
+          <label htmlFor="conversation-url">{sourceType === "local" ? "Path relative to configured data directory" : sourceType === "share_json" ? "Share JSON file" : "SharedNet conversation link"}</label>
           <div className="input-row">
-            <input
+            {sourceType === "share_json" ? <input key="share-upload" id="conversation-url" type="file" accept=".json,application/json" required onChange={(event) => setUpload(event.target.files[0] || null)} /> : <input
+              key="source-path"
               id="conversation-url"
-              type="url"
+              type={sourceType === "sharednet_share" ? "url" : "text"}
               required
               value={url}
               onChange={(event) => setUrl(event.target.value)}
               autoComplete="url"
-            />
-            <button type="submit" disabled={loading}>Analyze</button>
+            />}
+            <button type="submit" disabled={loading || startingAnalysis}>Analyze</button>
           </div>
-          <p className="form-note">Public <code>sharednet.ai/s/...</code> links only.</p>
+          <p className="form-note">{sourceType === "local" ? "Local sources require AGENTTRACE_SOURCE_ROOT on the API server." : "SharedNet traces are loaded through commsfail. Scout runs only when explicitly requested."}</p>
         </form>
       </header>
 
@@ -250,7 +431,7 @@ function App() {
               <button
                 className="secondary"
                 type="button"
-                onClick={() => downloadJson(report, "multi-agent-trace-analysis.json")}
+                onClick={() => downloadJson(report, "agenttrace-report.json")}
               >
                 Export JSON
               </button>
@@ -259,7 +440,7 @@ function App() {
                 type="button"
                 onClick={() => downloadJson(
                   buildScoutTranscript(report),
-                  "tracescope-scout-transcript.json"
+                  "agenttrace-scout-transcript.json"
                 )}
               >
                 Export for Scout
@@ -293,11 +474,11 @@ function App() {
               </label>
               <label>
                 First turn
-                <input type="number" min="1" max={report.metrics.totalMessages} value={turnStart} onChange={(event) => setTurnStart(event.target.value)} placeholder="1" />
+                <input type="number" min="1" max={report.messages.at(-1).index} value={turnStart} onChange={(event) => setTurnStart(event.target.value)} placeholder="1" />
               </label>
               <label>
                 Last turn
-                <input type="number" min="1" max={report.metrics.totalMessages} value={turnEnd} onChange={(event) => setTurnEnd(event.target.value)} placeholder={String(report.metrics.totalMessages)} />
+                <input type="number" min="1" max={report.messages.at(-1).index} value={turnEnd} onChange={(event) => setTurnEnd(event.target.value)} placeholder={String(report.messages.at(-1).index)} />
               </label>
             </div>
             <div className="agent-chips">
@@ -327,12 +508,64 @@ function App() {
           </section>
 
           <section className="panel span-2">
+            <PanelHeading eyebrow="commsfail annotators" title="Communication failures" note="Deterministic evidence pointers, not human labels." />
+            <div className="annotator-grid" role="group" aria-label="Offline annotators">
+              {traceAnalyzers.filter((analyzer) => analyzer.kind === "offline" && analyzer.name !== "agenttrace_heuristics_v1")
+                .sort((left, right) => (offlineLabels[left.name]?.order ?? 2) - (offlineLabels[right.name]?.order ?? 2)).map((analyzer) => {
+                const label = offlineLabels[analyzer.name] || { title: analyzer.name, description: "An installed commsfail offline plugin." };
+                const run = report.analyses[analyzer.name];
+                return (
+                  <button key={analyzer.name} type="button" className="annotator-card"
+                    aria-label={`Select ${label.title}`} aria-pressed={offlineAnalyzer === analyzer.name}
+                    disabled={!analyzer.available || startingAnalysis || loading} onClick={() => setOfflineAnalyzer(analyzer.name)}>
+                    <span className="annotator-kind">Offline / No API key</span>
+                    <strong>{label.title}</strong>
+                    <span className="annotator-description">{label.description}</span>
+                    <code>{analyzer.name} v{analyzer.version}</code>
+                    <span className={`annotator-status ${!analyzer.available || run?.status === "failed" ? "needs-setup" : ""}`}>
+                      {!analyzer.available ? "Needs execution logs" : run ? `Run ${run.status}` : "Ready to run"}
+                    </span>
+                    {!analyzer.available && <span className="annotator-description">{analyzer.unavailable_reason}</span>}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="analysis-controls">
+              <button type="button" disabled={startingAnalysis || loading || !selectedOfflineAnalyzer?.available} onClick={() => runAnalysis(offlineAnalyzer)}>Run annotator</button>
+              <p className="muted">Selected: {offlineLabels[offlineAnalyzer]?.title || offlineAnalyzer}. Runs locally without model charges.</p>
+            </div>
+            <AnalysisResults analysis={report.analyses[offlineAnalyzer]} onEvidence={showEvidence} />
+          </section>
+
+          <section className="panel span-2">
+            <PanelHeading eyebrow="Inspect Scout" title="Semantic collaboration findings" note="Model judgments; verify cited evidence. Running Scout sends this trace to the selected model provider and may incur charges." />
+            <div className="scout-overview">
+              <span className="annotator-kind">LLM / Provider API key / Usage-based cost</span>
+              <p>Annotates messages and checks <strong>duplicated work</strong>, <strong>weak handoffs</strong> and <strong>unintegrated information</strong>.</p>
+              <span className="annotator-status">{scoutRun ? `Run ${scoutRun.status}` : "Not run"}</span>
+            </div>
+            <div className="analysis-controls">
+              <label>Model
+                <input value={model} onChange={(event) => setModel(event.target.value)} placeholder="provider/model" />
+              </label>
+              <button type="button" disabled={startingAnalysis || loading || ["queued", "running"].includes(scoutRun?.status) || !model.trim()} onClick={() => runAnalysis("scout_collaboration_v1")}>
+                {["queued", "running"].includes(scoutRun?.status) ? "Scout running..." : "Run Scout"}
+              </button>
+              <button type="button" className="secondary" disabled={!model.trim() || startingAnalysis || loading} onClick={showScoutSetup}>Provider setup</button>
+            </div>
+            <p className="muted">Default: <code>{analyzers.find((analyzer) => analyzer.name === "scout_collaboration_v1")?.default_model || "Loading..."}</code>. Change the provider/model above to use another model. If setup is missing, Run Scout opens instructions before creating a run.</p>
+            <AnalysisResults analysis={scoutRun} onEvidence={showEvidence} />
+          </section>
+          {analysisError && <p className="analysis-error" role="alert">{analysisError}</p>}
+
+          <section className="panel span-2">
             <PanelHeading
               eyebrow="Conversation shape"
               title="Turn timeline"
               note="Click a bar to isolate that message. Filters dim non-matching turns."
             />
             <PlotChart
+              data={report.messages}
               label="Message word counts by turn and agent"
               onDatumClick={(message) => {
                 if (!message.index) return;
@@ -364,6 +597,7 @@ function App() {
             <article className="panel">
               <PanelHeading eyebrow="Participation" title="Contribution share" note="Click an agent to toggle its filter." />
               <PlotChart
+                data={report.participants}
                 label="Messages contributed by each agent"
                 onDatumClick={(participant) => participant.id && toggleAgent(participant.id)}
                 build={(width) => Plot.plot({
@@ -398,6 +632,7 @@ function App() {
             <article className="panel">
               <PanelHeading eyebrow="Communication structure" title="Turn-transition matrix" note="Click a cell to inspect matching transitions." />
               <PlotChart
+                data={report.transitions}
                 label="Directed transitions between agents"
                 onDatumClick={(edge) => {
                   if (!edge.source || !edge.target) return;
@@ -448,7 +683,7 @@ function App() {
             </div>
           </section>
 
-          <section className="panel span-2">
+          <section id="message-explorer" className="panel span-2">
             <PanelHeading
               eyebrow="Trace explorer"
               title={`Messages (${formatNumber(visibleMessages.length)})`}
@@ -471,7 +706,7 @@ function App() {
                     const expanded = expandedMessages.includes(message.index);
                     const signals = Object.entries(message.signals).filter(([, count]) => count > 0);
                     return (
-                      <tr key={message.index} className="message-row" onClick={() => toggleExpanded(message.index)}>
+                      <tr id={`message-${message.index}`} key={message.index} className="message-row" onClick={() => toggleExpanded(message.index)}>
                         <td>#{message.index}</td>
                         <td>{message.participantId}</td>
                         <td>{formatNumber(message.words)}</td>

@@ -80,6 +80,7 @@ class FactsV1:
     version = "0.1.0"
     schema = "schema.json"
     taxonomy = "ten_modes"
+    requires_ops = True
 
     def modes_in(self, output: dict) -> list[str]:
         return [f["mode"] for f in output["findings"] if f["mode"]]

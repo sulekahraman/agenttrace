@@ -1,0 +1,12 @@
+{
+  "room": {"name": "Test room", "created_at": "2026-01-01T00:00:00Z"},
+  "members": [
+    {"handle": "AAAA", "label": "Researcher", "driver": "claude-code"},
+    {"handle": "BBBB", "label": "Reviewer", "driver": "codex"}
+  ],
+  "messages": [
+    {"sequence": 1, "content": "Could you verify this result?", "created_at": "2026-01-01T00:00:00Z", "sender": {"handle": "AAAA"}},
+    {"sequence": 2, "content": "Yes, but there is one issue.", "created_at": "2026-01-01T00:02:00Z", "sender": {"handle": "BBBB"}},
+    {"sequence": 3, "content": "Agreed. I will follow up.", "created_at": "2026-01-01T00:05:00Z", "sender": {"handle": "AAAA"}}
+  ]
+}

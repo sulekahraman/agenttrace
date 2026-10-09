@@ -1,4 +1,5 @@
 function transcriptId(report) {
+  if (report?.traceId) return report.traceId;
   const sourceUrl = report?.source?.url;
   if (sourceUrl) {
     try {
@@ -91,7 +92,7 @@ function annotationContext(report, messagePosition) {
 
 export function buildScoutTranscript(report) {
   if (!report?.messages?.length) {
-    throw new Error("A TraceScope report with messages is required.");
+    throw new Error("An AgentTrace report with messages is required.");
   }
 
   const id = transcriptId(report);
@@ -99,7 +100,7 @@ export function buildScoutTranscript(report) {
   return {
     bridgeVersion: "1.0",
     transcript_id: id,
-    source_type: report.source?.provider || "tracescope",
+    source_type: report.source?.kind || report.source?.provider || "agenttrace",
     source_id: id,
     source_uri: report.source?.url || null,
     date: report.conversation?.firstTimestamp || null,
@@ -125,7 +126,7 @@ export function buildScoutTranscript(report) {
       }
     })),
     metadata: {
-      tracescope_schema_version: report.schemaVersion,
+      agenttrace_schema_version: report.schemaVersion,
       title: report.conversation?.title || "Untitled conversation",
       description: report.conversation?.description || null,
       participants: report.participants,

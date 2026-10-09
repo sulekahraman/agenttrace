@@ -1,8 +1,11 @@
 import unittest
+import pytest
+
+pytest.importorskip("inspect_scout")
 
 from inspect_ai.model import ChatMessageAssistant
 
-from scout.annotations import (
+from agenttrace.scout.annotations import (
     MessageAnnotation,
     build_annotation_prompt,
     normalize_annotation,

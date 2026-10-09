@@ -1,6 +1,11 @@
 node_modules/
 dist/
 .venv-scout/
+.venv/
+.agenttrace/
+*.egg-info/
+build/
+.pytest_cache/
 transcripts/
 scans/
 __pycache__/

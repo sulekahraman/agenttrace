@@ -13,7 +13,7 @@ def load_bridge(path: Path) -> dict:
         bridge = json.load(file)
 
     if bridge.get("bridgeVersion") != "1.0":
-        raise ValueError("Unsupported TraceScope Scout bridge version.")
+        raise ValueError("Unsupported AgentTrace Scout bridge version.")
     if not bridge.get("transcript_id") or not bridge.get("messages"):
         raise ValueError("The bridge file must contain transcript_id and messages.")
     return bridge
@@ -56,9 +56,9 @@ async def import_transcript(input_path: Path, output_path: Path) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Import a TraceScope Scout bridge file into an Inspect Scout transcript database."
+        description="Import an AgentTrace Scout bridge file into an Inspect Scout transcript database."
     )
-    parser.add_argument("input", type=Path, help="TraceScope Scout bridge JSON file")
+    parser.add_argument("input", type=Path, help="AgentTrace Scout bridge JSON file")
     parser.add_argument(
         "--output",
         type=Path,

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agenttrace-api"
+version = "0.1.0"
+description = "AgentTrace API and analysis orchestration."
+requires-python = ">=3.10"
+dependencies = [
+  "commsfail",
+  "fastapi>=0.115",
+  "uvicorn>=0.34",
+  "httpx>=0.28",
+  "regex>=2024.11",
+]
+
+[project.optional-dependencies]
+dev = ["httpx>=0.28", "pytest>=8"]
+scout = ["inspect-scout", "openai"]
+browser = ["playwright>=1.50"]
+
+[project.entry-points."commsfail.annotators"]
+agenttrace_heuristics_v1 = "agenttrace.heuristics:StructuralHeuristics"
+
+[project.scripts]
+agenttrace = "agenttrace.api:main"
+
+[tool.setuptools.packages.find]
+include = ["agenttrace*"]
+
+[tool.setuptools.package-data]
+agenttrace = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

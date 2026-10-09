@@ -1,0 +1,32 @@
+name: AgentTrace tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: pip install -e ./packages/commsfail -e "./packages/agenttrace-api[dev,scout,browser]" -e ./packages/commsfail/examples/plugin
+      - run: python -m pytest packages/commsfail/tests packages/agenttrace-api/tests
+      - run: npm test && npm run build
+      - run: python -m playwright install --with-deps chromium
+      - run: AGENTTRACE_BROWSER_TESTS=1 python -m pytest packages/agenttrace-api/tests/test_browser.py
+      - name: Standalone package and plugin smoke checks
+        run: |
+          commsfail annotators | grep '^agenttrace_heuristics_v1 '
+          commsfail analyse packages/commsfail/tests/fixtures/goal_run -o /tmp/record.json
+          commsfail validate /tmp/record.json
+          commsfail analyse packages/commsfail/examples/plugin/sample_chat.jsonl --source chat_jsonl --annotator example_v1 -o /tmp/plugin.json
+          commsfail validate /tmp/plugin.json
+          pip wheel --no-deps -w /tmp/wheels ./packages/commsfail ./packages/agenttrace-api

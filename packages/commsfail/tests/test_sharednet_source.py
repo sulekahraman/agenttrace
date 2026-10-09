@@ -1,5 +1,6 @@
 """The SharedNet source: each reader fills the Trace it can, and the tools work on any Trace."""
 import json
+from pathlib import Path
 from commsfail.sources import sharednet as sn
 
 def test_goal_run_record(goal_run):
@@ -46,7 +47,7 @@ def test_view_at(goal_run):
     assert v.checks == [] and len(goal_run.posts) == 12                                    # the original is unchanged
 
 def test_share_file():
-    t = sn.load("tests/fixtures/share.json")
+    t = sn.load(Path(__file__).resolve().parent / "fixtures/share.json")
     assert t.source["kind"] == "share-file" and not t.has_ops and not t.has_record
     assert [p["who"] for p in t.posts] == ["planner", "coder", "planner", "coder"]
     assert t.posts[2]["reply_to"] == 2 and all(p["role"] is None for p in t.posts)

@@ -1,1 +1,1 @@
-"""TraceScope Inspect Scout integration."""
+"""AgentTrace standalone Scout compatibility tools."""

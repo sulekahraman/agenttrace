@@ -1,8 +1,9 @@
 import asyncio
 import json
+from pathlib import Path
 from typing import Literal
 
-from inspect_ai.model import ChatMessageAssistant
+from inspect_ai.model import ChatMessageAssistant, GenerateConfig
 from inspect_scout import AnswerStructured, Result, generate_answer
 from pydantic import BaseModel, Field
 
@@ -59,14 +60,14 @@ class AnnotationEvidence(BaseModel):
 
 
 class MessageAnnotation(BaseModel):
-    primary_type: MessageType
-    secondary_types: list[MessageType] = Field(default_factory=list, max_length=2)
-    replies_to: list[int] = Field(default_factory=list)
-    addressed_to: list[str] = Field(default_factory=list)
-    confidence: float = Field(ge=0, le=1)
-    ambiguous: bool
-    rationale: str = Field(max_length=500)
-    evidence: list[AnnotationEvidence] = Field(default_factory=list, max_length=3)
+    primary_type: MessageType = Field(description="The target's principal communicative function.")
+    secondary_types: list[MessageType] = Field(default_factory=list, max_length=2, description="Up to two additional communicative functions.")
+    replies_to: list[int] = Field(default_factory=list, description="Earlier message numbers from supplied context that the target responds to.")
+    addressed_to: list[str] = Field(default_factory=list, description="Agent roster IDs addressed by the target.")
+    confidence: float = Field(ge=0, le=1, description="Confidence in the annotation from zero to one.")
+    ambiguous: bool = Field(description="Whether the message's communicative function is genuinely ambiguous.")
+    rationale: str = Field(max_length=500, description="Brief reasoning grounded in the target message.")
+    evidence: list[AnnotationEvidence] = Field(default_factory=list, max_length=3, description="Verbatim target-message spans supporting inferred fields.")
 
 
 def _message_text(message: ChatMessageAssistant) -> str:
@@ -157,7 +158,11 @@ def normalize_annotation(
     })
 
 
-async def annotate_message(message: ChatMessageAssistant) -> Result:
+async def annotate_message(
+    message: ChatMessageAssistant,
+    model: str | None = None,
+    artifacts: Path | None = None,
+) -> Result:
     metadata = _metadata(message)
     context = metadata.get("annotation_context") or {}
     target_number = int(metadata.get("sequence") or 0)
@@ -166,14 +171,32 @@ async def annotate_message(message: ChatMessageAssistant) -> Result:
         for agent in context.get("roster") or []
         if agent.get("id")
     }
+    prompt = build_annotation_prompt(message)
+    if artifacts is not None:
+        (artifacts / f"message-{target_number}.prompt.txt").write_text(prompt, encoding="utf-8")
     generated = await generate_answer(
-        build_annotation_prompt(message),
+        prompt,
         AnswerStructured(type=MessageAnnotation),
+        model=model,
+        config=GenerateConfig(cache=True),
     )
     if not isinstance(generated, Result) or generated.parsed is None:
-        return generated
+        raise ValueError(f"Message #{target_number} returned no structured annotation.")
 
     annotation = normalize_annotation(generated.parsed, target_number, roster_ids)
+    valid_previous = {
+        item["index"] for item in (
+            context.get("previous_messages", []) + context.get("cited_messages", [])
+        )
+    }
+    if any(number not in valid_previous for number in annotation.replies_to):
+        raise ValueError(f"Message #{target_number} cites a reply not in its supplied context.")
+    if any(item.text not in message.text for item in annotation.evidence):
+        raise ValueError(f"Message #{target_number} returned evidence not in the message.")
+    if artifacts is not None:
+        (artifacts / f"message-{target_number}.result.json").write_text(
+            annotation.model_dump_json(indent=2), encoding="utf-8"
+        )
     return Result(
         value=annotation.model_dump(mode="json"),
         label=annotation.primary_type,
@@ -196,18 +219,23 @@ async def annotate_message(message: ChatMessageAssistant) -> Result:
 async def annotate_messages(
     messages: list[ChatMessageAssistant],
     concurrency: int = 8,
+    model: str | None = None,
+    artifacts: Path | None = None,
 ) -> list[tuple[ChatMessageAssistant, MessageAnnotation]]:
     semaphore = asyncio.Semaphore(concurrency)
 
     async def annotate(message: ChatMessageAssistant):
         async with semaphore:
-            result = await annotate_message(message)
-            annotation = result.parsed if isinstance(result, Result) else None
-            return message, annotation
+            result = await annotate_message(message, model=model, artifacts=artifacts)
+            if not isinstance(result.parsed, MessageAnnotation):
+                raise ValueError("Scout returned an invalid message annotation.")
+            return message, result.parsed
 
-    results = await asyncio.gather(*(annotate(message) for message in messages))
-    return [
-        (message, annotation)
-        for message, annotation in results
-        if isinstance(annotation, MessageAnnotation)
-    ]
+    tasks = [asyncio.create_task(annotate(message)) for message in messages]
+    try:
+        return await asyncio.gather(*tasks)
+    except BaseException:
+        for task in tasks:
+            task.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
+        raise
