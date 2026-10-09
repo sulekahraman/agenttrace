@@ -1,0 +1,97 @@
+{
+ "id": "decision_point",
+ "version": "1",
+ "complete": true,
+ "description": "Proposal B. A failure is classed by the decision an agent got wrong in the life of a piece of work: whether to say, whether to claim, what the work is, how to hand it on, when to report and check, when to move on or stop. Each class is one decision, and so one training target.",
+ "groups": [
+  {
+   "id": "disclose",
+   "name": "Disclose",
+   "decision": "whether to put a need, a fact or a result on the board",
+   "definition": "An agent does not say, or says too late, what others need to know."
+  },
+  {
+   "id": "claim",
+   "name": "Claim",
+   "decision": "whether to take a piece of work, and whether it is free",
+   "definition": "Work gets two owners, no owner, or the wrong owner."
+  },
+  {
+   "id": "specify",
+   "name": "Specify",
+   "decision": "what exactly the work is, and when it is done",
+   "definition": "Agents settle, or fail to settle, what the work is, and build different things."
+  },
+  {
+   "id": "hand_off",
+   "name": "Hand off",
+   "decision": "passing inputs and results on, at the right version and time",
+   "definition": "What one agent passes on does not reach the next, or reaches it stale."
+  },
+  {
+   "id": "report_and_verify",
+   "name": "Report and verify",
+   "decision": "when to say it is done, and whether to check another's claim",
+   "definition": "A claim of done, delivered or reviewed is not true, or is taken as true unchecked."
+  },
+  {
+   "id": "progress_and_close",
+   "name": "Progress and close",
+   "decision": "whether to keep discussing, start, wait, or stop",
+   "definition": "The work stops moving, or the run stops at the wrong time."
+  },
+  {
+   "id": "overhead",
+   "name": "Overhead",
+   "decision": "none",
+   "definition": "Posts and work that change nothing. Counted as cost, not as failure."
+  }
+ ],
+ "modes": {
+  "withheld_information": "disclose",
+  "unannounced_delivery": "disclose",
+  "unasked_question": "disclose",
+  "late_disclosure": "disclose",
+  "R1": "claim",
+  "R2": "claim",
+  "B1": "claim",
+  "B2": "claim",
+  "D4": "claim",
+  "conflicting_authority": "claim",
+  "divergent_assumptions": "specify",
+  "term_drift": "specify",
+  "ambiguous_reference": "specify",
+  "premature_final": "specify",
+  "over_reading": "specify",
+  "anchoring": "specify",
+  "silent_drop": "hand_off",
+  "misrouted_post": "hand_off",
+  "missed_post": "hand_off",
+  "crossed_posts": "hand_off",
+  "stale_act": "hand_off",
+  "stale_review": "hand_off",
+  "workspace_race": "hand_off",
+  "duplicate_delivery": "hand_off",
+  "buried_signal": "hand_off",
+  "overwrite": "hand_off",
+  "D1": "report_and_verify",
+  "D2": "report_and_verify",
+  "status_word_mismatch": "report_and_verify",
+  "error_cascade": "report_and_verify",
+  "off_spec_delivery": "report_and_verify",
+  "D3": "progress_and_close",
+  "deliberation_stall": "progress_and_close",
+  "waiting_cycle": "progress_and_close",
+  "claim_without_action": "progress_and_close",
+  "undeclared_decision": "progress_and_close",
+  "never_closes": "progress_and_close",
+  "runs_on_after_done": "progress_and_close",
+  "REP": "overhead",
+  "HB": "overhead",
+  "verbosity": "overhead",
+  "redundant_verification": "overhead"
+ },
+ "out_of_scope": {
+  "injection": "adversarial: the decisions assume agents that cooperate."
+ }
+}

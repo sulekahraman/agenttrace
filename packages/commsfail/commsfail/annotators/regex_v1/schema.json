@@ -1,0 +1,489 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "comms-failure/analysis.v1",
+  "title": "regex_v1 output: analysis.v1",
+  "description": "One Room against the ten communication-failure modes: room-level metrics, the work items found in the text with their claim, done and review trajectory, one entry per mode with evidence, empty slots for human labels, and caveats about what the source cannot show.",
+  "type": "object",
+  "required": [
+    "schema",
+    "source",
+    "room",
+    "metrics",
+    "items",
+    "modes",
+    "annotation",
+    "caveats"
+  ],
+  "properties": {
+    "schema": {
+      "const": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "kind",
+        "annotator"
+      ],
+      "description": "the trace's source plus annotator name@version"
+    },
+    "room": {
+      "type": "object",
+      "required": [
+        "name",
+        "seats"
+      ],
+      "properties": {
+        "seats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "handle"
+            ]
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "description": "room-level counts; the modes are rates of these. Annotators may add more keys.",
+      "required": [
+        "posts",
+        "seats",
+        "asks",
+        "asks_unanswered",
+        "claims",
+        "re_claims",
+        "heartbeat_posts",
+        "heartbeat_share",
+        "open_items_at_end",
+        "last_post_kind"
+      ],
+      "properties": {
+        "posts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seats": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "asks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "asks_unanswered": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "claims": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "re_claims": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "heartbeat_posts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "heartbeat_share": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "open_items_at_end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "last_post_kind": {
+          "enum": [
+            "pause",
+            "ask",
+            "heartbeat",
+            "done",
+            "other"
+          ]
+        }
+      }
+    },
+    "items": {
+      "type": "object",
+      "description": "work items found in the text, keyed by item",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "claims",
+          "done",
+          "reviews",
+          "uploads",
+          "status_at_end"
+        ],
+        "properties": {
+          "first_mention": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "seq",
+                "who",
+                "kind"
+              ],
+              "properties": {
+                "seq": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "who": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "firm",
+                    "hedged"
+                  ]
+                }
+              }
+            }
+          },
+          "done": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "seq",
+                "who"
+              ],
+              "properties": {
+                "seq": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "who": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "seq",
+                "who"
+              ],
+              "properties": {
+                "seq": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "who": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "uploads": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "seq",
+                "who"
+              ],
+              "properties": {
+                "seq": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "who": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "status_at_end": {
+            "enum": [
+              "reviewed",
+              "done",
+              "claimed",
+              "mentioned"
+            ]
+          }
+        }
+      }
+    },
+    "modes": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "description": "exactly one entry per mode id, present or not, so outputs line up column for column",
+      "items": {
+        "$ref": "#/$defs/mode"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "R1"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "R2"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "B1"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "B2"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "D1"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "D2"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "D3"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "D4"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "REP"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "const": "HB"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        }
+      ]
+    },
+    "annotation": {
+      "type": "object",
+      "required": [
+        "labels",
+        "facts",
+        "uncertain",
+        "annotators",
+        "adjudicated"
+      ],
+      "description": "slots for the human annotation pass; an annotator leaves them empty"
+    },
+    "caveats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "mode": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "group",
+        "present",
+        "severity",
+        "count",
+        "confidence",
+        "removed_by",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "R1",
+            "R2",
+            "B1",
+            "B2",
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "REP",
+            "HB"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "group": {
+          "enum": [
+            "not_read",
+            "not_binding",
+            "never_done"
+          ]
+        },
+        "present": {
+          "type": "boolean"
+        },
+        "severity": {
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ],
+          "description": "unknown: the source cannot show this mode"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "removed_by": {
+          "enum": [
+            "naming",
+            "view",
+            "check",
+            "none"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "maxItems": 25,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "seq",
+        "who",
+        "excerpt",
+        "why"
+      ],
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "the post; 0 for a room-level row"
+        },
+        "who": {
+          "type": "string"
+        },
+        "excerpt": {
+          "type": "string",
+          "description": "redacted"
+        },
+        "why": {
+          "type": "string",
+          "description": "the sentence a reader would write in the margin"
+        }
+      }
+    }
+  }
+}

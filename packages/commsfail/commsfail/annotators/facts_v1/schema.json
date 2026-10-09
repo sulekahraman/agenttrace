@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "commsfail/facts_v1/v1",
+  "title": "facts_v1 output",
+  "description": "Each post checked against its author's own log. 'findings' has one row per fact found on a post; 'counts' and 'by_mode' total them; 'seats' summarises what each seat did. 'applies' is false when the source has no per-seat logs.",
+  "type": "object",
+  "required": [
+    "applies",
+    "seats",
+    "findings",
+    "counts",
+    "by_mode",
+    "caveats"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "applies": {
+      "type": "boolean"
+    },
+    "seats": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "posts",
+          "linked_posts",
+          "turns",
+          "commands",
+          "failed_commands",
+          "test_runs",
+          "files_changed"
+        ],
+        "properties": {
+          "posts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "linked_posts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "turns": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "commands": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failed_commands": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "test_runs": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "files_changed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fact",
+          "mode",
+          "seq",
+          "who",
+          "turn",
+          "op",
+          "excerpt",
+          "why"
+        ],
+        "properties": {
+          "fact": {
+            "enum": [
+              "overlapping_claim",
+              "claim_without_action",
+              "review_without_reading",
+              "success_without_run",
+              "success_after_failure",
+              "private_contradiction",
+              "check_failed_after_done"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "R1",
+              "D1",
+              "D2",
+              null
+            ]
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "the post"
+          },
+          "who": {
+            "type": "string"
+          },
+          "turn": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "the author's turn in which the post was made"
+          },
+          "op": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "the index of the posting command in that turn"
+          },
+          "excerpt": {
+            "type": "string",
+            "description": "redacted"
+          },
+          "why": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "overlapping_claim",
+        "claim_without_action",
+        "review_without_reading",
+        "success_without_run",
+        "success_after_failure",
+        "private_contradiction",
+        "check_failed_after_done"
+      ],
+      "properties": {
+        "overlapping_claim": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "claim_without_action": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "review_without_reading": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "success_without_run": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "success_after_failure": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "private_contradiction": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "check_failed_after_done": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "by_mode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "D1",
+        "D2",
+        "R1"
+      ],
+      "properties": {
+        "D1": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "D2": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "R1": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "caveats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

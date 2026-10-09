@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "commsfail"
+version = "0.4.0"
+description = "Communication-failure analysis of multi-agent message boards: SharedNet traces in, one record per annotator out, each annotator with its own output schema."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Xisen Wang" }]
+keywords = ["multi-agent", "llm", "communication", "failure-analysis", "sharednet"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["jsonschema>=4.18"]   # each annotator states its output as a JSON Schema
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+commsfail = "commsfail.cli:main"
+
+[project.urls]
+Source = "https://github.com/xisen-w/commsfail"
+Issues = "https://github.com/xisen-w/commsfail/issues"
+
+[tool.setuptools.packages.find]
+include = ["commsfail*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.json", "*.md", "*.txt"]
+"commsfail.annotators" = ["taxonomy-choices/*.json", "taxonomy-choices/*.md"]
+"commsfail.annotators.standard" = ["prompts/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
