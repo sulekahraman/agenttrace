@@ -1,0 +1,33 @@
+name: test
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -e ".[dev]" -e examples/plugin
+      - run: pytest
+      - name: the example plugin is wired through its entry points
+        run: |
+          commsfail annotators | grep -q '^example_v1 '
+          commsfail sources | grep -q '^chat_jsonl '
+          commsfail analyse examples/plugin/sample_chat.jsonl --source chat_jsonl --annotator example_v1 -o /tmp/example.json
+          commsfail validate /tmp/example.json
+          commsfail analyse tests/fixtures/goal_run --markdown
+          commsfail analyse tests/fixtures/goal_run -o /tmp/out.json
+          commsfail validate /tmp/out.json
+      - name: a wheel carries every annotator's schema.json and the template
+        run: |
+          pip wheel --no-deps -w /tmp/wheel .
+          python -m zipfile -l /tmp/wheel/commsfail-*.whl | grep -q 'annotators/regex_v1/schema.json'
+          python -m zipfile -l /tmp/wheel/commsfail-*.whl | grep -q 'annotators/_template/test_template.py.txt'

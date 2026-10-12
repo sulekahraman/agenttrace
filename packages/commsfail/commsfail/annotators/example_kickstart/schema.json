@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "commsfail/example_kickstart/v1",
+  "title": "example_kickstart output",
+  "description": "Replace with yours: what each field means and how it is computed. Change the $id when the format changes.",
+  "type": "object",
+  "required": ["taxonomy", "findings", "counts"],
+  "additionalProperties": false,
+  "properties": {
+    "taxonomy": {"type": "string", "description": "the taxonomy choice the classes come from, as id@version"},
+    "findings": {
+      "type": "array",
+      "description": "one row for each signal the method found in a post",
+      "items": {
+        "type": "object",
+        "required": ["seq", "who", "signal", "mode", "group", "excerpt", "why"],
+        "additionalProperties": false,
+        "properties": {
+          "seq": {"type": "integer", "minimum": 0, "description": "the post"},
+          "who": {"type": "string", "description": "the seat that wrote it"},
+          "signal": {"enum": ["open_question", "bare_claim"], "description": "what the method saw"},
+          "mode": {"type": "string", "description": "the catalog pattern the signal is evidence for"},
+          "group": {"type": "string", "description": "the pattern's class in the chosen taxonomy"},
+          "excerpt": {"type": "string", "description": "redacted"},
+          "why": {"type": "string", "description": "the sentence a reader would write in the margin"}
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "required": ["posts", "findings", "by_group"],
+      "additionalProperties": false,
+      "properties": {
+        "posts": {"type": "integer", "minimum": 0},
+        "findings": {"type": "integer", "minimum": 0},
+        "by_group": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}
+      }
+    }
+  }
+}

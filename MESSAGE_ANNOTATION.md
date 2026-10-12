@@ -1,18 +1,15 @@
 # Message Annotation and Collaboration Scanning
 
-TraceScope uses message annotations as an optional semantic layer between the
-raw transcript and conversation-level failure scanners:
+AgentTrace uses Inspect Scout directly from its Python backend:
 
 ```text
-raw messages
-  -> deterministic hints and bounded context
-  -> one structured annotation per message
-  -> annotation-guided candidate selection
-  -> cited conversation-level findings
+canonical trace -> UI report -> Scout transcript with bounded earlier context
+ -> structured message annotations -> candidate selection -> cited findings
 ```
 
-The deterministic TraceScope metrics remain unchanged. Annotations and findings
-are model judgments produced by Inspect Scout.
+Scout runs only after an explicit **Run Scout** request. It does not replace
+the offline metrics or `commsfail` annotators. The selected model provider
+receives trace content and may charge for generation.
 
 ## Message types
 
@@ -23,60 +20,49 @@ Each message receives one primary type and up to two secondary types:
 `critique_disagreement`, `agreement`, `decision`, `synthesis`,
 `clarification`, `artifact_sharing`, `coordination`, or `social_heartbeat`.
 
-Messages also record inferred reply links, addressed agents, confidence,
-ambiguity, a short rationale, and supporting text spans.
+Annotations include inferred replies, addressed agents, confidence, ambiguity,
+a brief rationale and target-message evidence spans.
 
-## Context
+## Bounded context
 
-Each target message is annotated with:
+Each target receives the roster, up to six explicitly cited earlier messages
+(2,000 characters each), twelve preceding messages (500 characters each),
+and deterministic citation/addressee/artifact/heartbeat hints. Target text is
+limited to 8,000 characters. Future messages are excluded from classification.
 
-- The agent roster
-- Up to six explicitly cited earlier messages
-- The twelve immediately preceding messages
-- Deterministic hints for citations, addressees, artifacts, and heartbeats
+Reply links are normalized to supplied earlier context, and addressed agents
+to the roster. Evidence spans must appear verbatim in the target text. Invalid
+evidence fails the run rather than becoming a successful empty result.
 
-Only earlier messages may appear in `replies_to`. Future messages are excluded
-to prevent outcome leakage during message classification.
+## Collaboration findings
 
-The context is embedded when exporting and importing the Scout bridge. Re-import
-older transcripts before running these scanners.
+The end-to-end scanner selects messages using annotation types, explicit
+citations, addressed agents and adjacent-turn context. It considers up to 80
+candidate messages with 2,000 characters per candidate. Coverage reports
+candidate/annotation counts and candidate-selection truncation.
 
-## Rules
+It requires exactly one structured finding for each category:
 
-1. Label only the target message.
-2. Describe its observable communicative function, not whether it was good.
-3. Use one primary type and no more than two secondary types.
-4. Keep explicit citations separate from inferred reply relationships.
-5. Support inferred fields with short target-message evidence.
-6. Mark genuine uncertainty with `ambiguous` and lower confidence.
+| Category | Question |
+| --- | --- |
+| `duplicated_work` | Did agents redundantly repeat materially equivalent work without a clear verification purpose? |
+| `weak_handoff` | Was requested work abandoned, ownership unclear, or delivered work not integrated? |
+| `unintegrated_information` | Was relevant visible information ignored or omitted despite an opportunity to use it? |
 
-## Scout workflow
+Positive findings require original message numbers from supplied candidate
+evidence. Those numbers are not the prompt's display labels. The UI jumps to
+the cited original turn. Failed parsing or invalid references is reported as
+an explicit failed analysis.
 
-Generate reusable message annotations:
+## Reproducibility
 
-```bash
-scout scan scout/message_annotations.py \
-  -T ./transcripts \
-  --model openai/gpt-5 \
-  --cache
-```
+The same explicit model and cache configuration is used for annotations and
+the collaboration call. Each run stores prompt/result artifacts, timestamps,
+model, prompt version and package versions. Structural results remain in a
+separate namespace. The standalone [Scout bridge](scout/README.md) is retained
+for manual Scout databases and scans.
 
-Run the end-to-end annotation-guided failure scanner:
-
-```bash
-scout scan scout/scanners.py \
-  -T ./transcripts \
-  --model openai/gpt-5 \
-  --cache
-```
-
-The end-to-end scanner annotates messages, selects bounded candidate evidence,
-and returns one cited result for each of:
-
-- Duplicated work
-- Weak or failed handoffs
-- Relevant information that was not integrated
-
-Before treating annotations or findings as research measures, validate them on
-a human-labeled set and report agreement, per-class errors, and prompt/model
-versions.
+Annotations and findings are model judgments, not ground truth. Validate on a
+human-labeled set and report per-class errors and prompt/model versions before
+using them as research measures. Automated tests mock generation and exercise
+Scout's real structured parser; they do not validate provider judgment quality.

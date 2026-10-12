@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenttrace/heuristics.v1",
+  "title": "AgentTrace structural heuristics",
+  "description": "Deterministic participation metrics and structural research prompts.",
+  "type": "object",
+  "required": ["metrics", "participants", "transitions", "failureModes"],
+  "additionalProperties": false,
+  "properties": {
+    "metrics": {
+      "type": "object",
+      "required": ["totalMessages", "participantCount", "questionFollowUpRate"],
+      "properties": {
+        "totalMessages": {"type": "integer", "minimum": 1},
+        "participantCount": {"type": "integer", "minimum": 1},
+        "questionFollowUpRate": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "messages", "words"],
+        "properties": {
+          "id": {"type": "string"},
+          "messages": {"type": "integer", "minimum": 1},
+          "words": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "target", "count"],
+        "additionalProperties": false,
+        "properties": {
+          "source": {"type": "string"},
+          "target": {"type": "string"},
+          "count": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "failureModes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "title", "detail", "threshold", "evidence"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string"},
+          "severity": {"enum": ["low", "medium", "high"]},
+          "title": {"type": "string"},
+          "detail": {"type": "string"},
+          "threshold": {"type": "string"},
+          "evidence": {"type": "string"}
+        }
+      }
+    }
+  }
+}

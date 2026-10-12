@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "commsfail-example/example_v1/v1",
+  "title": "example_v1 output",
+  "description": "Whether the board ends on an open question, and the last post.",
+  "type": "object",
+  "required": ["ends_on_question", "last"],
+  "additionalProperties": false,
+  "properties": {
+    "ends_on_question": {"type": "boolean"},
+    "last": {
+      "type": ["object", "null"],
+      "required": ["seq", "who", "excerpt"],
+      "properties": {"seq": {"type": "integer", "minimum": 0}, "who": {"type": "string"}, "excerpt": {"type": "string"}}
+    }
+  }
+}

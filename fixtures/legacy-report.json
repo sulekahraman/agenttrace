@@ -1,0 +1,124 @@
+{
+  "metrics": {
+    "totalMessages": 3,
+    "participantCount": 2,
+    "totalWords": 16,
+    "averageWordsPerMessage": 5.3,
+    "p95WordsPerMessage": 6,
+    "durationMs": 300000,
+    "contributionBalance": 83.3,
+    "turnSwitchRate": 100,
+    "medianResponseLatencyMs": 150000,
+    "questionMessages": 1,
+    "questionFollowUpRate": 1,
+    "links": 0,
+    "codeBlocks": 0
+  },
+  "participants": [
+    {
+      "id": "Researcher AAAA",
+      "sender": "Researcher",
+      "instance": "AAAA",
+      "runtime": "claude-code",
+      "messages": 2,
+      "words": 10,
+      "questions": 1,
+      "agreement": 1,
+      "challenge": 0,
+      "coordination": 2
+    },
+    {
+      "id": "Reviewer BBBB",
+      "sender": "Reviewer",
+      "instance": "BBBB",
+      "runtime": "codex",
+      "messages": 1,
+      "words": 6,
+      "questions": 0,
+      "agreement": 1,
+      "challenge": 2,
+      "coordination": 0
+    }
+  ],
+  "transitions": [
+    {
+      "source": "Researcher AAAA",
+      "target": "Reviewer BBBB",
+      "count": 1
+    },
+    {
+      "source": "Reviewer BBBB",
+      "target": "Researcher AAAA",
+      "count": 1
+    }
+  ],
+  "failureModes": [
+    {
+      "id": "dominance",
+      "severity": "high",
+      "title": "Contribution dominance",
+      "detail": "Researcher AAAA produced 66.7% of all messages.",
+      "threshold": "Triggered when one agent produces at least 40% of messages.",
+      "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+    }
+  ],
+  "messages": [
+    {
+      "index": 1,
+      "participantId": "Researcher AAAA",
+      "sender": "Researcher",
+      "instance": "AAAA",
+      "runtime": "claude-code",
+      "timestamp": "2026-01-01T00:00:00Z",
+      "text": "Could you verify this result?",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 5,
+      "characters": 29,
+      "questions": 1,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 1
+      }
+    },
+    {
+      "index": 2,
+      "participantId": "Reviewer BBBB",
+      "sender": "Reviewer",
+      "instance": "BBBB",
+      "runtime": "codex",
+      "timestamp": "2026-01-01T00:02:00Z",
+      "text": "Yes, but there is one issue.",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 6,
+      "characters": 28,
+      "questions": 0,
+      "signals": {
+        "agreement": 1,
+        "challenge": 2,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 3,
+      "participantId": "Researcher AAAA",
+      "sender": "Researcher",
+      "instance": "AAAA",
+      "runtime": "claude-code",
+      "timestamp": "2026-01-01T00:05:00Z",
+      "text": "Agreed. I will follow up.",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 5,
+      "characters": 25,
+      "questions": 0,
+      "signals": {
+        "agreement": 1,
+        "challenge": 0,
+        "coordination": 1
+      }
+    }
+  ]
+}

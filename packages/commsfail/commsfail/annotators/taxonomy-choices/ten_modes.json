@@ -1,0 +1,65 @@
+{
+ "id": "ten_modes",
+ "version": "1",
+ "complete": false,
+ "description": "The ten modes of the comms-failure paper, in three groups by what happened to a message. The reference most annotators report; it does not cover every pattern.",
+ "groups": [
+  {
+   "id": "not_read",
+   "name": "Not read",
+   "definition": "A post was not read: what it established drops out of what a seat acts on."
+  },
+  {
+   "id": "not_binding",
+   "name": "Not binding",
+   "definition": "A post never became a commitment the team shares."
+  },
+  {
+   "id": "never_done",
+   "name": "Never done",
+   "definition": "A commitment was believed and never carried out."
+  }
+ ],
+ "modes": {
+  "R1": {
+   "group": "not_read",
+   "removed_by": "view"
+  },
+  "R2": {
+   "group": "not_read",
+   "removed_by": "view"
+  },
+  "B1": {
+   "group": "not_binding",
+   "removed_by": "naming"
+  },
+  "B2": {
+   "group": "not_binding",
+   "removed_by": "check"
+  },
+  "D1": {
+   "group": "never_done",
+   "removed_by": "check"
+  },
+  "D2": {
+   "group": "never_done",
+   "removed_by": "check"
+  },
+  "D3": {
+   "group": "never_done",
+   "removed_by": "none"
+  },
+  "D4": {
+   "group": "never_done",
+   "removed_by": "none"
+  },
+  "REP": {
+   "group": "not_read",
+   "removed_by": "view"
+  },
+  "HB": {
+   "group": "never_done",
+   "removed_by": "none"
+  }
+ }
+}

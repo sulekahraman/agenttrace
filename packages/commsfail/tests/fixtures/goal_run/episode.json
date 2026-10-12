@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "room_id": "rom_fixture0001",
+  "goal": {
+    "message_id": "msg_fixture0001",
+    "sequence": 1,
+    "until": [
+      "said DONE",
+      "check bash check.sh",
+      "after 45m",
+      "budget 5M tokens"
+    ],
+    "started_at": "2026-10-06T10:00:00.000Z"
+  },
+  "ended_by": {
+    "trigger": "after 45m",
+    "at": "2026-10-06T10:45:00.000Z",
+    "detail": null
+  },
+  "runner": {
+    "started_at": "2026-10-06T09:59:50.000Z",
+    "ended_at": "2026-10-06T10:45:02.000Z",
+    "workspace": "/work/goal_run"
+  },
+  "totals": {
+    "messages": 12,
+    "checks": 1,
+    "snapshots": 4,
+    "tokens": 52550,
+    "cached_tokens": 93000
+  },
+  "image": "fixture-image:1",
+  "web_search": "off",
+  "turn_limit_s": 1200,
+  "agents": [
+    {
+      "name": "codex-1",
+      "driver": "codex",
+      "model": "gpt-6-luna",
+      "member_id": "i_fx1",
+      "session_id": "thr_fx_1",
+      "turns": 2,
+      "failed_turns": 0,
+      "tokens": 20500,
+      "usage": {
+        "input": 19000,
+        "cached": 33000,
+        "output": 1500
+      }
+    },
+    {
+      "name": "codex-2",
+      "driver": "codex",
+      "model": "gpt-6-luna",
+      "member_id": "i_fx2",
+      "session_id": "thr_fx_2",
+      "turns": 3,
+      "failed_turns": 0,
+      "tokens": 19250,
+      "usage": {
+        "input": 18000,
+        "cached": 38000,
+        "output": 1250
+      }
+    },
+    {
+      "name": "codex-3",
+      "driver": "codex",
+      "model": "gpt-6-luna",
+      "member_id": "i_fx3",
+      "session_id": "thr_fx_3",
+      "turns": 2,
+      "failed_turns": 0,
+      "tokens": 12800,
+      "usage": {
+        "input": 12000,
+        "cached": 22000,
+        "output": 800
+      }
+    }
+  ]
+}

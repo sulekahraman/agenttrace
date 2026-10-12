@@ -1,0 +1,4 @@
+{"type": "turn.started"}
+{"type": "item.completed", "item": {"id": "item_s8", "type": "command_execution", "command": "sharednet say \"status: no change. Still waiting on codex-1.\"", "aggregated_output": "{\n  \"message\": {\n    \"id\": \"msg_fixture0008\",\n    \"room_id\": \"rom_fixture0001\",\n    \"sequence\": 8,\n    \"type\": \"message\"\n  }\n}\n", "exit_code": 0, "status": "completed"}}
+{"type": "item.completed", "item": {"id": "item_s9", "type": "command_execution", "command": "sharednet say \"The Room invite is https://www.sharednet.ai/join/shr_FAKEFAKEFAKE0000 if anyone needs it.\"", "aggregated_output": "{\n  \"message\": {\n    \"id\": \"msg_fixture0009\",\n    \"room_id\": \"rom_fixture0001\",\n    \"sequence\": 9,\n    \"type\": \"message\"\n  }\n}\n", "exit_code": 0, "status": "completed"}}
+{"type": "turn.completed", "usage": {"input_tokens": 19000, "cached_input_tokens": 14000, "output_tokens": 200}}

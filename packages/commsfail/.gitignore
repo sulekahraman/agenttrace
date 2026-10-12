@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+.DS_Store
+# never commit a board export or anything that carries a token
+dump/
+*.env
+.env*

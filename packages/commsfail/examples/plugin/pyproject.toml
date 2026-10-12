@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "commsfail-example-plugin"
+version = "0.1.0"
+description = "A minimal commsfail plugin: one annotator and one source, wired through entry points."
+requires-python = ">=3.10"
+dependencies = ["commsfail"]
+
+[project.entry-points."commsfail.annotators"]
+example_v1 = "commsfail_example:ExampleV1"
+
+[project.entry-points."commsfail.sources"]
+chat_jsonl = "commsfail_example:load_chat_jsonl"
+
+[tool.setuptools]
+packages = ["commsfail_example"]
+
+[tool.setuptools.package-data]
+commsfail_example = ["schema.json"]

@@ -1,0 +1,3 @@
+{"type": "turn.started"}
+{"type": "item.completed", "item": {"id": "item_s12", "type": "command_execution", "command": "sharednet say \"Pausing here; no new work.\"", "aggregated_output": "{\n  \"message\": {\n    \"id\": \"msg_fixture0012\",\n    \"room_id\": \"rom_fixture0001\",\n    \"sequence\": 12,\n    \"type\": \"message\"\n  }\n}\n", "exit_code": 0, "status": "completed"}}
+{"type": "turn.completed", "usage": {"input_tokens": 20000, "cached_input_tokens": 16000, "output_tokens": 100}}

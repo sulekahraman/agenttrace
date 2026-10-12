@@ -1,6 +1,10 @@
 # Metric Definitions
 
-TraceScope metrics are deterministic and computed from the normalized, ordered message list. They describe conversation structure; they do not measure answer correctness, task success, or causal collaboration quality.
+AgentTrace metrics are deterministic and computed in Python from a canonical
+`commsfail.Trace`, ordered by original sequence number. Non-message events and
+goal/runner posts are excluded from UI metrics but retained in the raw trace.
+Metrics describe conversation structure, not answer correctness, task success
+or causal collaboration quality.
 
 ## Message-Level Fields
 
@@ -16,7 +20,9 @@ Examples:
 
 ### Characters
 
-The JavaScript string length of the normalized message text.
+UTF-16 code units in the message text, preserving the original JavaScript
+string-length convention. An emoji outside the basic multilingual plane
+counts as two units.
 
 ### Questions
 
@@ -24,11 +30,13 @@ The number of `?` characters in the message. This is punctuation-based and does 
 
 ### Links
 
-The number of HTML anchor elements in the original message content.
+The number of `https?://` URL spans in the canonical message text. This is a
+text estimate, not an HTML anchor count.
 
 ### Code Blocks
 
-The number of HTML `pre` and `code` elements in the original message content.
+The number of fenced Markdown code spans or inline backtick spans in the
+canonical text. This includes inline code and is not an HTML element count.
 
 ### Agreement Markers
 
@@ -70,13 +78,16 @@ total_messages = count(messages)
 
 ### Participant Count
 
-The number of unique participant identifiers. For SharedNet, an identifier combines the displayed sender and instance suffix when available:
+The number of unique participant identifiers. An identifier combines the
+display label and full canonical handle when they differ:
 
 ```text
-participant_id = sender + instance
+participant_id = label + " " + handle
 ```
 
-This keeps separate runtime instances distinct even when they share a display name.
+Otherwise the handle is used directly. This keeps separate instances distinct.
+The former HTML importer used short instance suffixes; do not equate those
+identifiers with full canonical handles without an explicit mapping.
 
 ### Total Words
 
@@ -96,7 +107,7 @@ The displayed value is rounded to one decimal place.
 
 ### 95th-Percentile Message Length
 
-Message word counts are sorted in ascending order. TraceScope uses the nearest-rank value:
+Message word counts are sorted in ascending order. AgentTrace uses the nearest-rank value:
 
 ```text
 index = ceil(0.95 * total_messages) - 1
@@ -138,7 +149,7 @@ A high value indicates frequent alternation. It does not establish that messages
 
 ### Median Response Gap
 
-For every adjacent pair authored by different participants, TraceScope calculates:
+For every adjacent pair authored by different participants, AgentTrace calculates:
 
 ```text
 gap = current_message_timestamp - previous_message_timestamp
@@ -154,7 +165,7 @@ The number of messages containing at least one `?` character.
 
 ### Question Follow-Up Rate
 
-For each question message, TraceScope inspects the next three messages. A follow-up occurs if at least one was authored by another participant:
+For each question message, AgentTrace inspects the next three messages. A follow-up occurs if at least one was authored by another participant:
 
 ```text
 question_follow_up_rate =
@@ -171,7 +182,7 @@ The sum of link counts across all messages.
 
 ### Total Code Blocks
 
-The sum of `pre` and `code` element counts across all messages.
+The sum of fenced and inline code-span counts across all messages.
 
 ## Participant Metrics
 
@@ -216,7 +227,8 @@ density =
   observed_directed_pairs / (participant_count * (participant_count - 1))
 ```
 
-Triggered when density is below 35%. Severity is high below 20% and medium otherwise.
+For traces with more than two participants, triggered when density is below
+35%. Severity is high below 20% and medium otherwise.
 
 ### Questions May Be Going Unresolved
 

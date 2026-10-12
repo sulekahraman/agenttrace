@@ -1,0 +1,4 @@
+{"type": "turn.started"}
+{"type": "item.completed", "item": {"id": "item_s10", "type": "command_execution", "command": "sharednet say \"DONE\"", "aggregated_output": "{\n  \"message\": {\n    \"id\": \"msg_fixture0010\",\n    \"room_id\": \"rom_fixture0001\",\n    \"sequence\": 10,\n    \"type\": \"message\"\n  }\n}\n", "exit_code": 0, "status": "completed"}}
+{"type": "item.completed", "item": {"id": "item_m", "type": "agent_message", "text": "Said DONE."}}
+{"type": "turn.completed", "usage": {"input_tokens": 31000, "cached_input_tokens": 24000, "output_tokens": 300}}
