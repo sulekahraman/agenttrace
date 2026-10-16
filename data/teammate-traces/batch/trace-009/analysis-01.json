@@ -1,0 +1,46 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_f944d5733d49443abec78ba9eb638feb",
+  "trace_id": "trace_5c5209c98f666281",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T19:09:16.946601+00:00",
+    "started_at": "2026-10-12T19:09:16.946318+00:00",
+    "completed_at": "2026-10-12T19:09:16.947094+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_7UdH...",
+      "url": "https://www.sharednet.ai/s/shr_7UdHEe6f9erjcOhnkqhtLgpQBualYrmlC_DQWQiqqVc",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [],
+      "counts": {
+        "posts": 13,
+        "findings": 0,
+        "by_group": {}
+      }
+    }
+  },
+  "error": null
+}

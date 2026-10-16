@@ -1,0 +1,25 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "delegation_request"
+  ],
+  "replies_to": [
+    1,
+    2,
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reorganizes work among agents by assigning task groups and includes an instruction about handling infeasible tasks, which is process coordination with an implied delegation. It does not ask for information or provide substantive task content.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Split: c1=tasks 1,2; c2=task 3; c3(me)=5,6,7; c4=task 4."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Skip any you can't do."
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_6312d7910be64445a986520569a49970",
+  "trace_id": "trace_039e550dde384d68",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:40.690179+00:00",
+    "started_at": "2026-10-12T18:54:40.689390+00:00",
+    "completed_at": "2026-10-12T18:54:40.693427+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_FCX9...",
+      "url": "https://www.sharednet.ai/s/shr_FCX9cl1NljsTd-gZD8hk37nOaX9escTBdaVYjHwmm4k",
+      "loaded_at": "2026-10-12T18:54:40+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 10,
+        "participantCount": 4,
+        "totalWords": 1751,
+        "averageWordsPerMessage": 175.1,
+        "p95WordsPerMessage": 1603,
+        "durationMs": 263922,
+        "contributionBalance": 75.0,
+        "turnSwitchRate": 100.0,
+        "medianResponseLatencyMs": 7149,
+        "questionMessages": 0,
+        "questionFollowUpRate": 1,
+        "links": 0,
+        "codeBlocks": 77
+      },
+      "participants": [
+        {
+          "id": "claude-code-3 VnN7",
+          "sender": "claude-code-3",
+          "instance": "VnN7",
+          "runtime": "claude-code",
+          "messages": 4,
+          "words": 80,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 1,
+          "coordination": 1
+        },
+        {
+          "id": "claude-code-1 D4hH",
+          "sender": "claude-code-1",
+          "instance": "D4hH",
+          "runtime": "claude-code",
+          "messages": 3,
+          "words": 39,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "claude-code-2 ukuL",
+          "sender": "claude-code-2",
+          "instance": "ukuL",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 29,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "Aziz Zeynalli 2xhA",
+          "sender": "Aziz Zeynalli",
+          "instance": "2xhA",
+          "runtime": "human",
+          "messages": 1,
+          "words": 1603,
+          "questions": 0,
+          "agreement": 2,
+          "challenge": 4,
+          "coordination": 0
+        }
+      ],
+      "transitions": [
+        {
+          "source": "claude-code-3 VnN7",
+          "target": "claude-code-1 D4hH",
+          "count": 2
+        },
+        {
+          "source": "claude-code-1 D4hH",
+          "target": "claude-code-3 VnN7",
+          "count": 2
+        },
+        {
+          "source": "Aziz Zeynalli 2xhA",
+          "target": "claude-code-3 VnN7",
+          "count": 1
+        },
+        {
+          "source": "claude-code-1 D4hH",
+          "target": "claude-code-2 ukuL",
+          "count": 1
+        },
+        {
+          "source": "claude-code-2 ukuL",
+          "target": "claude-code-1 D4hH",
+          "count": 1
+        },
+        {
+          "source": "claude-code-3 VnN7",
+          "target": "claude-code-2 ukuL",
+          "count": 1
+        },
+        {
+          "source": "claude-code-2 ukuL",
+          "target": "claude-code-3 VnN7",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "dominance",
+          "severity": "high",
+          "title": "Contribution dominance",
+          "detail": "claude-code-3 VnN7 produced 40.0% of all messages.",
+          "threshold": "Triggered when one agent produces at least 40% of messages.",
+          "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+        },
+        {
+          "id": "context-load",
+          "severity": "medium",
+          "title": "High context load",
+          "detail": "The 95th percentile message is 1603 words.",
+          "threshold": "Triggered when the 95th percentile message length is at least 900 words.",
+          "evidence": "Long messages can hide decisions and increase context-window and attribution errors."
+        }
+      ]
+    }
+  },
+  "error": null
+}

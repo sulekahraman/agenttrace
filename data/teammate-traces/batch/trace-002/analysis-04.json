@@ -1,0 +1,163 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_f43b0dbc0dbd45e2bb6b77f183b511bc",
+  "trace_id": "trace_e82952d9d64878ba",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:40.520794+00:00",
+    "started_at": "2026-10-12T18:54:40.519753+00:00",
+    "completed_at": "2026-10-12T18:54:40.524941+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_YPLf...",
+      "url": "https://www.sharednet.ai/s/shr_YPLfe6694ptAVAKtjnx6vVb_1BLfjDsc1ZP68YQqgRI",
+      "loaded_at": "2026-10-12T18:54:40+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 17,
+        "participantCount": 5,
+        "totalWords": 1865,
+        "averageWordsPerMessage": 109.7,
+        "p95WordsPerMessage": 1603,
+        "durationMs": 167659,
+        "contributionBalance": 78.8,
+        "turnSwitchRate": 68.8,
+        "medianResponseLatencyMs": 7012,
+        "questionMessages": 0,
+        "questionFollowUpRate": 1,
+        "links": 0,
+        "codeBlocks": 77
+      },
+      "participants": [
+        {
+          "id": "claude-code-3 hcBm",
+          "sender": "claude-code-3",
+          "instance": "hcBm",
+          "runtime": "claude-code",
+          "messages": 5,
+          "words": 103,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 1
+        },
+        {
+          "id": "claude-code-2 tE80",
+          "sender": "claude-code-2",
+          "instance": "tE80",
+          "runtime": "claude-code",
+          "messages": 4,
+          "words": 68,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 1
+        },
+        {
+          "id": "claude-code-4 Y66y",
+          "sender": "claude-code-4",
+          "instance": "Y66y",
+          "runtime": "claude-code",
+          "messages": 4,
+          "words": 58,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "claude-code-1 JeUP",
+          "sender": "claude-code-1",
+          "instance": "JeUP",
+          "runtime": "claude-code",
+          "messages": 3,
+          "words": 33,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "Aziz Zeynalli 2xhA",
+          "sender": "Aziz Zeynalli",
+          "instance": "2xhA",
+          "runtime": "human",
+          "messages": 1,
+          "words": 1603,
+          "questions": 0,
+          "agreement": 2,
+          "challenge": 4,
+          "coordination": 0
+        }
+      ],
+      "transitions": [
+        {
+          "source": "claude-code-4 Y66y",
+          "target": "claude-code-2 tE80",
+          "count": 2
+        },
+        {
+          "source": "claude-code-2 tE80",
+          "target": "claude-code-3 hcBm",
+          "count": 2
+        },
+        {
+          "source": "claude-code-3 hcBm",
+          "target": "claude-code-4 Y66y",
+          "count": 2
+        },
+        {
+          "source": "claude-code-1 JeUP",
+          "target": "claude-code-3 hcBm",
+          "count": 2
+        },
+        {
+          "source": "Aziz Zeynalli 2xhA",
+          "target": "claude-code-4 Y66y",
+          "count": 1
+        },
+        {
+          "source": "claude-code-4 Y66y",
+          "target": "claude-code-1 JeUP",
+          "count": 1
+        },
+        {
+          "source": "claude-code-3 hcBm",
+          "target": "claude-code-1 JeUP",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "context-load",
+          "severity": "medium",
+          "title": "High context load",
+          "detail": "The 95th percentile message is 1603 words.",
+          "threshold": "Triggered when the 95th percentile message length is at least 900 words.",
+          "evidence": "Long messages can hide decisions and increase context-window and attribution errors."
+        }
+      ]
+    }
+  },
+  "error": null
+}

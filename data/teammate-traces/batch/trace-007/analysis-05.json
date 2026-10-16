@@ -1,0 +1,92 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_c4de7935f4c045c3b68fa1a00ef321b5",
+  "trace_id": "trace_34cf0b34ad7096e4",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.0.0",
+    "kind": "pipeline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T19:57:17.696178+00:00",
+    "started_at": "2026-10-12T19:57:17.698315+00:00",
+    "completed_at": "2026-10-12T20:07:32.207683+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "2",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": {
+    "findings": [
+      {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "The candidate set only includes the user task assignment [M1] and no agent responses, so there is no evidence of two agents independently repeating materially equivalent work.",
+        "confidence": 0.98,
+        "message_numbers": [
+          1
+        ]
+      },
+      {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "Although [M1] assigns work and specifies the output path and success condition, there are no subsequent agent messages to show a request being ignored, abandoned, or poorly handed off.",
+        "confidence": 0.97,
+        "message_numbers": [
+          1
+        ]
+      },
+      {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "The visible information in [M1] is the original task statement; without any later decision or solution text, there is no opportunity to verify that relevant information was ignored or contradicted.",
+        "confidence": 0.96,
+        "message_numbers": [
+          1
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "message_number": 1,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "question",
+          "coordination"
+        ],
+        "replies_to": [],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message assigns a concrete task to the room, specifies the desired output format and file path, and sets a completion condition. It requests work rather than providing the solution itself.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Task for this Room, from the user:"
+          },
+          {
+            "field": "secondary_types",
+            "text": "Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`."
+          },
+          {
+            "field": "secondary_types",
+            "text": "The run ends when Verifier posts a line starting with `VERDICT: PASS`."
+          }
+        ]
+      }
+    ],
+    "coverage": {
+      "annotated_messages": 1,
+      "candidate_messages": 1,
+      "candidate_limit": 80,
+      "candidate_text_limit": 2000,
+      "truncated": false
+    }
+  },
+  "error": null
+}

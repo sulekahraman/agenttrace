@@ -1,0 +1,1084 @@
+{
+  "schemaVersion": "2.0",
+  "traceId": "trace_6faa8fd53c465dab",
+  "source": {
+    "provider": "sharednet",
+    "kind": "share",
+    "token": "shr_xi73...",
+    "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+    "loaded_at": "2026-10-12T18:54:40+00:00"
+  },
+  "conversation": {
+    "title": "tb2-merger-n3",
+    "description": null,
+    "firstTimestamp": "2026-10-10T04:43:33.967Z",
+    "lastTimestamp": "2026-10-10T04:43:48.066Z"
+  },
+  "metrics": {
+    "totalMessages": 7,
+    "participantCount": 4,
+    "totalWords": 331,
+    "averageWordsPerMessage": 47.3,
+    "p95WordsPerMessage": 275,
+    "durationMs": 14099,
+    "contributionBalance": 89.3,
+    "turnSwitchRate": 66.7,
+    "medianResponseLatencyMs": 2948.0,
+    "questionMessages": 0,
+    "questionFollowUpRate": 1,
+    "links": 0,
+    "codeBlocks": 1
+  },
+  "participants": [
+    {
+      "id": "claude-code-2 DHgq",
+      "sender": "claude-code-2",
+      "instance": "DHgq",
+      "runtime": "claude-code",
+      "messages": 2,
+      "words": 21,
+      "questions": 0,
+      "agreement": 0,
+      "challenge": 0,
+      "coordination": 0
+    },
+    {
+      "id": "claude-code-1 yhl2",
+      "sender": "claude-code-1",
+      "instance": "yhl2",
+      "runtime": "claude-code",
+      "messages": 2,
+      "words": 20,
+      "questions": 0,
+      "agreement": 0,
+      "challenge": 0,
+      "coordination": 0
+    },
+    {
+      "id": "claude-code-3 CGMW",
+      "sender": "claude-code-3",
+      "instance": "CGMW",
+      "runtime": "claude-code",
+      "messages": 2,
+      "words": 15,
+      "questions": 0,
+      "agreement": 0,
+      "challenge": 0,
+      "coordination": 0
+    },
+    {
+      "id": "Aziz Zeynalli 2xhA",
+      "sender": "Aziz Zeynalli",
+      "instance": "2xhA",
+      "runtime": "human",
+      "messages": 1,
+      "words": 275,
+      "questions": 0,
+      "agreement": 2,
+      "challenge": 1,
+      "coordination": 0
+    }
+  ],
+  "transitions": [
+    {
+      "source": "Aziz Zeynalli 2xhA",
+      "target": "claude-code-3 CGMW",
+      "count": 1
+    },
+    {
+      "source": "claude-code-3 CGMW",
+      "target": "claude-code-2 DHgq",
+      "count": 1
+    },
+    {
+      "source": "claude-code-2 DHgq",
+      "target": "claude-code-1 yhl2",
+      "count": 1
+    },
+    {
+      "source": "claude-code-1 yhl2",
+      "target": "claude-code-3 CGMW",
+      "count": 1
+    }
+  ],
+  "failureModes": [
+    {
+      "id": "siloing",
+      "severity": "medium",
+      "title": "Sparse transition matrix",
+      "detail": "Only 33.3% of possible directed agent transitions occurred.",
+      "threshold": "Triggered when fewer than 35% of possible directed transitions occur.",
+      "evidence": "Some agents may be communicating through a hub rather than with each other."
+    }
+  ],
+  "messages": [
+    {
+      "index": 1,
+      "participantId": "Aziz Zeynalli 2xhA",
+      "sender": "Aziz Zeynalli",
+      "instance": "2xhA",
+      "runtime": "human",
+      "timestamp": "2026-10-10T04:43:33.967Z",
+      "text": "Merge user data from three different sources with different formats and schemas.\n\nInput files:\n\n- /data/source_a/users.json - Primary source (highest priority)\n- /data/source_b/users.csv - Secondary source\n- /data/source_c/users.parquet - Tertiary source\n\nRequirements:\n\n1. Read and parse all three data sources\n2. Map fields with different names but same meaning:\n   - user_id, id, userId -> unified as \"user_id\"\n   - email, email_address -> unified as \"email\"\n   - full_name, name, userName -> unified as \"name\"\n   - registration_date, created_at, joined -> unified as \"created_date\"\n3. Merge records using user_id as the key\n4. Handle conflicts using source priority (source_a > source_b > source_c)\n5. Generate merged dataset to /app/merged_users.parquet\n6. Generate conflict report to /app/conflicts.json\n\nThe output Parquet file should contain one row per unique user with columns:\n\n- user_id (integer)\n- name (string)\n- email (string)\n- created_date (string in YYYY-MM-DD format)\n- status (string, optional)\n\nWhen the same user appears in multiple sources, use values from the highest priority source.\n\nConflict report format:\n\n```json\n{\n  \"total_conflicts\": <number>,\n  \"conflicts\": [\n    {\n      \"user_id\": <id>,\n      \"field\": <field_name>,\n      \"values\": {\n        \"source_a\": <value if exists>,\n        \"source_b\": <value if exists>,\n        \"source_c\": <value if exists>\n      },\n      \"selected\": <selected_value>,\n    }\n  ]\n}\n```\n\nIf a user appears in multiple sources with different values for any field, this counts as a conflict.\nThe total_conflicts should match the number of conflicts in the list.\n\nSuccess criteria:\n\n- All unique users from all sources are included\n- Conflicts are resolved by priority (source_a > source_b > source_c)\n- Output files are in correct format\n- Date format is YYYY-MM-DD\n- Data types are correct (user_id as integer)\n- All field mappings are correctly applied\n",
+      "links": 0,
+      "codeBlocks": 1,
+      "words": 275,
+      "characters": 1912,
+      "questions": 0,
+      "signals": {
+        "agreement": 2,
+        "challenge": 1,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 2,
+      "participantId": "claude-code-3 CGMW",
+      "sender": "claude-code-3",
+      "instance": "CGMW",
+      "runtime": "claude-code",
+      "timestamp": "2026-10-10T04:43:39.896Z",
+      "text": "claude-code-3 doing the whole thing myself; no need to duplicate.",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 10,
+      "characters": 65,
+      "questions": 0,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 3,
+      "participantId": "claude-code-2 DHgq",
+      "sender": "claude-code-2",
+      "instance": "DHgq",
+      "runtime": "claude-code",
+      "timestamp": "2026-10-10T04:43:45.438Z",
+      "text": "claude-code-2: I'm writing the merge script and outputs; no need to duplicate.",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 12,
+      "characters": 78,
+      "questions": 0,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 4,
+      "participantId": "claude-code-2 DHgq",
+      "sender": "claude-code-2",
+      "instance": "DHgq",
+      "runtime": "claude-code",
+      "timestamp": "2026-10-10T04:43:47.353Z",
+      "text": "Outputs written to /app (4 users, 3 conflicts). DONE",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 9,
+      "characters": 52,
+      "questions": 0,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 5,
+      "participantId": "claude-code-1 yhl2",
+      "sender": "claude-code-1",
+      "instance": "yhl2",
+      "runtime": "claude-code",
+      "timestamp": "2026-10-10T04:43:47.502Z",
+      "text": "claude-code-1: outputs /app/merged_users.parquet and /app/conflicts.json written and verified (4 users, 3 conflicts). Saying DONE.",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 19,
+      "characters": 130,
+      "questions": 0,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 6,
+      "participantId": "claude-code-1 yhl2",
+      "sender": "claude-code-1",
+      "instance": "yhl2",
+      "runtime": "claude-code",
+      "timestamp": "2026-10-10T04:43:47.712Z",
+      "text": "DONE",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 1,
+      "characters": 4,
+      "questions": 0,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 7,
+      "participantId": "claude-code-3 CGMW",
+      "sender": "claude-code-3",
+      "instance": "CGMW",
+      "runtime": "claude-code",
+      "timestamp": "2026-10-10T04:43:48.066Z",
+      "text": "Outputs written to /app. DONE",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 5,
+      "characters": 29,
+      "questions": 0,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 0
+      }
+    }
+  ],
+  "analyses": {
+    "agenttrace_heuristics_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_1ef3980e71c44c22ad610a997ce543f6",
+      "trace_id": "trace_6faa8fd53c465dab",
+      "analyzer": {
+        "name": "agenttrace_heuristics_v1",
+        "version": "1.0.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T18:54:40.944068+00:00",
+        "started_at": "2026-10-12T18:54:40.942902+00:00",
+        "completed_at": "2026-10-12T18:54:40.945705+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "agenttrace_heuristics_v1",
+          "version": "1.0.0",
+          "schema": "agenttrace/heuristics.v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_xi73...",
+          "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+          "loaded_at": "2026-10-12T18:54:40+00:00"
+        },
+        "output": {
+          "metrics": {
+            "totalMessages": 7,
+            "participantCount": 4,
+            "totalWords": 331,
+            "averageWordsPerMessage": 47.3,
+            "p95WordsPerMessage": 275,
+            "durationMs": 14099,
+            "contributionBalance": 89.3,
+            "turnSwitchRate": 66.7,
+            "medianResponseLatencyMs": 2948.0,
+            "questionMessages": 0,
+            "questionFollowUpRate": 1,
+            "links": 0,
+            "codeBlocks": 1
+          },
+          "participants": [
+            {
+              "id": "claude-code-2 DHgq",
+              "sender": "claude-code-2",
+              "instance": "DHgq",
+              "runtime": "claude-code",
+              "messages": 2,
+              "words": 21,
+              "questions": 0,
+              "agreement": 0,
+              "challenge": 0,
+              "coordination": 0
+            },
+            {
+              "id": "claude-code-1 yhl2",
+              "sender": "claude-code-1",
+              "instance": "yhl2",
+              "runtime": "claude-code",
+              "messages": 2,
+              "words": 20,
+              "questions": 0,
+              "agreement": 0,
+              "challenge": 0,
+              "coordination": 0
+            },
+            {
+              "id": "claude-code-3 CGMW",
+              "sender": "claude-code-3",
+              "instance": "CGMW",
+              "runtime": "claude-code",
+              "messages": 2,
+              "words": 15,
+              "questions": 0,
+              "agreement": 0,
+              "challenge": 0,
+              "coordination": 0
+            },
+            {
+              "id": "Aziz Zeynalli 2xhA",
+              "sender": "Aziz Zeynalli",
+              "instance": "2xhA",
+              "runtime": "human",
+              "messages": 1,
+              "words": 275,
+              "questions": 0,
+              "agreement": 2,
+              "challenge": 1,
+              "coordination": 0
+            }
+          ],
+          "transitions": [
+            {
+              "source": "Aziz Zeynalli 2xhA",
+              "target": "claude-code-3 CGMW",
+              "count": 1
+            },
+            {
+              "source": "claude-code-3 CGMW",
+              "target": "claude-code-2 DHgq",
+              "count": 1
+            },
+            {
+              "source": "claude-code-2 DHgq",
+              "target": "claude-code-1 yhl2",
+              "count": 1
+            },
+            {
+              "source": "claude-code-1 yhl2",
+              "target": "claude-code-3 CGMW",
+              "count": 1
+            }
+          ],
+          "failureModes": [
+            {
+              "id": "siloing",
+              "severity": "medium",
+              "title": "Sparse transition matrix",
+              "detail": "Only 33.3% of possible directed agent transitions occurred.",
+              "threshold": "Triggered when fewer than 35% of possible directed transitions occur.",
+              "evidence": "Some agents may be communicating through a hub rather than with each other."
+            }
+          ]
+        }
+      },
+      "error": null
+    },
+    "regex_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_749e5363609242b0a81380f56a99e372",
+      "trace_id": "trace_6faa8fd53c465dab",
+      "analyzer": {
+        "name": "regex_v1",
+        "version": "0.2.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T18:54:40.948224+00:00",
+        "started_at": "2026-10-12T18:54:40.947631+00:00",
+        "completed_at": "2026-10-12T18:54:40.953666+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "regex_v1",
+          "version": "0.2.0",
+          "schema": "comms-failure/analysis.v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_xi73...",
+          "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+          "loaded_at": "2026-10-12T18:54:40+00:00"
+        },
+        "output": {
+          "schema": "comms-failure/analysis.v1",
+          "source": {
+            "kind": "share",
+            "token": "shr_xi73...",
+            "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+            "loaded_at": "2026-10-12T18:54:40+00:00",
+            "annotator": "regex_v1@0.2.0"
+          },
+          "room": {
+            "name": "tb2-merger-n3",
+            "created_at": "2026-10-10T04:43:33.815Z",
+            "latest_sequence": 7,
+            "seats": [
+              {
+                "handle": "rlPg",
+                "label": null,
+                "driver": "custom",
+                "model": null,
+                "joined_at": "2026-10-10T04:43:33.815Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "2xhA",
+                "label": "Aziz Zeynalli",
+                "driver": "human",
+                "model": null,
+                "joined_at": "2026-10-10T04:43:33.951Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "yhl2",
+                "label": "claude-code-1",
+                "driver": "claude-code",
+                "model": null,
+                "joined_at": "2026-10-10T04:43:34.470Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "DHgq",
+                "label": "claude-code-2",
+                "driver": "claude-code",
+                "model": null,
+                "joined_at": "2026-10-10T04:43:34.904Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "CGMW",
+                "label": "claude-code-3",
+                "driver": "claude-code",
+                "model": null,
+                "joined_at": "2026-10-10T04:43:35.303Z",
+                "principal": null,
+                "member_id": null
+              }
+            ]
+          },
+          "metrics": {
+            "posts": 7,
+            "seats": 5,
+            "asks": 0,
+            "asks_unanswered": 0,
+            "claims": 0,
+            "re_claims": 0,
+            "heartbeat_posts": 0,
+            "heartbeat_share": 0.0,
+            "open_items_at_end": 0,
+            "last_post_kind": "done",
+            "principals": null,
+            "span_hours": 0.0,
+            "wait_signals": 0,
+            "claim_posts": 0,
+            "self_contradicting_re_claims": 0,
+            "re_claims_by_position": {
+              "1-20": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "21-40": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "41-60": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "61+": {
+                "re_claims": 0,
+                "claims": 0
+              }
+            },
+            "done_claims": 2,
+            "reviews": 0,
+            "action_claims": 0,
+            "action_claims_unverifiable": 0,
+            "duplicate_posts": 0
+          },
+          "items": {
+            "data/source_b/users.csv": {
+              "first_mention": 1,
+              "claims": [],
+              "done": [
+                {
+                  "seq": 1,
+                  "who": "2xhA"
+                }
+              ],
+              "reviews": [],
+              "uploads": [],
+              "status_at_end": "done"
+            },
+            "app/conflicts.json": {
+              "first_mention": 1,
+              "claims": [],
+              "done": [
+                {
+                  "seq": 1,
+                  "who": "2xhA"
+                },
+                {
+                  "seq": 5,
+                  "who": "yhl2"
+                }
+              ],
+              "reviews": [],
+              "uploads": [],
+              "status_at_end": "done"
+            },
+            "data/source_a/users.json": {
+              "first_mention": 1,
+              "claims": [],
+              "done": [
+                {
+                  "seq": 1,
+                  "who": "2xhA"
+                }
+              ],
+              "reviews": [],
+              "uploads": [],
+              "status_at_end": "done"
+            }
+          },
+          "modes": [
+            {
+              "id": "R1",
+              "name": "Open-set decay",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.4,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "R2",
+              "name": "Replacement re-does work",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.35,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "B1",
+              "name": "Belief without commitment",
+              "group": "not_binding",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.55,
+              "removed_by": "naming",
+              "evidence": []
+            },
+            {
+              "id": "B2",
+              "name": "Identity drift",
+              "group": "not_binding",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.5,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D1",
+              "name": "Unattested action",
+              "group": "never_done",
+              "present": false,
+              "severity": "unknown",
+              "count": 0,
+              "confidence": 0.3,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D2",
+              "name": "Review of nothing",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.3,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D3",
+              "name": "Closure before budget",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.6,
+              "removed_by": "none",
+              "evidence": []
+            },
+            {
+              "id": "D4",
+              "name": "Capability not routed",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.4,
+              "removed_by": "none",
+              "evidence": []
+            },
+            {
+              "id": "REP",
+              "name": "Step repetition",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.85,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "HB",
+              "name": "Heartbeat cost",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.9,
+              "removed_by": "none",
+              "evidence": []
+            }
+          ],
+          "annotation": {
+            "labels": {
+              "accept": {},
+              "result": {},
+              "review_pass": {}
+            },
+            "facts": {
+              "delivered": {},
+              "acted": {},
+              "passed": {}
+            },
+            "uncertain": [],
+            "annotators": [],
+            "adjudicated": false
+          },
+          "caveats": [
+            "transcript-only detection; every evidence row is a pointer to read, not a label",
+            "share projection: ids, artifacts and transfers stripped, so D1 cannot be verified and D2 cannot see uploads",
+            "no per-seat execution trace: 'acted' facts of Table 1 are unavailable"
+          ]
+        }
+      },
+      "error": null
+    },
+    "example_kickstart": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_c1bcd4548e0b465c949e26cc5d0635e0",
+      "trace_id": "trace_6faa8fd53c465dab",
+      "analyzer": {
+        "name": "example_kickstart",
+        "version": "0.1.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T19:09:16.872697+00:00",
+        "started_at": "2026-10-12T19:09:16.872422+00:00",
+        "completed_at": "2026-10-12T19:09:16.873053+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "example_kickstart",
+          "version": "0.1.0",
+          "schema": "commsfail/example_kickstart/v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_xi73...",
+          "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+          "loaded_at": "2026-10-12T18:54:40+00:00"
+        },
+        "output": {
+          "taxonomy": "state_gap@1",
+          "findings": [
+            {
+              "seq": 4,
+              "who": "DHgq",
+              "signal": "bare_claim",
+              "mode": "D1",
+              "group": "ungrounded",
+              "excerpt": "Outputs written to /app (4 users, 3 conflicts). DONE",
+              "why": "says it is done or passes, and names no file, item or post a reader could check"
+            },
+            {
+              "seq": 6,
+              "who": "yhl2",
+              "signal": "bare_claim",
+              "mode": "D1",
+              "group": "ungrounded",
+              "excerpt": "DONE",
+              "why": "says it is done or passes, and names no file, item or post a reader could check"
+            },
+            {
+              "seq": 7,
+              "who": "CGMW",
+              "signal": "bare_claim",
+              "mode": "D1",
+              "group": "ungrounded",
+              "excerpt": "Outputs written to /app. DONE",
+              "why": "says it is done or passes, and names no file, item or post a reader could check"
+            }
+          ],
+          "counts": {
+            "posts": 7,
+            "findings": 3,
+            "by_group": {
+              "ungrounded": 3
+            }
+          }
+        }
+      },
+      "error": null
+    },
+    "scout_collaboration_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_211327e58c894fe18eb884e0edbc2bc9",
+      "trace_id": "trace_6faa8fd53c465dab",
+      "analyzer": {
+        "name": "scout_collaboration_v1",
+        "version": "2.1.0",
+        "kind": "pipeline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-14T13:30:17.848819+00:00",
+        "started_at": "2026-10-14T13:30:17.849868+00:00",
+        "completed_at": "2026-10-14T13:30:21.362098+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "output": {
+        "findings": [
+          {
+            "category": "duplicated_work",
+            "found": true,
+            "explanation": "Multiple agents independently state they are doing the same merge task without a clear verification or handoff: [M2] says “doing the whole thing myself; no need to duplicate,” and [M3] says “I’m writing the merge script and outputs; no need to duplicate.” Both are materially equivalent execution of the assigned task rather than a deliberate independent check or synthesis. [M4], [M5], and [M7] then report overlapping completion of the same outputs, reinforcing the duplicate execution pattern.",
+            "confidence": 0.98,
+            "message_numbers": [
+              2,
+              3,
+              4,
+              5,
+              7
+            ]
+          },
+          {
+            "category": "weak_handoff",
+            "found": false,
+            "explanation": "The task was acknowledged and later delivered: [M2] and [M3] both explicitly acknowledge the work, [M4] and [M5] report outputs written, and [M7] also confirms completion. There is no clear abandonment, missing acknowledgement, or unresolved ownership gap in the visible messages.",
+            "confidence": 0.9,
+            "message_numbers": [
+              2,
+              3,
+              4,
+              5,
+              7
+            ]
+          },
+          {
+            "category": "unintegrated_information",
+            "found": false,
+            "explanation": "The later messages do not show any relevant visible information being ignored or contradicted without resolution. The completion messages consistently align on the same outputs and counts ([M4], [M5], [M7]), so there is no clear missed opportunity to use prior information in a decision.",
+            "confidence": 0.86,
+            "message_numbers": [
+              4,
+              5,
+              7
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "message_number": 1,
+            "primary_type": "delegation_request",
+            "secondary_types": [
+              "proposal"
+            ],
+            "replies_to": [],
+            "addressed_to": [],
+            "confidence": 0.96,
+            "ambiguous": false,
+            "rationale": "The message assigns a concrete multi-step data integration task with explicit input/output requirements and conflict handling rules. It requests work to be done rather than providing results or asking a question.",
+            "evidence": [
+              {
+                "field": "delegation_request",
+                "text": "Merge user data from three different sources with different formats and schemas."
+              },
+              {
+                "field": "proposal",
+                "text": "Handle conflicts using source priority (source_a > source_b > source_c)"
+              },
+              {
+                "field": "delegation_request",
+                "text": "Generate merged dataset to /app/merged_users.parquet"
+              }
+            ]
+          },
+          {
+            "message_number": 2,
+            "primary_type": "status_update",
+            "secondary_types": [
+              "coordination"
+            ],
+            "replies_to": [
+              1
+            ],
+            "addressed_to": [],
+            "confidence": 0.95,
+            "ambiguous": false,
+            "rationale": "The message reports current work stance and progress: the agent says it is handling the task alone and asks others not to duplicate effort. This is mainly a status update with a coordination element.",
+            "evidence": [
+              {
+                "field": "status_update",
+                "text": "doing the whole thing myself"
+              },
+              {
+                "field": "coordination",
+                "text": "no need to duplicate"
+              }
+            ]
+          },
+          {
+            "message_number": 3,
+            "primary_type": "status_update",
+            "secondary_types": [
+              "coordination",
+              "artifact_sharing"
+            ],
+            "replies_to": [
+              1,
+              2
+            ],
+            "addressed_to": [],
+            "confidence": 0.93,
+            "ambiguous": false,
+            "rationale": "The message reports current work-in-progress (“I’m writing the merge script and outputs”) rather than asking or assigning work. It also coordinates by indicating others should not duplicate the effort, and it implicitly references deliverables (script/outputs).",
+            "evidence": [
+              {
+                "field": "status_update",
+                "text": "I'm writing the merge script and outputs"
+              },
+              {
+                "field": "coordination",
+                "text": "no need to duplicate"
+              },
+              {
+                "field": "artifact_sharing",
+                "text": "merge script and outputs"
+              }
+            ]
+          },
+          {
+            "message_number": 4,
+            "primary_type": "result_delivery",
+            "secondary_types": [
+              "status_update"
+            ],
+            "replies_to": [
+              3
+            ],
+            "addressed_to": [],
+            "confidence": 0.97,
+            "ambiguous": false,
+            "rationale": "The message reports completion and the result of the work done, including an output location and summary counts. It is primarily delivering the finished artifact/status rather than asking or proposing anything.",
+            "evidence": [
+              {
+                "field": "primary_type",
+                "text": "Outputs written to /app (4 users, 3 conflicts). DONE"
+              },
+              {
+                "field": "replies_to",
+                "text": "DONE"
+              },
+              {
+                "field": "secondary_type",
+                "text": "Outputs written to /app (4 users, 3 conflicts)."
+              }
+            ]
+          },
+          {
+            "message_number": 5,
+            "primary_type": "artifact_sharing",
+            "secondary_types": [
+              "result_delivery",
+              "status_update"
+            ],
+            "replies_to": [
+              1
+            ],
+            "addressed_to": [],
+            "confidence": 0.98,
+            "ambiguous": false,
+            "rationale": "The message reports completion and points to specific generated files, which is artifact sharing. It also delivers the result/status of the work as done with counts verified.",
+            "evidence": [
+              {
+                "field": "artifact_sharing",
+                "text": "outputs /app/merged_users.parquet and /app/conflicts.json written and verified"
+              },
+              {
+                "field": "result_delivery",
+                "text": "(4 users, 3 conflicts). Saying DONE."
+              }
+            ]
+          },
+          {
+            "message_number": 6,
+            "primary_type": "acknowledgement",
+            "secondary_types": [
+              "social_heartbeat"
+            ],
+            "replies_to": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "addressed_to": [],
+            "confidence": 0.98,
+            "ambiguous": false,
+            "rationale": "The target message contains only the word 'DONE', which functions as a brief confirmation/completion signal with no substantive new content. It does not add results or evidence, so acknowledgement is primary; it is also a low-content presence update, fitting social_heartbeat as secondary.",
+            "evidence": [
+              {
+                "field": "primary_type",
+                "text": "DONE"
+              },
+              {
+                "field": "secondary_types",
+                "text": "DONE"
+              }
+            ]
+          },
+          {
+            "message_number": 7,
+            "primary_type": "result_delivery",
+            "secondary_types": [
+              "status_update"
+            ],
+            "replies_to": [
+              1
+            ],
+            "addressed_to": [],
+            "confidence": 0.98,
+            "ambiguous": false,
+            "rationale": "The message reports completion of the task and delivers the result in concise form. It also includes a status-like completion update. It is replying to the original merge request context.",
+            "evidence": [
+              {
+                "field": "primary_type",
+                "text": "Outputs written to /app. DONE"
+              },
+              {
+                "field": "secondary_types",
+                "text": "Outputs written to /app. DONE"
+              },
+              {
+                "field": "replies_to",
+                "text": "Outputs written to /app. DONE"
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "annotated_messages": 7,
+          "candidate_messages": 7,
+          "candidate_limit": 80,
+          "candidate_text_limit": 2000,
+          "truncated": false
+        }
+      },
+      "error": null
+    }
+  },
+  "analyzers": [
+    {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "kind": "offline",
+      "available": false,
+      "requires_ops": true,
+      "unavailable_reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+    },
+    {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "scout_collaboration_v1",
+      "version": "2.1.0",
+      "kind": "pipeline",
+      "available": true,
+      "default_model": "openai/gpt-5.4-mini"
+    }
+  ]
+}

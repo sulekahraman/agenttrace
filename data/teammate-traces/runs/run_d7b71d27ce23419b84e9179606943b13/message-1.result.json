@@ -1,0 +1,23 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "Solo DvAt"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message assigns a concrete task to the solo agent and requests a specific deliverable (choose the best answer and write only the letter to a file). It is directed to Solo and includes a clear instruction rather than an informational update.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Roster, assigned by the Room's operator: Solo."
+    },
+    {
+      "field": "primary_type",
+      "text": "Choose the single best answer. Write only its letter (A, B, C, or D) to `/app/output/answer.txt`."
+    }
+  ]
+}

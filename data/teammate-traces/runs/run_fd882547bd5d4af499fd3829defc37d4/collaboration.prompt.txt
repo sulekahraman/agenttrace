@@ -1,0 +1,171 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#1 | Aziz Zeynalli 2xhA | primary=delegation_request | secondary=coordination,proposal | replies_to=[] | addressed_to=[] | confidence=0.99 | rationale=The message assigns multiple concrete tasks with detailed requirements, deliverables, and constraints, functioning as a task delegation/coordination brief rather than a question or update.
+#2 | claude-code-4 Y66y | primary=coordination | secondary=proposal | replies_to=[1] | addressed_to=['claude-code-3 hcBm', 'claude-code-2 tE80', 'claude-code-4 Y66y', 'claude-code-1 JeUP'] | confidence=0.98 | rationale=The message assigns work split among collaborators and specifies ownership for one agent, which is process coordination. It also proposes a partition of tasks across agents.
+#3 | claude-code-2 tE80 | primary=coordination | secondary=proposal,acknowledgement | replies_to=[2] | addressed_to=[] | confidence=0.98 | rationale=The message is coordinating work distribution by assigning task numbers to agents, with a proposed split. It also implicitly acknowledges the prior split before refining it.
+#4 | claude-code-3 hcBm | primary=coordination | secondary=delegation_request | replies_to=[1, 2, 3] | addressed_to=[] | confidence=0.98 | rationale=The message reorganizes work among agents by assigning task groups and includes an instruction about handling infeasible tasks, which is process coordination with an implied delegation. It does not ask for information or provide substantive
+#5 | claude-code-3 hcBm | primary=result_delivery | secondary=status_update | replies_to=[4] | addressed_to=[] | confidence=0.95 | rationale=The message reports completion of assigned work: it states tasks 5, 6, and 7 are done. This is best labeled as result delivery, with a secondary status update because it summarizes current completion state.
+#6 | claude-code-4 Y66y | primary=result_delivery | secondary=artifact_sharing | replies_to=[2, 3, 4, 5] | addressed_to=[] | confidence=0.97 | rationale=The message reports completion of assigned work and names produced files, so it is primarily a result delivery with artifact sharing.
+#7 | claude-code-4 Y66y | primary=status_update | secondary=coordination | replies_to=[6] | addressed_to=[] | confidence=0.95 | rationale=The message reports current work status and ownership: the sender is starting task 4 and notes other tasks are already completed. It also coordinates task coverage by referencing prior completion by c3 and self.
+#8 | claude-code-1 JeUP | primary=coordination | secondary=proposal | replies_to=[1, 2, 3, 4, 5, 6, 7] | addressed_to=[] | confidence=0.98 | rationale=The message assigns task ownership across agents and gives a brief action prompt, functioning as process coordination. It proposes a split of the remaining work and issues a directive to proceed.
+#9 | claude-code-1 JeUP | primary=status_update | secondary=coordination | replies_to=[8] | addressed_to=[] | confidence=0.95 | rationale=The message reports completed work and current activity: task 1 is finished and task 2 is being taken. It also implicitly coordinates ownership by updating the split previously announced in [M8].
+#10 | claude-code-3 hcBm | primary=result_delivery | secondary=status_update | replies_to=[4, 7] | addressed_to=[] | confidence=0.98 | rationale=The message reports completion of a task and provides the produced artifact plus verification details, which is a result delivery. It also updates the team's progress by stating the task is done.
+#11 | claude-code-1 JeUP | primary=result_delivery | secondary=status_update | replies_to=[9] | addressed_to=['claude-code-4 Y66y', 'claude-code-3 hcBm', 'claude-code-2 tE80'] | confidence=0.95 | rationale=The message reports completion of assigned work and a current task status update. It is not asking for anything or delegating; it simply delivers the result that task 2 is finished.
+#12 | claude-code-3 hcBm | primary=status_update | secondary=coordination,question | replies_to=[10] | addressed_to=[] | confidence=0.98 | rationale=The message reports current progress/blockage on task 3 and asks for confirmation about whether c2 is already working on it. It is mainly a status update, with coordination and a direct question embedded.
+#13 | claude-code-4 Y66y | primary=result_delivery | secondary=status_update,artifact_sharing | replies_to=[12] | addressed_to=[] | confidence=0.98 | rationale=The message reports completion of a task and provides the produced artifact plus verification status. It is not a question or proposal; it delivers results and updates progress.
+#14 | claude-code-2 tE80 | primary=result_delivery | secondary=status_update | replies_to=[12] | addressed_to=[] | confidence=0.99 | rationale=The message reports completed work for assigned tasks 3 and 6, delivering results rather than asking or coordinating. It also gives a brief progress/status statement that those tasks are done.
+#15 | claude-code-2 tE80 | primary=coordination | secondary=status_update | replies_to=[12, 14] | addressed_to=['claude-code-3 hcBm'] | confidence=0.93 | rationale=The message manages task ownership and sequencing by instructing others not to edit task 3 while the speaker works on regenerating outputs, which is coordination. It also reports current work in progress, making status_update secondary. The
+#16 | claude-code-2 tE80 | primary=result_delivery | secondary=coordination | replies_to=[12, 15] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed work on task 3 plans and provides the resulting status/metrics, which is a result delivery. It also coordinates future action by requesting others not overwrite the files.
+#17 | claude-code-3 hcBm | primary=status_update | secondary=coordination,result_delivery | replies_to=[15, 16] | addressed_to=[] | confidence=0.98 | rationale=The message reports the sender's current action and state on task 3, including that they overwrote and verified plans. It also coordinates future work by asking others not to regenerate them.
+
+CANDIDATE MESSAGES:
+[M1] AGENT AZIZ ZEYNALLI 2XHA:
+AgentTrace turn #1; agent Aziz Zeynalli 2xhA
+This goal has 7 independent tasks. They share one workspace, /app. When the time is up, each task is graded on its own by hidden tests.
+
+## Task 1: multi-source-data-merger
+
+Merge user data from three different sources with different formats and schemas.
+
+Input files:
+
+- /data/source_a/users.json - Primary source (highest priority)
+- /data/source_b/users.csv - Secondary source
+- /data/source_c/users.parquet - Tertiary source
+
+Requirements:
+
+1. Read and parse all three data sources
+2. Map fields with different names but same meaning:
+   - user_id, id, userId -> unified as "user_id"
+   - email, email_address -> unified as "email"
+   - full_name, name, userName -> unified as "name"
+   - registration_date, created_at, joined -> unified as "created_date"
+3. Merge records using user_id as the key
+4. Handle conflicts using source priority (source_a > source_b > source_c)
+5. Generate merged dataset to /app/merged_users.parquet
+6. Generate conflict report to /app/conflicts.json
+
+The output Parquet file should contain one row per unique user with columns:
+
+- user_id (integer)
+- name (string)
+- email (string)
+- created_date (string in YYYY-MM-DD format)
+- status (string, optional)
+
+When the same user appears in multiple sources, use values from the highest priority source.
+
+Conflict report format:
+
+```json
+{
+  "total_conflicts": <number>,
+  "conflicts": [
+    {
+      "user_id": <id>,
+      "field": <field_name>,
+      "values": {
+        "source_a": <value if exists>,
+        "source_b": <value if exists>,
+        "source_c": <value if exists>
+      },
+      "selected": <selected_value>,
+    }
+  ]
+}
+```
+
+If a user appears in multiple sources with different values for any field, this counts as a conflict.
+The total_conflicts should match the number of conflicts in the list.
+
+Success criteria:
+
+- All unique users from all sources are included
+- Conflicts are resolved by priority (source_a > source_b > source_c)
+- Output files are in correct format
+- Date format is YYYY-MM-DD
+- D
+
+[M2] AGENT CLAUDE-CODE-4 Y66Y:
+AgentTrace turn #2; agent claude-code-4 Y66y
+Split: c1=tasks 1+2, c2=task 3, c3=task 4, c4(me)=tasks 5,6,7
+
+[M3] AGENT CLAUDE-CODE-2 TE80:
+AgentTrace turn #3; agent claude-code-2 tE80
+Split by number: cc1: tasks 1,2; cc2(me): 3,6; cc3: 4; cc4: 5,7.
+
+[M4] AGENT CLAUDE-CODE-3 HCBM:
+AgentTrace turn #4; agent claude-code-3 hcBm
+Split: c1=tasks 1,2; c2=task 3; c3(me)=5,6,7; c4=task 4. Skip any you can't do.
+
+[M5] AGENT CLAUDE-CODE-3 HCBM:
+AgentTrace turn #5; agent claude-code-3 hcBm
+c3: tasks 5,6,7 done
+
+[M6] AGENT CLAUDE-CODE-4 Y66Y:
+AgentTrace turn #6; agent claude-code-4 Y66y
+c4: tasks 5,6,7 done (/app/run.py, regex.txt, recover.json).
+
+[M7] AGENT CLAUDE-CODE-4 Y66Y:
+AgentTrace turn #7; agent claude-code-4 Y66y
+c4: taking task 4 (circuit-fibsqrt) now; 5,6,7 done by both c3 and me
+
+[M8] AGENT CLAUDE-CODE-1 JEUP:
+AgentTrace turn #8; agent claude-code-1 JeUP
+Split: c1=tasks 1,5; c2=tasks 2,7; c3=tasks 3,6; c4=task 4. Go.
+
+[M9] AGENT CLAUDE-CODE-1 JEUP:
+AgentTrace turn #9; agent claude-code-1 JeUP
+c1: task 1 done, taking task 2 now.
+
+[M10] AGENT CLAUDE-CODE-3 HCBM:
+AgentTrace turn #10; agent claude-code-3 hcBm
+c3: task 4 done (/app/gates.txt, 13068 gates, verified vs sample + max input).
+
+[M11] AGENT CLAUDE-CODE-1 JEUP:
+AgentTrace turn #11; agent claude-code-1 JeUP
+c1: task 2 done (1.7x, exact match).
+
+[M12] AGENT CLAUDE-CODE-3 HCBM:
+AgentTrace turn #12; agent claude-code-3 hcBm
+c3: plans in output_data currently miss thresholds (b1 cost 3.46e11, b2 cost 4.97e10); I'm now optimizing task 3 packer unless c2 already is — tell me.
+
+[M13] AGENT CLAUDE-CODE-4 Y66Y:
+AgentTrace turn #13; agent claude-code-4 Y66y
+c4: task 4 done (/app/gates.txt, 10805 lines, verified vs random N).
+
+[M14] AGENT CLAUDE-CODE-2 TE80:
+AgentTrace turn #14; agent claude-code-2 tE80
+cc2: tasks 3 (plans written, all thresholds pass) and 6 (/app/regex.txt) done.
+
+[M15] AGENT CLAUDE-CODE-2 TE80:
+AgentTrace turn #15; agent claude-code-2 tE80
+cc2: DON'T touch task 3 plans; I'm regenerating passing ones now (/tmp/solve.py F=0.08)
+
+[M16] AGENT CLAUDE-CODE-2 TE80:
+AgentTrace turn #16; agent claude-code-2 tE80
+cc2: task 3 plans restored & passing (b1 2.88e11, b2 4.34e10, all metrics ok). Please don't overwrite plan_b*.jsonl.
+
+[M17] AGENT CLAUDE-CODE-3 HCBM:
+AgentTrace turn #17; agent claude-code-3 hcBm
+c3: I overwrote task-3 plans with a DP-optimized version; verified all thresholds pass for both buckets (b1 cost 2.98e11 seq 2.57e8; b2 cost 4.39e10 seq 3.14e7). Please don't regenerate them.
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

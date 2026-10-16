@@ -10,10 +10,21 @@ annotators work without a model; Scout runs only when explicitly requested.
 | `packages/commsfail` | Independently installable trace loaders, schemas, offline plugins and CLI |
 | `packages/agenttrace-api` | FastAPI, persistent analysis runs, structural heuristics and Scout orchestration |
 | `fixtures` | Shared sample trace and frozen pre-migration metric baseline |
+| `data/teammate-traces` | Approved public dataset: nine teammate traces, saved analyses and restoration instructions |
 
 The imported `commsfail` history and MIT license are preserved. AgentTrace's
 offline heuristic plugin is registered through `commsfail.annotators`, rather
 than adding application-specific dependencies to `commsfail`.
+
+## Saved teammate results
+
+[Browse the public dataset and restore instructions](data/teammate-traces/README.md)
+for the nine analyzed teammate traces: 27 selected offline analyses, nine
+completed Scout analyses, 70 message annotations and 27 collaboration-category
+judgments. The checked-in SQLite snapshot restores the saved history into a
+separate local working directory. JSON reports and transcripts are readable
+directly on GitHub. Viewing the saved results, including regenerated native
+Scout replays, requires no model API key or new inference.
 
 ## Run locally
 
@@ -143,8 +154,9 @@ features and is not an authenticated shared hosting service.
 
 Native files and a per-run export manifest persist in
 `.agenttrace/scout-view/`. Include this directory in a private data-sharing
-bundle, not in Git. Native scans are labeled saved-result replays and use
-`mockllm/model` as a no-provider recording model; the **original model,
+bundle, not in Git. The approved public dataset instead regenerates these
+machine-specific files from its saved results. Native scans are labeled
+saved-result replays and use `mockllm/model` as a no-provider recording model; the **original model,
 prompt version and run ID** are retained in scan metadata. Original model-call
 events, token accounting and generation logs cannot be reconstructed from
 these saved judgments. Opening the viewer does not start inference; explicitly
@@ -182,6 +194,8 @@ the same server/database to be running; they are not public hosted links.
 Specific-run links display the linked result rather than substituting a newer
 run of the same analyzer. Exports can contain sensitive trace content and
 share capabilities: keep them private and out of Git.
+Only publish a reviewed dataset with explicit permission, as documented for
+the approved snapshot in `data/teammate-traces`.
 
 To explicitly include Scout's message annotations and collaboration scanners:
 

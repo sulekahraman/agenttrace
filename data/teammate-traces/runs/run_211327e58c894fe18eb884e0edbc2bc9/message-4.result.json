@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completion and the result of the work done, including an output location and summary counts. It is primarily delivering the finished artifact/status rather than asking or proposing anything.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Outputs written to /app (4 users, 3 conflicts). DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_type",
+      "text": "Outputs written to /app (4 users, 3 conflicts)."
+    }
+  ]
+}

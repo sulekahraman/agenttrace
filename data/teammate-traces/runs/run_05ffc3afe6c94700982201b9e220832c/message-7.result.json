@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    3,
+    4,
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message reports completion of assigned work and names produced files/artifacts, so it is a result delivery with a status update and artifact sharing. It implicitly responds to prior task splits/claims in the thread, but does not directly address anyone by name.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "c3: tasks 5,6,7 done"
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "(/app/run.py, regex.txt, recover.json)"
+    },
+    {
+      "field": "status_update",
+      "text": "done"
+    }
+  ]
+}

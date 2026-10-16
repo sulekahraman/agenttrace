@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message reports completed work for assigned tasks 3 and 6, delivering results rather than asking or coordinating. It also gives a brief progress/status statement that those tasks are done.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "tasks 3 (plans written, all thresholds pass) and 6 (/app/regex.txt) done"
+    },
+    {
+      "field": "status_update",
+      "text": "done"
+    }
+  ]
+}

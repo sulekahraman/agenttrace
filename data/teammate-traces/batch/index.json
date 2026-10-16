@@ -1,0 +1,475 @@
+{
+  "schema": "agenttrace/batch.v1",
+  "created_at": "2026-10-14T13:29:49.330471+00:00",
+  "server": "http://127.0.0.1:3000",
+  "scout_requested": true,
+  "traces": [
+    {
+      "name": "aziz-bundle-n4-r2",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_63b5cbb7b6614fbeb23b462ad7e59a56",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_464e5df863013053&run=run_63b5cbb7b6614fbeb23b462ad7e59a56",
+          "error": null,
+          "file": "trace-001/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_a1e6617d99c34acda91805a9cdbf59fe",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_464e5df863013053&run=run_a1e6617d99c34acda91805a9cdbf59fe",
+          "error": null,
+          "file": "trace-001/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_0f5d3587d9bd469da4f701edb43a0b77",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_464e5df863013053&run=run_0f5d3587d9bd469da4f701edb43a0b77",
+          "error": null,
+          "file": "trace-001/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_05ffc3afe6c94700982201b9e220832c",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_464e5df863013053&run=run_05ffc3afe6c94700982201b9e220832c",
+          "error": null,
+          "file": "trace-001/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_464e5df863013053",
+      "room": "tb2-bundle-n4-r2",
+      "url": "http://127.0.0.1:3000/?trace=trace_464e5df863013053",
+      "status": "completed",
+      "report_file": "trace-001/report.json"
+    },
+    {
+      "name": "aziz-bundle-n4-r1",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_960906af8dde4aa39de83fdd58b80fc8",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_e82952d9d64878ba&run=run_960906af8dde4aa39de83fdd58b80fc8",
+          "error": null,
+          "file": "trace-002/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_55b1fac1425a4e9c83e5f3b6c3cd12e6",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_e82952d9d64878ba&run=run_55b1fac1425a4e9c83e5f3b6c3cd12e6",
+          "error": null,
+          "file": "trace-002/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_f43b0dbc0dbd45e2bb6b77f183b511bc",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_e82952d9d64878ba&run=run_f43b0dbc0dbd45e2bb6b77f183b511bc",
+          "error": null,
+          "file": "trace-002/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_fd882547bd5d4af499fd3829defc37d4",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_e82952d9d64878ba&run=run_fd882547bd5d4af499fd3829defc37d4",
+          "error": null,
+          "file": "trace-002/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_e82952d9d64878ba",
+      "room": "tb2-bundle-n4-r1",
+      "url": "http://127.0.0.1:3000/?trace=trace_e82952d9d64878ba",
+      "status": "completed",
+      "report_file": "trace-002/report.json"
+    },
+    {
+      "name": "aziz-bundle-n3-r2",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_f1a30cafc0e64e18b874f0acded99c8c",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_039e550dde384d68&run=run_f1a30cafc0e64e18b874f0acded99c8c",
+          "error": null,
+          "file": "trace-003/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_f0e6596a5623401f9e839aa224504f34",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_039e550dde384d68&run=run_f0e6596a5623401f9e839aa224504f34",
+          "error": null,
+          "file": "trace-003/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_6312d7910be64445a986520569a49970",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_039e550dde384d68&run=run_6312d7910be64445a986520569a49970",
+          "error": null,
+          "file": "trace-003/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_f6aefa71129e4c90b02b517e71f39152",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_039e550dde384d68&run=run_f6aefa71129e4c90b02b517e71f39152",
+          "error": null,
+          "file": "trace-003/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_039e550dde384d68",
+      "room": "tb2-bundle-n3-r2",
+      "url": "http://127.0.0.1:3000/?trace=trace_039e550dde384d68",
+      "status": "completed",
+      "report_file": "trace-003/report.json"
+    },
+    {
+      "name": "aziz-merger-n3",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_c1bcd4548e0b465c949e26cc5d0635e0",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_6faa8fd53c465dab&run=run_c1bcd4548e0b465c949e26cc5d0635e0",
+          "error": null,
+          "file": "trace-004/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_749e5363609242b0a81380f56a99e372",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_6faa8fd53c465dab&run=run_749e5363609242b0a81380f56a99e372",
+          "error": null,
+          "file": "trace-004/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_1ef3980e71c44c22ad610a997ce543f6",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_6faa8fd53c465dab&run=run_1ef3980e71c44c22ad610a997ce543f6",
+          "error": null,
+          "file": "trace-004/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_211327e58c894fe18eb884e0edbc2bc9",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_6faa8fd53c465dab&run=run_211327e58c894fe18eb884e0edbc2bc9",
+          "error": null,
+          "file": "trace-004/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_6faa8fd53c465dab",
+      "room": "tb2-merger-n3",
+      "url": "http://127.0.0.1:3000/?trace=trace_6faa8fd53c465dab",
+      "status": "completed",
+      "report_file": "trace-004/report.json"
+    },
+    {
+      "name": "xiangqian-noop007i2-solo",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_418e95912d47489994661ffb60455a2d",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_ab1efd80c85a6001&run=run_418e95912d47489994661ffb60455a2d",
+          "error": null,
+          "file": "trace-005/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_94bc63976b884b77a49ec12d66db0ccd",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_ab1efd80c85a6001&run=run_94bc63976b884b77a49ec12d66db0ccd",
+          "error": null,
+          "file": "trace-005/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_401bcdce424144489e4c751d4837c295",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_ab1efd80c85a6001&run=run_401bcdce424144489e4c751d4837c295",
+          "error": null,
+          "file": "trace-005/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_ec9c12ad964d4b2a94bb2e13a75529a5",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_ab1efd80c85a6001&run=run_ec9c12ad964d4b2a94bb2e13a75529a5",
+          "error": null,
+          "file": "trace-005/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_ab1efd80c85a6001",
+      "room": "harbor · e3-solo · noop007i2__ZY3mRFN__agent",
+      "url": "http://127.0.0.1:3000/?trace=trace_ab1efd80c85a6001",
+      "status": "completed",
+      "report_file": "trace-005/report.json"
+    },
+    {
+      "name": "xiangqian-noop007i2-pev",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_fad54e93cb514ee28a64ac455a5ef98f",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_29d100b4dfa5eb0d&run=run_fad54e93cb514ee28a64ac455a5ef98f",
+          "error": null,
+          "file": "trace-006/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_27315600d87b493983e8ac78b8c70c84",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_29d100b4dfa5eb0d&run=run_27315600d87b493983e8ac78b8c70c84",
+          "error": null,
+          "file": "trace-006/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_a515c4485fb54f9798189bb71f82e82a",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_29d100b4dfa5eb0d&run=run_a515c4485fb54f9798189bb71f82e82a",
+          "error": null,
+          "file": "trace-006/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_9d2d44edca7440a7914b7cc051bb37ad",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_29d100b4dfa5eb0d&run=run_9d2d44edca7440a7914b7cc051bb37ad",
+          "error": null,
+          "file": "trace-006/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_29d100b4dfa5eb0d",
+      "room": "harbor · e3-pev · noop007i2__9H9Dnvp__agent",
+      "url": "http://127.0.0.1:3000/?trace=trace_29d100b4dfa5eb0d",
+      "status": "completed",
+      "report_file": "trace-006/report.json"
+    },
+    {
+      "name": "xiangqian-noop-stalled",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_73b7aabc77c04a0596023216ab6cfde8",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_34cf0b34ad7096e4&run=run_73b7aabc77c04a0596023216ab6cfde8",
+          "error": null,
+          "file": "trace-007/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_42a6bd1cd4754f639b11b17fb1cfde5a",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_34cf0b34ad7096e4&run=run_42a6bd1cd4754f639b11b17fb1cfde5a",
+          "error": null,
+          "file": "trace-007/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_c2ffd479478243f0a4393066017b6953",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_34cf0b34ad7096e4&run=run_c2ffd479478243f0a4393066017b6953",
+          "error": null,
+          "file": "trace-007/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_c4de7935f4c045c3b68fa1a00ef321b5",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_34cf0b34ad7096e4&run=run_c4de7935f4c045c3b68fa1a00ef321b5",
+          "error": null,
+          "file": "trace-007/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "room": "harbor · e3-pev · noop016i0__GRNwiHr__agent",
+      "url": "http://127.0.0.1:3000/?trace=trace_34cf0b34ad7096e4",
+      "status": "completed",
+      "report_file": "trace-007/report.json"
+    },
+    {
+      "name": "xiangqian-gpqa027-solo",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_a9a53721eb874d339b66428e8c968d6f",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_b682600c5b65b12d&run=run_a9a53721eb874d339b66428e8c968d6f",
+          "error": null,
+          "file": "trace-008/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_14c66a9d78eb46d891468f76244cdde1",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_b682600c5b65b12d&run=run_14c66a9d78eb46d891468f76244cdde1",
+          "error": null,
+          "file": "trace-008/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_06c2d689f10a43ac8b53434a56472ed7",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_b682600c5b65b12d&run=run_06c2d689f10a43ac8b53434a56472ed7",
+          "error": null,
+          "file": "trace-008/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_d7b71d27ce23419b84e9179606943b13",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_b682600c5b65b12d&run=run_d7b71d27ce23419b84e9179606943b13",
+          "error": null,
+          "file": "trace-008/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_b682600c5b65b12d",
+      "room": "harbor · e4-solo · gpqa027__Q3a3HDR__agent",
+      "url": "http://127.0.0.1:3000/?trace=trace_b682600c5b65b12d",
+      "status": "completed",
+      "report_file": "trace-008/report.json"
+    },
+    {
+      "name": "xiangqian-gpqa027-pev",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_f944d5733d49443abec78ba9eb638feb",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_5c5209c98f666281&run=run_f944d5733d49443abec78ba9eb638feb",
+          "error": null,
+          "file": "trace-009/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "status": "unavailable",
+          "reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_5dbcc702ae5347ce987fe77ed7dfc7d7",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_5c5209c98f666281&run=run_5dbcc702ae5347ce987fe77ed7dfc7d7",
+          "error": null,
+          "file": "trace-009/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_785c5abd7eff42fa85bf624b3285ad56",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3000/?trace=trace_5c5209c98f666281&run=run_785c5abd7eff42fa85bf624b3285ad56",
+          "error": null,
+          "file": "trace-009/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_531686d965eb48d79da4f2dca4b433cd",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3000/?trace=trace_5c5209c98f666281&run=run_531686d965eb48d79da4f2dca4b433cd",
+          "error": null,
+          "file": "trace-009/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_5c5209c98f666281",
+      "room": "harbor · e4-pev · gpqa027__rtUiLcW__agent",
+      "url": "http://127.0.0.1:3000/?trace=trace_5c5209c98f666281",
+      "status": "completed",
+      "report_file": "trace-009/report.json"
+    }
+  ],
+  "scout_setup": {
+    "model": "openai/gpt-5.4-mini",
+    "ready": true,
+    "issues": [],
+    "install_command": "python -m pip install -e \"./packages/agenttrace-api[scout]\"",
+    "start_command": "agenttrace"
+  },
+  "completed_at": "2026-10-14T13:30:50.422592+00:00"
+}

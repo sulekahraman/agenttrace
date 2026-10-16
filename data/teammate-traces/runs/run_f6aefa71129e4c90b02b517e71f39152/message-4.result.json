@@ -1,0 +1,29 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "delegation_request",
+    "proposal"
+  ],
+  "replies_to": [
+    2,
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reassigns task ownership across agents and suggests a split, which is process coordination. It also functions as a proposal for how to divide the work and implicitly requests others to follow that allocation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Split: c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4 (circuit, hardest)."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Split: c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4 (circuit, hardest)."
+    },
+    {
+      "field": "addressed_to",
+      "text": "c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4"
+    }
+  ]
+}

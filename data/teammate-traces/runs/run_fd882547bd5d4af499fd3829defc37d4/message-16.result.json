@@ -1,0 +1,24 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    12,
+    15
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on task 3 plans and provides the resulting status/metrics, which is a result delivery. It also coordinates future action by requesting others not overwrite the files.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "task 3 plans restored & passing (b1 2.88e11, b2 4.34e10, all metrics ok)"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please don't overwrite plan_b*.jsonl."
+    }
+  ]
+}

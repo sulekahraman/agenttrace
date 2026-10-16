@@ -1,0 +1,76 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_c1bcd4548e0b465c949e26cc5d0635e0",
+  "trace_id": "trace_6faa8fd53c465dab",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T19:09:16.872697+00:00",
+    "started_at": "2026-10-12T19:09:16.872422+00:00",
+    "completed_at": "2026-10-12T19:09:16.873053+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_xi73...",
+      "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+      "loaded_at": "2026-10-12T18:54:40+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 4,
+          "who": "DHgq",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Outputs written to /app (4 users, 3 conflicts). DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 6,
+          "who": "yhl2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 7,
+          "who": "CGMW",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Outputs written to /app. DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 7,
+        "findings": 3,
+        "by_group": {
+          "ungrounded": 3
+        }
+      }
+    }
+  },
+  "error": null
+}

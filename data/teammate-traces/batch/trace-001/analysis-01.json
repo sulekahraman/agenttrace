@@ -1,0 +1,58 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_63b5cbb7b6614fbeb23b462ad7e59a56",
+  "trace_id": "trace_464e5df863013053",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T19:09:16.812773+00:00",
+    "started_at": "2026-10-12T19:09:16.812250+00:00",
+    "completed_at": "2026-10-12T19:09:16.813733+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_R76q...",
+      "url": "https://www.sharednet.ai/s/shr_R76qfqXaI6rALuGsaHy80rE-TAPQAXMKlP32QZKPj_Y",
+      "loaded_at": "2026-10-12T18:54:40+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 9,
+          "who": "DGfA",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "c1: tasks 1 and 2 done.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 11,
+        "findings": 1,
+        "by_group": {
+          "ungrounded": 1
+        }
+      }
+    }
+  },
+  "error": null
+}

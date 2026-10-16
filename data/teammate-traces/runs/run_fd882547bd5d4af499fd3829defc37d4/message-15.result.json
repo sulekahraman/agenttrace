@@ -1,0 +1,30 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    12,
+    14
+  ],
+  "addressed_to": [
+    "claude-code-3 hcBm"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message manages task ownership and sequencing by instructing others not to edit task 3 while the speaker works on regenerating outputs, which is coordination. It also reports current work in progress, making status_update secondary. The plural/room-directed phrasing implies it is aimed at the collaborator handling task 3.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DON'T touch task 3 plans; I'm regenerating passing ones now"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I'm regenerating passing ones now (/tmp/solve.py F=0.08)"
+    },
+    {
+      "field": "addressed_to",
+      "text": "cc2"
+    }
+  ]
+}

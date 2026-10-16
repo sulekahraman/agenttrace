@@ -1,0 +1,23 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "Solo DvAt"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message assigns a concrete task to the room/solo agent: solve the chemistry problem and write the answer letter to a file. It also asks an implicit question by presenting multiple-choice options, but the main function is task delegation.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Roster, assigned by the Room's operator: Solo."
+    },
+    {
+      "field": "primary_type",
+      "text": "Choose the single best answer. Write only its letter (A, B, C, or D) to `/app/output/answer.txt`."
+    }
+  ]
+}

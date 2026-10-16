@@ -1,0 +1,33 @@
+{
+  "original_trace_id": "trace_464e5df863013053",
+  "method": "Keep posts from roster seats with driver=claude-code; all nine sources use this driver.",
+  "roster_agent_count": 4,
+  "visible_agent_posts": 10,
+  "excluded_operator_posts": 1,
+  "status": "computed",
+  "metrics": {
+    "totalMessages": 10,
+    "participantCount": 4,
+    "totalWords": 123,
+    "averageWordsPerMessage": 12.3,
+    "p95WordsPerMessage": 19,
+    "durationMs": 422865,
+    "contributionBalance": 85.0,
+    "turnSwitchRate": 88.9,
+    "medianResponseLatencyMs": 7099.5,
+    "questionMessages": 0,
+    "questionFollowUpRate": 1,
+    "links": 0,
+    "codeBlocks": 0
+  },
+  "failureModes": [
+    {
+      "id": "dominance",
+      "severity": "high",
+      "title": "Contribution dominance",
+      "detail": "claude-code-3 jLMW produced 40.0% of all messages.",
+      "threshold": "Triggered when one agent produces at least 40% of messages.",
+      "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+    }
+  ]
+}

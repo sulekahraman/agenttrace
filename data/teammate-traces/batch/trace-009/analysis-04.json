@@ -1,0 +1,151 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_785c5abd7eff42fa85bf624b3285ad56",
+  "trace_id": "trace_5c5209c98f666281",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:41.660080+00:00",
+    "started_at": "2026-10-12T18:54:41.659298+00:00",
+    "completed_at": "2026-10-12T18:54:41.662578+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_7UdH...",
+      "url": "https://www.sharednet.ai/s/shr_7UdHEe6f9erjcOhnkqhtLgpQBualYrmlC_DQWQiqqVc",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 13,
+        "participantCount": 4,
+        "totalWords": 1402,
+        "averageWordsPerMessage": 107.8,
+        "p95WordsPerMessage": 247,
+        "durationMs": 79027,
+        "contributionBalance": 86.5,
+        "turnSwitchRate": 83.3,
+        "medianResponseLatencyMs": 1681.0,
+        "questionMessages": 1,
+        "questionFollowUpRate": 1.0,
+        "links": 0,
+        "codeBlocks": 2
+      },
+      "participants": [
+        {
+          "id": "Planner CV4x",
+          "sender": "Planner",
+          "instance": "CV4x",
+          "runtime": "claude-code",
+          "messages": 4,
+          "words": 539,
+          "questions": 0,
+          "agreement": 1,
+          "challenge": 3,
+          "coordination": 5
+        },
+        {
+          "id": "Executor ClZT",
+          "sender": "Executor",
+          "instance": "ClZT",
+          "runtime": "claude-code",
+          "messages": 4,
+          "words": 365,
+          "questions": 0,
+          "agreement": 1,
+          "challenge": 0,
+          "coordination": 4
+        },
+        {
+          "id": "Verifier g0Wg",
+          "sender": "Verifier",
+          "instance": "g0Wg",
+          "runtime": "claude-code",
+          "messages": 3,
+          "words": 354,
+          "questions": 0,
+          "agreement": 1,
+          "challenge": 3,
+          "coordination": 2
+        },
+        {
+          "id": "user ETcc",
+          "sender": "user",
+          "instance": "ETcc",
+          "runtime": "harbor",
+          "messages": 2,
+          "words": 144,
+          "questions": 1,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 1
+        }
+      ],
+      "transitions": [
+        {
+          "source": "Executor ClZT",
+          "target": "Planner CV4x",
+          "count": 2
+        },
+        {
+          "source": "Planner CV4x",
+          "target": "Verifier g0Wg",
+          "count": 2
+        },
+        {
+          "source": "Verifier g0Wg",
+          "target": "Executor ClZT",
+          "count": 2
+        },
+        {
+          "source": "user ETcc",
+          "target": "Executor ClZT",
+          "count": 1
+        },
+        {
+          "source": "Executor ClZT",
+          "target": "Verifier g0Wg",
+          "count": 1
+        },
+        {
+          "source": "Verifier g0Wg",
+          "target": "user ETcc",
+          "count": 1
+        },
+        {
+          "source": "user ETcc",
+          "target": "Planner CV4x",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "none",
+          "severity": "low",
+          "title": "No strong structural flag",
+          "detail": "The deterministic thresholds did not identify a strong failure-mode signal.",
+          "threshold": "No configured threshold was crossed.",
+          "evidence": "This does not imply the collaboration was successful; inspect the transcript and task outcome."
+        }
+      ]
+    }
+  },
+  "error": null
+}

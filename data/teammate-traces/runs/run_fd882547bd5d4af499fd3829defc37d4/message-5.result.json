@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completion of assigned work: it states tasks 5, 6, and 7 are done. This is best labeled as result delivery, with a secondary status update because it summarizes current completion state.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "c3: tasks 5,6,7 done"
+    },
+    {
+      "field": "replies_to",
+      "text": "c3: tasks 5,6,7 done"
+    },
+    {
+      "field": "addressed_to",
+      "text": "c3: tasks 5,6,7 done"
+    }
+  ]
+}

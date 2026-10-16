@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    4,
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completion of a task and provides the produced artifact plus verification details, which is a result delivery. It also updates the team's progress by stating the task is done.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "c3: task 4 done (/app/gates.txt, 13068 gates, verified vs sample + max input)"
+    },
+    {
+      "field": "status_update",
+      "text": "task 4 done"
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "(/app/gates.txt, 13068 gates, verified vs sample + max input)"
+    }
+  ]
+}

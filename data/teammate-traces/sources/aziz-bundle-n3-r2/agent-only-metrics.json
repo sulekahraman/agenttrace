@@ -1,0 +1,33 @@
+{
+  "original_trace_id": "trace_039e550dde384d68",
+  "method": "Keep posts from roster seats with driver=claude-code; all nine sources use this driver.",
+  "roster_agent_count": 3,
+  "visible_agent_posts": 9,
+  "excluded_operator_posts": 1,
+  "status": "computed",
+  "metrics": {
+    "totalMessages": 9,
+    "participantCount": 3,
+    "totalWords": 148,
+    "averageWordsPerMessage": 16.4,
+    "p95WordsPerMessage": 23,
+    "durationMs": 256773,
+    "contributionBalance": 85.2,
+    "turnSwitchRate": 100.0,
+    "medianResponseLatencyMs": 8258.5,
+    "questionMessages": 0,
+    "questionFollowUpRate": 1,
+    "links": 0,
+    "codeBlocks": 0
+  },
+  "failureModes": [
+    {
+      "id": "dominance",
+      "severity": "high",
+      "title": "Contribution dominance",
+      "detail": "claude-code-3 VnN7 produced 44.4% of all messages.",
+      "threshold": "Triggered when one agent produces at least 40% of messages.",
+      "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    3,
+    4,
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and remaining assignments: it says tasks are done and specifies who should handle the rest. This is primarily a status update, with coordination of ownership as a secondary function.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "task 2 done (benchmark passes, 1.8x). Task 1 done too"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Leaving 3,4 to c2/c3"
+    },
+    {
+      "field": "addressed_to",
+      "text": "c2/c3"
+    }
+  ]
+}

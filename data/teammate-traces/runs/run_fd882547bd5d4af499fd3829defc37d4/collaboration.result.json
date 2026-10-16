@@ -1,0 +1,524 @@
+{
+  "findings": [
+    {
+      "category": "duplicated_work",
+      "found": true,
+      "explanation": "Task 3 plans were worked on by claude-code-2 and claude-code-3 more than once in materially similar ways. c2 reports \"tasks 3 ... done\" in [M14], then immediately asks others not to touch task 3 while it regenerates passing plans in [M15], and later says the plans are restored in [M16]. c3 independently says it is optimizing/overwriting task-3 plans in [M12] and again in [M17], explicitly noting it overwrote the plans and asking not to regenerate them. This is repeated execution on the same artifact without a clean handoff or synthesis.",
+      "confidence": 0.92,
+      "message_numbers": [
+        14,
+        15,
+        16,
+        12,
+        17
+      ]
+    },
+    {
+      "category": "weak_handoff",
+      "found": true,
+      "explanation": "There is an incomplete handoff around task 3. In [M12], c3 asks whether c2 is already working on task 3 and says to tell me, which shows ownership uncertainty. c2 then states it is regenerating task-3 plans and asks others not to touch them in [M15], but c3 later overwrites the task-3 plans anyway in [M17], indicating the handoff/request to avoid overlap was not respected or effectively coordinated. The work is not cleanly acknowledged and ownership remains blurred.",
+      "confidence": 0.88,
+      "message_numbers": [
+        12,
+        15,
+        17
+      ]
+    },
+    {
+      "category": "unintegrated_information",
+      "found": true,
+      "explanation": "Visible information about task 3 plans is not cleanly integrated across agents. c2 reports passing regenerated plans and asks others not to overwrite them in [M16], but c3 later overwrites those same plans with a different DP-optimized version in [M17] instead of building on or reconciling c2's already-passing result. This directly ignores the prior state and request, leaving conflicting versions of the same artifact unresolved.",
+      "confidence": 0.9,
+      "message_numbers": [
+        16,
+        17
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "message_number": 1,
+      "primary_type": "delegation_request",
+      "secondary_types": [
+        "coordination",
+        "proposal"
+      ],
+      "replies_to": [],
+      "addressed_to": [],
+      "confidence": 0.99,
+      "ambiguous": false,
+      "rationale": "The message assigns multiple concrete tasks with detailed requirements, deliverables, and constraints, functioning as a task delegation/coordination brief rather than a question or update.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "This goal has 7 independent tasks. They share one workspace, /app."
+        },
+        {
+          "field": "secondary_types",
+          "text": "Your goal is to read a set of incoming requests from ``/app/task_file/input_data/requests_bucket_1.jsonl``"
+        },
+        {
+          "field": "secondary_types",
+          "text": "Generate two optimized batching plan files that meet all constraints and performance thresholds:"
+        }
+      ]
+    },
+    {
+      "message_number": 2,
+      "primary_type": "coordination",
+      "secondary_types": [
+        "proposal"
+      ],
+      "replies_to": [
+        1
+      ],
+      "addressed_to": [
+        "claude-code-3 hcBm",
+        "claude-code-2 tE80",
+        "claude-code-4 Y66y",
+        "claude-code-1 JeUP"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message assigns work split among collaborators and specifies ownership for one agent, which is process coordination. It also proposes a partition of tasks across agents.",
+      "evidence": [
+        {
+          "field": "replies_to",
+          "text": "Split: c1=tasks 1+2, c2=task 3, c3=task 4, c4(me)=tasks 5,6,7"
+        },
+        {
+          "field": "addressed_to",
+          "text": "c1=tasks 1+2, c2=task 3, c3=task 4, c4(me)=tasks 5,6,7"
+        },
+        {
+          "field": "primary_type",
+          "text": "Split: c1=tasks 1+2, c2=task 3, c3=task 4, c4(me)=tasks 5,6,7"
+        }
+      ]
+    },
+    {
+      "message_number": 3,
+      "primary_type": "coordination",
+      "secondary_types": [
+        "proposal",
+        "acknowledgement"
+      ],
+      "replies_to": [
+        2
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message is coordinating work distribution by assigning task numbers to agents, with a proposed split. It also implicitly acknowledges the prior split before refining it.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Split by number: cc1: tasks 1,2; cc2(me): 3,6; cc3: 4; cc4: 5,7."
+        },
+        {
+          "field": "secondary_type",
+          "text": "Split by number: cc1: tasks 1,2; cc2(me): 3,6; cc3: 4; cc4: 5,7."
+        }
+      ]
+    },
+    {
+      "message_number": 4,
+      "primary_type": "coordination",
+      "secondary_types": [
+        "delegation_request"
+      ],
+      "replies_to": [
+        1,
+        2,
+        3
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reorganizes work among agents by assigning task groups and includes an instruction about handling infeasible tasks, which is process coordination with an implied delegation. It does not ask for information or provide substantive task content.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Split: c1=tasks 1,2; c2=task 3; c3(me)=5,6,7; c4=task 4."
+        },
+        {
+          "field": "secondary_type",
+          "text": "Skip any you can't do."
+        }
+      ]
+    },
+    {
+      "message_number": 5,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        4
+      ],
+      "addressed_to": [],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message reports completion of assigned work: it states tasks 5, 6, and 7 are done. This is best labeled as result delivery, with a secondary status update because it summarizes current completion state.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "c3: tasks 5,6,7 done"
+        },
+        {
+          "field": "replies_to",
+          "text": "c3: tasks 5,6,7 done"
+        },
+        {
+          "field": "addressed_to",
+          "text": "c3: tasks 5,6,7 done"
+        }
+      ]
+    },
+    {
+      "message_number": 6,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "artifact_sharing"
+      ],
+      "replies_to": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "addressed_to": [],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message reports completion of assigned work and names produced files, so it is primarily a result delivery with artifact sharing.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "c4: tasks 5,6,7 done"
+        },
+        {
+          "field": "secondary_types",
+          "text": "(/app/run.py, regex.txt, recover.json)"
+        },
+        {
+          "field": "replies_to",
+          "text": "c4: tasks 5,6,7 done (/app/run.py, regex.txt, recover.json)."
+        }
+      ]
+    },
+    {
+      "message_number": 7,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        6
+      ],
+      "addressed_to": [],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message reports current work status and ownership: the sender is starting task 4 and notes other tasks are already completed. It also coordinates task coverage by referencing prior completion by c3 and self.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "taking task 4 (circuit-fibsqrt) now"
+        },
+        {
+          "field": "coordination",
+          "text": "5,6,7 done by both c3 and me"
+        }
+      ]
+    },
+    {
+      "message_number": 8,
+      "primary_type": "coordination",
+      "secondary_types": [
+        "proposal"
+      ],
+      "replies_to": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message assigns task ownership across agents and gives a brief action prompt, functioning as process coordination. It proposes a split of the remaining work and issues a directive to proceed.",
+      "evidence": [
+        {
+          "field": "coordination",
+          "text": "Split: c1=tasks 1,5; c2=tasks 2,7; c3=tasks 3,6; c4=task 4."
+        },
+        {
+          "field": "proposal",
+          "text": "Split: c1=tasks 1,5; c2=tasks 2,7; c3=tasks 3,6; c4=task 4."
+        },
+        {
+          "field": "directive",
+          "text": "Go."
+        }
+      ]
+    },
+    {
+      "message_number": 9,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        8
+      ],
+      "addressed_to": [],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message reports completed work and current activity: task 1 is finished and task 2 is being taken. It also implicitly coordinates ownership by updating the split previously announced in [M8].",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "task 1 done, taking task 2 now"
+        },
+        {
+          "field": "coordination",
+          "text": "c1:"
+        }
+      ]
+    },
+    {
+      "message_number": 10,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        4,
+        7
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completion of a task and provides the produced artifact plus verification details, which is a result delivery. It also updates the team's progress by stating the task is done.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "c3: task 4 done (/app/gates.txt, 13068 gates, verified vs sample + max input)"
+        },
+        {
+          "field": "status_update",
+          "text": "task 4 done"
+        },
+        {
+          "field": "artifact_sharing",
+          "text": "(/app/gates.txt, 13068 gates, verified vs sample + max input)"
+        }
+      ]
+    },
+    {
+      "message_number": 11,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        9
+      ],
+      "addressed_to": [
+        "claude-code-4 Y66y",
+        "claude-code-3 hcBm",
+        "claude-code-2 tE80"
+      ],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message reports completion of assigned work and a current task status update. It is not asking for anything or delegating; it simply delivers the result that task 2 is finished.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "c1: task 2 done"
+        },
+        {
+          "field": "status_update",
+          "text": "(1.7x, exact match)"
+        }
+      ]
+    },
+    {
+      "message_number": 12,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "coordination",
+        "question"
+      ],
+      "replies_to": [
+        10
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports current progress/blockage on task 3 and asks for confirmation about whether c2 is already working on it. It is mainly a status update, with coordination and a direct question embedded.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "plans in output_data currently miss thresholds (b1 cost 3.46e11, b2 cost 4.97e10); I'm now optimizing task 3 packer"
+        },
+        {
+          "field": "question",
+          "text": "unless c2 already is \u2014 tell me"
+        },
+        {
+          "field": "coordination",
+          "text": "I'm now optimizing task 3 packer unless c2 already is"
+        }
+      ]
+    },
+    {
+      "message_number": 13,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update",
+        "artifact_sharing"
+      ],
+      "replies_to": [
+        12
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completion of a task and provides the produced artifact plus verification status. It is not a question or proposal; it delivers results and updates progress.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "c4: task 4 done"
+        },
+        {
+          "field": "artifact_sharing",
+          "text": "(/app/gates.txt, 10805 lines, verified vs random N)"
+        },
+        {
+          "field": "status_update",
+          "text": "c4: task 4 done (/app/gates.txt, 10805 lines, verified vs random N)"
+        }
+      ]
+    },
+    {
+      "message_number": 14,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        12
+      ],
+      "addressed_to": [],
+      "confidence": 0.99,
+      "ambiguous": false,
+      "rationale": "The message reports completed work for assigned tasks 3 and 6, delivering results rather than asking or coordinating. It also gives a brief progress/status statement that those tasks are done.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "tasks 3 (plans written, all thresholds pass) and 6 (/app/regex.txt) done"
+        },
+        {
+          "field": "status_update",
+          "text": "done"
+        }
+      ]
+    },
+    {
+      "message_number": 15,
+      "primary_type": "coordination",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        12,
+        14
+      ],
+      "addressed_to": [
+        "claude-code-3 hcBm"
+      ],
+      "confidence": 0.93,
+      "ambiguous": false,
+      "rationale": "The message manages task ownership and sequencing by instructing others not to edit task 3 while the speaker works on regenerating outputs, which is coordination. It also reports current work in progress, making status_update secondary. The plural/room-directed phrasing implies it is aimed at the collaborator handling task 3.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "DON'T touch task 3 plans; I'm regenerating passing ones now"
+        },
+        {
+          "field": "secondary_types",
+          "text": "I'm regenerating passing ones now (/tmp/solve.py F=0.08)"
+        },
+        {
+          "field": "addressed_to",
+          "text": "cc2"
+        }
+      ]
+    },
+    {
+      "message_number": 16,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        12,
+        15
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completed work on task 3 plans and provides the resulting status/metrics, which is a result delivery. It also coordinates future action by requesting others not overwrite the files.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "task 3 plans restored & passing (b1 2.88e11, b2 4.34e10, all metrics ok)"
+        },
+        {
+          "field": "secondary_types",
+          "text": "Please don't overwrite plan_b*.jsonl."
+        }
+      ]
+    },
+    {
+      "message_number": 17,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "coordination",
+        "result_delivery"
+      ],
+      "replies_to": [
+        15,
+        16
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports the sender's current action and state on task 3, including that they overwrote and verified plans. It also coordinates future work by asking others not to regenerate them.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "I overwrote task-3 plans with a DP-optimized version; verified all thresholds pass for both buckets"
+        },
+        {
+          "field": "coordination",
+          "text": "Please don't regenerate them."
+        },
+        {
+          "field": "result_delivery",
+          "text": "verified all thresholds pass for both buckets (b1 cost 2.98e11 seq 2.57e8; b2 cost 4.39e10 seq 3.14e7)"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "annotated_messages": 17,
+    "candidate_messages": 17,
+    "candidate_limit": 80,
+    "candidate_text_limit": 2000,
+    "truncated": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_06c2d689f10a43ac8b53434a56472ed7",
+  "trace_id": "trace_b682600c5b65b12d",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:41.524113+00:00",
+    "started_at": "2026-10-12T18:54:41.522889+00:00",
+    "completed_at": "2026-10-12T18:54:41.525741+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_2f69...",
+      "url": "https://www.sharednet.ai/s/shr_2f69VRSLq7ta-e2sXs6HRTL2VuyZ2D6YudTsiN9z9xM",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 2,
+        "participantCount": 2,
+        "totalWords": 242,
+        "averageWordsPerMessage": 121.0,
+        "p95WordsPerMessage": 133,
+        "durationMs": 29045,
+        "contributionBalance": 100.0,
+        "turnSwitchRate": 100.0,
+        "medianResponseLatencyMs": 29045,
+        "questionMessages": 1,
+        "questionFollowUpRate": 1.0,
+        "links": 0,
+        "codeBlocks": 2
+      },
+      "participants": [
+        {
+          "id": "user vEqd",
+          "sender": "user",
+          "instance": "vEqd",
+          "runtime": "harbor",
+          "messages": 1,
+          "words": 133,
+          "questions": 1,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "Solo DvAt",
+          "sender": "Solo",
+          "instance": "DvAt",
+          "runtime": "claude-code",
+          "messages": 1,
+          "words": 109,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        }
+      ],
+      "transitions": [
+        {
+          "source": "user vEqd",
+          "target": "Solo DvAt",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "dominance",
+          "severity": "high",
+          "title": "Contribution dominance",
+          "detail": "user vEqd produced 50.0% of all messages.",
+          "threshold": "Triggered when one agent produces at least 40% of messages.",
+          "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+        }
+      ]
+    }
+  },
+  "error": null
+}

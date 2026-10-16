@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completion of a task and provides the produced artifact plus verification status. It is not a question or proposal; it delivers results and updates progress.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "c4: task 4 done"
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "(/app/gates.txt, 10805 lines, verified vs random N)"
+    },
+    {
+      "field": "status_update",
+      "text": "c4: task 4 done (/app/gates.txt, 10805 lines, verified vs random N)"
+    }
+  ]
+}

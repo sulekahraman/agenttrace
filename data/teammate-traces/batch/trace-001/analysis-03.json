@@ -1,0 +1,1055 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_a1e6617d99c34acda91805a9cdbf59fe",
+  "trace_id": "trace_464e5df863013053",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:40.282226+00:00",
+    "started_at": "2026-10-12T18:54:40.281848+00:00",
+    "completed_at": "2026-10-12T18:54:40.293038+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_R76q...",
+      "url": "https://www.sharednet.ai/s/shr_R76qfqXaI6rALuGsaHy80rE-TAPQAXMKlP32QZKPj_Y",
+      "loaded_at": "2026-10-12T18:54:40+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "share",
+        "token": "shr_R76q...",
+        "url": "https://www.sharednet.ai/s/shr_R76qfqXaI6rALuGsaHy80rE-TAPQAXMKlP32QZKPj_Y",
+        "loaded_at": "2026-10-12T18:54:40+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "tb2-bundle-n4-r2",
+        "created_at": "2026-10-10T09:57:52.796Z",
+        "latest_sequence": 11,
+        "seats": [
+          {
+            "handle": "rlPg",
+            "label": null,
+            "driver": "custom",
+            "model": null,
+            "joined_at": "2026-10-10T09:57:52.796Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "2xhA",
+            "label": "Aziz Zeynalli",
+            "driver": "human",
+            "model": null,
+            "joined_at": "2026-10-10T09:57:52.921Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "DGfA",
+            "label": "claude-code-1",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T09:57:53.491Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "jwpd",
+            "label": "claude-code-2",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T09:57:53.953Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "jLMW",
+            "label": "claude-code-3",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T09:57:54.646Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "NoEc",
+            "label": "claude-code-4",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T09:57:55.032Z",
+            "principal": null,
+            "member_id": null
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 11,
+        "seats": 6,
+        "asks": 0,
+        "asks_unanswered": 0,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "done",
+        "principals": null,
+        "span_hours": 0.1,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 5,
+        "reviews": 0,
+        "action_claims": 0,
+        "action_claims_unverifiable": 0,
+        "duplicate_posts": 1
+      },
+      "items": {
+        "1e-10": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "where each task is an async job to be run and": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "/app/task_file/scripts/baseline_packer.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "shape.heads_align": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "3.0e11": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "3.2e7": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "request_id": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "2.7e8": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "/app/task_file/input_data/requests_bucket_1.jsonl": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "app/recover.json": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            },
+            {
+              "seq": 11,
+              "who": "jwpd"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "4.8e10": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "1.3157e+07": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "1.6673e+12": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "/app/task_file/scripts/cost_model.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "0.15": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "0.055": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "shape.hidden_align": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "python3 benchmark.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "4.0430": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "portfolio_optimized.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "portfolio_optimized.c": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "/app/task_file/input_data/requests_bucket_2.jsonl": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "shape.seq_align": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "2.1e5": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "/app/run.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "cost_model.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "seq_align": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "4.8973e+07": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "portfolio_baseline.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "app/task_file/scripts/cost_model.py": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "g_max": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "2.4830e+12": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "data/source_b/users.csv": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "2.1e6": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "1.4363": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "), i.e., on": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "/app/task_file/output_data/plan_b2.jsonl": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        ") and the aligned prompt dimension (": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        ", a": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "python3 setup.py build_ext --inplace": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "data/source_a/users.json": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "3.4104e+06": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "and": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "app/conflicts.json": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "prompt_len": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "pad_ratio": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "/app/task_file/output_data/plan_b1.jsonl": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "requests_bucket_1.jsonl": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "1.1463e+07": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "from run import run_tasks": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "requests_bucket_2.jsonl": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "gen_len": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "app/sim.c": {
+          "first_mention": 1,
+          "claims": [],
+          "done": [
+            {
+              "seq": 1,
+              "who": "2xhA"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "t4": {
+          "first_mention": 4,
+          "claims": [],
+          "done": [
+            {
+              "seq": 10,
+              "who": "jLMW"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "t3": {
+          "first_mention": 4,
+          "claims": [],
+          "done": [
+            {
+              "seq": 11,
+              "who": "jwpd"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "t7": {
+          "first_mention": 5,
+          "claims": [],
+          "done": [
+            {
+              "seq": 11,
+              "who": "jwpd"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "app/run.py": {
+          "first_mention": 6,
+          "claims": [],
+          "done": [
+            {
+              "seq": 6,
+              "who": "NoEc"
+            },
+            {
+              "seq": 7,
+              "who": "jLMW"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "recover.json": {
+          "first_mention": 6,
+          "claims": [],
+          "done": [
+            {
+              "seq": 6,
+              "who": "NoEc"
+            },
+            {
+              "seq": 7,
+              "who": "jLMW"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        }
+      },
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": []
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": false,
+          "severity": "unknown",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": true,
+          "severity": "medium",
+          "count": 1,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": [
+            {
+              "seq": 7,
+              "who": "jLMW",
+              "excerpt": "c3: tasks 5,6,7 done (/app/run.py, regex.txt, recover.json).",
+              "why": "near-duplicate of #6 by NoEc"
+            }
+          ]
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "share projection: ids, artifacts and transfers stripped, so D1 cannot be verified and D2 cannot see uploads",
+        "no per-seat execution trace: 'acted' facts of Table 1 are unavailable"
+      ]
+    }
+  },
+  "error": null
+}

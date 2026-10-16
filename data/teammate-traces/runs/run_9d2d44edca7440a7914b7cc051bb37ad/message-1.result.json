@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "Executor FpvV",
+    "Verifier Ae7i",
+    "Planner IJs3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message assigns a concrete task to the room to solve and output the final answer, directing the named agents to act. It is primarily a delegation/request for work, with coordination about the run ending condition and output location; the embedded word problem is context rather than a standalone question to the annotator.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Roster, assigned by the Room's operator: Planner, Executor, Verifier."
+    },
+    {
+      "field": "primary_type",
+      "text": "Task for this Room, from the user:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`."
+    }
+  ]
+}

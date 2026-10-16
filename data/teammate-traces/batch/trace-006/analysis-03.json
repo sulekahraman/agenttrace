@@ -1,0 +1,304 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_27315600d87b493983e8ac78b8c70c84",
+  "trace_id": "trace_29d100b4dfa5eb0d",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:41.185702+00:00",
+    "started_at": "2026-10-12T18:54:41.185267+00:00",
+    "completed_at": "2026-10-12T18:54:41.191795+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_a6on...",
+      "url": "https://www.sharednet.ai/s/shr_a6onM9Sz6CEosSM1YqHU5vniasnPJbI13Yh5hDeRiH8",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "share",
+        "token": "shr_a6on...",
+        "url": "https://www.sharednet.ai/s/shr_a6onM9Sz6CEosSM1YqHU5vniasnPJbI13Yh5hDeRiH8",
+        "loaded_at": "2026-10-12T18:54:41+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "harbor · e3-pev · noop007i2__9H9Dnvp__agent",
+        "created_at": "2026-10-10T04:46:29.391Z",
+        "latest_sequence": 7,
+        "seats": [
+          {
+            "handle": "Q84J",
+            "label": null,
+            "driver": "custom",
+            "model": null,
+            "joined_at": "2026-10-10T04:46:29.391Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "A85q",
+            "label": "user",
+            "driver": "harbor",
+            "model": null,
+            "joined_at": "2026-10-10T04:46:29.518Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "IJs3",
+            "label": "Planner",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T04:46:29.641Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "FpvV",
+            "label": "Executor",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T04:46:29.866Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "Ae7i",
+            "label": "Verifier",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T04:46:29.990Z",
+            "principal": null,
+            "member_id": null
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 7,
+        "seats": 5,
+        "asks": 6,
+        "asks_unanswered": 4,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "ask",
+        "principals": null,
+        "span_hours": 0.0,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 0,
+        "reviews": 0,
+        "action_claims": 0,
+        "action_claims_unverifiable": 0,
+        "duplicate_posts": 0
+      },
+      "items": {},
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": true,
+          "severity": "high",
+          "count": 4,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": [
+            {
+              "seq": 1,
+              "who": "A85q",
+              "excerpt": "Task for this Room, from the user: A farmer is buying feed for his alpacas. He buys a variety of hay, corns, cucumbers and wheats. Since wheats are a rare treat…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 2,
+              "who": "IJs3",
+              "excerpt": "PLAN Given: wheat 4 boxes x 6 kg; cucumbers 15 bags x 8 kg; hay 32 packs x 43 kg; corn 20 sacks x 19 kg; truck capacity 190 kg per trip; a 15% discount on price…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 3,
+              "who": "FpvV",
+              "excerpt": "W1 per-category totals: wheat 4x6=24 kg; cucumbers 15x8=120 kg; hay 32x43=1376 kg; corn 20x19=380 kg. W2 total: 24+120+1376+380 = 1900 kg. W3 the 15% discount c…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 4,
+              "who": "Ae7i",
+              "excerpt": "@Planner @Executor Verifier recheck of W1-W4: W1: hay 32x43=1376 kg, corn 20x19=380 kg, cucumbers 15x8=120 kg, wheat 4x6=24 kg. W2: total 1900 kg. W3: the disco…",
+              "why": "no later post replies to or cites this ask"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": false,
+          "severity": "unknown",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": true,
+          "severity": "medium",
+          "count": 1,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": [
+            {
+              "seq": 7,
+              "who": "",
+              "excerpt": "@Verifier the file already exists: /app/output/answer.txt contains 11, written in my turn 2 post. I will hold it at 11 until @user decides; if the user wants si…",
+              "why": "ends with a ask; 0 claimed item(s) never reported done; 0 waiting/blocked signals"
+            }
+          ]
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "share projection: ids, artifacts and transfers stripped, so D1 cannot be verified and D2 cannot see uploads",
+        "no per-seat execution trace: 'acted' facts of Table 1 are unavailable"
+      ]
+    }
+  },
+  "error": null
+}

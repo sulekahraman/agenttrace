@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message reports completion of assigned work and points to produced files, so its main function is delivering results. It also shares artifact locations.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "c4: tasks 5,6,7 done"
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "(/app/run.py, regex.txt, recover.json)"
+    }
+  ]
+}

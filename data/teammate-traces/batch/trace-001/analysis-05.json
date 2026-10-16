@@ -1,0 +1,392 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_05ffc3afe6c94700982201b9e220832c",
+  "trace_id": "trace_464e5df863013053",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.1.0",
+    "kind": "pipeline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-14T13:29:49.354799+00:00",
+    "started_at": "2026-10-14T13:29:49.356482+00:00",
+    "completed_at": "2026-10-14T13:29:59.150578+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "3",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": {
+    "findings": [
+      {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "The same work for tasks 5, 6, and 7 was independently claimed and then reported completed by two agents. In [M3], claude-code-3 says “takes tasks 5,6,7,” and in [M4] claude-code-4 also says it is “taking tasks 5,6,7.” Both later report completion of the same artifact set in [M6] and [M7] (“tasks 5,6,7 done (/app/run.py, regex.txt, recover.json)”), which is materially duplicated execution rather than a handoff or check.",
+        "confidence": 0.98,
+        "message_numbers": [
+          3,
+          4,
+          6,
+          7
+        ]
+      },
+      {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "Task 4 was first assigned in the split in [M2] to c3, then c4 suggests c3 take T4 in [M3]/[M4], but the ownership remains fluid and is not cleanly acknowledged until later. c3 explicitly reclaims it in [M8] (“c3 taking T4”), showing the earlier suggested handoff was not clear or stable. The work is eventually delivered in [M10], but the intermediate ambiguity indicates a weak handoff around T4 ownership.",
+        "confidence": 0.84,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          8,
+          10
+        ]
+      },
+      {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Visible information about task ownership and progress was not consistently integrated into later coordination. After c4 and c3 both claimed tasks 5,6,7 in [M3] and [M4], c2’s later split in [M5] assigns c2 task 7 and c4 tasks 5,6, implying a revised distribution, but the thread does not resolve or incorporate the earlier duplicate claims before completion messages appear. This leaves the prior ownership information effectively ignored rather than reconciled, especially since both c3 and c4 still report the same completion artifacts in [M6] and [M7].",
+        "confidence": 0.72,
+        "message_numbers": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "message_number": 1,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [],
+        "addressed_to": [
+          "claude-code-3 jLMW",
+          "claude-code-2 jwpd",
+          "claude-code-4 NoEc",
+          "claude-code-1 DGfA"
+        ],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The message assigns multiple concrete tasks and specifies required outputs, files, and constraints for the team to execute. It is a work assignment rather than a question or result.",
+        "evidence": [
+          {
+            "field": "delegation_request",
+            "text": "This goal has 7 independent tasks."
+          },
+          {
+            "field": "coordination",
+            "text": "They share one workspace, /app. When the time is up, each task is graded on its own by hidden tests."
+          },
+          {
+            "field": "delegation_request",
+            "text": "Generate two optimized batching plan files that meet all constraints and performance thresholds:"
+          }
+        ]
+      },
+      {
+        "message_number": 2,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "clarification",
+          "delegation_request"
+        ],
+        "replies_to": [
+          1
+        ],
+        "addressed_to": [
+          "claude-code-2 jwpd",
+          "claude-code-3 jLMW",
+          "claude-code-4 NoEc",
+          "claude-code-1 DGfA"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message assigns task splits to specific agents and clarifies a numbering constraint for annotation. It is primarily coordination, with delegation/clarification as secondary functions.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Split: c1 = tasks 1,2; c2 = task 3; c3 = task 4; c4 = tasks 5,6,7."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Split: c1 = tasks 1,2; c2 = task 3; c3 = task 4; c4 = tasks 5,6,7."
+          },
+          {
+            "field": "addressed_to",
+            "text": "Split: c1 = tasks 1,2; c2 = task 3; c3 = task 4; c4 = tasks 5,6,7."
+          }
+        ]
+      },
+      {
+        "message_number": 3,
+        "primary_type": "proposal",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          2
+        ],
+        "addressed_to": [
+          "claude-code-1 DGfA",
+          "claude-code-4 NoEc"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message proposes a task split/assignment for the team and suggests an alternative distribution, which is a proposal with coordination content. It responds to the prior split discussion.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "claude-code-3 takes tasks 5,6,7. Suggest c1: 1+2, c2: 3, c4: 4."
+          },
+          {
+            "field": "replies_to",
+            "text": "claude-code-3 takes tasks 5,6,7. Suggest c1: 1+2, c2: 3, c4: 4."
+          },
+          {
+            "field": "addressed_to",
+            "text": "claude-code-3 takes tasks 5,6,7. Suggest c1: 1+2, c2: 3, c4: 4."
+          }
+        ]
+      },
+      {
+        "message_number": 4,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "agreement",
+          "delegation_request"
+        ],
+        "replies_to": [
+          2,
+          3
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message confirms the speaker’s task allocation and proposes a revised split for the remaining agents, which is coordination. It also explicitly agrees with the prior split suggestion in a modified form and indirectly requests/assigns task ownership by suggesting who should take T1+T2, T3, and T4.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "claude-code-4 taking tasks 5,6,7 (cancel-async, regex-log, sqlite)."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Suggest c1: T1+T2, c2: T3, c3: T4."
+          },
+          {
+            "field": "replies_to",
+            "text": "taking tasks 5,6,7 (cancel-async, regex-log, sqlite). Suggest c1: T1+T2, c2: T3, c3: T4."
+          }
+        ]
+      },
+      {
+        "message_number": 5,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "proposal",
+          "agreement"
+        ],
+        "replies_to": [
+          2,
+          3,
+          4
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message organizes task ownership among agents and proposes a split of work. It also implicitly agrees with earlier split suggestions while adjusting assignments.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Split: cc1=T1,T2; cc2(me)=T3,T7; cc3=T4 (hardest, alone); cc4=T5,T6."
+          },
+          {
+            "field": "secondary_type",
+            "text": "Unless already claimed otherwise."
+          },
+          {
+            "field": "replies_to",
+            "text": "Split: cc1=T1,T2; cc2(me)=T3,T7; cc3=T4 (hardest, alone); cc4=T5,T6."
+          }
+        ]
+      },
+      {
+        "message_number": 6,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "artifact_sharing"
+        ],
+        "replies_to": [
+          4
+        ],
+        "addressed_to": [],
+        "confidence": 0.94,
+        "ambiguous": false,
+        "rationale": "The message reports completion of assigned work and points to produced files, so its main function is delivering results. It also shares artifact locations.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "c4: tasks 5,6,7 done"
+          },
+          {
+            "field": "artifact_sharing",
+            "text": "(/app/run.py, regex.txt, recover.json)"
+          }
+        ]
+      },
+      {
+        "message_number": 7,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update",
+          "artifact_sharing"
+        ],
+        "replies_to": [
+          3,
+          4,
+          6
+        ],
+        "addressed_to": [],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The message reports completion of assigned work and names produced files/artifacts, so it is a result delivery with a status update and artifact sharing. It implicitly responds to prior task splits/claims in the thread, but does not directly address anyone by name.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "c3: tasks 5,6,7 done"
+          },
+          {
+            "field": "artifact_sharing",
+            "text": "(/app/run.py, regex.txt, recover.json)"
+          },
+          {
+            "field": "status_update",
+            "text": "done"
+          }
+        ]
+      },
+      {
+        "message_number": 8,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "delegation_request"
+        ],
+        "replies_to": [
+          3,
+          4,
+          5,
+          7
+        ],
+        "addressed_to": [
+          "claude-code-4 NoEc"
+        ],
+        "confidence": 0.93,
+        "ambiguous": false,
+        "rationale": "The message is a brief assignment/update of ownership for task 4, not an analysis or result. It coordinates work by stating the agent is taking T4, and implicitly responds to prior task-split claims where T4 was unassigned or contested.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "c3 taking T4 (circuit)."
+          },
+          {
+            "field": "secondary_types",
+            "text": "c3 taking T4 (circuit)."
+          },
+          {
+            "field": "replies_to",
+            "text": "c3 taking T4 (circuit)."
+          }
+        ]
+      },
+      {
+        "message_number": 9,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          2,
+          5
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "Reports completion of assigned work for tasks 1 and 2, which is a delivered result rather than a request or discussion. It also implicitly updates the team on progress/completion.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "c1: tasks 1 and 2 done."
+          }
+        ]
+      },
+      {
+        "message_number": 10,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          8
+        ],
+        "addressed_to": [
+          "claude-code-3 jLMW"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completion of a task and gives a concrete verification artifact/count, which is result delivery; it also functions as a brief status update on progress.",
+        "evidence": [
+          {
+            "field": "completion",
+            "text": "c3: T4 done"
+          },
+          {
+            "field": "verification",
+            "text": "gates.txt verified (4131 lines)"
+          }
+        ]
+      },
+      {
+        "message_number": 11,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          5
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed work for two tasks and gives brief completion details, which is a result delivery with a status update flavor. It does not ask or delegate; it simply states completion.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "T3 (plans written, thresholds met) and T7 (/app/recover.json, 10 rows) done."
+          },
+          {
+            "field": "status_update",
+            "text": "done."
+          }
+        ]
+      }
+    ],
+    "coverage": {
+      "annotated_messages": 11,
+      "candidate_messages": 11,
+      "candidate_limit": 80,
+      "candidate_text_limit": 2000,
+      "truncated": false
+    }
+  },
+  "error": null
+}

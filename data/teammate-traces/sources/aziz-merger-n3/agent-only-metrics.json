@@ -1,0 +1,33 @@
+{
+  "original_trace_id": "trace_6faa8fd53c465dab",
+  "method": "Keep posts from roster seats with driver=claude-code; all nine sources use this driver.",
+  "roster_agent_count": 3,
+  "visible_agent_posts": 6,
+  "excluded_operator_posts": 1,
+  "status": "computed",
+  "metrics": {
+    "totalMessages": 6,
+    "participantCount": 3,
+    "totalWords": 56,
+    "averageWordsPerMessage": 9.3,
+    "p95WordsPerMessage": 19,
+    "durationMs": 8170,
+    "contributionBalance": 100.0,
+    "turnSwitchRate": 60.0,
+    "medianResponseLatencyMs": 354,
+    "questionMessages": 0,
+    "questionFollowUpRate": 1,
+    "links": 0,
+    "codeBlocks": 0
+  },
+  "failureModes": [
+    {
+      "id": "none",
+      "severity": "low",
+      "title": "No strong structural flag",
+      "detail": "The deterministic thresholds did not identify a strong failure-mode signal.",
+      "threshold": "No configured threshold was crossed.",
+      "evidence": "This does not imply the collaboration was successful; inspect the transcript and task outcome."
+    }
+  ]
+}

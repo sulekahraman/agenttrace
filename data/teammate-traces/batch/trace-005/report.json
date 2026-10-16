@@ -1,0 +1,680 @@
+{
+  "schemaVersion": "2.0",
+  "traceId": "trace_ab1efd80c85a6001",
+  "source": {
+    "provider": "sharednet",
+    "kind": "share",
+    "token": "shr_1G5l...",
+    "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+    "loaded_at": "2026-10-12T18:54:41+00:00"
+  },
+  "conversation": {
+    "title": "harbor · e3-solo · noop007i2__ZY3mRFN__agent",
+    "description": null,
+    "firstTimestamp": "2026-10-10T04:19:14.682Z",
+    "lastTimestamp": "2026-10-10T04:19:24.034Z"
+  },
+  "metrics": {
+    "totalMessages": 2,
+    "participantCount": 2,
+    "totalWords": 216,
+    "averageWordsPerMessage": 108.0,
+    "p95WordsPerMessage": 168,
+    "durationMs": 9352,
+    "contributionBalance": 100.0,
+    "turnSwitchRate": 100.0,
+    "medianResponseLatencyMs": 9352,
+    "questionMessages": 1,
+    "questionFollowUpRate": 1.0,
+    "links": 0,
+    "codeBlocks": 2
+  },
+  "participants": [
+    {
+      "id": "user xK65",
+      "sender": "user",
+      "instance": "xK65",
+      "runtime": "harbor",
+      "messages": 1,
+      "words": 168,
+      "questions": 1,
+      "agreement": 0,
+      "challenge": 1,
+      "coordination": 0
+    },
+    {
+      "id": "Solo 3Z7y",
+      "sender": "Solo",
+      "instance": "3Z7y",
+      "runtime": "claude-code",
+      "messages": 1,
+      "words": 48,
+      "questions": 0,
+      "agreement": 0,
+      "challenge": 0,
+      "coordination": 0
+    }
+  ],
+  "transitions": [
+    {
+      "source": "user xK65",
+      "target": "Solo 3Z7y",
+      "count": 1
+    }
+  ],
+  "failureModes": [
+    {
+      "id": "dominance",
+      "severity": "high",
+      "title": "Contribution dominance",
+      "detail": "user xK65 produced 50.0% of all messages.",
+      "threshold": "Triggered when one agent produces at least 40% of messages.",
+      "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+    }
+  ],
+  "messages": [
+    {
+      "index": 1,
+      "participantId": "user xK65",
+      "sender": "user",
+      "instance": "xK65",
+      "runtime": "harbor",
+      "timestamp": "2026-10-10T04:19:14.682Z",
+      "text": "Task for this Room, from the user:\n\nA farmer is buying feed for his alpacas. He buys a variety of hay, corns, cucumbers and wheats. Since wheats are a rare treat, he only buys four 6-kg boxes of them for the whole stable. He only wants enough cucumbers to feed the alpacas while the vegetables are fresh, so he buys fifteen 8-kg bags. Hay are the main diet of his alpacas, so he buys thirty two 43-kg packs. Corns are a staple to supplement the hay, so he buys twenty 19-kg sacks. However, since the farmer bought in bulk, the store gave him a 15% discount on the total price. If his farm truck can carry 190 kgs at a time, how many trips does the farmer need to transport all the feed?\n\nWrite the final answer, as a single integer and nothing else, to `/app/output/answer.txt`.\n\nRoster, assigned by the Room's operator: Solo. The run ends when Solo posts a line starting with `VERDICT: PASS`.",
+      "links": 0,
+      "codeBlocks": 2,
+      "words": 168,
+      "characters": 893,
+      "questions": 1,
+      "signals": {
+        "agreement": 0,
+        "challenge": 1,
+        "coordination": 0
+      }
+    },
+    {
+      "index": 2,
+      "participantId": "Solo 3Z7y",
+      "sender": "Solo",
+      "instance": "3Z7y",
+      "runtime": "claude-code",
+      "timestamp": "2026-10-10T04:19:24.034Z",
+      "text": "Answer: 10 trips. Feed weight: wheat 4x6=24 kg, cucumbers 15x8=120 kg, hay 32x43=1376 kg, corn 20x19=380 kg; total 1900 kg. The 15% discount applies to price, not weight. 1900/190 = 10. Written to /app/output/answer.txt and read back as 10.\nVERDICT: PASS",
+      "links": 0,
+      "codeBlocks": 0,
+      "words": 48,
+      "characters": 254,
+      "questions": 0,
+      "signals": {
+        "agreement": 0,
+        "challenge": 0,
+        "coordination": 0
+      }
+    }
+  ],
+  "analyses": {
+    "agenttrace_heuristics_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_401bcdce424144489e4c751d4837c295",
+      "trace_id": "trace_ab1efd80c85a6001",
+      "analyzer": {
+        "name": "agenttrace_heuristics_v1",
+        "version": "1.0.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T18:54:41.064608+00:00",
+        "started_at": "2026-10-12T18:54:41.064098+00:00",
+        "completed_at": "2026-10-12T18:54:41.065247+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "agenttrace_heuristics_v1",
+          "version": "1.0.0",
+          "schema": "agenttrace/heuristics.v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_1G5l...",
+          "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+          "loaded_at": "2026-10-12T18:54:41+00:00"
+        },
+        "output": {
+          "metrics": {
+            "totalMessages": 2,
+            "participantCount": 2,
+            "totalWords": 216,
+            "averageWordsPerMessage": 108.0,
+            "p95WordsPerMessage": 168,
+            "durationMs": 9352,
+            "contributionBalance": 100.0,
+            "turnSwitchRate": 100.0,
+            "medianResponseLatencyMs": 9352,
+            "questionMessages": 1,
+            "questionFollowUpRate": 1.0,
+            "links": 0,
+            "codeBlocks": 2
+          },
+          "participants": [
+            {
+              "id": "user xK65",
+              "sender": "user",
+              "instance": "xK65",
+              "runtime": "harbor",
+              "messages": 1,
+              "words": 168,
+              "questions": 1,
+              "agreement": 0,
+              "challenge": 1,
+              "coordination": 0
+            },
+            {
+              "id": "Solo 3Z7y",
+              "sender": "Solo",
+              "instance": "3Z7y",
+              "runtime": "claude-code",
+              "messages": 1,
+              "words": 48,
+              "questions": 0,
+              "agreement": 0,
+              "challenge": 0,
+              "coordination": 0
+            }
+          ],
+          "transitions": [
+            {
+              "source": "user xK65",
+              "target": "Solo 3Z7y",
+              "count": 1
+            }
+          ],
+          "failureModes": [
+            {
+              "id": "dominance",
+              "severity": "high",
+              "title": "Contribution dominance",
+              "detail": "user xK65 produced 50.0% of all messages.",
+              "threshold": "Triggered when one agent produces at least 40% of messages.",
+              "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+            }
+          ]
+        }
+      },
+      "error": null
+    },
+    "regex_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_94bc63976b884b77a49ec12d66db0ccd",
+      "trace_id": "trace_ab1efd80c85a6001",
+      "analyzer": {
+        "name": "regex_v1",
+        "version": "0.2.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T18:54:41.066719+00:00",
+        "started_at": "2026-10-12T18:54:41.066359+00:00",
+        "completed_at": "2026-10-12T18:54:41.069088+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "regex_v1",
+          "version": "0.2.0",
+          "schema": "comms-failure/analysis.v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_1G5l...",
+          "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+          "loaded_at": "2026-10-12T18:54:41+00:00"
+        },
+        "output": {
+          "schema": "comms-failure/analysis.v1",
+          "source": {
+            "kind": "share",
+            "token": "shr_1G5l...",
+            "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+            "loaded_at": "2026-10-12T18:54:41+00:00",
+            "annotator": "regex_v1@0.2.0"
+          },
+          "room": {
+            "name": "harbor · e3-solo · noop007i2__ZY3mRFN__agent",
+            "created_at": "2026-10-10T04:19:14.325Z",
+            "latest_sequence": 2,
+            "seats": [
+              {
+                "handle": "Q84J",
+                "label": null,
+                "driver": "custom",
+                "model": null,
+                "joined_at": "2026-10-10T04:19:14.325Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "xK65",
+                "label": "user",
+                "driver": "harbor",
+                "model": null,
+                "joined_at": "2026-10-10T04:19:14.444Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "3Z7y",
+                "label": "Solo",
+                "driver": "claude-code",
+                "model": null,
+                "joined_at": "2026-10-10T04:19:14.552Z",
+                "principal": null,
+                "member_id": null
+              }
+            ]
+          },
+          "metrics": {
+            "posts": 2,
+            "seats": 3,
+            "asks": 1,
+            "asks_unanswered": 0,
+            "claims": 0,
+            "re_claims": 0,
+            "heartbeat_posts": 0,
+            "heartbeat_share": 0.0,
+            "open_items_at_end": 0,
+            "last_post_kind": "other",
+            "principals": null,
+            "span_hours": 0.0,
+            "wait_signals": 0,
+            "claim_posts": 0,
+            "self_contradicting_re_claims": 0,
+            "re_claims_by_position": {
+              "1-20": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "21-40": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "41-60": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "61+": {
+                "re_claims": 0,
+                "claims": 0
+              }
+            },
+            "done_claims": 0,
+            "reviews": 0,
+            "action_claims": 0,
+            "action_claims_unverifiable": 0,
+            "duplicate_posts": 0
+          },
+          "items": {},
+          "modes": [
+            {
+              "id": "R1",
+              "name": "Open-set decay",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.4,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "R2",
+              "name": "Replacement re-does work",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.35,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "B1",
+              "name": "Belief without commitment",
+              "group": "not_binding",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.55,
+              "removed_by": "naming",
+              "evidence": []
+            },
+            {
+              "id": "B2",
+              "name": "Identity drift",
+              "group": "not_binding",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.5,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D1",
+              "name": "Unattested action",
+              "group": "never_done",
+              "present": false,
+              "severity": "unknown",
+              "count": 0,
+              "confidence": 0.3,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D2",
+              "name": "Review of nothing",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.3,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D3",
+              "name": "Closure before budget",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.6,
+              "removed_by": "none",
+              "evidence": []
+            },
+            {
+              "id": "D4",
+              "name": "Capability not routed",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.4,
+              "removed_by": "none",
+              "evidence": []
+            },
+            {
+              "id": "REP",
+              "name": "Step repetition",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.85,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "HB",
+              "name": "Heartbeat cost",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.9,
+              "removed_by": "none",
+              "evidence": []
+            }
+          ],
+          "annotation": {
+            "labels": {
+              "accept": {},
+              "result": {},
+              "review_pass": {}
+            },
+            "facts": {
+              "delivered": {},
+              "acted": {},
+              "passed": {}
+            },
+            "uncertain": [],
+            "annotators": [],
+            "adjudicated": false
+          },
+          "caveats": [
+            "transcript-only detection; every evidence row is a pointer to read, not a label",
+            "share projection: ids, artifacts and transfers stripped, so D1 cannot be verified and D2 cannot see uploads",
+            "no per-seat execution trace: 'acted' facts of Table 1 are unavailable"
+          ]
+        }
+      },
+      "error": null
+    },
+    "example_kickstart": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_418e95912d47489994661ffb60455a2d",
+      "trace_id": "trace_ab1efd80c85a6001",
+      "analyzer": {
+        "name": "example_kickstart",
+        "version": "0.1.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T19:09:16.885784+00:00",
+        "started_at": "2026-10-12T19:09:16.885514+00:00",
+        "completed_at": "2026-10-12T19:09:16.886054+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "example_kickstart",
+          "version": "0.1.0",
+          "schema": "commsfail/example_kickstart/v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_1G5l...",
+          "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+          "loaded_at": "2026-10-12T18:54:41+00:00"
+        },
+        "output": {
+          "taxonomy": "state_gap@1",
+          "findings": [],
+          "counts": {
+            "posts": 2,
+            "findings": 0,
+            "by_group": {}
+          }
+        }
+      },
+      "error": null
+    },
+    "scout_collaboration_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_ec9c12ad964d4b2a94bb2e13a75529a5",
+      "trace_id": "trace_ab1efd80c85a6001",
+      "analyzer": {
+        "name": "scout_collaboration_v1",
+        "version": "2.1.0",
+        "kind": "pipeline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-14T13:30:21.941593+00:00",
+        "started_at": "2026-10-14T13:30:21.943535+00:00",
+        "completed_at": "2026-10-14T13:30:25.582857+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "output": {
+        "findings": [
+          {
+            "category": "duplicated_work",
+            "found": false,
+            "explanation": "The two messages show a clean delegation-and-response flow rather than independent repeated work. [M1] assigns Solo the task and specifies the output location and completion condition; [M2] provides the requested solution and verification. There is no separate agent repeating the same analysis for a different purpose.",
+            "confidence": 0.98,
+            "message_numbers": [
+              1,
+              2
+            ]
+          },
+          {
+            "category": "weak_handoff",
+            "found": false,
+            "explanation": "The handoff is clear and completed: [M1] delegates the task to Solo and asks for a final integer written to `/app/output/answer.txt`, and [M2] reports the answer, notes it was written, and ends with `VERDICT: PASS`. No abandonment or ambiguity is visible.",
+            "confidence": 0.99,
+            "message_numbers": [
+              1,
+              2
+            ]
+          },
+          {
+            "category": "unintegrated_information",
+            "found": false,
+            "explanation": "All relevant information in [M1] is used in [M2]. In particular, the note that the 15% discount applies to price, not weight, is explicitly addressed, and the weight calculation is carried through to the final trip count. There is no visible ignored or contradicted evidence.",
+            "confidence": 0.96,
+            "message_numbers": [
+              1,
+              2
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "message_number": 1,
+            "primary_type": "delegation_request",
+            "secondary_types": [
+              "question",
+              "coordination"
+            ],
+            "replies_to": [],
+            "addressed_to": [
+              "Solo 3Z7y"
+            ],
+            "confidence": 0.98,
+            "ambiguous": false,
+            "rationale": "The message assigns Solo to solve a task and produce the final answer file, which is a concrete work request. It also frames the task for the room and specifies the completion condition, making coordination secondary; the arithmetic prompt is embedded as task content rather than the main communicative act.",
+            "evidence": [
+              {
+                "field": "addressed_to",
+                "text": "Roster, assigned by the Room's operator: Solo."
+              },
+              {
+                "field": "primary_type",
+                "text": "Task for this Room, from the user:"
+              },
+              {
+                "field": "secondary_type",
+                "text": "Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`."
+              }
+            ]
+          },
+          {
+            "message_number": 2,
+            "primary_type": "result_delivery",
+            "secondary_types": [
+              "evidence_observation"
+            ],
+            "replies_to": [
+              1
+            ],
+            "addressed_to": [],
+            "confidence": 0.99,
+            "ambiguous": false,
+            "rationale": "The message delivers the computed answer and supporting calculation for the task, with a brief note about file writing and a verdict. It is mainly a completed result rather than a question or coordination.",
+            "evidence": [
+              {
+                "field": "primary_type",
+                "text": "Answer: 10 trips. Feed weight: wheat 4x6=24 kg, cucumbers 15x8=120 kg, hay 32x43=1376 kg, corn 20x19=380 kg; total 1900 kg."
+              },
+              {
+                "field": "secondary_types",
+                "text": "The 15% discount applies to price, not weight."
+              },
+              {
+                "field": "secondary_types",
+                "text": "Written to /app/output/answer.txt and read back as 10.\nVERDICT: PASS"
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "annotated_messages": 2,
+          "candidate_messages": 2,
+          "candidate_limit": 80,
+          "candidate_text_limit": 2000,
+          "truncated": false
+        }
+      },
+      "error": null
+    }
+  },
+  "analyzers": [
+    {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "kind": "offline",
+      "available": false,
+      "requires_ops": true,
+      "unavailable_reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+    },
+    {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "scout_collaboration_v1",
+      "version": "2.1.0",
+      "kind": "pipeline",
+      "available": true,
+      "default_model": "openai/gpt-5.4-mini"
+    }
+  ]
+}

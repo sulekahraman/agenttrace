@@ -1,0 +1,25 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message assigns a concrete multi-step data integration task with explicit input/output requirements and conflict handling rules. It requests work to be done rather than providing results or asking a question.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "Merge user data from three different sources with different formats and schemas."
+    },
+    {
+      "field": "proposal",
+      "text": "Handle conflicts using source priority (source_a > source_b > source_c)"
+    },
+    {
+      "field": "delegation_request",
+      "text": "Generate merged dataset to /app/merged_users.parquet"
+    }
+  ]
+}

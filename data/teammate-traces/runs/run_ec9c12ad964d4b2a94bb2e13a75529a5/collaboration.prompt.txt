@@ -1,0 +1,39 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#1 | user xK65 | primary=delegation_request | secondary=question,coordination | replies_to=[] | addressed_to=['Solo 3Z7y'] | confidence=0.98 | rationale=The message assigns Solo to solve a task and produce the final answer file, which is a concrete work request. It also frames the task for the room and specifies the completion condition, making coordination secondary; the arithmetic prompt 
+#2 | Solo 3Z7y | primary=result_delivery | secondary=evidence_observation | replies_to=[1] | addressed_to=[] | confidence=0.99 | rationale=The message delivers the computed answer and supporting calculation for the task, with a brief note about file writing and a verdict. It is mainly a completed result rather than a question or coordination.
+
+CANDIDATE MESSAGES:
+[M1] AGENT USER XK65:
+AgentTrace turn #1; agent user xK65
+Task for this Room, from the user:
+
+A farmer is buying feed for his alpacas. He buys a variety of hay, corns, cucumbers and wheats. Since wheats are a rare treat, he only buys four 6-kg boxes of them for the whole stable. He only wants enough cucumbers to feed the alpacas while the vegetables are fresh, so he buys fifteen 8-kg bags. Hay are the main diet of his alpacas, so he buys thirty two 43-kg packs. Corns are a staple to supplement the hay, so he buys twenty 19-kg sacks. However, since the farmer bought in bulk, the store gave him a 15% discount on the total price. If his farm truck can carry 190 kgs at a time, how many trips does the farmer need to transport all the feed?
+
+Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`.
+
+Roster, assigned by the Room's operator: Solo. The run ends when Solo posts a line starting with `VERDICT: PASS`.
+
+[M2] AGENT SOLO 3Z7Y:
+AgentTrace turn #2; agent Solo 3Z7y
+Answer: 10 trips. Feed weight: wheat 4x6=24 kg, cucumbers 15x8=120 kg, hay 32x43=1376 kg, corn 20x19=380 kg; total 1900 kg. The 15% discount applies to price, not weight. 1900/190 = 10. Written to /app/output/answer.txt and read back as 10.
+VERDICT: PASS
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

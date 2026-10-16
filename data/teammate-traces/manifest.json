@@ -1,0 +1,222 @@
+{
+  "schema": "agenttrace/public-dataset.v1",
+  "exported_at": "2026-10-16T21:13:32.773513+00:00",
+  "analysis_code_commit": "2a118aac8bdbc1eed77bed47fc432146770d65e8",
+  "project_repository": "https://github.com/xisen-w/multi-agent-training",
+  "publication": "Dataset owner confirmed the trace data is public and authorized publication.",
+  "scope": "Nine teammate-supplied SharedNet traces; not a complete Slack or team inventory.",
+  "database": "agenttrace.sqlite3",
+  "analysis_index": "batch/index.json",
+  "analysis_links": "batch/links.html",
+  "counts": {
+    "traces": 9,
+    "visible_posts": 70,
+    "agent_posts": 59,
+    "task_operator_posts": 11,
+    "selected_completed_analyses": 36,
+    "selected_completed_offline": 27,
+    "completed_scout": 9,
+    "message_annotations": 70,
+    "collaboration_judgments": 27,
+    "historical_runs": 49
+  },
+  "history_counts": [
+    {
+      "analyzer": "agenttrace_heuristics_v1",
+      "status": "completed",
+      "count": 9
+    },
+    {
+      "analyzer": "example_kickstart",
+      "status": "completed",
+      "count": 10
+    },
+    {
+      "analyzer": "regex_v1",
+      "status": "completed",
+      "count": 13
+    },
+    {
+      "analyzer": "scout_collaboration_v1",
+      "status": "completed",
+      "count": 9
+    },
+    {
+      "analyzer": "scout_collaboration_v1",
+      "status": "failed",
+      "count": 8
+    }
+  ],
+  "limitations": [
+    "facts_v1 requires execution logs that are absent from these conversation shares.",
+    "Scout annotations and collaboration findings are model judgments, not verified ground truth.",
+    "example_kickstart is an optional demo plugin, not an additional validated detector.",
+    "Historical failed attempts remain in the snapshot but are not counted as completed cohort results.",
+    "Native Scout caches use machine-specific paths and must be regenerated from saved results.",
+    "Original model generation-event logs and token accounting are unavailable."
+  ],
+  "traces": [
+    {
+      "slug": "aziz-bundle-n4-r2",
+      "shared_by": "Aziz",
+      "teammate_note": "Four competing splits; agents 3 and 4 overlap on tasks 5-7.",
+      "url": "https://www.sharednet.ai/s/shr_R76qfqXaI6rALuGsaHy80rE-TAPQAXMKlP32QZKPj_Y",
+      "trace_id": "trace_464e5df863013053",
+      "room": "tb2-bundle-n4-r2",
+      "source_file": "sources/aziz-bundle-n4-r2/trace.json",
+      "transcript_file": "sources/aziz-bundle-n4-r2/transcript.txt",
+      "agent_metrics_file": "sources/aziz-bundle-n4-r2/agent-only-metrics.json",
+      "report_file": "batch/trace-001/report.json",
+      "selected_run_ids": [
+        "run_63b5cbb7b6614fbeb23b462ad7e59a56",
+        "run_a1e6617d99c34acda91805a9cdbf59fe",
+        "run_0f5d3587d9bd469da4f701edb43a0b77",
+        "run_05ffc3afe6c94700982201b9e220832c"
+      ]
+    },
+    {
+      "slug": "aziz-bundle-n4-r1",
+      "shared_by": "Aziz",
+      "teammate_note": "Reported 16 agent posts, 5/7 solved; task 3 plans overwritten after warning.",
+      "url": "https://www.sharednet.ai/s/shr_YPLfe6694ptAVAKtjnx6vVb_1BLfjDsc1ZP68YQqgRI",
+      "trace_id": "trace_e82952d9d64878ba",
+      "room": "tb2-bundle-n4-r1",
+      "source_file": "sources/aziz-bundle-n4-r1/trace.json",
+      "transcript_file": "sources/aziz-bundle-n4-r1/transcript.txt",
+      "agent_metrics_file": "sources/aziz-bundle-n4-r1/agent-only-metrics.json",
+      "report_file": "batch/trace-002/report.json",
+      "selected_run_ids": [
+        "run_960906af8dde4aa39de83fdd58b80fc8",
+        "run_55b1fac1425a4e9c83e5f3b6c3cd12e6",
+        "run_f43b0dbc0dbd45e2bb6b77f183b511bc",
+        "run_fd882547bd5d4af499fd3829defc37d4"
+      ]
+    },
+    {
+      "slug": "aziz-bundle-n3-r2",
+      "shared_by": "Aziz",
+      "teammate_note": "Wrong overwrite caught and restored; reported 7/7 solved.",
+      "url": "https://www.sharednet.ai/s/shr_FCX9cl1NljsTd-gZD8hk37nOaX9escTBdaVYjHwmm4k",
+      "trace_id": "trace_039e550dde384d68",
+      "room": "tb2-bundle-n3-r2",
+      "source_file": "sources/aziz-bundle-n3-r2/trace.json",
+      "transcript_file": "sources/aziz-bundle-n3-r2/transcript.txt",
+      "agent_metrics_file": "sources/aziz-bundle-n3-r2/agent-only-metrics.json",
+      "report_file": "batch/trace-003/report.json",
+      "selected_run_ids": [
+        "run_f1a30cafc0e64e18b874f0acded99c8c",
+        "run_f0e6596a5623401f9e839aa224504f34",
+        "run_6312d7910be64445a986520569a49970",
+        "run_f6aefa71129e4c90b02b517e71f39152"
+      ]
+    },
+    {
+      "slug": "aziz-merger-n3",
+      "shared_by": "Aziz",
+      "teammate_note": "Round 1: three agents each claim the whole task.",
+      "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+      "trace_id": "trace_6faa8fd53c465dab",
+      "room": "tb2-merger-n3",
+      "source_file": "sources/aziz-merger-n3/trace.json",
+      "transcript_file": "sources/aziz-merger-n3/transcript.txt",
+      "agent_metrics_file": "sources/aziz-merger-n3/agent-only-metrics.json",
+      "report_file": "batch/trace-004/report.json",
+      "selected_run_ids": [
+        "run_c1bcd4548e0b465c949e26cc5d0635e0",
+        "run_749e5363609242b0a81380f56a99e372",
+        "run_1ef3980e71c44c22ad610a997ce543f6",
+        "run_211327e58c894fe18eb884e0edbc2bc9"
+      ]
+    },
+    {
+      "slug": "xiangqian-noop007i2-solo",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Solo comparison for noop007i2; correct answer reported as 10.",
+      "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+      "trace_id": "trace_ab1efd80c85a6001",
+      "room": "harbor · e3-solo · noop007i2__ZY3mRFN__agent",
+      "source_file": "sources/xiangqian-noop007i2-solo/trace.json",
+      "transcript_file": "sources/xiangqian-noop007i2-solo/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-noop007i2-solo/agent-only-metrics.json",
+      "report_file": "batch/trace-005/report.json",
+      "selected_run_ids": [
+        "run_418e95912d47489994661ffb60455a2d",
+        "run_94bc63976b884b77a49ec12d66db0ccd",
+        "run_401bcdce424144489e4c751d4837c295",
+        "run_ec9c12ad964d4b2a94bb2e13a75529a5"
+      ]
+    },
+    {
+      "slug": "xiangqian-noop007i2-pev",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Planner adds whole-item packing constraint; team reportedly answers 11.",
+      "url": "https://www.sharednet.ai/s/shr_a6onM9Sz6CEosSM1YqHU5vniasnPJbI13Yh5hDeRiH8",
+      "trace_id": "trace_29d100b4dfa5eb0d",
+      "room": "harbor · e3-pev · noop007i2__9H9Dnvp__agent",
+      "source_file": "sources/xiangqian-noop007i2-pev/trace.json",
+      "transcript_file": "sources/xiangqian-noop007i2-pev/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-noop007i2-pev/agent-only-metrics.json",
+      "report_file": "batch/trace-006/report.json",
+      "selected_run_ids": [
+        "run_fad54e93cb514ee28a64ac455a5ef98f",
+        "run_27315600d87b493983e8ac78b8c70c84",
+        "run_a515c4485fb54f9798189bb71f82e82a",
+        "run_9d2d44edca7440a7914b7cc051bb37ad"
+      ]
+    },
+    {
+      "slug": "xiangqian-noop-stalled",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Public room reportedly only contains task; private verifier answer 1448.",
+      "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "room": "harbor · e3-pev · noop016i0__GRNwiHr__agent",
+      "source_file": "sources/xiangqian-noop-stalled/trace.json",
+      "transcript_file": "sources/xiangqian-noop-stalled/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-noop-stalled/agent-only-metrics.json",
+      "report_file": "batch/trace-007/report.json",
+      "selected_run_ids": [
+        "run_73b7aabc77c04a0596023216ab6cfde8",
+        "run_42a6bd1cd4754f639b11b17fb1cfde5a",
+        "run_c2ffd479478243f0a4393066017b6953",
+        "run_c4de7935f4c045c3b68fa1a00ef321b5"
+      ]
+    },
+    {
+      "slug": "xiangqian-gpqa027-solo",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Solo reportedly selects B; reference answer reported as D.",
+      "url": "https://www.sharednet.ai/s/shr_2f69VRSLq7ta-e2sXs6HRTL2VuyZ2D6YudTsiN9z9xM",
+      "trace_id": "trace_b682600c5b65b12d",
+      "room": "harbor · e4-solo · gpqa027__Q3a3HDR__agent",
+      "source_file": "sources/xiangqian-gpqa027-solo/trace.json",
+      "transcript_file": "sources/xiangqian-gpqa027-solo/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-gpqa027-solo/agent-only-metrics.json",
+      "report_file": "batch/trace-008/report.json",
+      "selected_run_ids": [
+        "run_a9a53721eb874d339b66428e8c968d6f",
+        "run_14c66a9d78eb46d891468f76244cdde1",
+        "run_06c2d689f10a43ac8b53434a56472ed7",
+        "run_d7b71d27ce23419b84e9179606943b13"
+      ]
+    },
+    {
+      "slug": "xiangqian-gpqa027-pev",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Verifier challenges B and team returns to D; reported team win.",
+      "url": "https://www.sharednet.ai/s/shr_7UdHEe6f9erjcOhnkqhtLgpQBualYrmlC_DQWQiqqVc",
+      "trace_id": "trace_5c5209c98f666281",
+      "room": "harbor · e4-pev · gpqa027__rtUiLcW__agent",
+      "source_file": "sources/xiangqian-gpqa027-pev/trace.json",
+      "transcript_file": "sources/xiangqian-gpqa027-pev/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-gpqa027-pev/agent-only-metrics.json",
+      "report_file": "batch/trace-009/report.json",
+      "selected_run_ids": [
+        "run_f944d5733d49443abec78ba9eb638feb",
+        "run_5dbcc702ae5347ce987fe77ed7dfc7d7",
+        "run_785c5abd7eff42fa85bf624b3285ad56",
+        "run_531686d965eb48d79da4f2dca4b433cd"
+      ]
+    }
+  ]
+}

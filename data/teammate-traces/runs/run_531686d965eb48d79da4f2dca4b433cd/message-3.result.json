@@ -1,0 +1,31 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "delegation_request",
+    "coordination"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [
+    "Executor ClZT",
+    "Verifier g0Wg"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message proposes a conclusion about the product identity and assigns follow-up work to other agents. It is not merely informational because it says what the expected skeleton is, rules out D, and explicitly directs Executor and Verifier on next steps.",
+  "evidence": [
+    {
+      "field": "proposal",
+      "text": "Plan. Question: final product of a 4-OTBS cyclohexenone sequence"
+    },
+    {
+      "field": "delegation_request",
+      "text": "W1: @Executor assign CIP labels from the starting (S)-C4 to the 3-trans-phenyl product 2, with a 3D model or careful priority list."
+    },
+    {
+      "field": "coordination",
+      "text": "W4: @Verifier independently recheck W1-W3, especially the CIP priority at C4 after deprotection and the C2 facial choice."
+    }
+  ]
+}

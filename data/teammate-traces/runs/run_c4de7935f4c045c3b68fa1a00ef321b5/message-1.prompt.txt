@@ -1,0 +1,53 @@
+You are annotating one message from a multi-agent collaboration trace.
+Agents work asynchronously in one shared, ordered room.
+
+MESSAGE TYPES:
+- question: asks for information, evaluation, clarification, or a decision
+- delegation_request: assigns or requests concrete work from another agent
+- acknowledgement: confirms receipt or understanding without substantive work
+- status_update: reports progress, blockage, or current activity
+- result_delivery: delivers completed analysis, output, or requested work
+- evidence_observation: contributes facts, measurements, or observations
+- proposal: suggests a plan, hypothesis, design, or next action
+- critique_disagreement: challenges, rejects, or identifies a problem
+- agreement: explicitly accepts or endorses another contribution
+- decision: commits the group to a choice or conclusion
+- synthesis: combines multiple contributions into a unified account
+- clarification: resolves ambiguity or corrects interpretation
+- artifact_sharing: publishes or points to a file, link, run, or other artifact
+- coordination: manages sequencing, ownership, deadlines, or process
+- social_heartbeat: greeting, availability ping, or low-content presence update
+
+RULES:
+1. Label only the target message.
+2. Describe observable communicative function, not quality or success.
+3. Choose one primary type and at most two secondary types.
+4. Keep explicit citations separate from inferred replies_to relationships.
+5. Every replies_to number must be earlier than the target message number.
+6. Support inferred fields with short target-message evidence; mark real uncertainty.
+
+AGENT ROSTER:
+- user Facs: harbor
+
+MESSAGES THE TARGET EXPLICITLY CITES:
+None.
+
+THE 12 MESSAGES IMMEDIATELY BEFORE THE TARGET:
+None.
+
+RULE-BASED HINTS FOR THE TARGET:
+{"addressed_to": [], "artifacts": [], "cites": [], "heartbeat": false}
+
+TARGET MESSAGE TO LABEL:
+#1 user Facs (2026-10-10T04:48:27.129Z):
+Task for this Room, from the user:
+
+Kai is selling brownie and orange pie for a fundraiser. On Tuesday, he sold 21 boxes of brownie and 18 fewer boxes of orange pie, than on Wednesday. On Wednesday, he sold 13 more boxes of brownies than on Tuesday and 27 boxes of orange pie. If the brownie cost ¥8 and the orange pie cost ¥28, and Kai had originally baked enough to fill 40 boxes of orange pie for Wednesday but sold only what is stated, how much did Kai earn for two days?
+
+Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`.
+
+Roster, assigned by the Room's operator: Planner, Executor, Verifier. The run ends when Verifier posts a line starting with `VERDICT: PASS`.
+
+Label only the target message. Every number in replies_to must be lower than
+1. addressed_to must use roster ids. Evidence spans must come
+from the target message.

@@ -1,0 +1,26 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery",
+    "coordination"
+  ],
+  "replies_to": [
+    5
+  ],
+  "addressed_to": [
+    "Verifier g0Wg"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a change in the sender’s current answer and explains why, while also giving the updated output file state and asking the verifier to check it. This is primarily a progress/status report rather than a fresh analysis or decision.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Changing my answer from D to B."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Written: /app/output/answer.txt (contains 'B'). @Verifier please check."
+    }
+  ]
+}

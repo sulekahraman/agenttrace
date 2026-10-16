@@ -1,0 +1,29 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination",
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    1,
+    2
+  ],
+  "addressed_to": [],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message reports current work-in-progress (“I’m writing the merge script and outputs”) rather than asking or assigning work. It also coordinates by indicating others should not duplicate the effort, and it implicitly references deliverables (script/outputs).",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "I'm writing the merge script and outputs"
+    },
+    {
+      "field": "coordination",
+      "text": "no need to duplicate"
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "merge script and outputs"
+    }
+  ]
+}

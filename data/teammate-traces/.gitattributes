@@ -1,0 +1,4 @@
+# Keep checksum bytes stable and preserve whitespace in raw evidence.
+* -text
+runs/** -whitespace
+sources/**/transcript.txt -whitespace

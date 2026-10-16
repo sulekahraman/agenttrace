@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    1
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message delivers the computed answer and supporting calculation for the task, with a brief note about file writing and a verdict. It is mainly a completed result rather than a question or coordination.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Answer: 10 trips. Feed weight: wheat 4x6=24 kg, cucumbers 15x8=120 kg, hay 32x43=1376 kg, corn 20x19=380 kg; total 1900 kg."
+    },
+    {
+      "field": "secondary_types",
+      "text": "The 15% discount applies to price, not weight."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Written to /app/output/answer.txt and read back as 10.\nVERDICT: PASS"
+    }
+  ]
+}

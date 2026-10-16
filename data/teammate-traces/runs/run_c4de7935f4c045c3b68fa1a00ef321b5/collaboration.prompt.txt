@@ -1,0 +1,33 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#1 | user Facs | primary=delegation_request | secondary=question,coordination | replies_to=[] | addressed_to=[] | confidence=0.98 | rationale=The message assigns a concrete task to the room, specifies the desired output format and file path, and sets a completion condition. It requests work rather than providing the solution itself.
+
+CANDIDATE MESSAGES:
+[M1] AGENT USER FACS:
+AgentTrace turn #1; agent user Facs
+Task for this Room, from the user:
+
+Kai is selling brownie and orange pie for a fundraiser. On Tuesday, he sold 21 boxes of brownie and 18 fewer boxes of orange pie, than on Wednesday. On Wednesday, he sold 13 more boxes of brownies than on Tuesday and 27 boxes of orange pie. If the brownie cost ¥8 and the orange pie cost ¥28, and Kai had originally baked enough to fill 40 boxes of orange pie for Wednesday but sold only what is stated, how much did Kai earn for two days?
+
+Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`.
+
+Roster, assigned by the Room's operator: Planner, Executor, Verifier. The run ends when Verifier posts a line starting with `VERDICT: PASS`.
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

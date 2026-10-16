@@ -1,0 +1,617 @@
+{
+  "schemaVersion": "2.0",
+  "traceId": "trace_34cf0b34ad7096e4",
+  "source": {
+    "provider": "sharednet",
+    "kind": "share",
+    "token": "shr_E1z2...",
+    "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+    "loaded_at": "2026-10-12T18:54:41+00:00"
+  },
+  "conversation": {
+    "title": "harbor · e3-pev · noop016i0__GRNwiHr__agent",
+    "description": null,
+    "firstTimestamp": "2026-10-10T04:48:27.129Z",
+    "lastTimestamp": "2026-10-10T04:48:27.129Z"
+  },
+  "metrics": {
+    "totalMessages": 1,
+    "participantCount": 1,
+    "totalWords": 130,
+    "averageWordsPerMessage": 130.0,
+    "p95WordsPerMessage": 130,
+    "durationMs": 0,
+    "contributionBalance": 100.0,
+    "turnSwitchRate": 0,
+    "medianResponseLatencyMs": null,
+    "questionMessages": 1,
+    "questionFollowUpRate": 0.0,
+    "links": 0,
+    "codeBlocks": 2
+  },
+  "participants": [
+    {
+      "id": "user Facs",
+      "sender": "user",
+      "instance": "Facs",
+      "runtime": "harbor",
+      "messages": 1,
+      "words": 130,
+      "questions": 1,
+      "agreement": 0,
+      "challenge": 1,
+      "coordination": 0
+    }
+  ],
+  "transitions": [],
+  "failureModes": [
+    {
+      "id": "dominance",
+      "severity": "high",
+      "title": "Contribution dominance",
+      "detail": "user Facs produced 100.0% of all messages.",
+      "threshold": "Triggered when one agent produces at least 40% of messages.",
+      "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+    }
+  ],
+  "messages": [
+    {
+      "index": 1,
+      "participantId": "user Facs",
+      "sender": "user",
+      "instance": "Facs",
+      "runtime": "harbor",
+      "timestamp": "2026-10-10T04:48:27.129Z",
+      "text": "Task for this Room, from the user:\n\nKai is selling brownie and orange pie for a fundraiser. On Tuesday, he sold 21 boxes of brownie and 18 fewer boxes of orange pie, than on Wednesday. On Wednesday, he sold 13 more boxes of brownies than on Tuesday and 27 boxes of orange pie. If the brownie cost ¥8 and the orange pie cost ¥28, and Kai had originally baked enough to fill 40 boxes of orange pie for Wednesday but sold only what is stated, how much did Kai earn for two days?\n\nWrite the final answer, as a single integer and nothing else, to `/app/output/answer.txt`.\n\nRoster, assigned by the Room's operator: Planner, Executor, Verifier. The run ends when Verifier posts a line starting with `VERDICT: PASS`.",
+      "links": 0,
+      "codeBlocks": 2,
+      "words": 130,
+      "characters": 709,
+      "questions": 1,
+      "signals": {
+        "agreement": 0,
+        "challenge": 1,
+        "coordination": 0
+      }
+    }
+  ],
+  "analyses": {
+    "agenttrace_heuristics_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_c2ffd479478243f0a4393066017b6953",
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "analyzer": {
+        "name": "agenttrace_heuristics_v1",
+        "version": "1.0.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T18:54:41.302797+00:00",
+        "started_at": "2026-10-12T18:54:41.302214+00:00",
+        "completed_at": "2026-10-12T18:54:41.303439+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "agenttrace_heuristics_v1",
+          "version": "1.0.0",
+          "schema": "agenttrace/heuristics.v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_E1z2...",
+          "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+          "loaded_at": "2026-10-12T18:54:41+00:00"
+        },
+        "output": {
+          "metrics": {
+            "totalMessages": 1,
+            "participantCount": 1,
+            "totalWords": 130,
+            "averageWordsPerMessage": 130.0,
+            "p95WordsPerMessage": 130,
+            "durationMs": 0,
+            "contributionBalance": 100.0,
+            "turnSwitchRate": 0,
+            "medianResponseLatencyMs": null,
+            "questionMessages": 1,
+            "questionFollowUpRate": 0.0,
+            "links": 0,
+            "codeBlocks": 2
+          },
+          "participants": [
+            {
+              "id": "user Facs",
+              "sender": "user",
+              "instance": "Facs",
+              "runtime": "harbor",
+              "messages": 1,
+              "words": 130,
+              "questions": 1,
+              "agreement": 0,
+              "challenge": 1,
+              "coordination": 0
+            }
+          ],
+          "transitions": [],
+          "failureModes": [
+            {
+              "id": "dominance",
+              "severity": "high",
+              "title": "Contribution dominance",
+              "detail": "user Facs produced 100.0% of all messages.",
+              "threshold": "Triggered when one agent produces at least 40% of messages.",
+              "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+            }
+          ]
+        }
+      },
+      "error": null
+    },
+    "regex_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_42a6bd1cd4754f639b11b17fb1cfde5a",
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "analyzer": {
+        "name": "regex_v1",
+        "version": "0.2.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T18:54:41.304990+00:00",
+        "started_at": "2026-10-12T18:54:41.304575+00:00",
+        "completed_at": "2026-10-12T18:54:41.307616+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "regex_v1",
+          "version": "0.2.0",
+          "schema": "comms-failure/analysis.v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_E1z2...",
+          "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+          "loaded_at": "2026-10-12T18:54:41+00:00"
+        },
+        "output": {
+          "schema": "comms-failure/analysis.v1",
+          "source": {
+            "kind": "share",
+            "token": "shr_E1z2...",
+            "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+            "loaded_at": "2026-10-12T18:54:41+00:00",
+            "annotator": "regex_v1@0.2.0"
+          },
+          "room": {
+            "name": "harbor · e3-pev · noop016i0__GRNwiHr__agent",
+            "created_at": "2026-10-10T04:48:26.560Z",
+            "latest_sequence": 1,
+            "seats": [
+              {
+                "handle": "Q84J",
+                "label": null,
+                "driver": "custom",
+                "model": null,
+                "joined_at": "2026-10-10T04:48:26.560Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "Facs",
+                "label": "user",
+                "driver": "harbor",
+                "model": null,
+                "joined_at": "2026-10-10T04:48:26.677Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "pjP9",
+                "label": "Planner",
+                "driver": "claude-code",
+                "model": null,
+                "joined_at": "2026-10-10T04:48:26.792Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "Ppe7",
+                "label": "Executor",
+                "driver": "claude-code",
+                "model": null,
+                "joined_at": "2026-10-10T04:48:26.891Z",
+                "principal": null,
+                "member_id": null
+              },
+              {
+                "handle": "A1li",
+                "label": "Verifier",
+                "driver": "claude-code",
+                "model": null,
+                "joined_at": "2026-10-10T04:48:26.995Z",
+                "principal": null,
+                "member_id": null
+              }
+            ]
+          },
+          "metrics": {
+            "posts": 1,
+            "seats": 5,
+            "asks": 1,
+            "asks_unanswered": 0,
+            "claims": 0,
+            "re_claims": 0,
+            "heartbeat_posts": 0,
+            "heartbeat_share": 0.0,
+            "open_items_at_end": 0,
+            "last_post_kind": "ask",
+            "principals": null,
+            "span_hours": null,
+            "wait_signals": 0,
+            "claim_posts": 0,
+            "self_contradicting_re_claims": 0,
+            "re_claims_by_position": {
+              "1-20": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "21-40": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "41-60": {
+                "re_claims": 0,
+                "claims": 0
+              },
+              "61+": {
+                "re_claims": 0,
+                "claims": 0
+              }
+            },
+            "done_claims": 0,
+            "reviews": 0,
+            "action_claims": 0,
+            "action_claims_unverifiable": 0,
+            "duplicate_posts": 0
+          },
+          "items": {},
+          "modes": [
+            {
+              "id": "R1",
+              "name": "Open-set decay",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.4,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "R2",
+              "name": "Replacement re-does work",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.35,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "B1",
+              "name": "Belief without commitment",
+              "group": "not_binding",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.55,
+              "removed_by": "naming",
+              "evidence": []
+            },
+            {
+              "id": "B2",
+              "name": "Identity drift",
+              "group": "not_binding",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.5,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D1",
+              "name": "Unattested action",
+              "group": "never_done",
+              "present": false,
+              "severity": "unknown",
+              "count": 0,
+              "confidence": 0.3,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D2",
+              "name": "Review of nothing",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.3,
+              "removed_by": "check",
+              "evidence": []
+            },
+            {
+              "id": "D3",
+              "name": "Closure before budget",
+              "group": "never_done",
+              "present": true,
+              "severity": "medium",
+              "count": 1,
+              "confidence": 0.6,
+              "removed_by": "none",
+              "evidence": [
+                {
+                  "seq": 1,
+                  "who": "",
+                  "excerpt": "Task for this Room, from the user: Kai is selling brownie and orange pie for a fundraiser. On Tuesday, he sold 21 boxes of brownie and 18 fewer boxes of orange …",
+                  "why": "ends with a ask; 0 claimed item(s) never reported done; 0 waiting/blocked signals"
+                }
+              ]
+            },
+            {
+              "id": "D4",
+              "name": "Capability not routed",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.4,
+              "removed_by": "none",
+              "evidence": []
+            },
+            {
+              "id": "REP",
+              "name": "Step repetition",
+              "group": "not_read",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.85,
+              "removed_by": "view",
+              "evidence": []
+            },
+            {
+              "id": "HB",
+              "name": "Heartbeat cost",
+              "group": "never_done",
+              "present": false,
+              "severity": "none",
+              "count": 0,
+              "confidence": 0.9,
+              "removed_by": "none",
+              "evidence": []
+            }
+          ],
+          "annotation": {
+            "labels": {
+              "accept": {},
+              "result": {},
+              "review_pass": {}
+            },
+            "facts": {
+              "delivered": {},
+              "acted": {},
+              "passed": {}
+            },
+            "uncertain": [],
+            "annotators": [],
+            "adjudicated": false
+          },
+          "caveats": [
+            "transcript-only detection; every evidence row is a pointer to read, not a label",
+            "share projection: ids, artifacts and transfers stripped, so D1 cannot be verified and D2 cannot see uploads",
+            "no per-seat execution trace: 'acted' facts of Table 1 are unavailable"
+          ]
+        }
+      },
+      "error": null
+    },
+    "example_kickstart": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_73b7aabc77c04a0596023216ab6cfde8",
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "analyzer": {
+        "name": "example_kickstart",
+        "version": "0.1.0",
+        "kind": "offline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T19:09:16.915968+00:00",
+        "started_at": "2026-10-12T19:09:16.915697+00:00",
+        "completed_at": "2026-10-12T19:09:16.916207+00:00",
+        "model": null,
+        "prompt_version": null,
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0"
+        }
+      },
+      "output": {
+        "record": "commsfail/record.v1",
+        "annotator": {
+          "name": "example_kickstart",
+          "version": "0.1.0",
+          "schema": "commsfail/example_kickstart/v1"
+        },
+        "source": {
+          "kind": "share",
+          "token": "shr_E1z2...",
+          "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+          "loaded_at": "2026-10-12T18:54:41+00:00"
+        },
+        "output": {
+          "taxonomy": "state_gap@1",
+          "findings": [],
+          "counts": {
+            "posts": 1,
+            "findings": 0,
+            "by_group": {}
+          }
+        }
+      },
+      "error": null
+    },
+    "scout_collaboration_v1": {
+      "schema": "agenttrace/analysis-run.v1",
+      "id": "run_c4de7935f4c045c3b68fa1a00ef321b5",
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "analyzer": {
+        "name": "scout_collaboration_v1",
+        "version": "2.0.0",
+        "kind": "pipeline"
+      },
+      "status": "completed",
+      "provenance": {
+        "created_at": "2026-10-12T19:57:17.696178+00:00",
+        "started_at": "2026-10-12T19:57:17.698315+00:00",
+        "completed_at": "2026-10-12T20:07:32.207683+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "2",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "output": {
+        "findings": [
+          {
+            "category": "duplicated_work",
+            "found": false,
+            "explanation": "The candidate set only includes the user task assignment [M1] and no agent responses, so there is no evidence of two agents independently repeating materially equivalent work.",
+            "confidence": 0.98,
+            "message_numbers": [
+              1
+            ]
+          },
+          {
+            "category": "weak_handoff",
+            "found": false,
+            "explanation": "Although [M1] assigns work and specifies the output path and success condition, there are no subsequent agent messages to show a request being ignored, abandoned, or poorly handed off.",
+            "confidence": 0.97,
+            "message_numbers": [
+              1
+            ]
+          },
+          {
+            "category": "unintegrated_information",
+            "found": false,
+            "explanation": "The visible information in [M1] is the original task statement; without any later decision or solution text, there is no opportunity to verify that relevant information was ignored or contradicted.",
+            "confidence": 0.96,
+            "message_numbers": [
+              1
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "message_number": 1,
+            "primary_type": "delegation_request",
+            "secondary_types": [
+              "question",
+              "coordination"
+            ],
+            "replies_to": [],
+            "addressed_to": [],
+            "confidence": 0.98,
+            "ambiguous": false,
+            "rationale": "The message assigns a concrete task to the room, specifies the desired output format and file path, and sets a completion condition. It requests work rather than providing the solution itself.",
+            "evidence": [
+              {
+                "field": "primary_type",
+                "text": "Task for this Room, from the user:"
+              },
+              {
+                "field": "secondary_types",
+                "text": "Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`."
+              },
+              {
+                "field": "secondary_types",
+                "text": "The run ends when Verifier posts a line starting with `VERDICT: PASS`."
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "annotated_messages": 1,
+          "candidate_messages": 1,
+          "candidate_limit": 80,
+          "candidate_text_limit": 2000,
+          "truncated": false
+        }
+      },
+      "error": null
+    }
+  },
+  "analyzers": [
+    {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "kind": "offline",
+      "available": false,
+      "requires_ops": true,
+      "unavailable_reason": "Requires per-agent execution logs from a local goal-run record; this trace contains only conversation data."
+    },
+    {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "kind": "offline",
+      "available": true,
+      "requires_ops": false,
+      "unavailable_reason": null
+    },
+    {
+      "name": "scout_collaboration_v1",
+      "version": "2.1.0",
+      "kind": "pipeline",
+      "available": true,
+      "default_model": "openai/gpt-5.4-mini"
+    }
+  ]
+}

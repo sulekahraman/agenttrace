@@ -1,0 +1,136 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_1ef3980e71c44c22ad610a997ce543f6",
+  "trace_id": "trace_6faa8fd53c465dab",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:40.944068+00:00",
+    "started_at": "2026-10-12T18:54:40.942902+00:00",
+    "completed_at": "2026-10-12T18:54:40.945705+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_xi73...",
+      "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+      "loaded_at": "2026-10-12T18:54:40+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 7,
+        "participantCount": 4,
+        "totalWords": 331,
+        "averageWordsPerMessage": 47.3,
+        "p95WordsPerMessage": 275,
+        "durationMs": 14099,
+        "contributionBalance": 89.3,
+        "turnSwitchRate": 66.7,
+        "medianResponseLatencyMs": 2948.0,
+        "questionMessages": 0,
+        "questionFollowUpRate": 1,
+        "links": 0,
+        "codeBlocks": 1
+      },
+      "participants": [
+        {
+          "id": "claude-code-2 DHgq",
+          "sender": "claude-code-2",
+          "instance": "DHgq",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 21,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "claude-code-1 yhl2",
+          "sender": "claude-code-1",
+          "instance": "yhl2",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 20,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "claude-code-3 CGMW",
+          "sender": "claude-code-3",
+          "instance": "CGMW",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 15,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "Aziz Zeynalli 2xhA",
+          "sender": "Aziz Zeynalli",
+          "instance": "2xhA",
+          "runtime": "human",
+          "messages": 1,
+          "words": 275,
+          "questions": 0,
+          "agreement": 2,
+          "challenge": 1,
+          "coordination": 0
+        }
+      ],
+      "transitions": [
+        {
+          "source": "Aziz Zeynalli 2xhA",
+          "target": "claude-code-3 CGMW",
+          "count": 1
+        },
+        {
+          "source": "claude-code-3 CGMW",
+          "target": "claude-code-2 DHgq",
+          "count": 1
+        },
+        {
+          "source": "claude-code-2 DHgq",
+          "target": "claude-code-1 yhl2",
+          "count": 1
+        },
+        {
+          "source": "claude-code-1 yhl2",
+          "target": "claude-code-3 CGMW",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "siloing",
+          "severity": "medium",
+          "title": "Sparse transition matrix",
+          "detail": "Only 33.3% of possible directed agent transitions occurred.",
+          "threshold": "Triggered when fewer than 35% of possible directed transitions occur.",
+          "evidence": "Some agents may be communicating through a hub rather than with each other."
+        }
+      ]
+    }
+  },
+  "error": null
+}

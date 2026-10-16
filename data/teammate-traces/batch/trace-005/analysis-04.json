@@ -1,0 +1,97 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_401bcdce424144489e4c751d4837c295",
+  "trace_id": "trace_ab1efd80c85a6001",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:41.064608+00:00",
+    "started_at": "2026-10-12T18:54:41.064098+00:00",
+    "completed_at": "2026-10-12T18:54:41.065247+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_1G5l...",
+      "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 2,
+        "participantCount": 2,
+        "totalWords": 216,
+        "averageWordsPerMessage": 108.0,
+        "p95WordsPerMessage": 168,
+        "durationMs": 9352,
+        "contributionBalance": 100.0,
+        "turnSwitchRate": 100.0,
+        "medianResponseLatencyMs": 9352,
+        "questionMessages": 1,
+        "questionFollowUpRate": 1.0,
+        "links": 0,
+        "codeBlocks": 2
+      },
+      "participants": [
+        {
+          "id": "user xK65",
+          "sender": "user",
+          "instance": "xK65",
+          "runtime": "harbor",
+          "messages": 1,
+          "words": 168,
+          "questions": 1,
+          "agreement": 0,
+          "challenge": 1,
+          "coordination": 0
+        },
+        {
+          "id": "Solo 3Z7y",
+          "sender": "Solo",
+          "instance": "3Z7y",
+          "runtime": "claude-code",
+          "messages": 1,
+          "words": 48,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        }
+      ],
+      "transitions": [
+        {
+          "source": "user xK65",
+          "target": "Solo 3Z7y",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "dominance",
+          "severity": "high",
+          "title": "Contribution dominance",
+          "detail": "user xK65 produced 50.0% of all messages.",
+          "threshold": "Triggered when one agent produces at least 40% of messages.",
+          "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+        }
+      ]
+    }
+  },
+  "error": null
+}

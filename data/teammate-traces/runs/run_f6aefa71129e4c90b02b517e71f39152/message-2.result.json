@@ -1,0 +1,23 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [
+    1
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns task ownership and suggests a division of labor, which is coordination with a proposal for who should take which tasks.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "claude-code-3 taking tasks 5,6,7 (+4 if nobody has)."
+    },
+    {
+      "field": "addressed_to",
+      "text": "Suggest c1: tasks 1,2; c2: task 3,4."
+    }
+  ]
+}

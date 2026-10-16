@@ -1,0 +1,79 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_c2ffd479478243f0a4393066017b6953",
+  "trace_id": "trace_34cf0b34ad7096e4",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:41.302797+00:00",
+    "started_at": "2026-10-12T18:54:41.302214+00:00",
+    "completed_at": "2026-10-12T18:54:41.303439+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_E1z2...",
+      "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 1,
+        "participantCount": 1,
+        "totalWords": 130,
+        "averageWordsPerMessage": 130.0,
+        "p95WordsPerMessage": 130,
+        "durationMs": 0,
+        "contributionBalance": 100.0,
+        "turnSwitchRate": 0,
+        "medianResponseLatencyMs": null,
+        "questionMessages": 1,
+        "questionFollowUpRate": 0.0,
+        "links": 0,
+        "codeBlocks": 2
+      },
+      "participants": [
+        {
+          "id": "user Facs",
+          "sender": "user",
+          "instance": "Facs",
+          "runtime": "harbor",
+          "messages": 1,
+          "words": 130,
+          "questions": 1,
+          "agreement": 0,
+          "challenge": 1,
+          "coordination": 0
+        }
+      ],
+      "transitions": [],
+      "failureModes": [
+        {
+          "id": "dominance",
+          "severity": "high",
+          "title": "Contribution dominance",
+          "detail": "user Facs produced 100.0% of all messages.",
+          "threshold": "Triggered when one agent produces at least 40% of messages.",
+          "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+        }
+      ]
+    }
+  },
+  "error": null
+}

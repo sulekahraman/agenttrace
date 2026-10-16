@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "coordination",
+    "proposal"
+  ],
+  "replies_to": [
+    5
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message mainly delivers an updated solution/answer and asks the verifier to check it. It also coordinates a handoff by announcing the change and requesting verification, with some argumentative proposal about why B fits best.",
+  "evidence": [
+    {
+      "field": "answer_change",
+      "text": "Changing my answer from D to B."
+    },
+    {
+      "field": "verification_request",
+      "text": "@Verifier please check."
+    },
+    {
+      "field": "artifact",
+      "text": "Written: /app/output/answer.txt (contains 'B')."
+    }
+  ]
+}

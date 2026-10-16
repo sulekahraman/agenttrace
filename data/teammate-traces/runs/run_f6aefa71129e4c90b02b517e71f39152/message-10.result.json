@@ -1,0 +1,28 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    9
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message اعتراضs/corrects another agent’s action (“overwrote… wrong”), reports a remediation (“I restored it”), and instructs future behavior (“Please don't touch…”). This is primarily a critique/disagreement with coordination and a status update component.",
+  "evidence": [
+    {
+      "field": "critique_disagreement",
+      "text": "c2 overwrote recover.json with word=null (wrong)."
+    },
+    {
+      "field": "status_update",
+      "text": "I restored it + regex.txt."
+    },
+    {
+      "field": "coordination",
+      "text": "Please don't touch 4-7 files again."
+    }
+  ]
+}

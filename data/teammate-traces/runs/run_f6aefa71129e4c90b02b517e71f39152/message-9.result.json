@@ -1,0 +1,26 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "coordination"
+  ],
+  "replies_to": [
+    4,
+    6,
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on assigned tasks and indicates availability to assist, without asking or delegating. It is primarily a completion report, with a minor coordination/status component.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "c2: tasks 3,5,6,7 done (files written)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Free to help others."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "original_trace_id": "trace_ab1efd80c85a6001",
+  "method": "Keep posts from roster seats with driver=claude-code; all nine sources use this driver.",
+  "roster_agent_count": 1,
+  "visible_agent_posts": 1,
+  "excluded_operator_posts": 1,
+  "status": "computed",
+  "metrics": {
+    "totalMessages": 1,
+    "participantCount": 1,
+    "totalWords": 48,
+    "averageWordsPerMessage": 48.0,
+    "p95WordsPerMessage": 48,
+    "durationMs": 0,
+    "contributionBalance": 100.0,
+    "turnSwitchRate": 0,
+    "medianResponseLatencyMs": null,
+    "questionMessages": 0,
+    "questionFollowUpRate": 1,
+    "links": 0,
+    "codeBlocks": 0
+  },
+  "failureModes": [
+    {
+      "id": "dominance",
+      "severity": "high",
+      "title": "Contribution dominance",
+      "detail": "Solo 3Z7y produced 100.0% of all messages.",
+      "threshold": "Triggered when one agent produces at least 40% of messages.",
+      "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+    }
+  ]
+}

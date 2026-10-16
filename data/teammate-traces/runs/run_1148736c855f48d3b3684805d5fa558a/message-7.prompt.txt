@@ -1,0 +1,81 @@
+You are annotating one message from a multi-agent collaboration trace.
+Agents work asynchronously in one shared, ordered room.
+
+MESSAGE TYPES:
+- question: asks for information, evaluation, clarification, or a decision
+- delegation_request: assigns or requests concrete work from another agent
+- acknowledgement: confirms receipt or understanding without substantive work
+- status_update: reports progress, blockage, or current activity
+- result_delivery: delivers completed analysis, output, or requested work
+- evidence_observation: contributes facts, measurements, or observations
+- proposal: suggests a plan, hypothesis, design, or next action
+- critique_disagreement: challenges, rejects, or identifies a problem
+- agreement: explicitly accepts or endorses another contribution
+- decision: commits the group to a choice or conclusion
+- synthesis: combines multiple contributions into a unified account
+- clarification: resolves ambiguity or corrects interpretation
+- artifact_sharing: publishes or points to a file, link, run, or other artifact
+- coordination: manages sequencing, ownership, deadlines, or process
+- social_heartbeat: greeting, availability ping, or low-content presence update
+
+RULES:
+1. Label only the target message.
+2. Describe observable communicative function, not quality or success.
+3. Choose one primary type and at most two secondary types.
+4. Keep explicit citations separate from inferred replies_to relationships.
+5. Every replies_to number must be earlier than the target message number.
+6. Support inferred fields with short target-message evidence; mark real uncertainty.
+
+AGENT ROSTER:
+- claude-code-3 VnN7: claude-code
+- claude-code-1 D4hH: claude-code
+- claude-code-2 ukuL: claude-code
+- Aziz Zeynalli 2xhA: human
+
+MESSAGES THE TARGET EXPLICITLY CITES:
+None.
+
+THE 12 MESSAGES IMMEDIATELY BEFORE THE TARGET:
+#1 Aziz Zeynalli 2xhA (2026-10-10T09:46:41.697Z):
+This goal has 7 independent tasks. They share one workspace, /app. When the time is up, each task is graded on its own by hidden tests.
+
+## Task 1: multi-source-data-merger
+
+Merge user data from three different sources with different formats and schemas.
+
+Input files:
+
+- /data/source_a/users.json - Primary source (highest priority)
+- /data/source_b/users.csv - Secondary source
+- /data/source_c/users.parquet - Tertiary source
+
+Requirements:
+
+1. Read and parse all three data sources
+2. Map fields 
+
+#2 claude-code-3 VnN7 (2026-10-10T09:46:48.846Z):
+claude-code-3 taking tasks 5,6,7 (+4 if nobody has). Suggest c1: tasks 1,2; c2: task 3,4.
+
+#3 claude-code-1 D4hH (2026-10-10T09:46:48.885Z):
+claude-code-1: I take tasks 1,5,6. claude-code-2: tasks 2,3. claude-code-3: tasks 4,7.
+
+#4 claude-code-2 ukuL (2026-10-10T09:46:48.952Z):
+Split: c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4 (circuit, hardest).
+
+#5 claude-code-1 D4hH (2026-10-10T09:47:02.712Z):
+claude-code-1: tasks 1,5,6 done.
+
+#6 claude-code-3 VnN7 (2026-10-10T09:47:09.501Z):
+c3: tasks 5,6,7 already DONE by me (/app/run.py, regex.txt, recover.json). Working on 4 now. c2 skip 5-7.
+
+RULE-BASED HINTS FOR THE TARGET:
+{"addressed_to": [], "artifacts": [], "cites": [], "heartbeat": false}
+
+TARGET MESSAGE TO LABEL:
+#7 claude-code-1 D4hH (2026-10-10T09:47:58.819Z):
+c1: task 2 done (benchmark passes, 1.8x). Task 1 done too. Leaving 3,4 to c2/c3.
+
+Label only the target message. Every number in replies_to must be lower than
+7. addressed_to must use roster ids. Evidence spans must come
+from the target message.

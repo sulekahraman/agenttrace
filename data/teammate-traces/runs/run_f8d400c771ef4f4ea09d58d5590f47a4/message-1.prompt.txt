@@ -1,0 +1,54 @@
+You are annotating one message from a multi-agent collaboration trace.
+Agents work asynchronously in one shared, ordered room.
+
+MESSAGE TYPES:
+- question: asks for information, evaluation, clarification, or a decision
+- delegation_request: assigns or requests concrete work from another agent
+- acknowledgement: confirms receipt or understanding without substantive work
+- status_update: reports progress, blockage, or current activity
+- result_delivery: delivers completed analysis, output, or requested work
+- evidence_observation: contributes facts, measurements, or observations
+- proposal: suggests a plan, hypothesis, design, or next action
+- critique_disagreement: challenges, rejects, or identifies a problem
+- agreement: explicitly accepts or endorses another contribution
+- decision: commits the group to a choice or conclusion
+- synthesis: combines multiple contributions into a unified account
+- clarification: resolves ambiguity or corrects interpretation
+- artifact_sharing: publishes or points to a file, link, run, or other artifact
+- coordination: manages sequencing, ownership, deadlines, or process
+- social_heartbeat: greeting, availability ping, or low-content presence update
+
+RULES:
+1. Label only the target message.
+2. Describe observable communicative function, not quality or success.
+3. Choose one primary type and at most two secondary types.
+4. Keep explicit citations separate from inferred replies_to relationships.
+5. Every replies_to number must be earlier than the target message number.
+6. Support inferred fields with short target-message evidence; mark real uncertainty.
+
+AGENT ROSTER:
+- user xK65: harbor
+- Solo 3Z7y: claude-code
+
+MESSAGES THE TARGET EXPLICITLY CITES:
+None.
+
+THE 12 MESSAGES IMMEDIATELY BEFORE THE TARGET:
+None.
+
+RULE-BASED HINTS FOR THE TARGET:
+{"addressed_to": ["Solo 3Z7y"], "artifacts": [], "cites": [], "heartbeat": false}
+
+TARGET MESSAGE TO LABEL:
+#1 user xK65 (2026-10-10T04:19:14.682Z):
+Task for this Room, from the user:
+
+A farmer is buying feed for his alpacas. He buys a variety of hay, corns, cucumbers and wheats. Since wheats are a rare treat, he only buys four 6-kg boxes of them for the whole stable. He only wants enough cucumbers to feed the alpacas while the vegetables are fresh, so he buys fifteen 8-kg bags. Hay are the main diet of his alpacas, so he buys thirty two 43-kg packs. Corns are a staple to supplement the hay, so he buys twenty 19-kg sacks. However, since the farmer bought in bulk, the store gave him a 15% discount on the total price. If his farm truck can carry 190 kgs at a time, how many trips does the farmer need to transport all the feed?
+
+Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`.
+
+Roster, assigned by the Room's operator: Solo. The run ends when Solo posts a line starting with `VERDICT: PASS`.
+
+Label only the target message. Every number in replies_to must be lower than
+1. addressed_to must use roster ids. Evidence spans must come
+from the target message.

@@ -1,0 +1,33 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns task ownership across agents and gives a brief action prompt, functioning as process coordination. It proposes a split of the remaining work and issues a directive to proceed.",
+  "evidence": [
+    {
+      "field": "coordination",
+      "text": "Split: c1=tasks 1,5; c2=tasks 2,7; c3=tasks 3,6; c4=task 4."
+    },
+    {
+      "field": "proposal",
+      "text": "Split: c1=tasks 1,5; c2=tasks 2,7; c3=tasks 3,6; c4=task 4."
+    },
+    {
+      "field": "directive",
+      "text": "Go."
+    }
+  ]
+}

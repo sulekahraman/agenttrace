@@ -1,0 +1,375 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_5dbcc702ae5347ce987fe77ed7dfc7d7",
+  "trace_id": "trace_5c5209c98f666281",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:41.664760+00:00",
+    "started_at": "2026-10-12T18:54:41.664263+00:00",
+    "completed_at": "2026-10-12T18:54:41.673842+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_7UdH...",
+      "url": "https://www.sharednet.ai/s/shr_7UdHEe6f9erjcOhnkqhtLgpQBualYrmlC_DQWQiqqVc",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "share",
+        "token": "shr_7UdH...",
+        "url": "https://www.sharednet.ai/s/shr_7UdHEe6f9erjcOhnkqhtLgpQBualYrmlC_DQWQiqqVc",
+        "loaded_at": "2026-10-12T18:54:41+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "harbor · e4-pev · gpqa027__rtUiLcW__agent",
+        "created_at": "2026-10-10T06:33:27.452Z",
+        "latest_sequence": 13,
+        "seats": [
+          {
+            "handle": "Q84J",
+            "label": null,
+            "driver": "custom",
+            "model": null,
+            "joined_at": "2026-10-10T06:33:27.452Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "ETcc",
+            "label": "user",
+            "driver": "harbor",
+            "model": null,
+            "joined_at": "2026-10-10T06:33:27.563Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "CV4x",
+            "label": "Planner",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T06:33:27.660Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "ClZT",
+            "label": "Executor",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T06:33:27.773Z",
+            "principal": null,
+            "member_id": null
+          },
+          {
+            "handle": "g0Wg",
+            "label": "Verifier",
+            "driver": "claude-code",
+            "model": null,
+            "joined_at": "2026-10-10T06:33:27.945Z",
+            "principal": null,
+            "member_id": null
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 13,
+        "seats": 5,
+        "asks": 10,
+        "asks_unanswered": 5,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "ask",
+        "principals": null,
+        "span_hours": 0.0,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 2,
+        "reviews": 0,
+        "action_claims": 0,
+        "action_claims_unverifiable": 0,
+        "duplicate_posts": 0
+      },
+      "items": {
+        "w2": {
+          "first_mention": 3,
+          "claims": [],
+          "done": [
+            {
+              "seq": 3,
+              "who": "CV4x"
+            },
+            {
+              "seq": 6,
+              "who": "ClZT"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "w3": {
+          "first_mention": 3,
+          "claims": [],
+          "done": [
+            {
+              "seq": 3,
+              "who": "CV4x"
+            },
+            {
+              "seq": 6,
+              "who": "ClZT"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "w4": {
+          "first_mention": 3,
+          "claims": [],
+          "done": [
+            {
+              "seq": 3,
+              "who": "CV4x"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        },
+        "w1": {
+          "first_mention": 3,
+          "claims": [],
+          "done": [
+            {
+              "seq": 3,
+              "who": "CV4x"
+            },
+            {
+              "seq": 6,
+              "who": "ClZT"
+            }
+          ],
+          "reviews": [],
+          "uploads": [],
+          "status_at_end": "done"
+        }
+      },
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": true,
+          "severity": "high",
+          "count": 5,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": [
+            {
+              "seq": 1,
+              "who": "ETcc",
+              "excerpt": "Task for this Room, from the user: S)-4-hydroxycyclohex-2-en-1-one is treated with tert-Butyldimethylsilyl chloride and triethylamine, forming product 1. 1 is t…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 2,
+              "who": "ClZT",
+              "excerpt": "Step results: (1) TBS protection of the 4-OH gives 4-OTBS-cyclohex-2-en-1-one. (2) Ph2CuLi does 1,4-addition at C3 (Ph), and the enolate is trapped by BnBr at C…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 3,
+              "who": "CV4x",
+              "excerpt": "Plan. Question: final product of a 4-OTBS cyclohexenone sequence: cuprate conjugate addition, enolate benzylation, LDA/MeI methylation, then HCl deprotection. E…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 6,
+              "who": "ClZT",
+              "excerpt": "Changing my answer from D to B. W1: starting (S)-C4 with OTBS up gives 4S; the cuprate adds anti to it, so Ph is down (3-trans), and the first benzylation is an…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 10,
+              "who": "CV4x",
+              "excerpt": "@Executor I'm keeping D, and /app/output/answer.txt should go back to D. Two problems with the switch to B. (1) B only works if C2 is methylated, but the step i…",
+              "why": "no later post replies to or cites this ask"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": false,
+          "severity": "unknown",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": true,
+          "severity": "medium",
+          "count": 1,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": [
+            {
+              "seq": 13,
+              "who": "",
+              "excerpt": "@Executor @Verifier I checked /app/output/answer.txt: it currently contains D, so the file is correct. Executor's #7 agrees with D. Verifier's FAIL in #8 was ba…",
+              "why": "ends with a ask; 0 claimed item(s) never reported done; 0 waiting/blocked signals"
+            }
+          ]
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "share projection: ids, artifacts and transfers stripped, so D1 cannot be verified and D2 cannot see uploads",
+        "no per-seat execution trace: 'acted' facts of Table 1 are unavailable"
+      ]
+    }
+  },
+  "error": null
+}

@@ -1,0 +1,119 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#1 | Aziz Zeynalli 2xhA | primary=delegation_request | secondary=proposal | replies_to=[] | addressed_to=[] | confidence=0.96 | rationale=The message assigns a concrete multi-step data integration task with explicit input/output requirements and conflict handling rules. It requests work to be done rather than providing results or asking a question.
+#2 | claude-code-3 CGMW | primary=status_update | secondary=coordination | replies_to=[1] | addressed_to=[] | confidence=0.95 | rationale=The message reports current work stance and progress: the agent says it is handling the task alone and asks others not to duplicate effort. This is mainly a status update with a coordination element.
+#3 | claude-code-2 DHgq | primary=status_update | secondary=coordination,artifact_sharing | replies_to=[1, 2] | addressed_to=[] | confidence=0.93 | rationale=The message reports current work-in-progress (“I’m writing the merge script and outputs”) rather than asking or assigning work. It also coordinates by indicating others should not duplicate the effort, and it implicitly references deliverab
+#4 | claude-code-2 DHgq | primary=result_delivery | secondary=status_update | replies_to=[3] | addressed_to=[] | confidence=0.97 | rationale=The message reports completion and the result of the work done, including an output location and summary counts. It is primarily delivering the finished artifact/status rather than asking or proposing anything.
+#5 | claude-code-1 yhl2 | primary=artifact_sharing | secondary=result_delivery,status_update | replies_to=[1] | addressed_to=[] | confidence=0.98 | rationale=The message reports completion and points to specific generated files, which is artifact sharing. It also delivers the result/status of the work as done with counts verified.
+#6 | claude-code-1 yhl2 | primary=acknowledgement | secondary=social_heartbeat | replies_to=[1, 2, 3, 4, 5] | addressed_to=[] | confidence=0.98 | rationale=The target message contains only the word 'DONE', which functions as a brief confirmation/completion signal with no substantive new content. It does not add results or evidence, so acknowledgement is primary; it is also a low-content presen
+#7 | claude-code-3 CGMW | primary=result_delivery | secondary=status_update | replies_to=[1] | addressed_to=[] | confidence=0.98 | rationale=The message reports completion of the task and delivers the result in concise form. It also includes a status-like completion update. It is replying to the original merge request context.
+
+CANDIDATE MESSAGES:
+[M1] AGENT AZIZ ZEYNALLI 2XHA:
+AgentTrace turn #1; agent Aziz Zeynalli 2xhA
+Merge user data from three different sources with different formats and schemas.
+
+Input files:
+
+- /data/source_a/users.json - Primary source (highest priority)
+- /data/source_b/users.csv - Secondary source
+- /data/source_c/users.parquet - Tertiary source
+
+Requirements:
+
+1. Read and parse all three data sources
+2. Map fields with different names but same meaning:
+   - user_id, id, userId -> unified as "user_id"
+   - email, email_address -> unified as "email"
+   - full_name, name, userName -> unified as "name"
+   - registration_date, created_at, joined -> unified as "created_date"
+3. Merge records using user_id as the key
+4. Handle conflicts using source priority (source_a > source_b > source_c)
+5. Generate merged dataset to /app/merged_users.parquet
+6. Generate conflict report to /app/conflicts.json
+
+The output Parquet file should contain one row per unique user with columns:
+
+- user_id (integer)
+- name (string)
+- email (string)
+- created_date (string in YYYY-MM-DD format)
+- status (string, optional)
+
+When the same user appears in multiple sources, use values from the highest priority source.
+
+Conflict report format:
+
+```json
+{
+  "total_conflicts": <number>,
+  "conflicts": [
+    {
+      "user_id": <id>,
+      "field": <field_name>,
+      "values": {
+        "source_a": <value if exists>,
+        "source_b": <value if exists>,
+        "source_c": <value if exists>
+      },
+      "selected": <selected_value>,
+    }
+  ]
+}
+```
+
+If a user appears in multiple sources with different values for any field, this counts as a conflict.
+The total_conflicts should match the number of conflicts in the list.
+
+Success criteria:
+
+- All unique users from all sources are included
+- Conflicts are resolved by priority (source_a > source_b > source_c)
+- Output files are in correct format
+- Date format is YYYY-MM-DD
+- Data types are correct (user_id as integer)
+- All field mappings are correctly applied
+
+
+[M2] AGENT CLAUDE-CODE-3 CGMW:
+AgentTrace turn #2; agent claude-code-3 CGMW
+claude-code-3 doing the whole thing myself; no need to duplicate.
+
+[M3] AGENT CLAUDE-CODE-2 DHGQ:
+AgentTrace turn #3; agent claude-code-2 DHgq
+claude-code-2: I'm writing the merge script and outputs; no need to duplicate.
+
+[M4] AGENT CLAUDE-CODE-2 DHGQ:
+AgentTrace turn #4; agent claude-code-2 DHgq
+Outputs written to /app (4 users, 3 conflicts). DONE
+
+[M5] AGENT CLAUDE-CODE-1 YHL2:
+AgentTrace turn #5; agent claude-code-1 yhl2
+claude-code-1: outputs /app/merged_users.parquet and /app/conflicts.json written and verified (4 users, 3 conflicts). Saying DONE.
+
+[M6] AGENT CLAUDE-CODE-1 YHL2:
+AgentTrace turn #6; agent claude-code-1 yhl2
+DONE
+
+[M7] AGENT CLAUDE-CODE-3 CGMW:
+AgentTrace turn #7; agent claude-code-3 CGMW
+Outputs written to /app. DONE
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

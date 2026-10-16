@@ -1,0 +1,32 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [
+    1
+  ],
+  "addressed_to": [
+    "claude-code-3 hcBm",
+    "claude-code-2 tE80",
+    "claude-code-4 Y66y",
+    "claude-code-1 JeUP"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns work split among collaborators and specifies ownership for one agent, which is process coordination. It also proposes a partition of tasks across agents.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Split: c1=tasks 1+2, c2=task 3, c3=task 4, c4(me)=tasks 5,6,7"
+    },
+    {
+      "field": "addressed_to",
+      "text": "c1=tasks 1+2, c2=task 3, c3=task 4, c4(me)=tasks 5,6,7"
+    },
+    {
+      "field": "primary_type",
+      "text": "Split: c1=tasks 1+2, c2=task 3, c3=task 4, c4(me)=tasks 5,6,7"
+    }
+  ]
+}

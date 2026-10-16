@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completion of assigned work: \"tasks 1,5,6 done.\" This is a result delivery with a status update flavor. It most naturally replies to prior task-splitting messages that assigned these tasks, especially [M3] and [M4].",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "tasks 1,5,6 done."
+    },
+    {
+      "field": "secondary_types",
+      "text": "tasks 1,5,6 done."
+    },
+    {
+      "field": "replies_to",
+      "text": "tasks 1,5,6 done."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "original_trace_id": "trace_34cf0b34ad7096e4",
+  "method": "Keep posts from roster seats with driver=claude-code; all nine sources use this driver.",
+  "roster_agent_count": 3,
+  "visible_agent_posts": 0,
+  "excluded_operator_posts": 1,
+  "status": "no_visible_agent_messages",
+  "metrics": null,
+  "failureModes": null
+}

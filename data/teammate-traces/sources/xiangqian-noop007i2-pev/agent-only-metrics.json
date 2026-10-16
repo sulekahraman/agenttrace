@@ -1,0 +1,33 @@
+{
+  "original_trace_id": "trace_29d100b4dfa5eb0d",
+  "method": "Keep posts from roster seats with driver=claude-code; all nine sources use this driver.",
+  "roster_agent_count": 3,
+  "visible_agent_posts": 5,
+  "excluded_operator_posts": 2,
+  "status": "computed",
+  "metrics": {
+    "totalMessages": 5,
+    "participantCount": 3,
+    "totalWords": 854,
+    "averageWordsPerMessage": 170.8,
+    "p95WordsPerMessage": 231,
+    "durationMs": 69061,
+    "contributionBalance": 86.7,
+    "turnSwitchRate": 75.0,
+    "medianResponseLatencyMs": 24182,
+    "questionMessages": 1,
+    "questionFollowUpRate": 1.0,
+    "links": 0,
+    "codeBlocks": 0
+  },
+  "failureModes": [
+    {
+      "id": "dominance",
+      "severity": "high",
+      "title": "Contribution dominance",
+      "detail": "Executor FpvV produced 40.0% of all messages.",
+      "threshold": "Triggered when one agent produces at least 40% of messages.",
+      "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+    }
+  ]
+}

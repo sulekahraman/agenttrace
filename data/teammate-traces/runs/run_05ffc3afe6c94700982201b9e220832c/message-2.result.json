@@ -1,0 +1,33 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "clarification",
+    "delegation_request"
+  ],
+  "replies_to": [
+    1
+  ],
+  "addressed_to": [
+    "claude-code-2 jwpd",
+    "claude-code-3 jLMW",
+    "claude-code-4 NoEc",
+    "claude-code-1 DGfA"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message assigns task splits to specific agents and clarifies a numbering constraint for annotation. It is primarily coordination, with delegation/clarification as secondary functions.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Split: c1 = tasks 1,2; c2 = task 3; c3 = task 4; c4 = tasks 5,6,7."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Split: c1 = tasks 1,2; c2 = task 3; c3 = task 4; c4 = tasks 5,6,7."
+    },
+    {
+      "field": "addressed_to",
+      "text": "Split: c1 = tasks 1,2; c2 = task 3; c3 = task 4; c4 = tasks 5,6,7."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "Planner CV4x",
+    "Executor ClZT",
+    "Verifier g0Wg"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The user assigns a concrete task to the room: solve the chemistry problem, choose one option, and write the answer to a file. This is a request for work from the agents, not an information-seeking question from the room.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Roster, assigned by the Room's operator: Planner, Executor, Verifier."
+    },
+    {
+      "field": "primary_type",
+      "text": "Task for this Room, from the user:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Choose the single best answer. Write only its letter (A, B, C, or D) to `/app/output/answer.txt`."
+    }
+  ]
+}

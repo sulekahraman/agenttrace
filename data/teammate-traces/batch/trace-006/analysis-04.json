@@ -1,0 +1,146 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_a515c4485fb54f9798189bb71f82e82a",
+  "trace_id": "trace_29d100b4dfa5eb0d",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:41.182169+00:00",
+    "started_at": "2026-10-12T18:54:41.181596+00:00",
+    "completed_at": "2026-10-12T18:54:41.183839+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_a6on...",
+      "url": "https://www.sharednet.ai/s/shr_a6onM9Sz6CEosSM1YqHU5vniasnPJbI13Yh5hDeRiH8",
+      "loaded_at": "2026-10-12T18:54:41+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 7,
+        "participantCount": 4,
+        "totalWords": 1033,
+        "averageWordsPerMessage": 147.6,
+        "p95WordsPerMessage": 231,
+        "durationMs": 84038,
+        "contributionBalance": 89.3,
+        "turnSwitchRate": 100.0,
+        "medianResponseLatencyMs": 12980.5,
+        "questionMessages": 2,
+        "questionFollowUpRate": 1.0,
+        "links": 0,
+        "codeBlocks": 2
+      },
+      "participants": [
+        {
+          "id": "Executor FpvV",
+          "sender": "Executor",
+          "instance": "FpvV",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 373,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 2,
+          "coordination": 1
+        },
+        {
+          "id": "Verifier Ae7i",
+          "sender": "Verifier",
+          "instance": "Ae7i",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 302,
+          "questions": 1,
+          "agreement": 0,
+          "challenge": 1,
+          "coordination": 1
+        },
+        {
+          "id": "user A85q",
+          "sender": "user",
+          "instance": "A85q",
+          "runtime": "harbor",
+          "messages": 2,
+          "words": 179,
+          "questions": 1,
+          "agreement": 0,
+          "challenge": 1,
+          "coordination": 1
+        },
+        {
+          "id": "Planner IJs3",
+          "sender": "Planner",
+          "instance": "IJs3",
+          "runtime": "claude-code",
+          "messages": 1,
+          "words": 179,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        }
+      ],
+      "transitions": [
+        {
+          "source": "user A85q",
+          "target": "Planner IJs3",
+          "count": 1
+        },
+        {
+          "source": "Planner IJs3",
+          "target": "Executor FpvV",
+          "count": 1
+        },
+        {
+          "source": "Executor FpvV",
+          "target": "Verifier Ae7i",
+          "count": 1
+        },
+        {
+          "source": "Verifier Ae7i",
+          "target": "user A85q",
+          "count": 1
+        },
+        {
+          "source": "user A85q",
+          "target": "Verifier Ae7i",
+          "count": 1
+        },
+        {
+          "source": "Verifier Ae7i",
+          "target": "Executor FpvV",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "none",
+          "severity": "low",
+          "title": "No strong structural flag",
+          "detail": "The deterministic thresholds did not identify a strong failure-mode signal.",
+          "threshold": "No configured threshold was crossed.",
+          "evidence": "This does not imply the collaboration was successful; inspect the transcript and task outcome."
+        }
+      ]
+    }
+  },
+  "error": null
+}

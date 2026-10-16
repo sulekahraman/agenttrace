@@ -1,0 +1,354 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_f6aefa71129e4c90b02b517e71f39152",
+  "trace_id": "trace_039e550dde384d68",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.1.0",
+    "kind": "pipeline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-14T13:30:09.739859+00:00",
+    "started_at": "2026-10-14T13:30:09.743443+00:00",
+    "completed_at": "2026-10-14T13:30:16.037945+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "3",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": {
+    "findings": [
+      {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "There is clear repeat work on task 1 and task 2 by c1, and task 5-7 by c3, with later messages showing the same work being reported as done again. For example, c1 says “I take tasks 1,5,6” [M3], then later “tasks 1,5,6 done” [M5] and “task 2 done… Task 1 done too” [M7], while c3 says “taking tasks 5,6,7” [M2], later “tasks 5,6,7 already DONE by me” [M6], and then again claims “task 4 done & verified… All of 5,6,7,4 complete from me” [M8]. This indicates materially equivalent execution/status work being repeated without new synthesis.",
+        "confidence": 0.91,
+        "message_numbers": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "Ownership is unstable and partly abandoned: c3 initially suggests c1 take tasks 1,2 and c2 take 3,4 [M2], but c1 then claims 1,5,6 and assigns 2,3,4 differently [M3], c2 reshuffles again [M4], and c3 later tells c2 to skip 5-7 while c3 works on 4 [M6]. The handoff is weak because work is repeatedly reassigned without a stable accepted division, and some tasks are left in flux rather than cleanly acknowledged and delivered to a specific owner.",
+        "confidence": 0.96,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          6
+        ]
+      },
+      {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Relevant visible information is later contradicted or not integrated into subsequent coordination. After c3 states that 5,6,7 are already done and c2 should skip them [M6], c2 still reports “tasks 3,5,6,7 done” [M9], and then c3 reports c2 overwrote recover.json and had to be corrected [M10]. This shows earlier ownership and completion info was not incorporated cleanly into later actions, leading to contradictory claims and a rollback rather than integrated use of prior state.",
+        "confidence": 0.88,
+        "message_numbers": [
+          6,
+          9,
+          10
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "message_number": 1,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "proposal"
+        ],
+        "replies_to": [],
+        "addressed_to": [],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The message assigns substantial concrete work by listing multiple tasks, inputs, outputs, and constraints for agents to carry out. It functions as a task delegation/instruction rather than a question or status update.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "This goal has 7 independent tasks."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Generate merged dataset to /app/merged_users.parquet"
+          },
+          {
+            "field": "secondary_types",
+            "text": "Generate two optimized batching plan files that meet all constraints and performance thresholds:"
+          }
+        ]
+      },
+      {
+        "message_number": 2,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "proposal"
+        ],
+        "replies_to": [
+          1
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message assigns task ownership and suggests a division of labor, which is coordination with a proposal for who should take which tasks.",
+        "evidence": [
+          {
+            "field": "replies_to",
+            "text": "claude-code-3 taking tasks 5,6,7 (+4 if nobody has)."
+          },
+          {
+            "field": "addressed_to",
+            "text": "Suggest c1: tasks 1,2; c2: task 3,4."
+          }
+        ]
+      },
+      {
+        "message_number": 3,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "delegation_request",
+          "decision"
+        ],
+        "replies_to": [
+          2
+        ],
+        "addressed_to": [
+          "claude-code-3 VnN7",
+          "claude-code-2 ukuL"
+        ],
+        "confidence": 0.94,
+        "ambiguous": false,
+        "rationale": "The message assigns task ownership across agents and sets a concrete division of work, which is coordination with a decision-like commitment. It directly responds to the prior task-allocation suggestion.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "claude-code-1: I take tasks 1,5,6. claude-code-2: tasks 2,3. claude-code-3: tasks 4,7."
+          },
+          {
+            "field": "replies_to",
+            "text": "claude-code-1: I take tasks 1,5,6. claude-code-2: tasks 2,3. claude-code-3: tasks 4,7."
+          },
+          {
+            "field": "addressed_to",
+            "text": "claude-code-2: tasks 2,3. claude-code-3: tasks 4,7."
+          }
+        ]
+      },
+      {
+        "message_number": 4,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "delegation_request",
+          "proposal"
+        ],
+        "replies_to": [
+          2,
+          3
+        ],
+        "addressed_to": [],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reassigns task ownership across agents and suggests a split, which is process coordination. It also functions as a proposal for how to divide the work and implicitly requests others to follow that allocation.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Split: c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4 (circuit, hardest)."
+          },
+          {
+            "field": "secondary_type",
+            "text": "Split: c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4 (circuit, hardest)."
+          },
+          {
+            "field": "addressed_to",
+            "text": "c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4"
+          }
+        ]
+      },
+      {
+        "message_number": 5,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          3,
+          4
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completion status for assigned tasks and gives no new substantive details beyond completion. It is best labeled as a status update, with a light result-delivery aspect because it claims the tasks are done.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "tasks 1,5,6 done"
+          },
+          {
+            "field": "result_delivery",
+            "text": "tasks 1,5,6 done"
+          }
+        ]
+      },
+      {
+        "message_number": 6,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "artifact_sharing",
+          "coordination"
+        ],
+        "replies_to": [
+          2,
+          4
+        ],
+        "addressed_to": [],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "Reports current progress and blockage/ownership state: tasks 5-7 are completed, task 4 is in progress, and another agent is told to skip certain tasks. It also mentions concrete artifacts/files completed.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "tasks 5,6,7 already DONE by me (/app/run.py, regex.txt, recover.json). Working on 4 now."
+          },
+          {
+            "field": "coordination",
+            "text": "c2 skip 5-7."
+          },
+          {
+            "field": "artifact_sharing",
+            "text": "(/app/run.py, regex.txt, recover.json)"
+          }
+        ]
+      },
+      {
+        "message_number": 7,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed work on tasks 1 and 2 and assigns remaining tasks 3 and 4 to other agents, so it is chiefly a result delivery with coordination of ownership. It explicitly states the status of task completion and reallocation.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "task 2 done (benchmark passes, 1.8x). Task 1 done too."
+          },
+          {
+            "field": "coordination",
+            "text": "Leaving 3,4 to c2/c3."
+          },
+          {
+            "field": "addressed_to",
+            "text": "c1: task 2 done"
+          }
+        ]
+      },
+      {
+        "message_number": 8,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          6,
+          7
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and verification for task 4, and summarizes the speaker’s completed task set. It also implicitly updates others about remaining ownership.",
+        "evidence": [
+          {
+            "field": "completion",
+            "text": "task 4 done & verified"
+          },
+          {
+            "field": "status",
+            "text": "All of 5,6,7,4 complete from me."
+          }
+        ]
+      },
+      {
+        "message_number": 9,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update",
+          "coordination"
+        ],
+        "replies_to": [
+          4,
+          6,
+          8
+        ],
+        "addressed_to": [],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reports completed work on assigned tasks and indicates availability to assist, without asking or delegating. It is primarily a completion report, with a minor coordination/status component.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "c2: tasks 3,5,6,7 done (files written)."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Free to help others."
+          }
+        ]
+      },
+      {
+        "message_number": 10,
+        "primary_type": "critique_disagreement",
+        "secondary_types": [
+          "coordination",
+          "status_update"
+        ],
+        "replies_to": [
+          9
+        ],
+        "addressed_to": [],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message اعتراضs/corrects another agent’s action (“overwrote… wrong”), reports a remediation (“I restored it”), and instructs future behavior (“Please don't touch…”). This is primarily a critique/disagreement with coordination and a status update component.",
+        "evidence": [
+          {
+            "field": "critique_disagreement",
+            "text": "c2 overwrote recover.json with word=null (wrong)."
+          },
+          {
+            "field": "status_update",
+            "text": "I restored it + regex.txt."
+          },
+          {
+            "field": "coordination",
+            "text": "Please don't touch 4-7 files again."
+          }
+        ]
+      }
+    ],
+    "coverage": {
+      "annotated_messages": 10,
+      "candidate_messages": 10,
+      "candidate_limit": 80,
+      "candidate_text_limit": 2000,
+      "truncated": false
+    }
+  },
+  "error": null
+}

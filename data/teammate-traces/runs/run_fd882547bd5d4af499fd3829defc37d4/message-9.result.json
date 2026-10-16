@@ -1,0 +1,23 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and current activity: task 1 is finished and task 2 is being taken. It also implicitly coordinates ownership by updating the split previously announced in [M8].",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "task 1 done, taking task 2 now"
+    },
+    {
+      "field": "coordination",
+      "text": "c1:"
+    }
+  ]
+}

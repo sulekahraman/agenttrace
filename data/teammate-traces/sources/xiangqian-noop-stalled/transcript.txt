@@ -1,0 +1,8 @@
+#1 Facs 2026-10-10T04:48:27.129Z
+Task for this Room, from the user:
+
+Kai is selling brownie and orange pie for a fundraiser. On Tuesday, he sold 21 boxes of brownie and 18 fewer boxes of orange pie, than on Wednesday. On Wednesday, he sold 13 more boxes of brownies than on Tuesday and 27 boxes of orange pie. If the brownie cost ¥8 and the orange pie cost ¥28, and Kai had originally baked enough to fill 40 boxes of orange pie for Wednesday but sold only what is stated, how much did Kai earn for two days?
+
+Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`.
+
+Roster, assigned by the Room's operator: Planner, Executor, Verifier. The run ends when Verifier posts a line starting with `VERDICT: PASS`.

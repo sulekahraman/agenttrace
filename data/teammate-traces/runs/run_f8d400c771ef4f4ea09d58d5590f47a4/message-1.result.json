@@ -1,0 +1,28 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "Solo 3Z7y"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The user assigns a concrete task to the other agent: compute the answer and write it to a file. It is a request for work rather than a question-answer exchange.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Roster, assigned by the Room's operator: Solo."
+    },
+    {
+      "field": "delegation_request",
+      "text": "Task for this Room, from the user:"
+    },
+    {
+      "field": "delegation_request",
+      "text": "Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`."
+    }
+  ]
+}

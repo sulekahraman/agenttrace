@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "claude-code-3 jLMW",
+    "claude-code-2 jwpd",
+    "claude-code-4 NoEc",
+    "claude-code-1 DGfA"
+  ],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message assigns multiple concrete tasks and specifies required outputs, files, and constraints for the team to execute. It is a work assignment rather than a question or result.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "This goal has 7 independent tasks."
+    },
+    {
+      "field": "coordination",
+      "text": "They share one workspace, /app. When the time is up, each task is graded on its own by hidden tests."
+    },
+    {
+      "field": "delegation_request",
+      "text": "Generate two optimized batching plan files that meet all constraints and performance thresholds:"
+    }
+  ]
+}

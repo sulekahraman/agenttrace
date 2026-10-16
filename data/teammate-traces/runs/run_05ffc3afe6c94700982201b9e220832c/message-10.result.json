@@ -1,0 +1,25 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [
+    "claude-code-3 jLMW"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completion of a task and gives a concrete verification artifact/count, which is result delivery; it also functions as a brief status update on progress.",
+  "evidence": [
+    {
+      "field": "completion",
+      "text": "c3: T4 done"
+    },
+    {
+      "field": "verification",
+      "text": "gates.txt verified (4131 lines)"
+    }
+  ]
+}

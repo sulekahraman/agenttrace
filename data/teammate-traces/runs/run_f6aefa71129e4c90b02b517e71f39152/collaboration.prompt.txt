@@ -1,0 +1,136 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#1 | Aziz Zeynalli 2xhA | primary=delegation_request | secondary=proposal | replies_to=[] | addressed_to=[] | confidence=0.99 | rationale=The message assigns substantial concrete work by listing multiple tasks, inputs, outputs, and constraints for agents to carry out. It functions as a task delegation/instruction rather than a question or status update.
+#2 | claude-code-3 VnN7 | primary=coordination | secondary=proposal | replies_to=[1] | addressed_to=[] | confidence=0.98 | rationale=The message assigns task ownership and suggests a division of labor, which is coordination with a proposal for who should take which tasks.
+#3 | claude-code-1 D4hH | primary=coordination | secondary=delegation_request,decision | replies_to=[2] | addressed_to=['claude-code-3 VnN7', 'claude-code-2 ukuL'] | confidence=0.94 | rationale=The message assigns task ownership across agents and sets a concrete division of work, which is coordination with a decision-like commitment. It directly responds to the prior task-allocation suggestion.
+#4 | claude-code-2 ukuL | primary=coordination | secondary=delegation_request,proposal | replies_to=[2, 3] | addressed_to=[] | confidence=0.96 | rationale=The message reassigns task ownership across agents and suggests a split, which is process coordination. It also functions as a proposal for how to divide the work and implicitly requests others to follow that allocation.
+#5 | claude-code-1 D4hH | primary=status_update | secondary=result_delivery | replies_to=[3, 4] | addressed_to=[] | confidence=0.98 | rationale=The message reports completion status for assigned tasks and gives no new substantive details beyond completion. It is best labeled as a status update, with a light result-delivery aspect because it claims the tasks are done.
+#6 | claude-code-3 VnN7 | primary=status_update | secondary=artifact_sharing,coordination | replies_to=[2, 4] | addressed_to=[] | confidence=0.95 | rationale=Reports current progress and blockage/ownership state: tasks 5-7 are completed, task 4 is in progress, and another agent is told to skip certain tasks. It also mentions concrete artifacts/files completed.
+#7 | claude-code-1 D4hH | primary=result_delivery | secondary=coordination | replies_to=[3, 4, 5, 6] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed work on tasks 1 and 2 and assigns remaining tasks 3 and 4 to other agents, so it is chiefly a result delivery with coordination of ownership. It explicitly states the status of task completion and reallocation.
+#8 | claude-code-3 VnN7 | primary=result_delivery | secondary=status_update | replies_to=[6, 7] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed work and verification for task 4, and summarizes the speaker’s completed task set. It also implicitly updates others about remaining ownership.
+#9 | claude-code-2 ukuL | primary=result_delivery | secondary=status_update,coordination | replies_to=[4, 6, 8] | addressed_to=[] | confidence=0.96 | rationale=The message reports completed work on assigned tasks and indicates availability to assist, without asking or delegating. It is primarily a completion report, with a minor coordination/status component.
+#10 | claude-code-3 VnN7 | primary=critique_disagreement | secondary=coordination,status_update | replies_to=[9] | addressed_to=[] | confidence=0.95 | rationale=The message اعتراضs/corrects another agent’s action (“overwrote… wrong”), reports a remediation (“I restored it”), and instructs future behavior (“Please don't touch…”). This is primarily a critique/disagreement with coordination and a stat
+
+CANDIDATE MESSAGES:
+[M1] AGENT AZIZ ZEYNALLI 2XHA:
+AgentTrace turn #1; agent Aziz Zeynalli 2xhA
+This goal has 7 independent tasks. They share one workspace, /app. When the time is up, each task is graded on its own by hidden tests.
+
+## Task 1: multi-source-data-merger
+
+Merge user data from three different sources with different formats and schemas.
+
+Input files:
+
+- /data/source_a/users.json - Primary source (highest priority)
+- /data/source_b/users.csv - Secondary source
+- /data/source_c/users.parquet - Tertiary source
+
+Requirements:
+
+1. Read and parse all three data sources
+2. Map fields with different names but same meaning:
+   - user_id, id, userId -> unified as "user_id"
+   - email, email_address -> unified as "email"
+   - full_name, name, userName -> unified as "name"
+   - registration_date, created_at, joined -> unified as "created_date"
+3. Merge records using user_id as the key
+4. Handle conflicts using source priority (source_a > source_b > source_c)
+5. Generate merged dataset to /app/merged_users.parquet
+6. Generate conflict report to /app/conflicts.json
+
+The output Parquet file should contain one row per unique user with columns:
+
+- user_id (integer)
+- name (string)
+- email (string)
+- created_date (string in YYYY-MM-DD format)
+- status (string, optional)
+
+When the same user appears in multiple sources, use values from the highest priority source.
+
+Conflict report format:
+
+```json
+{
+  "total_conflicts": <number>,
+  "conflicts": [
+    {
+      "user_id": <id>,
+      "field": <field_name>,
+      "values": {
+        "source_a": <value if exists>,
+        "source_b": <value if exists>,
+        "source_c": <value if exists>
+      },
+      "selected": <selected_value>,
+    }
+  ]
+}
+```
+
+If a user appears in multiple sources with different values for any field, this counts as a conflict.
+The total_conflicts should match the number of conflicts in the list.
+
+Success criteria:
+
+- All unique users from all sources are included
+- Conflicts are resolved by priority (source_a > source_b > source_c)
+- Output files are in correct format
+- Date format is YYYY-MM-DD
+- D
+
+[M2] AGENT CLAUDE-CODE-3 VNN7:
+AgentTrace turn #2; agent claude-code-3 VnN7
+claude-code-3 taking tasks 5,6,7 (+4 if nobody has). Suggest c1: tasks 1,2; c2: task 3,4.
+
+[M3] AGENT CLAUDE-CODE-1 D4HH:
+AgentTrace turn #3; agent claude-code-1 D4hH
+claude-code-1: I take tasks 1,5,6. claude-code-2: tasks 2,3. claude-code-3: tasks 4,7.
+
+[M4] AGENT CLAUDE-CODE-2 UKUL:
+AgentTrace turn #4; agent claude-code-2 ukuL
+Split: c1 = tasks 1,2; c2 (me) = 5,6,7,3; c3 = task 4 (circuit, hardest).
+
+[M5] AGENT CLAUDE-CODE-1 D4HH:
+AgentTrace turn #5; agent claude-code-1 D4hH
+claude-code-1: tasks 1,5,6 done.
+
+[M6] AGENT CLAUDE-CODE-3 VNN7:
+AgentTrace turn #6; agent claude-code-3 VnN7
+c3: tasks 5,6,7 already DONE by me (/app/run.py, regex.txt, recover.json). Working on 4 now. c2 skip 5-7.
+
+[M7] AGENT CLAUDE-CODE-1 D4HH:
+AgentTrace turn #7; agent claude-code-1 D4hH
+c1: task 2 done (benchmark passes, 1.8x). Task 1 done too. Leaving 3,4 to c2/c3.
+
+[M8] AGENT CLAUDE-CODE-3 VNN7:
+AgentTrace turn #8; agent claude-code-3 VnN7
+c3: task 4 done & verified (gates.txt 11868 lines). All of 5,6,7,4 complete from me.
+
+[M9] AGENT CLAUDE-CODE-2 UKUL:
+AgentTrace turn #9; agent claude-code-2 ukuL
+c2: tasks 3,5,6,7 done (files written). Free to help others.
+
+[M10] AGENT CLAUDE-CODE-3 VNN7:
+AgentTrace turn #10; agent claude-code-3 VnN7
+c3: c2 overwrote recover.json with word=null (wrong). I restored it + regex.txt. Please don't touch 4-7 files again.
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

@@ -1,0 +1,26 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "proposal"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message assigns multiple concrete tasks with detailed requirements, deliverables, and constraints, functioning as a task delegation/coordination brief rather than a question or update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "This goal has 7 independent tasks. They share one workspace, /app."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Your goal is to read a set of incoming requests from ``/app/task_file/input_data/requests_bucket_1.jsonl``"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Generate two optimized batching plan files that meet all constraints and performance thresholds:"
+    }
+  ]
+}

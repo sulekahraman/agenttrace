@@ -1,0 +1,28 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "Solo 3Z7y"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns Solo to solve a task and produce the final answer file, which is a concrete work request. It also frames the task for the room and specifies the completion condition, making coordination secondary; the arithmetic prompt is embedded as task content rather than the main communicative act.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Roster, assigned by the Room's operator: Solo."
+    },
+    {
+      "field": "primary_type",
+      "text": "Task for this Room, from the user:"
+    },
+    {
+      "field": "secondary_type",
+      "text": "Write the final answer, as a single integer and nothing else, to `/app/output/answer.txt`."
+    }
+  ]
+}

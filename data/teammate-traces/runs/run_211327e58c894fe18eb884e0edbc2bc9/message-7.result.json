@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    1
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completion of the task and delivers the result in concise form. It also includes a status-like completion update. It is replying to the original merge request context.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Outputs written to /app. DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Outputs written to /app. DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "Outputs written to /app. DONE"
+    }
+  ]
+}

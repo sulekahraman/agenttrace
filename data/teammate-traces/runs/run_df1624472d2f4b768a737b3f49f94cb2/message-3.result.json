@@ -1,0 +1,24 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    1,
+    2
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports the agent's current activity on the task (“I'm writing the merge script and outputs”) rather than providing results or asking for work. It also coordinates by signaling that duplication is unnecessary (“no need to duplicate”).",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I'm writing the merge script and outputs"
+    },
+    {
+      "field": "secondary_types",
+      "text": "no need to duplicate"
+    }
+  ]
+}

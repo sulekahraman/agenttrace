@@ -1,0 +1,30 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "proposal",
+    "agreement"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message organizes task ownership among agents and proposes a split of work. It also implicitly agrees with earlier split suggestions while adjusting assignments.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Split: cc1=T1,T2; cc2(me)=T3,T7; cc3=T4 (hardest, alone); cc4=T5,T6."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Unless already claimed otherwise."
+    },
+    {
+      "field": "replies_to",
+      "text": "Split: cc1=T1,T2; cc2(me)=T3,T7; cc3=T4 (hardest, alone); cc4=T5,T6."
+    }
+  ]
+}

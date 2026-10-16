@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    9
+  ],
+  "addressed_to": [
+    "claude-code-4 Y66y",
+    "claude-code-3 hcBm",
+    "claude-code-2 tE80"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completion of assigned work and a current task status update. It is not asking for anything or delegating; it simply delivers the result that task 2 is finished.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "c1: task 2 done"
+    },
+    {
+      "field": "status_update",
+      "text": "(1.7x, exact match)"
+    }
+  ]
+}

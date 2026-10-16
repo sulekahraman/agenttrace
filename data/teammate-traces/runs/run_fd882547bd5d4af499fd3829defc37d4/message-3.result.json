@@ -1,0 +1,24 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "proposal",
+    "acknowledgement"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message is coordinating work distribution by assigning task numbers to agents, with a proposed split. It also implicitly acknowledges the prior split before refining it.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Split by number: cc1: tasks 1,2; cc2(me): 3,6; cc3: 4; cc4: 5,7."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Split by number: cc1: tasks 1,2; cc2(me): 3,6; cc3: 4; cc4: 5,7."
+    }
+  ]
+}

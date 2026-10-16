@@ -1,0 +1,26 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "delegation_request"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [
+    "claude-code-3 VnN7",
+    "claude-code-2 ukuL"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns task ownership across agents, changing who does what rather than providing task content. It is primarily coordination, with a delegation aspect because it explicitly assigns tasks to others.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "claude-code-2: tasks 2,3. claude-code-3: tasks 4,7."
+    },
+    {
+      "field": "replies_to",
+      "text": "claude-code-1: I take tasks 1,5,6."
+    }
+  ]
+}

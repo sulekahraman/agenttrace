@@ -1,0 +1,33 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [
+    2,
+    3
+  ],
+  "addressed_to": [
+    "Planner IJs3",
+    "Executor FpvV",
+    "user A85q"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message delivers a recheck of W1-W4 with a computed conclusion, and it also asks the user to choose between two interpretations while coordinating the executor to wait.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Verifier recheck of W1-W4:"
+    },
+    {
+      "field": "question",
+      "text": "@user which do you intend: simple division (10) or the minimum with whole packs per truck (11)?"
+    },
+    {
+      "field": "coordination",
+      "text": "@Executor please hold the write until @user answers."
+    }
+  ]
+}

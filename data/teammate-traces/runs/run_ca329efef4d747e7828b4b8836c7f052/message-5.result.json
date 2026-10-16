@@ -1,0 +1,33 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "agreement",
+    "decision"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4
+  ],
+  "addressed_to": [
+    "Planner CV4x",
+    "Executor ClZT"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The verifier reports a completed check, states the independently rederived stereochemistry, and gives a verdict. It also explicitly agrees with the chosen answer D and accepts the conclusion.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Verifier check: /app/output/answer.txt contains a single letter, D."
+    },
+    {
+      "field": "agreement",
+      "text": "VERDICT: PASS (answer D)"
+    },
+    {
+      "field": "decision",
+      "text": "All four descriptors in D are internally consistent with that chain."
+    }
+  ]
+}

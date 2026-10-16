@@ -1,0 +1,30 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [
+    "claude-code-1 DGfA",
+    "claude-code-4 NoEc"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message proposes a task split/assignment for the team and suggests an alternative distribution, which is a proposal with coordination content. It responds to the prior split discussion.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "claude-code-3 takes tasks 5,6,7. Suggest c1: 1+2, c2: 3, c4: 4."
+    },
+    {
+      "field": "replies_to",
+      "text": "claude-code-3 takes tasks 5,6,7. Suggest c1: 1+2, c2: 3, c4: 4."
+    },
+    {
+      "field": "addressed_to",
+      "text": "claude-code-3 takes tasks 5,6,7. Suggest c1: 1+2, c2: 3, c4: 4."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    1
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports current work stance and progress: the agent says it is handling the task alone and asks others not to duplicate effort. This is mainly a status update with a coordination element.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "doing the whole thing myself"
+    },
+    {
+      "field": "coordination",
+      "text": "no need to duplicate"
+    }
+  ]
+}

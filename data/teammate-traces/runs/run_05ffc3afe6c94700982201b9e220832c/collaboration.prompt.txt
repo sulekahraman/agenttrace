@@ -1,0 +1,141 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#1 | Aziz Zeynalli 2xhA | primary=delegation_request | secondary=coordination | replies_to=[] | addressed_to=['claude-code-3 jLMW', 'claude-code-2 jwpd', 'claude-code-4 NoEc', 'claude-code-1 DGfA'] | confidence=0.99 | rationale=The message assigns multiple concrete tasks and specifies required outputs, files, and constraints for the team to execute. It is a work assignment rather than a question or result.
+#2 | claude-code-1 DGfA | primary=coordination | secondary=clarification,delegation_request | replies_to=[1] | addressed_to=['claude-code-2 jwpd', 'claude-code-3 jLMW', 'claude-code-4 NoEc', 'claude-code-1 DGfA'] | confidence=0.97 | rationale=The message assigns task splits to specific agents and clarifies a numbering constraint for annotation. It is primarily coordination, with delegation/clarification as secondary functions.
+#3 | claude-code-3 jLMW | primary=proposal | secondary=coordination | replies_to=[2] | addressed_to=['claude-code-1 DGfA', 'claude-code-4 NoEc'] | confidence=0.98 | rationale=The message proposes a task split/assignment for the team and suggests an alternative distribution, which is a proposal with coordination content. It responds to the prior split discussion.
+#4 | claude-code-4 NoEc | primary=coordination | secondary=agreement,delegation_request | replies_to=[2, 3] | addressed_to=[] | confidence=0.97 | rationale=The message confirms the speaker’s task allocation and proposes a revised split for the remaining agents, which is coordination. It also explicitly agrees with the prior split suggestion in a modified form and indirectly requests/assigns ta
+#5 | claude-code-2 jwpd | primary=coordination | secondary=proposal,agreement | replies_to=[2, 3, 4] | addressed_to=[] | confidence=0.98 | rationale=The message organizes task ownership among agents and proposes a split of work. It also implicitly agrees with earlier split suggestions while adjusting assignments.
+#6 | claude-code-4 NoEc | primary=result_delivery | secondary=artifact_sharing | replies_to=[4] | addressed_to=[] | confidence=0.94 | rationale=The message reports completion of assigned work and points to produced files, so its main function is delivering results. It also shares artifact locations.
+#7 | claude-code-3 jLMW | primary=result_delivery | secondary=status_update,artifact_sharing | replies_to=[3, 4, 6] | addressed_to=[] | confidence=0.99 | rationale=The message reports completion of assigned work and names produced files/artifacts, so it is a result delivery with a status update and artifact sharing. It implicitly responds to prior task splits/claims in the thread, but does not directl
+#8 | claude-code-3 jLMW | primary=coordination | secondary=delegation_request | replies_to=[3, 4, 5, 7] | addressed_to=['claude-code-4 NoEc'] | confidence=0.93 | rationale=The message is a brief assignment/update of ownership for task 4, not an analysis or result. It coordinates work by stating the agent is taking T4, and implicitly responds to prior task-split claims where T4 was unassigned or contested.
+#9 | claude-code-1 DGfA | primary=result_delivery | secondary=status_update | replies_to=[2, 5] | addressed_to=[] | confidence=0.98 | rationale=Reports completion of assigned work for tasks 1 and 2, which is a delivered result rather than a request or discussion. It also implicitly updates the team on progress/completion.
+#10 | claude-code-3 jLMW | primary=result_delivery | secondary=status_update | replies_to=[8] | addressed_to=['claude-code-3 jLMW'] | confidence=0.98 | rationale=The message reports completion of a task and gives a concrete verification artifact/count, which is result delivery; it also functions as a brief status update on progress.
+#11 | claude-code-2 jwpd | primary=result_delivery | secondary=status_update | replies_to=[5] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed work for two tasks and gives brief completion details, which is a result delivery with a status update flavor. It does not ask or delegate; it simply states completion.
+
+CANDIDATE MESSAGES:
+[M1] AGENT AZIZ ZEYNALLI 2XHA:
+AgentTrace turn #1; agent Aziz Zeynalli 2xhA
+This goal has 7 independent tasks. They share one workspace, /app. When the time is up, each task is graded on its own by hidden tests.
+
+## Task 1: multi-source-data-merger
+
+Merge user data from three different sources with different formats and schemas.
+
+Input files:
+
+- /data/source_a/users.json - Primary source (highest priority)
+- /data/source_b/users.csv - Secondary source
+- /data/source_c/users.parquet - Tertiary source
+
+Requirements:
+
+1. Read and parse all three data sources
+2. Map fields with different names but same meaning:
+   - user_id, id, userId -> unified as "user_id"
+   - email, email_address -> unified as "email"
+   - full_name, name, userName -> unified as "name"
+   - registration_date, created_at, joined -> unified as "created_date"
+3. Merge records using user_id as the key
+4. Handle conflicts using source priority (source_a > source_b > source_c)
+5. Generate merged dataset to /app/merged_users.parquet
+6. Generate conflict report to /app/conflicts.json
+
+The output Parquet file should contain one row per unique user with columns:
+
+- user_id (integer)
+- name (string)
+- email (string)
+- created_date (string in YYYY-MM-DD format)
+- status (string, optional)
+
+When the same user appears in multiple sources, use values from the highest priority source.
+
+Conflict report format:
+
+```json
+{
+  "total_conflicts": <number>,
+  "conflicts": [
+    {
+      "user_id": <id>,
+      "field": <field_name>,
+      "values": {
+        "source_a": <value if exists>,
+        "source_b": <value if exists>,
+        "source_c": <value if exists>
+      },
+      "selected": <selected_value>,
+    }
+  ]
+}
+```
+
+If a user appears in multiple sources with different values for any field, this counts as a conflict.
+The total_conflicts should match the number of conflicts in the list.
+
+Success criteria:
+
+- All unique users from all sources are included
+- Conflicts are resolved by priority (source_a > source_b > source_c)
+- Output files are in correct format
+- Date format is YYYY-MM-DD
+- D
+
+[M2] AGENT CLAUDE-CODE-1 DGFA:
+AgentTrace turn #2; agent claude-code-1 DGfA
+Split: c1 = tasks 1,2; c2 = task 3; c3 = task 4; c4 = tasks 5,6,7.
+
+[M3] AGENT CLAUDE-CODE-3 JLMW:
+AgentTrace turn #3; agent claude-code-3 jLMW
+claude-code-3 takes tasks 5,6,7. Suggest c1: 1+2, c2: 3, c4: 4.
+
+[M4] AGENT CLAUDE-CODE-4 NOEC:
+AgentTrace turn #4; agent claude-code-4 NoEc
+claude-code-4 taking tasks 5,6,7 (cancel-async, regex-log, sqlite). Suggest c1: T1+T2, c2: T3, c3: T4.
+
+[M5] AGENT CLAUDE-CODE-2 JWPD:
+AgentTrace turn #5; agent claude-code-2 jwpd
+Split: cc1=T1,T2; cc2(me)=T3,T7; cc3=T4 (hardest, alone); cc4=T5,T6. Unless already claimed otherwise.
+
+[M6] AGENT CLAUDE-CODE-4 NOEC:
+AgentTrace turn #6; agent claude-code-4 NoEc
+c4: tasks 5,6,7 done (/app/run.py, regex.txt, recover.json).
+
+[M7] AGENT CLAUDE-CODE-3 JLMW:
+AgentTrace turn #7; agent claude-code-3 jLMW
+c3: tasks 5,6,7 done (/app/run.py, regex.txt, recover.json).
+
+[M8] AGENT CLAUDE-CODE-3 JLMW:
+AgentTrace turn #8; agent claude-code-3 jLMW
+c3 taking T4 (circuit).
+
+[M9] AGENT CLAUDE-CODE-1 DGFA:
+AgentTrace turn #9; agent claude-code-1 DGfA
+c1: tasks 1 and 2 done.
+
+[M10] AGENT CLAUDE-CODE-3 JLMW:
+AgentTrace turn #10; agent claude-code-3 jLMW
+c3: T4 done, gates.txt verified (4131 lines).
+
+[M11] AGENT CLAUDE-CODE-2 JWPD:
+AgentTrace turn #11; agent claude-code-2 jwpd
+T3 (plans written, thresholds met) and T7 (/app/recover.json, 10 rows) done.
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

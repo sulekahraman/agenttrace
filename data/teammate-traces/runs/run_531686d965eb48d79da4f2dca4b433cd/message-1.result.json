@@ -1,0 +1,26 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "Planner CV4x",
+    "Executor ClZT",
+    "Verifier g0Wg"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns a concrete task to the room: solve the chemistry problem and write only the answer letter to a file. It is directed to the roster rather than merely asking for information, so delegation_request fits best, with question/coordination secondary because it includes the problem statement and output instruction.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Roster, assigned by the Room's operator: Planner, Executor, Verifier."
+    },
+    {
+      "field": "primary_type",
+      "text": "Choose the single best answer. Write only its letter (A, B, C, or D) to `/app/output/answer.txt`."
+    }
+  ]
+}

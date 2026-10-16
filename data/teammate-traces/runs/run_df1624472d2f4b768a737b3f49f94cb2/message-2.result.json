@@ -1,0 +1,23 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    1
+  ],
+  "addressed_to": [],
+  "confidence": 0.92,
+  "ambiguous": false,
+  "rationale": "The message reports the agent's current plan/work status (“doing the whole thing myself”) and implicitly coordinates by saying others should not duplicate work.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "doing the whole thing myself"
+    },
+    {
+      "field": "secondary_types",
+      "text": "no need to duplicate"
+    }
+  ]
+}

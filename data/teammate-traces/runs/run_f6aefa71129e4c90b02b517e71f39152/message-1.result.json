@@ -1,0 +1,25 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message assigns substantial concrete work by listing multiple tasks, inputs, outputs, and constraints for agents to carry out. It functions as a task delegation/instruction rather than a question or status update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "This goal has 7 independent tasks."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Generate merged dataset to /app/merged_users.parquet"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Generate two optimized batching plan files that meet all constraints and performance thresholds:"
+    }
+  ]
+}

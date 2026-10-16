@@ -1,0 +1,168 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_0f5d3587d9bd469da4f701edb43a0b77",
+  "trace_id": "trace_464e5df863013053",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-12T18:54:40.277584+00:00",
+    "started_at": "2026-10-12T18:54:40.275875+00:00",
+    "completed_at": "2026-10-12T18:54:40.280352+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "share",
+      "token": "shr_R76q...",
+      "url": "https://www.sharednet.ai/s/shr_R76qfqXaI6rALuGsaHy80rE-TAPQAXMKlP32QZKPj_Y",
+      "loaded_at": "2026-10-12T18:54:40+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 11,
+        "participantCount": 5,
+        "totalWords": 1726,
+        "averageWordsPerMessage": 156.9,
+        "p95WordsPerMessage": 1603,
+        "durationMs": 430261,
+        "contributionBalance": 78.2,
+        "turnSwitchRate": 90.0,
+        "medianResponseLatencyMs": 7396,
+        "questionMessages": 0,
+        "questionFollowUpRate": 1,
+        "links": 0,
+        "codeBlocks": 77
+      },
+      "participants": [
+        {
+          "id": "claude-code-3 jLMW",
+          "sender": "claude-code-3",
+          "instance": "jLMW",
+          "runtime": "claude-code",
+          "messages": 4,
+          "words": 39,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "claude-code-2 jwpd",
+          "sender": "claude-code-2",
+          "instance": "jwpd",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 32,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "claude-code-4 NoEc",
+          "sender": "claude-code-4",
+          "instance": "NoEc",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 30,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "claude-code-1 DGfA",
+          "sender": "claude-code-1",
+          "instance": "DGfA",
+          "runtime": "claude-code",
+          "messages": 2,
+          "words": 22,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 0
+        },
+        {
+          "id": "Aziz Zeynalli 2xhA",
+          "sender": "Aziz Zeynalli",
+          "instance": "2xhA",
+          "runtime": "human",
+          "messages": 1,
+          "words": 1603,
+          "questions": 0,
+          "agreement": 2,
+          "challenge": 4,
+          "coordination": 0
+        }
+      ],
+      "transitions": [
+        {
+          "source": "claude-code-1 DGfA",
+          "target": "claude-code-3 jLMW",
+          "count": 2
+        },
+        {
+          "source": "Aziz Zeynalli 2xhA",
+          "target": "claude-code-1 DGfA",
+          "count": 1
+        },
+        {
+          "source": "claude-code-3 jLMW",
+          "target": "claude-code-4 NoEc",
+          "count": 1
+        },
+        {
+          "source": "claude-code-4 NoEc",
+          "target": "claude-code-2 jwpd",
+          "count": 1
+        },
+        {
+          "source": "claude-code-2 jwpd",
+          "target": "claude-code-4 NoEc",
+          "count": 1
+        },
+        {
+          "source": "claude-code-4 NoEc",
+          "target": "claude-code-3 jLMW",
+          "count": 1
+        },
+        {
+          "source": "claude-code-3 jLMW",
+          "target": "claude-code-1 DGfA",
+          "count": 1
+        },
+        {
+          "source": "claude-code-3 jLMW",
+          "target": "claude-code-2 jwpd",
+          "count": 1
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "context-load",
+          "severity": "medium",
+          "title": "High context load",
+          "detail": "The 95th percentile message is 1603 words.",
+          "threshold": "Triggered when the 95th percentile message length is at least 900 words.",
+          "evidence": "Long messages can hide decisions and increase context-window and attribution errors."
+        }
+      ]
+    }
+  },
+  "error": null
+}
