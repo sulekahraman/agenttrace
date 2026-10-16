@@ -18,6 +18,12 @@ than adding application-specific dependencies to `commsfail`.
 
 ## Saved teammate results
 
+**[Professor-facing progress report](reports/2026-10-16-progress/README.md)**:
+eight briefing pages plus an evidence/reproducibility appendix, available as a
+presentation PDF and self-contained HTML. It covers the inspected experiments,
+analysis method, preliminary observations, and limitations without treating
+Scout judgments as verified task failures.
+
 [Browse the public dataset and restore instructions](data/teammate-traces/README.md)
 for the nine analyzed teammate traces: 27 selected offline analyses, nine
 completed Scout analyses, 70 message annotations and 27 collaboration-category

@@ -1,0 +1,1047 @@
+{
+  "report_date": "2026-10-16",
+  "data_commit": "fd0be2ee134c2a355de55f3442c167652840bedd",
+  "analysis_code_commit": "2a118aac8bdbc1eed77bed47fc432146770d65e8",
+  "snapshot_exported_at": "2026-10-16T21:13:32.773513+00:00",
+  "selected_analysis_completed_range": [
+    "2026-10-12T18:54:40.280352+00:00",
+    "2026-10-14T13:30:48.403333+00:00"
+  ],
+  "counts": {
+    "agent_posts": 59,
+    "candidate_count_truncated_traces": 0,
+    "candidate_messages": 70,
+    "collaboration_judgments": 27,
+    "completed_scout": 9,
+    "demo_plugin": 9,
+    "historical_runs": 49,
+    "message_annotations": 70,
+    "messages_over_2000_characters": 3,
+    "messages_over_8000_characters": 3,
+    "selected_completed_analyses": 36,
+    "selected_completed_offline": 27,
+    "solo_traces": 2,
+    "substantive_offline": 18,
+    "task_only_traces": 1,
+    "task_operator_posts": 11,
+    "traces": 9,
+    "unavailable_facts": 9,
+    "visible_multi_agent_traces": 6,
+    "visible_posts": 70
+  },
+  "selected_analyzers": {
+    "agenttrace_heuristics_v1": 9,
+    "example_kickstart": 9,
+    "regex_v1": 9,
+    "scout_collaboration_v1": 9
+  },
+  "historical_runs": [
+    {
+      "analyzer": "agenttrace_heuristics_v1",
+      "status": "completed",
+      "count": 9
+    },
+    {
+      "analyzer": "example_kickstart",
+      "status": "completed",
+      "count": 10
+    },
+    {
+      "analyzer": "regex_v1",
+      "status": "completed",
+      "count": 13
+    },
+    {
+      "analyzer": "scout_collaboration_v1",
+      "status": "completed",
+      "count": 9
+    },
+    {
+      "analyzer": "scout_collaboration_v1",
+      "status": "failed",
+      "count": 8
+    }
+  ],
+  "raw_scout_positive_judgments": {
+    "duplicated_work": 6,
+    "weak_handoff": 5,
+    "unintegrated_information": 5
+  },
+  "primary_message_types_including_task_operator_posts": {
+    "acknowledgement": 3,
+    "agreement": 1,
+    "artifact_sharing": 1,
+    "clarification": 1,
+    "coordination": 14,
+    "critique_disagreement": 2,
+    "decision": 1,
+    "delegation_request": 10,
+    "proposal": 2,
+    "result_delivery": 26,
+    "status_update": 9
+  },
+  "scout_versions": [
+    {
+      "model": "openai/gpt-5.4-mini",
+      "analyzer_version": "2.0.0",
+      "prompt_version": "2",
+      "traces": 1
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "analyzer_version": "2.1.0",
+      "prompt_version": "3",
+      "traces": 8
+    }
+  ],
+  "sha256": {
+    "manifest.json": "47aff0a8c8a611a1deab037b450d7952000bd88f9a56a55203a6e684be3b32c0",
+    "agenttrace.sqlite3": "eb3ee63bae46f8a1cf7167e23a48a04f617cd03546c034fe6f39f257eb0c4e60",
+    "SHA256SUMS": "79f517746f648da2fb2d0fc5b588ba0bcf1b57cc5274af24f8db71cdd8ae5e20"
+  },
+  "traces": [
+    {
+      "slug": "aziz-bundle-n4-r2",
+      "shared_by": "Aziz",
+      "teammate_note": "Four competing splits; agents 3 and 4 overlap on tasks 5-7.",
+      "url": "https://www.sharednet.ai/s/shr_R76qfqXaI6rALuGsaHy80rE-TAPQAXMKlP32QZKPj_Y",
+      "trace_id": "trace_464e5df863013053",
+      "room": "tb2-bundle-n4-r2",
+      "source_file": "sources/aziz-bundle-n4-r2/trace.json",
+      "transcript_file": "sources/aziz-bundle-n4-r2/transcript.txt",
+      "agent_metrics_file": "sources/aziz-bundle-n4-r2/agent-only-metrics.json",
+      "report_file": "batch/trace-001/report.json",
+      "selected_run_ids": [
+        "run_63b5cbb7b6614fbeb23b462ad7e59a56",
+        "run_a1e6617d99c34acda91805a9cdbf59fe",
+        "run_0f5d3587d9bd469da4f701edb43a0b77",
+        "run_05ffc3afe6c94700982201b9e220832c"
+      ],
+      "ref": "E1",
+      "label": "Bundle / 4 agents / r2",
+      "condition": "Coding",
+      "evidence_messages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "observation": "Competing splits; agents 3 and 4 both report finishing tasks 5-7.",
+      "roster_agents": 4,
+      "agent_posts": 10,
+      "operator_posts": 1,
+      "all_post_p95_words": 1603,
+      "agent_only_p95_words": 19,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_05ffc3afe6c94700982201b9e220832c",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "The same work for tasks 5, 6, and 7 was independently claimed and then reported completed by two agents. In [M3], claude-code-3 says \u201ctakes tasks 5,6,7,\u201d and in [M4] claude-code-4 also says it is \u201ctaking tasks 5,6,7.\u201d Both later report completion of the same artifact set in [M6] and [M7] (\u201ctasks 5,6,7 done (/app/run.py, regex.txt, recover.json)\u201d), which is materially duplicated execution rather than a handoff or check.",
+          "confidence": 0.98,
+          "message_numbers": [
+            3,
+            4,
+            6,
+            7
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "Task 4 was first assigned in the split in [M2] to c3, then c4 suggests c3 take T4 in [M3]/[M4], but the ownership remains fluid and is not cleanly acknowledged until later. c3 explicitly reclaims it in [M8] (\u201cc3 taking T4\u201d), showing the earlier suggested handoff was not clear or stable. The work is eventually delivered in [M10], but the intermediate ambiguity indicates a weak handoff around T4 ownership.",
+          "confidence": 0.84,
+          "message_numbers": [
+            2,
+            3,
+            4,
+            8,
+            10
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Visible information about task ownership and progress was not consistently integrated into later coordination. After c4 and c3 both claimed tasks 5,6,7 in [M3] and [M4], c2\u2019s later split in [M5] assigns c2 task 7 and c4 tasks 5,6, implying a revised distribution, but the thread does not resolve or incorporate the earlier duplicate claims before completion messages appear. This leaves the prior ownership information effectively ignored rather than reconciled, especially since both c3 and c4 still report the same completion artifacts in [M6] and [M7].",
+          "confidence": 0.72,
+          "message_numbers": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 11,
+        "candidate_messages": 11,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_63b5cbb7b6614fbeb23b462ad7e59a56",
+          "file": "batch/trace-001/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_a1e6617d99c34acda91805a9cdbf59fe",
+          "file": "batch/trace-001/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_0f5d3587d9bd469da4f701edb43a0b77",
+          "file": "batch/trace-001/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_05ffc3afe6c94700982201b9e220832c",
+          "file": "batch/trace-001/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "aziz-bundle-n4-r1",
+      "shared_by": "Aziz",
+      "teammate_note": "Reported 16 agent posts, 5/7 solved; task 3 plans overwritten after warning.",
+      "url": "https://www.sharednet.ai/s/shr_YPLfe6694ptAVAKtjnx6vVb_1BLfjDsc1ZP68YQqgRI",
+      "trace_id": "trace_e82952d9d64878ba",
+      "room": "tb2-bundle-n4-r1",
+      "source_file": "sources/aziz-bundle-n4-r1/trace.json",
+      "transcript_file": "sources/aziz-bundle-n4-r1/transcript.txt",
+      "agent_metrics_file": "sources/aziz-bundle-n4-r1/agent-only-metrics.json",
+      "report_file": "batch/trace-002/report.json",
+      "selected_run_ids": [
+        "run_960906af8dde4aa39de83fdd58b80fc8",
+        "run_55b1fac1425a4e9c83e5f3b6c3cd12e6",
+        "run_f43b0dbc0dbd45e2bb6b77f183b511bc",
+        "run_fd882547bd5d4af499fd3829defc37d4"
+      ],
+      "ref": "E2",
+      "label": "Bundle / 4 agents / r1",
+      "condition": "Coding",
+      "evidence_messages": [
+        12,
+        15,
+        16,
+        17
+      ],
+      "observation": "Task-3 overwrite warning, restoration, then another overwrite claim.",
+      "roster_agents": 4,
+      "agent_posts": 16,
+      "operator_posts": 1,
+      "all_post_p95_words": 1603,
+      "agent_only_p95_words": 34,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_fd882547bd5d4af499fd3829defc37d4",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Task 3 plans were worked on by claude-code-2 and claude-code-3 more than once in materially similar ways. c2 reports \"tasks 3 ... done\" in [M14], then immediately asks others not to touch task 3 while it regenerates passing plans in [M15], and later says the plans are restored in [M16]. c3 independently says it is optimizing/overwriting task-3 plans in [M12] and again in [M17], explicitly noting it overwrote the plans and asking not to regenerate them. This is repeated execution on the same artifact without a clean handoff or synthesis.",
+          "confidence": 0.92,
+          "message_numbers": [
+            14,
+            15,
+            16,
+            12,
+            17
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There is an incomplete handoff around task 3. In [M12], c3 asks whether c2 is already working on task 3 and says to tell me, which shows ownership uncertainty. c2 then states it is regenerating task-3 plans and asks others not to touch them in [M15], but c3 later overwrites the task-3 plans anyway in [M17], indicating the handoff/request to avoid overlap was not respected or effectively coordinated. The work is not cleanly acknowledged and ownership remains blurred.",
+          "confidence": 0.88,
+          "message_numbers": [
+            12,
+            15,
+            17
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Visible information about task 3 plans is not cleanly integrated across agents. c2 reports passing regenerated plans and asks others not to overwrite them in [M16], but c3 later overwrites those same plans with a different DP-optimized version in [M17] instead of building on or reconciling c2's already-passing result. This directly ignores the prior state and request, leaving conflicting versions of the same artifact unresolved.",
+          "confidence": 0.9,
+          "message_numbers": [
+            16,
+            17
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 17,
+        "candidate_messages": 17,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_960906af8dde4aa39de83fdd58b80fc8",
+          "file": "batch/trace-002/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_55b1fac1425a4e9c83e5f3b6c3cd12e6",
+          "file": "batch/trace-002/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_f43b0dbc0dbd45e2bb6b77f183b511bc",
+          "file": "batch/trace-002/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_fd882547bd5d4af499fd3829defc37d4",
+          "file": "batch/trace-002/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "aziz-bundle-n3-r2",
+      "shared_by": "Aziz",
+      "teammate_note": "Wrong overwrite caught and restored; reported 7/7 solved.",
+      "url": "https://www.sharednet.ai/s/shr_FCX9cl1NljsTd-gZD8hk37nOaX9escTBdaVYjHwmm4k",
+      "trace_id": "trace_039e550dde384d68",
+      "room": "tb2-bundle-n3-r2",
+      "source_file": "sources/aziz-bundle-n3-r2/trace.json",
+      "transcript_file": "sources/aziz-bundle-n3-r2/transcript.txt",
+      "agent_metrics_file": "sources/aziz-bundle-n3-r2/agent-only-metrics.json",
+      "report_file": "batch/trace-003/report.json",
+      "selected_run_ids": [
+        "run_f1a30cafc0e64e18b874f0acded99c8c",
+        "run_f0e6596a5623401f9e839aa224504f34",
+        "run_6312d7910be64445a986520569a49970",
+        "run_f6aefa71129e4c90b02b517e71f39152"
+      ],
+      "ref": "E3",
+      "label": "Bundle / 3 agents / r2",
+      "condition": "Coding",
+      "evidence_messages": [
+        6,
+        9,
+        10
+      ],
+      "observation": "An overwrite and restoration of recover.json are reported.",
+      "roster_agents": 3,
+      "agent_posts": 9,
+      "operator_posts": 1,
+      "all_post_p95_words": 1603,
+      "agent_only_p95_words": 23,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_f6aefa71129e4c90b02b517e71f39152",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "There is clear repeat work on task 1 and task 2 by c1, and task 5-7 by c3, with later messages showing the same work being reported as done again. For example, c1 says \u201cI take tasks 1,5,6\u201d [M3], then later \u201ctasks 1,5,6 done\u201d [M5] and \u201ctask 2 done\u2026 Task 1 done too\u201d [M7], while c3 says \u201ctaking tasks 5,6,7\u201d [M2], later \u201ctasks 5,6,7 already DONE by me\u201d [M6], and then again claims \u201ctask 4 done & verified\u2026 All of 5,6,7,4 complete from me\u201d [M8]. This indicates materially equivalent execution/status work being repeated without new synthesis.",
+          "confidence": 0.91,
+          "message_numbers": [
+            2,
+            3,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "Ownership is unstable and partly abandoned: c3 initially suggests c1 take tasks 1,2 and c2 take 3,4 [M2], but c1 then claims 1,5,6 and assigns 2,3,4 differently [M3], c2 reshuffles again [M4], and c3 later tells c2 to skip 5-7 while c3 works on 4 [M6]. The handoff is weak because work is repeatedly reassigned without a stable accepted division, and some tasks are left in flux rather than cleanly acknowledged and delivered to a specific owner.",
+          "confidence": 0.96,
+          "message_numbers": [
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Relevant visible information is later contradicted or not integrated into subsequent coordination. After c3 states that 5,6,7 are already done and c2 should skip them [M6], c2 still reports \u201ctasks 3,5,6,7 done\u201d [M9], and then c3 reports c2 overwrote recover.json and had to be corrected [M10]. This shows earlier ownership and completion info was not incorporated cleanly into later actions, leading to contradictory claims and a rollback rather than integrated use of prior state.",
+          "confidence": 0.88,
+          "message_numbers": [
+            6,
+            9,
+            10
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 10,
+        "candidate_messages": 10,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_f1a30cafc0e64e18b874f0acded99c8c",
+          "file": "batch/trace-003/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_f0e6596a5623401f9e839aa224504f34",
+          "file": "batch/trace-003/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_6312d7910be64445a986520569a49970",
+          "file": "batch/trace-003/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_f6aefa71129e4c90b02b517e71f39152",
+          "file": "batch/trace-003/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "aziz-merger-n3",
+      "shared_by": "Aziz",
+      "teammate_note": "Round 1: three agents each claim the whole task.",
+      "url": "https://www.sharednet.ai/s/shr_xi73nfeoHUNJ9jRLehFdW8_iuS5UyXP7Qb-Wwgftjcg",
+      "trace_id": "trace_6faa8fd53c465dab",
+      "room": "tb2-merger-n3",
+      "source_file": "sources/aziz-merger-n3/trace.json",
+      "transcript_file": "sources/aziz-merger-n3/transcript.txt",
+      "agent_metrics_file": "sources/aziz-merger-n3/agent-only-metrics.json",
+      "report_file": "batch/trace-004/report.json",
+      "selected_run_ids": [
+        "run_c1bcd4548e0b465c949e26cc5d0635e0",
+        "run_749e5363609242b0a81380f56a99e372",
+        "run_1ef3980e71c44c22ad610a997ce543f6",
+        "run_211327e58c894fe18eb884e0edbc2bc9"
+      ],
+      "ref": "E4",
+      "label": "Merger / 3 agents",
+      "condition": "Coding",
+      "evidence_messages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "observation": "Multiple agents report producing the same output files.",
+      "roster_agents": 3,
+      "agent_posts": 6,
+      "operator_posts": 1,
+      "all_post_p95_words": 275,
+      "agent_only_p95_words": 19,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_211327e58c894fe18eb884e0edbc2bc9",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Multiple agents independently state they are doing the same merge task without a clear verification or handoff: [M2] says \u201cdoing the whole thing myself; no need to duplicate,\u201d and [M3] says \u201cI\u2019m writing the merge script and outputs; no need to duplicate.\u201d Both are materially equivalent execution of the assigned task rather than a deliberate independent check or synthesis. [M4], [M5], and [M7] then report overlapping completion of the same outputs, reinforcing the duplicate execution pattern.",
+          "confidence": 0.98,
+          "message_numbers": [
+            2,
+            3,
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": false,
+          "explanation": "The task was acknowledged and later delivered: [M2] and [M3] both explicitly acknowledge the work, [M4] and [M5] report outputs written, and [M7] also confirms completion. There is no clear abandonment, missing acknowledgement, or unresolved ownership gap in the visible messages.",
+          "confidence": 0.9,
+          "message_numbers": [
+            2,
+            3,
+            4,
+            5,
+            7
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": false,
+          "explanation": "The later messages do not show any relevant visible information being ignored or contradicted without resolution. The completion messages consistently align on the same outputs and counts ([M4], [M5], [M7]), so there is no clear missed opportunity to use prior information in a decision.",
+          "confidence": 0.86,
+          "message_numbers": [
+            4,
+            5,
+            7
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 7,
+        "candidate_messages": 7,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_c1bcd4548e0b465c949e26cc5d0635e0",
+          "file": "batch/trace-004/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_749e5363609242b0a81380f56a99e372",
+          "file": "batch/trace-004/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_1ef3980e71c44c22ad610a997ce543f6",
+          "file": "batch/trace-004/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_211327e58c894fe18eb884e0edbc2bc9",
+          "file": "batch/trace-004/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "xiangqian-noop007i2-solo",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Solo comparison for noop007i2; correct answer reported as 10.",
+      "url": "https://www.sharednet.ai/s/shr_1G5l9AmgsNL-o2JmwMbvpygbUdSu2kwwTzd5MJ7j0W8",
+      "trace_id": "trace_ab1efd80c85a6001",
+      "room": "harbor \u00b7 e3-solo \u00b7 noop007i2__ZY3mRFN__agent",
+      "source_file": "sources/xiangqian-noop007i2-solo/trace.json",
+      "transcript_file": "sources/xiangqian-noop007i2-solo/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-noop007i2-solo/agent-only-metrics.json",
+      "report_file": "batch/trace-005/report.json",
+      "selected_run_ids": [
+        "run_418e95912d47489994661ffb60455a2d",
+        "run_94bc63976b884b77a49ec12d66db0ccd",
+        "run_401bcdce424144489e4c751d4837c295",
+        "run_ec9c12ad964d4b2a94bb2e13a75529a5"
+      ],
+      "ref": "E5",
+      "label": "Arithmetic / solo",
+      "condition": "Solo",
+      "evidence_messages": [
+        2
+      ],
+      "observation": "Reports answer 10 and its own PASS; no independent grade.",
+      "roster_agents": 1,
+      "agent_posts": 1,
+      "operator_posts": 1,
+      "all_post_p95_words": 168,
+      "agent_only_p95_words": 48,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_ec9c12ad964d4b2a94bb2e13a75529a5",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": false,
+          "explanation": "The two messages show a clean delegation-and-response flow rather than independent repeated work. [M1] assigns Solo the task and specifies the output location and completion condition; [M2] provides the requested solution and verification. There is no separate agent repeating the same analysis for a different purpose.",
+          "confidence": 0.98,
+          "message_numbers": [
+            1,
+            2
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": false,
+          "explanation": "The handoff is clear and completed: [M1] delegates the task to Solo and asks for a final integer written to `/app/output/answer.txt`, and [M2] reports the answer, notes it was written, and ends with `VERDICT: PASS`. No abandonment or ambiguity is visible.",
+          "confidence": 0.99,
+          "message_numbers": [
+            1,
+            2
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": false,
+          "explanation": "All relevant information in [M1] is used in [M2]. In particular, the note that the 15% discount applies to price, not weight, is explicitly addressed, and the weight calculation is carried through to the final trip count. There is no visible ignored or contradicted evidence.",
+          "confidence": 0.96,
+          "message_numbers": [
+            1,
+            2
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 2,
+        "candidate_messages": 2,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_418e95912d47489994661ffb60455a2d",
+          "file": "batch/trace-005/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_94bc63976b884b77a49ec12d66db0ccd",
+          "file": "batch/trace-005/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_401bcdce424144489e4c751d4837c295",
+          "file": "batch/trace-005/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_ec9c12ad964d4b2a94bb2e13a75529a5",
+          "file": "batch/trace-005/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "xiangqian-noop007i2-pev",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Planner adds whole-item packing constraint; team reportedly answers 11.",
+      "url": "https://www.sharednet.ai/s/shr_a6onM9Sz6CEosSM1YqHU5vniasnPJbI13Yh5hDeRiH8",
+      "trace_id": "trace_29d100b4dfa5eb0d",
+      "room": "harbor \u00b7 e3-pev \u00b7 noop007i2__9H9Dnvp__agent",
+      "source_file": "sources/xiangqian-noop007i2-pev/trace.json",
+      "transcript_file": "sources/xiangqian-noop007i2-pev/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-noop007i2-pev/agent-only-metrics.json",
+      "report_file": "batch/trace-006/report.json",
+      "selected_run_ids": [
+        "run_fad54e93cb514ee28a64ac455a5ef98f",
+        "run_27315600d87b493983e8ac78b8c70c84",
+        "run_a515c4485fb54f9798189bb71f82e82a",
+        "run_9d2d44edca7440a7914b7cc051bb37ad"
+      ],
+      "ref": "E6",
+      "label": "Arithmetic / P-E-V",
+      "condition": "P-E-V",
+      "evidence_messages": [
+        2,
+        4,
+        5,
+        6
+      ],
+      "observation": "Selects whole-pack interpretation and answer 11 after asking the user.",
+      "roster_agents": 3,
+      "agent_posts": 5,
+      "operator_posts": 2,
+      "all_post_p95_words": 231,
+      "agent_only_p95_words": 231,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_9d2d44edca7440a7914b7cc051bb37ad",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Executor and Verifier both independently reworked the same computation and packing feasibility rather than one clearly building on the other's result. Executor computes W1-W4 and proposes a 11-trip packing in [M3], and Verifier separately rechecks the same W1-W4 and produces its own 11-trip packing in [M4], later repeating the packing check again in [M6].",
+          "confidence": 0.96,
+          "message_numbers": [
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "The verifier initially interrupts the workflow by saying to hold the write until the user answers and that no verdict exists yet, despite the executor having already delivered the result and written the file. In [M4], Verifier asks the user to choose between 10 and 11 and tells Executor to wait; only later does [M6] resolve this by adopting the physical-loading reading and issuing VERDICT: PASS. This shows an initially weak handoff from the executor's completed work to final verification/decision.",
+          "confidence": 0.84,
+          "message_numbers": [
+            4,
+            6
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Relevant information about the executor's completed write and the file contents is initially not integrated into the verifier's decision path. In [M3] Executor states the answer was written to /app/output/answer.txt as 11, but [M4] Verifier says the file does not exist yet and postpones verdict pending user input. That omission is later corrected in [M6], which acknowledges the file exists and matches the derivation. The initial verifier step therefore ignored visible information that was available.",
+          "confidence": 0.91,
+          "message_numbers": [
+            3,
+            4,
+            6
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 7,
+        "candidate_messages": 7,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_fad54e93cb514ee28a64ac455a5ef98f",
+          "file": "batch/trace-006/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_27315600d87b493983e8ac78b8c70c84",
+          "file": "batch/trace-006/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_a515c4485fb54f9798189bb71f82e82a",
+          "file": "batch/trace-006/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_9d2d44edca7440a7914b7cc051bb37ad",
+          "file": "batch/trace-006/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "xiangqian-noop-stalled",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Public room reportedly only contains task; private verifier answer 1448.",
+      "url": "https://www.sharednet.ai/s/shr_E1z2DSX3ks4zVKf3iATuWxO_ybZsACgP5OrKT_HcRSU",
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "room": "harbor \u00b7 e3-pev \u00b7 noop016i0__GRNwiHr__agent",
+      "source_file": "sources/xiangqian-noop-stalled/trace.json",
+      "transcript_file": "sources/xiangqian-noop-stalled/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-noop-stalled/agent-only-metrics.json",
+      "report_file": "batch/trace-007/report.json",
+      "selected_run_ids": [
+        "run_73b7aabc77c04a0596023216ab6cfde8",
+        "run_42a6bd1cd4754f639b11b17fb1cfde5a",
+        "run_c2ffd479478243f0a4393066017b6953",
+        "run_c4de7935f4c045c3b68fa1a00ef321b5"
+      ],
+      "ref": "E7",
+      "label": "Task-only room",
+      "condition": "Task only",
+      "evidence_messages": [
+        1
+      ],
+      "observation": "Only the task is visible; no observable agent activity.",
+      "roster_agents": 3,
+      "agent_posts": 0,
+      "operator_posts": 1,
+      "all_post_p95_words": 130,
+      "agent_only_p95_words": null,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_c4de7935f4c045c3b68fa1a00ef321b5",
+      "scout_version": "2.0.0",
+      "prompt_version": "2",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": false,
+          "explanation": "The candidate set only includes the user task assignment [M1] and no agent responses, so there is no evidence of two agents independently repeating materially equivalent work.",
+          "confidence": 0.98,
+          "message_numbers": [
+            1
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": false,
+          "explanation": "Although [M1] assigns work and specifies the output path and success condition, there are no subsequent agent messages to show a request being ignored, abandoned, or poorly handed off.",
+          "confidence": 0.97,
+          "message_numbers": [
+            1
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": false,
+          "explanation": "The visible information in [M1] is the original task statement; without any later decision or solution text, there is no opportunity to verify that relevant information was ignored or contradicted.",
+          "confidence": 0.96,
+          "message_numbers": [
+            1
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 1,
+        "candidate_messages": 1,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_73b7aabc77c04a0596023216ab6cfde8",
+          "file": "batch/trace-007/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_42a6bd1cd4754f639b11b17fb1cfde5a",
+          "file": "batch/trace-007/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_c2ffd479478243f0a4393066017b6953",
+          "file": "batch/trace-007/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_c4de7935f4c045c3b68fa1a00ef321b5",
+          "file": "batch/trace-007/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "xiangqian-gpqa027-solo",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Solo reportedly selects B; reference answer reported as D.",
+      "url": "https://www.sharednet.ai/s/shr_2f69VRSLq7ta-e2sXs6HRTL2VuyZ2D6YudTsiN9z9xM",
+      "trace_id": "trace_b682600c5b65b12d",
+      "room": "harbor \u00b7 e4-solo \u00b7 gpqa027__Q3a3HDR__agent",
+      "source_file": "sources/xiangqian-gpqa027-solo/trace.json",
+      "transcript_file": "sources/xiangqian-gpqa027-solo/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-gpqa027-solo/agent-only-metrics.json",
+      "report_file": "batch/trace-008/report.json",
+      "selected_run_ids": [
+        "run_a9a53721eb874d339b66428e8c968d6f",
+        "run_14c66a9d78eb46d891468f76244cdde1",
+        "run_06c2d689f10a43ac8b53434a56472ed7",
+        "run_d7b71d27ce23419b84e9179606943b13"
+      ],
+      "ref": "E8",
+      "label": "GPQA / solo",
+      "condition": "Solo",
+      "evidence_messages": [
+        2
+      ],
+      "observation": "Reports answer B and its own PASS; no independent grade.",
+      "roster_agents": 1,
+      "agent_posts": 1,
+      "operator_posts": 1,
+      "all_post_p95_words": 133,
+      "agent_only_p95_words": 109,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_d7b71d27ce23419b84e9179606943b13",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": false,
+          "explanation": "The visible exchange shows a clean delegation from the user to Solo and a single corresponding solution from Solo; there is no second agent independently repeating the same analysis or execution. [M1][M2]",
+          "confidence": 0.93,
+          "message_numbers": [
+            1,
+            2
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": false,
+          "explanation": "The task is clearly assigned to Solo in [M1], and Solo delivers the requested final answer plus writes it to the file and ends with `VERDICT: PASS` in [M2]. That is a complete handoff, not an abandonment or unclear ownership. [M1][M2]",
+          "confidence": 0.97,
+          "message_numbers": [
+            1,
+            2
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": false,
+          "explanation": "Solo\u2019s reasoning in [M2] incorporates the relevant intermediate steps from the prompt in [M1] and resolves the stereochemical options accordingly; there is no later visible information that is ignored or contradicted without resolution. [M1][M2]",
+          "confidence": 0.9,
+          "message_numbers": [
+            1,
+            2
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 2,
+        "candidate_messages": 2,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_a9a53721eb874d339b66428e8c968d6f",
+          "file": "batch/trace-008/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_14c66a9d78eb46d891468f76244cdde1",
+          "file": "batch/trace-008/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_06c2d689f10a43ac8b53434a56472ed7",
+          "file": "batch/trace-008/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_d7b71d27ce23419b84e9179606943b13",
+          "file": "batch/trace-008/analysis-05.json"
+        }
+      ]
+    },
+    {
+      "slug": "xiangqian-gpqa027-pev",
+      "shared_by": "Xiangqian",
+      "teammate_note": "Verifier challenges B and team returns to D; reported team win.",
+      "url": "https://www.sharednet.ai/s/shr_7UdHEe6f9erjcOhnkqhtLgpQBualYrmlC_DQWQiqqVc",
+      "trace_id": "trace_5c5209c98f666281",
+      "room": "harbor \u00b7 e4-pev \u00b7 gpqa027__rtUiLcW__agent",
+      "source_file": "sources/xiangqian-gpqa027-pev/trace.json",
+      "transcript_file": "sources/xiangqian-gpqa027-pev/transcript.txt",
+      "agent_metrics_file": "sources/xiangqian-gpqa027-pev/agent-only-metrics.json",
+      "report_file": "batch/trace-009/report.json",
+      "selected_run_ids": [
+        "run_f944d5733d49443abec78ba9eb638feb",
+        "run_5dbcc702ae5347ce987fe77ed7dfc7d7",
+        "run_785c5abd7eff42fa85bf624b3285ad56",
+        "run_531686d965eb48d79da4f2dca4b433cd"
+      ],
+      "ref": "E9",
+      "label": "GPQA / P-E-V",
+      "condition": "P-E-V",
+      "evidence_messages": [
+        2,
+        6,
+        7,
+        8,
+        11,
+        12,
+        13
+      ],
+      "observation": "Reported answer D to B to D; conflicting file-state reports.",
+      "roster_agents": 3,
+      "agent_posts": 11,
+      "operator_posts": 2,
+      "all_post_p95_words": 247,
+      "agent_only_p95_words": 247,
+      "source_dates": [
+        "2026-10-10"
+      ],
+      "scout_run_id": "run_531686d965eb48d79da4f2dca4b433cd",
+      "scout_version": "2.1.0",
+      "prompt_version": "3",
+      "model": "openai/gpt-5.4-mini",
+      "findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "There is repeated independent stereochemical re-derivation of the same answer by multiple agents after a verifier already checked the file. The Planner first lays out W1\u2013W4 for Executor/Verifier in [M3], then later re-asks essentially the same descriptor check in [M13] after [M11] already verified D. Likewise, Executor repeats the full D analysis in [M7] after having produced a prior full derivation in [M2] and a conflicting B derivation in [M6], while Verifier independently re-derives the same final D assignment in [M11] after already doing so in [M5]. These are materially equivalent analysis/recheck efforts rather than new synthesis.",
+          "confidence": 0.91,
+          "message_numbers": [
+            3,
+            5,
+            7,
+            11,
+            13
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "The handoff around the answer file is unstable: Executor\u2019s switch to B in [M6] is not cleanly integrated with the rest of the team, and Verifier explicitly rejects it in [M8], noting the file holds B and instructing Executor to restore D. The subsequent correction is only partially coordinated until [M11] and [M12]; earlier, the request in [M4] to keep the file as D is contradicted by the later overwrite in [M6], showing a broken handoff/ownership flow. [M13] then has to restart the verification request because the prior check was tied to an outdated file state.",
+          "confidence": 0.88,
+          "message_numbers": [
+            4,
+            6,
+            8,
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Relevant information was available but later ignored or contradicted without resolution. In [M5] and [M11], Verifier independently concludes D is correct, including the key regiochemistry (LDA gives the C6 enolate and Me ends up at C6). However, Executor later continues the conflicting B line in [M6], and Verifier in [M8] explicitly says D is the only option consistent with the stereo steps, rejecting B; the discussion then reopens the same issue in [M10]-[M13] even after the file is back to D. The most direct example of ignored information is Executor\u2019s [M6] claim that B is best fit despite Verifier\u2019s already-established D verdict in [M5].",
+          "confidence": 0.95,
+          "message_numbers": [
+            5,
+            6,
+            8,
+            10,
+            11,
+            12,
+            13
+          ]
+        }
+      ],
+      "coverage": {
+        "annotated_messages": 13,
+        "candidate_messages": 13,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_f944d5733d49443abec78ba9eb638feb",
+          "file": "batch/trace-009/analysis-01.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_5dbcc702ae5347ce987fe77ed7dfc7d7",
+          "file": "batch/trace-009/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_785c5abd7eff42fa85bf624b3285ad56",
+          "file": "batch/trace-009/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_531686d965eb48d79da4f2dca4b433cd",
+          "file": "batch/trace-009/analysis-05.json"
+        }
+      ]
+    }
+  ]
+}
