@@ -1,6 +1,18 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { ingestTrace, requestJson, startAnalysis } from "../src/api.js";
+import { ingestTrace, loadSavedReport, nativeScoutUrl, requestJson, startAnalysis } from "../src/api.js";
+
+test("native viewer links are limited to completed Scout runs and do not fetch", (t) => {
+  t.mock.method(globalThis, "fetch", () => assert.fail("Links must not run an analysis."));
+  const run = { id: "run/a", analyzer: { name: "scout_collaboration_v1" }, status: "completed" };
+  assert.equal(nativeScoutUrl(run), "/api/analysis-runs/run%2Fa/scout-view");
+  for (const status of ["queued", "running", "failed"]) {
+    assert.equal(nativeScoutUrl({ ...run, status }), null);
+  }
+  assert.equal(nativeScoutUrl({ ...run, analyzer: { name: "regex_v1" } }), null);
+  assert.equal(nativeScoutUrl({ ...run, id: null }), null);
+  assert.equal(nativeScoutUrl(null), null);
+});
 
 test("ingests structured source without HTML parsing", async (t) => {
   const calls = [];
@@ -42,4 +54,37 @@ test("preserves structured Scout setup errors for the setup dialog", async (t) =
     assert.deepEqual(error.setup, setup);
     return true;
   });
+});
+
+test("loads a saved trace and pins its linked historical analysis", async (t) => {
+  const oldRun = { id: "run_old", trace_id: "trace_example", analyzer: { name: "regex_v1", kind: "offline" } };
+  t.mock.method(globalThis, "fetch", async (path) => ({
+    ok: true,
+    json: async () => path === "/api/traces/trace_example"
+      ? { traceId: "trace_example", analyses: { regex_v1: { id: "run_latest" } } }
+      : oldRun
+  }));
+  const loaded = await loadSavedReport("?trace=trace_example&run=run_old");
+  assert.equal(loaded.report.analyses.regex_v1.id, "run_old");
+  assert.equal(loaded.selectedAnalysis, oldRun);
+});
+
+test("rejects analysis links for a different trace", async (t) => {
+  t.mock.method(globalThis, "fetch", async (path) => ({
+    ok: true, json: async () => path.startsWith("/api/traces/")
+      ? { traceId: "trace_example", analyses: {} }
+      : { trace_id: "trace_other", analyzer: { name: "regex_v1" } }
+  }));
+  await assert.rejects(loadSavedReport("?trace=trace_example&run=run_other"), /does not belong/);
+});
+
+test("trace-only links do not request or start any analysis", async (t) => {
+  const calls = [];
+  t.mock.method(globalThis, "fetch", async (path) => {
+    calls.push(path);
+    return { ok: true, json: async () => ({ traceId: "trace_example", analyses: {} }) };
+  });
+  assert.equal((await loadSavedReport("?trace=trace_example")).selectedAnalysis, null);
+  assert.deepEqual(calls, ["/api/traces/trace_example"]);
+  assert.equal(await loadSavedReport(""), null);
 });

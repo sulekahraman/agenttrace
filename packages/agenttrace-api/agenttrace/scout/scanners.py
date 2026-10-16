@@ -228,7 +228,7 @@ numbers shown in the candidate message metadata, not the [M#] display labels.
     return output
 
 
-@scanner(messages="all", version=2)
+@scanner(messages="all", version=3)
 def annotation_guided_collaboration() -> Scanner[Transcript]:
     async def scan(transcript: Transcript):
         output = await analyze_collaboration(transcript)

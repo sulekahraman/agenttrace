@@ -25,6 +25,7 @@ agenttrace_heuristics_v1 = "agenttrace.heuristics:StructuralHeuristics"
 
 [project.scripts]
 agenttrace = "agenttrace.api:main"
+agenttrace-batch = "agenttrace.batch:main"
 
 [tool.setuptools.packages.find]
 include = ["agenttrace*"]

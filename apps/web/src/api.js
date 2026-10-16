@@ -28,3 +28,27 @@ export function startAnalysis(traceId, analyzer, model) {
     body: JSON.stringify(model ? { model } : {})
   });
 }
+
+export function nativeScoutUrl(analysis) {
+  if (analysis?.analyzer?.name !== "scout_collaboration_v1" || analysis.status !== "completed" || !analysis.id) {
+    return null;
+  }
+  return `/api/analysis-runs/${encodeURIComponent(analysis.id)}/scout-view`;
+}
+
+export async function loadSavedReport(search, options = {}) {
+  const params = new URLSearchParams(search);
+  const traceId = params.get("trace");
+  if (!traceId) return null;
+  const report = await requestJson(`/api/traces/${encodeURIComponent(traceId)}`, options);
+  const runId = params.get("run");
+  if (!runId) return { report, selectedAnalysis: null };
+  const analysis = await requestJson(`/api/analysis-runs/${encodeURIComponent(runId)}`, options);
+  if (analysis.trace_id !== report.traceId) {
+    throw new Error("The linked analysis does not belong to this trace.");
+  }
+  return {
+    report: { ...report, analyses: { ...report.analyses, [analysis.analyzer.name]: analysis } },
+    selectedAnalysis: analysis
+  };
+}

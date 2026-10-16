@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import * as Plot from "@observablehq/plot";
 import { buildScoutTranscript } from "./scout.js";
-import { ingestTrace, requestJson, startAnalysis } from "./api.js";
+import { ingestTrace, loadSavedReport, nativeScoutUrl, requestJson, startAnalysis } from "./api.js";
 import { AnalysisResults } from "./analysis-results.jsx";
 import "./styles.css";
 
@@ -236,18 +236,26 @@ function App() {
     const identifier = new URLSearchParams(window.location.search).get("trace");
     if (!identifier) return undefined;
     const controller = new AbortController();
-    requestJson(`/api/traces/${encodeURIComponent(identifier)}`, { signal: controller.signal }).then((body) => {
+    setLoading(true);
+    setStatus("Loading saved trace...");
+    loadSavedReport(window.location.search, { signal: controller.signal }).then(({ report: body, selectedAnalysis }) => {
+      if (controller.signal.aborted) return;
       setReport(body);
       setScoutRun(body.analyses.scout_collaboration_v1 || null);
+      if (selectedAnalysis?.analyzer.kind === "offline") setOfflineAnalyzer(selectedAnalysis.analyzer.name);
       if (body.analyses.scout_collaboration_v1?.provenance.model) {
         setModel(body.analyses.scout_collaboration_v1.provenance.model);
       }
+      if (body.source.url) setUrl(body.source.url);
+      setStatusType("");
       setStatus(`Loaded ${body.metrics.totalMessages} messages from saved trace.`);
     }).catch((error) => {
       if (error.name !== "AbortError") {
         setStatusType("error");
         setStatus(error.message);
       }
+    }).finally(() => {
+      if (!controller.signal.aborted) setLoading(false);
     });
     return () => controller.abort();
   }, []);
@@ -350,6 +358,7 @@ function App() {
     setAnalysisError("");
     try {
       const analysis = await startAnalysis(report.traceId, name, name === "scout_collaboration_v1" ? model.trim() : undefined);
+      window.history.replaceState(null, "", `?trace=${encodeURIComponent(report.traceId)}&run=${encodeURIComponent(analysis.id)}`);
       if (name === "scout_collaboration_v1") setScoutRun(analysis);
       setReport((current) => ({
         ...current, analyses: { ...current.analyses, [name]: analysis }
@@ -552,6 +561,9 @@ function App() {
                 {["queued", "running"].includes(scoutRun?.status) ? "Scout running..." : "Run Scout"}
               </button>
               <button type="button" className="secondary" disabled={!model.trim() || startingAnalysis || loading} onClick={showScoutSetup}>Provider setup</button>
+              {nativeScoutUrl(scoutRun) && (
+                <a href={nativeScoutUrl(scoutRun)} target="_blank" rel="noopener noreferrer" title="View saved results without model calls. Original generation logs are not reconstructed.">Open in Scout</a>
+              )}
             </div>
             <p className="muted">Default: <code>{analyzers.find((analyzer) => analyzer.name === "scout_collaboration_v1")?.default_model || "Loading..."}</code>. Change the provider/model above to use another model. If setup is missing, Run Scout opens instructions before creating a run.</p>
             <AnalysisResults analysis={scoutRun} onEvidence={showEvidence} />

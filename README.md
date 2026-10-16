@@ -103,11 +103,106 @@ application does not invoke a model during ingestion.
 
 Scout checks duplicated work, weak handoffs and unintegrated information.
 Results include coverage, citations, model/prompt/package provenance and
-explicit failures. Traces and run history persist in
+explicit failures. Invalid message annotations receive validation feedback
+and are regenerated up to three attempts per message; each attempt may incur
+provider charges. Evidence must still match the target message verbatim,
+with at most three spans total. Exhausted retries fail the run rather than
+discarding invalid evidence or reporting success. Provider errors are not
+retried by this annotation-validation loop. Traces and run history persist in
 `.agenttrace/agenttrace.sqlite3`; prompt/result artifacts live under
 `.agenttrace/runs/<run-id>/`. Interrupted jobs are marked failed on restart,
 not retried automatically. Re-ingesting unchanged content reuses its trace;
 changed content receives a new identifier.
+
+### Scout's native viewer
+
+Completed Scout runs have an **Open in Scout** link. It opens the exact saved
+analysis in Scout's native UI in a new tab, with message annotations,
+collaboration findings and navigable message references. It exports saved
+judgments, **does not call a model**, and reuses the export on subsequent visits.
+It also works without a provider API key.
+
+Install the API's Scout extra, then run the official viewer in another terminal
+using the **same data directory as AgentTrace**:
+
+```bash
+source .venv/bin/activate
+DATA_DIR="${AGENTTRACE_DATA_DIR:-$PWD/.agenttrace}"
+mkdir -p -m 700 "$DATA_DIR/scout-view" "$DATA_DIR/scout-view/transcripts" "$DATA_DIR/scout-view/scans"
+scout view --transcripts "$DATA_DIR/scout-view/transcripts" \
+  --scans "$DATA_DIR/scout-view/scans" --host 127.0.0.1 --port 7576
+```
+
+If the API loads `AGENTTRACE_DATA_DIR` from `.env`, that does not set the variable
+in this terminal: set `DATA_DIR` explicitly to that directory instead.
+For a different port, set the API server's `AGENTTRACE_SCOUT_VIEWER_URL` to the
+matching loopback HTTP origin before restarting the API. The link reports an
+explicit error if the viewer is stopped or serving the wrong directories.
+Keep both servers on loopback; the native viewer also exposes editing/scanning
+features and is not an authenticated shared hosting service.
+
+Native files and a per-run export manifest persist in
+`.agenttrace/scout-view/`. Include this directory in a private data-sharing
+bundle, not in Git. Native scans are labeled saved-result replays and use
+`mockllm/model` as a no-provider recording model; the **original model,
+prompt version and run ID** are retained in scan metadata. Original model-call
+events, token accounting and generation logs cannot be reconstructed from
+these saved judgments. Opening the viewer does not start inference; explicitly
+running a new scan from its own controls is a separate action.
+
+### Batch analysis and result links
+
+Run all available offline annotators without clicking through the UI. Start
+the API against the database you want to use, then run:
+
+```bash
+.venv/bin/python -m agenttrace.batch traces.json --output .agenttrace/batch-export
+```
+
+The input is an array, or an object containing a `traces` array. Each entry
+contains a saved `trace_id`, a SharedNet `url`, or the API's structured `source`
+object. An optional `name` or `slug` labels the export. Existing inventory
+manifests with `trace_id` fields can be used directly:
+
+```json
+{
+  "traces": [
+    {"name": "saved-example", "trace_id": "trace_0123456789abcdef"},
+    {"name": "uploaded-example", "source": {"type": "share_json", "value": {"room": {"name": "Example"}, "members": [], "messages": []}}}
+  ]
+}
+```
+
+The structured-source example shows the input shape; supply a real, nonempty
+share to analyze it. Saved IDs must exist in the running server's database.
+The output directory contains `index.json`, a clickable `links.html`, per-trace reports, and individual
+analysis records. The index includes browser links for traces
+(`?trace=...`) and specific analysis runs (`?trace=...&run=...`). Links require
+the same server/database to be running; they are not public hosted links.
+Specific-run links display the linked result rather than substituting a newer
+run of the same analyzer. Exports can contain sensitive trace content and
+share capabilities: keep them private and out of Git.
+
+To explicitly include Scout's message annotations and collaboration scanners:
+
+```bash
+.venv/bin/python -m agenttrace.batch traces.json \
+  --output .agenttrace/batch-export --scout --model openai/gpt-5.4-mini
+```
+
+Scout must be installed and its provider credentials configured on the
+**running server**, not just in the batch command's shell. `--scout` authorizes
+provider disclosure and potential API charges. Completed runs are reused by
+default (Scout only when the model matches); add `--rerun` to repeat them.
+Active runs are polled rather than duplicated. Unavailable annotators, setup
+failures, analysis failures and timeouts are recorded explicitly. An incomplete
+batch exits nonzero while preserving successful exports. A polling timeout
+does not cancel the server job; repeating the command resumes waiting.
+
+`--server` selects a localhost HTTP origin (default `http://127.0.0.1:3000`).
+`--wait-timeout` limits waiting per analysis, and `--poll-interval` controls
+polling. The installed `agenttrace-batch` console command is equivalent to
+`python -m agenttrace.batch`.
 
 | Variable | Purpose |
 | --- | --- |

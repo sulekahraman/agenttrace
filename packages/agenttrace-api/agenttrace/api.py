@@ -8,11 +8,13 @@ from contextlib import asynccontextmanager
 from importlib.metadata import version
 from pathlib import Path
 from typing import Callable
+from urllib.parse import urlsplit
 
+import httpx
 from commsfail import Trace, run, validate_record
 from commsfail.annotators import registry
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -29,6 +31,19 @@ DEFAULT_SCOUT_MODEL = "openai/gpt-5.4-mini"
 
 def default_scout_model() -> str:
     return os.getenv("AGENTTRACE_SCOUT_MODEL", "").strip() or DEFAULT_SCOUT_MODEL
+
+
+def scout_viewer_base_url() -> str:
+    value = os.getenv("AGENTTRACE_SCOUT_VIEWER_URL", "http://127.0.0.1:7576").strip()
+    parsed = urlsplit(value)
+    if (
+        parsed.scheme != "http"
+        or parsed.hostname not in {"127.0.0.1", "localhost", "::1"}
+        or parsed.username is not None or parsed.password is not None
+        or parsed.path.strip("/") or parsed.query or parsed.fragment or parsed.port == 0
+    ):
+        raise ValueError("AGENTTRACE_SCOUT_VIEWER_URL must be a loopback HTTP origin.")
+    return value.rstrip("/")
 
 
 def scout_setup(model: str) -> dict:
@@ -58,7 +73,7 @@ def analyzer_catalog(trace: Trace | None = None) -> list[dict]:
             ) if not supported else None,
         })
     available.append({
-        "name": SCOUT, "version": "2.0.0", "kind": "pipeline",
+        "name": SCOUT, "version": "2.1.0", "kind": "pipeline",
         "available": importlib.util.find_spec("inspect_scout") is not None,
         "default_model": default_scout_model(),
     })
@@ -96,6 +111,7 @@ def create_app(
         source_root = Path(os.environ["AGENTTRACE_SOURCE_ROOT"])
     tasks: set[asyncio.Task] = set()
     semaphore = asyncio.Semaphore(1)
+    viewer_lock = asyncio.Lock()
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
@@ -272,9 +288,9 @@ def create_app(
                 })
         analysis = AnalysisRun(
             trace_id=identifier,
-            analyzer=Analyzer(name=SCOUT, version="2.0.0", kind="pipeline"),
+            analyzer=Analyzer(name=SCOUT, version="2.1.0", kind="pipeline"),
             provenance=Provenance(
-                model=model, prompt_version="2",
+                model=model, prompt_version="3",
                 package_versions={
                     package: version(package) for package in ("commsfail", "agenttrace-api")
                 },
@@ -294,6 +310,46 @@ def create_app(
         if analysis is None:
             raise HTTPException(status_code=404, detail="Analysis run not found.")
         return analysis
+
+    @app.get("/api/analysis-runs/{identifier}/scout-view")
+    async def open_scout_view(identifier: str):
+        analysis = get_analysis(identifier)
+        if analysis["analyzer"]["name"] != SCOUT or analysis["status"] != "completed":
+            raise HTTPException(status_code=409, detail="Only completed Scout analyses can be opened in Scout View.")
+        if importlib.util.find_spec("inspect_scout") is None:
+            raise HTTPException(status_code=503, detail="Install the Scout extra to export native viewer results.")
+        root = (data_dir / "scout-view").resolve()
+        try:
+            base_url = scout_viewer_base_url()
+            async with httpx.AsyncClient(timeout=3, trust_env=False) as client:
+                response = await client.get(f"{base_url}/api/v2/app-config")
+                response.raise_for_status()
+                config = response.json()
+                if not isinstance(config, dict):
+                    raise ValueError("Unexpected Scout viewer configuration.")
+        except (ValueError, httpx.HTTPError) as error:
+            raise HTTPException(
+                status_code=503,
+                detail="Native Scout viewer is unavailable. Start scout view with this data directory; see README.",
+            ) from error
+        expected = {
+            "scans": (root / "scans").as_uri(),
+            "transcripts": (root / "transcripts").as_uri(),
+        }
+        if any(
+            not isinstance(config.get(name), dict) or config[name].get("dir") != directory
+            for name, directory in expected.items()
+        ):
+            raise HTTPException(status_code=503, detail="Native Scout viewer is serving a different data directory.")
+        from .scout.viewer import export_saved_run, native_viewer_url
+
+        async with viewer_lock:
+            try:
+                export = await asyncio.to_thread(export_saved_run, report_for(analysis["trace_id"]), analysis, root)
+            except Exception as error:
+                logger.exception("Native Scout export failed for %s", identifier)
+                raise HTTPException(status_code=500, detail="Native Scout export failed. See API server logs.") from error
+        return RedirectResponse(native_viewer_url(export, base_url), status_code=303)
 
     # Unknown API paths must not be mistaken for SPA routes.
     @app.api_route("/api/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
