@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgentTrace: Scout process, message types, and metrics</title>
+  <style>
+    :root { color-scheme: light; --ink: #173044; --muted: #536878; --line: #cbd8e1; --teal: #087e82; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf2f5; color: var(--ink); font: 16px/1.6 system-ui, sans-serif; }
+    main { max-width: 1180px; margin: 40px auto; padding: 0 24px; }
+    header, section { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 30px; margin-bottom: 22px; }
+    .eyebrow { color: var(--teal); font-size: 12px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.2; margin: 8px 0 16px; }
+    h2 { margin: 0 0 12px; font-size: 25px; }
+    p { margin: 0 0 14px; }
+    header p:last-child { margin: 0; color: var(--muted); }
+    a { color: #076d80; text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid #bd7716; outline-offset: 4px; }
+    .diagram { overflow-x: auto; }
+    svg { display: block; width: 100%; min-width: 720px; height: auto; }
+    svg text { fill: var(--ink); font-family: system-ui, sans-serif; text-anchor: middle; }
+    .box { fill: #f4f8fb; stroke: var(--line); stroke-width: 1.5; }
+    .model { fill: #eaf7f5; stroke: #79b9b5; }
+    .category { fill: #173f56; stroke: #173f56; }
+    .category-title { fill: white; font-size: 18px; font-weight: 700; }
+    .title { font-size: 18px; font-weight: 700; }
+    .detail { font-size: 14px; fill: var(--muted); }
+    .type-label { font-size: 13px; }
+    .type-caption { font-size: 12px; fill: var(--muted); }
+    .edge { fill: none; stroke: #658091; stroke-width: 2; marker-end: url(#arrow); }
+    .wire { fill: none; stroke: #658091; stroke-width: 2; }
+    .note { font-size: 14px; color: var(--muted); }
+    .table-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 680px; margin: 20px 0; text-align: left; }
+    th, td { padding: 16px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #f0f6f8; font-size: 14px; }
+    th:first-child { width: 24%; }
+    th:last-child { width: 18%; }
+    .message-types th:last-child { width: 76%; }
+    code { font-size: 12px; overflow-wrap: anywhere; }
+    .caution { border-left: 4px solid #bc831e; background: #fff8e9; padding: 16px 20px; margin-top: 20px; }
+    .caution p:last-child { margin: 0; }
+    footer { color: var(--muted); font-size: 13px; padding: 0 6px 20px; }
+    @media (max-width: 640px) { main { margin: 16px auto; padding: 0 12px; } header, section { padding: 20px; } }
+    @page { size: A4; margin: 12mm; }
+    @media print {
+      body { background: white; font-size: 10pt; line-height: 1.45; }
+      main { max-width: none; margin: 0; padding: 0; }
+      header, section { border: 0; border-radius: 0; padding: 0; margin-bottom: 14px; }
+      h1 { font-size: 25pt; }
+      h2 { font-size: 17pt; }
+      section + section { break-before: page; }
+      .diagram, .table-wrap { overflow: visible; }
+      svg { min-width: 0; }
+      table { min-width: 0; margin: 12px 0; }
+      th, td { padding: 9px; }
+      th, .note { font-size: 9pt; }
+      code { font-size: 8pt; white-space: nowrap; }
+      tr, .caution { break-inside: avoid; }
+      footer { font-size: 8pt; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">AgentTrace / method explainer</div>
+      <h1>From conversation traces to collaboration judgments</h1>
+      <p>Scout supplies the model-based analysis machinery. AgentTrace defines the three categories, selects evidence, validates references, and displays the findings.</p>
+    </header>
+
+    <section aria-labelledby="process-title">
+      <h2 id="process-title">1. Analysis process</h2>
+      <p class="note">Green stages use an LLM. Structural metrics are a separate offline analysis, not inputs that mechanically determine the three judgments.</p>
+      <div class="diagram">
+        <svg viewBox="0 0 1100 1090" role="img" aria-labelledby="diagram-title diagram-description">
+          <title id="diagram-title">AgentTrace Scout collaboration analysis pipeline</title>
+          <desc id="diagram-description">An archived conversation is normalized. Offline structural analysis is a separate branch. On an explicit Scout request, an LLM assigns each message one primary and up to two secondary types from the 15 types listed beside the annotation stage, using bounded earlier context. Relevant messages and adjacent turns are selected, then an LLM evaluates duplicated work, weak handoff, and unintegrated information. One result per category is validated, persisted, and shown for human review.</desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#658091"/>
+            </marker>
+          </defs>
+
+          <rect class="box" x="240" y="10" width="580" height="68" rx="12"/>
+          <text class="title" x="530" y="39">Archived multi-agent conversation</text>
+          <text class="detail" x="530" y="61">Source messages and provenance</text>
+          <path class="edge" d="M530 78 V112"/>
+
+          <rect class="box" x="240" y="114" width="580" height="72" rx="12"/>
+          <text class="title" x="530" y="144">Normalize into a canonical trace</text>
+          <text class="detail" x="530" y="168">Preserve agents, text, and original turn numbers</text>
+          <path class="edge" d="M820 150 H856"/>
+          <rect class="box" x="860" y="105" width="226" height="95" rx="12"/>
+          <text class="title" x="973" y="135">Offline analysis</text>
+          <text class="detail" x="973" y="160">Structural metrics</text>
+          <text class="detail" x="973" y="182">Separate from Scout</text>
+          <path class="edge" d="M530 186 V242"/>
+          <text class="detail" x="530" y="222">Explicit Run Scout request</text>
+
+          <rect class="box model" x="240" y="244" width="580" height="88" rx="12"/>
+          <text class="title" x="530" y="273">1 / Annotate messages with an LLM</text>
+          <text class="detail" x="530" y="297">One primary + up to two secondary message types</text>
+          <text class="detail" x="530" y="318">Bounded earlier context; no future messages</text>
+          <path class="wire" d="M224 288 H240"/>
+          <rect class="box model" x="6" y="244" width="218" height="330" rx="12"/>
+          <text class="title" x="115" y="270">15 message types</text>
+          <text class="type-caption" x="115" y="290">Communicative function, not quality</text>
+          <text class="type-label" x="115" y="314">question</text>
+          <text class="type-label" x="115" y="331">delegation_request</text>
+          <text class="type-label" x="115" y="348">acknowledgement</text>
+          <text class="type-label" x="115" y="365">status_update</text>
+          <text class="type-label" x="115" y="382">result_delivery</text>
+          <text class="type-label" x="115" y="399">evidence_observation</text>
+          <text class="type-label" x="115" y="416">proposal</text>
+          <text class="type-label" x="115" y="433">critique_disagreement</text>
+          <text class="type-label" x="115" y="450">agreement</text>
+          <text class="type-label" x="115" y="467">decision</text>
+          <text class="type-label" x="115" y="484">synthesis</text>
+          <text class="type-label" x="115" y="501">clarification</text>
+          <text class="type-label" x="115" y="518">artifact_sharing</text>
+          <text class="type-label" x="115" y="535">coordination</text>
+          <text class="type-label" x="115" y="552">social_heartbeat</text>
+          <path class="edge" d="M530 332 V366"/>
+
+          <rect class="box" x="240" y="368" width="580" height="88" rx="12"/>
+          <text class="title" x="530" y="397">2 / Select candidate evidence</text>
+          <text class="detail" x="530" y="421">Relevant message types and adjacent turns</text>
+          <text class="detail" x="530" y="442">Up to 80 candidate messages; 2,000 characters each</text>
+          <path class="edge" d="M530 456 V490"/>
+
+          <rect class="box model" x="240" y="492" width="580" height="72" rx="12"/>
+          <text class="title" x="530" y="521">3 / Evaluate candidate text with an LLM</text>
+          <text class="detail" x="530" y="545">Apply the three AgentTrace category definitions</text>
+          <path class="wire" d="M530 564 V590 H190 M530 590 H870"/>
+          <path class="edge" d="M190 590 V614"/>
+          <path class="edge" d="M530 590 V614"/>
+          <path class="edge" d="M870 590 V614"/>
+
+          <rect class="category" x="35" y="616" width="310" height="62" rx="12"/>
+          <text class="category-title" x="190" y="653">Duplicated work</text>
+          <rect class="category" x="375" y="616" width="310" height="62" rx="12"/>
+          <text class="category-title" x="530" y="653">Weak handoff</text>
+          <rect class="category" x="715" y="616" width="310" height="62" rx="12"/>
+          <text class="category-title" x="870" y="653">Unintegrated information</text>
+          <path class="wire" d="M190 678 V704 H870 V678 M530 678 V704"/>
+          <path class="edge" d="M530 704 V730"/>
+
+          <rect class="box" x="240" y="732" width="580" height="88" rx="12"/>
+          <text class="title" x="530" y="761">One result per category per trace</text>
+          <text class="detail" x="530" y="785">found: true / false + explanation + confidence</text>
+          <text class="detail" x="530" y="806">Supporting original message numbers</text>
+          <path class="edge" d="M530 820 V854"/>
+
+          <rect class="box" x="240" y="856" width="580" height="88" rx="12"/>
+          <text class="title" x="530" y="885">4 / Validate structure and references</text>
+          <text class="detail" x="530" y="909">Exactly three categories; valid candidate references</text>
+          <text class="detail" x="530" y="930">Positive findings require supporting turn numbers</text>
+          <path class="edge" d="M530 944 V978"/>
+
+          <rect class="box" x="240" y="980" width="580" height="88" rx="12"/>
+          <text class="title" x="530" y="1009">5 / Persist, display, and review</text>
+          <text class="detail" x="530" y="1033">Follow evidence links to the original messages</text>
+          <text class="detail" x="530" y="1054">Human interpretation: a flag is not proof of failure</text>
+        </svg>
+      </div>
+      <p class="note">Sources:
+        <a href="https://github.com/sulekahraman/agenttrace/blob/main/MESSAGE_ANNOTATION.md">method documentation</a>
+        &middot; <a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/agenttrace-api/agenttrace/scout/scanners.py#L69-L215">scanner implementation</a>
+        &middot; <a href="https://github.com/sulekahraman/agenttrace/blob/main/METRICS.md">separate structural metric definitions</a>.
+      </p>
+    </section>
+
+    <section aria-labelledby="message-types-title">
+      <h2 id="message-types-title">2. Scout message types</h2>
+      <p>AgentTrace's Scout annotation prompt assigns <strong>one primary type and up to two secondary types</strong> to each target message. These labels describe <strong>observable communicative function, not quality or success</strong>. Annotations also include inferred replies, addressees, confidence, ambiguity, rationale, and verbatim evidence spans.</p>
+      <p class="note">Definition source: <a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/agenttrace-api/agenttrace/scout/annotations.py#L34-L62">message-type definitions and annotation rules</a>; output fields: <a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/agenttrace-api/agenttrace/scout/annotations.py#L71-L79">MessageAnnotation schema</a>.</p>
+      <div class="table-wrap">
+        <table class="message-types">
+          <thead><tr><th scope="col">Message type</th><th scope="col">Definition used in the prompt</th></tr></thead>
+          <tbody>
+            <tr><td><code>question</code></td><td>Asks for information, evaluation, clarification, or a decision.</td></tr>
+            <tr><td><code>delegation_request</code></td><td>Assigns or requests concrete work from another agent.</td></tr>
+            <tr><td><code>acknowledgement</code></td><td>Confirms receipt or understanding without substantive work.</td></tr>
+            <tr><td><code>status_update</code></td><td>Reports progress, blockage, or current activity.</td></tr>
+            <tr><td><code>result_delivery</code></td><td>Delivers completed analysis, output, or requested work.</td></tr>
+            <tr><td><code>evidence_observation</code></td><td>Contributes facts, measurements, or observations.</td></tr>
+            <tr><td><code>proposal</code></td><td>Suggests a plan, hypothesis, design, or next action.</td></tr>
+            <tr><td><code>critique_disagreement</code></td><td>Challenges, rejects, or identifies a problem.</td></tr>
+            <tr><td><code>agreement</code></td><td>Explicitly accepts or endorses another contribution.</td></tr>
+            <tr><td><code>decision</code></td><td>Commits the group to a choice or conclusion.</td></tr>
+            <tr><td><code>synthesis</code></td><td>Combines multiple contributions into a unified account.</td></tr>
+            <tr><td><code>clarification</code></td><td>Resolves ambiguity or corrects interpretation.</td></tr>
+            <tr><td><code>artifact_sharing</code></td><td>Publishes or points to a file, link, run, or other artifact.</td></tr>
+            <tr><td><code>coordination</code></td><td>Manages sequencing, ownership, deadlines, or process.</td></tr>
+            <tr><td><code>social_heartbeat</code></td><td>Greeting, availability ping, or low-content presence update.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>How types feed the three metrics:</strong> primary and secondary types matching the scanner's <a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/agenttrace-api/agenttrace/scout/scanners.py#L26-L85">relevant-type sets</a> select a shared pool of candidate messages plus adjacent turns. The model then checks candidate text against all three failure definitions. A type is not itself a failure: for example, <code>result_delivery</code> does not establish that the result was integrated.</p>
+    </section>
+
+    <section aria-labelledby="definitions-title">
+      <h2 id="definitions-title">3. Collaboration metric definitions</h2>
+      <p>These are <strong>AgentTrace-defined, model-judged collaboration-failure categories</strong>, not built-in Scout metrics or deterministic scores. The operational definitions below come from the scanner prompt.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Category</th><th scope="col">Operational definition</th><th scope="col">Definition source</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Duplicated work</strong><br><code>duplicated_work</code></td>
+              <td>Different agents independently repeat materially equivalent analysis or execution without a clear verification, synthesis, or handoff purpose. <strong>Exclude</strong> acknowledgements, context summaries, and deliberate independent checks.</td>
+              <td><a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/agenttrace-api/agenttrace/scout/scanners.py#L181-L184">Scanner prompt<br>lines 181-184</a></td>
+            </tr>
+            <tr>
+              <td><strong>Weak handoff</strong><br><code>weak_handoff</code></td>
+              <td>Requested work is not acknowledged or delivered; delivered work is not integrated; ownership is unclear; or a request is abandoned.</td>
+              <td><a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/agenttrace-api/agenttrace/scout/scanners.py#L185-L186">Scanner prompt<br>lines 185-186</a></td>
+            </tr>
+            <tr>
+              <td><strong>Unintegrated information</strong><br><code>unintegrated_information</code></td>
+              <td>Relevant, visible information is later ignored, contradicted without resolution, or omitted from a decision despite a clear opportunity to use it.</td>
+              <td><a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/agenttrace-api/agenttrace/scout/scanners.py#L187-L189">Scanner prompt<br>lines 187-189</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Also summarized in <a href="https://github.com/sulekahraman/agenttrace/blob/main/MESSAGE_ANNOTATION.md#collaboration-findings">MESSAGE_ANNOTATION.md: Collaboration findings</a>. Source links target the main branch and may move as the implementation changes.</p>
+      <div class="caution">
+        <p><strong>Interpretation matters.</strong> <code>found=true</code> means the model judged the supplied evidence sufficient. <code>found=false</code> can mean insufficient evidence, not demonstrated absence. Confidence is model-reported, not a calibrated probability.</p>
+        <p>Categories may overlap: nine traces produce 27 category judgments, not 27 distinct failures. Citation validation checks traceability, not semantic correctness. In the October 16 report, some saved rationales count purposeful verification as duplication despite the definition excluding it; human adjudication is needed.</p>
+      </div>
+    </section>
+    <section aria-labelledby="other-analysis-title">
+      <h2 id="other-analysis-title">4. Other analysis: distinct signals and labels</h2>
+      <p><strong>Offline structural analysis</strong> counts question marks and lexical agreement, challenge, and coordination markers, alongside lengths, timing, and turn structure. These are text-based signals, <strong>not semantic message-type classifications</strong>; they do not assign Scout's 15 types. See <a href="https://github.com/sulekahraman/agenttrace/blob/main/METRICS.md#message-level-fields">message-level metric definitions</a>.</p>
+      <p><strong>Human audit codebook:</strong> <code>commsfail</code> also provides the separate <code>discourse_v1</code> codebook below. These are human-labeling options, not an additional automatic Scout stage or results established by the report. Each label is a separate yes/no decision per post, unlike Scout's primary/secondary classification.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Human discourse label</th><th scope="col">Codebook definition</th><th scope="col">Definition source</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>accept</code></td>
+              <td>The author makes an unconditional commitment to own a named item. Offers, intentions, and hedges do not count.</td>
+              <td><a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/commsfail/commsfail/audit/__init__.py#L57-L58">Codebook definition</a></td>
+            </tr>
+            <tr>
+              <td><code>result</code></td>
+              <td>The author asserts that a named item is delivered or ready for review. Label the assertion; whether the artifact exists is read from the record.</td>
+              <td><a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/commsfail/commsfail/audit/__init__.py#L59-L60">Codebook definition</a></td>
+            </tr>
+            <tr>
+              <td><code>review_pass</code></td>
+              <td>The author positively reviews another seat's current result for a named item. Intentions, questions, failures, and self-review do not count.</td>
+              <td><a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/commsfail/commsfail/audit/__init__.py#L61-L62">Codebook definition</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">The separate <a href="https://github.com/sulekahraman/agenttrace/blob/main/packages/commsfail/commsfail/annotators/regex_v1/README.md">regex_v1 annotator</a> reports failure-mode evidence from text patterns; its failure-mode labels should not be confused with these message functions.</p>
+    </section>
+    <footer>Prepared October 17, 2026. Self-contained HTML; no external scripts, fonts, or rendering dependencies.</footer>
+  </main>
+</body>
+</html>
