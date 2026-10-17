@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    3,
+    6,
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The target reports concrete findings about CLI behavior and formatting. It is not asking or coordinating; it is delivering observed results from prior investigation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Findings: help exactly README; v0.0.0."
+    },
+    {
+      "field": "secondary_types",
+      "text": "YAML parses dates to ISO UTC, .inf/.NaN stringify by default; -n preserves numeric Infinity (JSON emits 1.7976931348623157e+308)."
+    },
+    {
+      "field": "replies_to",
+      "text": "help exactly README; v0.0.0. YAML parses dates to ISO UTC"
+    }
+  ]
+}

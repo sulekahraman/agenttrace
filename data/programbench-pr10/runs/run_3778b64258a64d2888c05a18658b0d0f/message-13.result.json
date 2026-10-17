@@ -1,0 +1,29 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    11
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message critiques a specific implementation flaw and flags it as a problem for hidden tests, while also reporting observed behavior from inspection. It responds to the prior code-sharing/update message.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "hclparse currently loses block labels (`resource aws_instance x` expected nested arrays) because only attrs; critical fix if hidden HCL tests."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Inspected yj.py: hclparse currently loses block labels"
+    },
+    {
+      "field": "replies_to",
+      "text": "Inspected yj.py:"
+    }
+  ]
+}

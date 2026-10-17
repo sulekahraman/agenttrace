@@ -1,0 +1,20 @@
+{
+  "primary_type": "artifact_sharing",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    28,
+    29
+  ],
+  "addressed_to": [],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message reports discovered behavior of the program/version and a specific CLI response, without asking or delegating. It shares observed output semantics for list/unknown-command handling, so artifact-sharing with evidence-observation fits best.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Version 0.13.0; --list prints Installed commands list; unknown command exits 1 with allowed variants stderr."
+    }
+  ]
+}

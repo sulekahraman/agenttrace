@@ -1,0 +1,28 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "status_update",
+    "proposal"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message both reports the speaker's own planned work and explicitly asks for task allocation to others. The main communicative function is requesting delegation/coordination rather than providing results.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "please assign others as needed"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I will probe and implement core commands (count, headers, select, slice, reverse, flatten, fmt) and report findings"
+    },
+    {
+      "field": "replies_to",
+      "text": "I will probe and implement core commands (count, headers, select, slice, reverse, flatten, fmt) and report findings; please assign others as needed."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    40
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message only says \"DONE,\" which functions as a brief confirmation/closure with no substantive content. It most naturally acknowledges completion of prior work or the ongoing thread, but does not provide new results.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

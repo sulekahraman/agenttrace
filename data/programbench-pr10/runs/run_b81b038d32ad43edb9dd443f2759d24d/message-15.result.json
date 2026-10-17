@@ -1,0 +1,24 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "critique_disagreement",
+    "result_delivery"
+  ],
+  "replies_to": [
+    14
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete inspection findings about xsv.py and contrasts current behavior with the reference, identifying mismatches rather than proposing work. It also delivers the observed discrepancies as a review result.",
+  "evidence": [
+    {
+      "field": "current stats output/header differs ref significantly",
+      "text": "Reviewed xsv.py: current stats output/header differs ref significantly."
+    },
+    {
+      "field": "reference requirements for stats/frequency/flatten/table",
+      "text": "Ref header exactly field,type,sum,min,max,min_length,max_length,mean,stddev (+ median,mode,cardinality flags), type Unicode not String; stats population stddev excludes null unless --nulls. frequency should render empty as (NULL), while CSV empty currently blank. flatten ref labels  (two spaces, no colon), separator only between records (no final #), -n labels 0-based indices. table likely okay but don't pad last field."
+    }
+  ]
+}

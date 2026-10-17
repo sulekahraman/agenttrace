@@ -1,0 +1,23 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    54
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target is a minimal completion signal indicating the agent is finished. It does not add substantive results, so it is best labeled as an acknowledgement, with a light status-update nuance.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

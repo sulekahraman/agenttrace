@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    44
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix and commit for a specific bug, which is a delivered result. It also gives current status of the change.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Ref fmt --ascii uses exactly 0x1e record terminator without newline; corrected and committed."
+    },
+    {
+      "field": "replies_to",
+      "text": "Ref fmt --ascii uses exactly 0x1e record terminator without newline; corrected and committed."
+    }
+  ]
+}

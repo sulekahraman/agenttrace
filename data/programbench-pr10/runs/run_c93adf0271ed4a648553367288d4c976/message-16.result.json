@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "proposal"
+  ],
+  "replies_to": [
+    14,
+    15
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed fixes and current state of implementation. It delivers concrete results (“Found/fixed major search bug”, “Also fixed stats --cardinality”) and includes a suggestion for verification of another possibly concurrent change.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Found/fixed major search bug"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Also fixed stats --cardinality to include empty/null values, matching ref cardinality"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Frequency NULL rendering may already be concurrently adjusted; please verify."
+    }
+  ]
+}

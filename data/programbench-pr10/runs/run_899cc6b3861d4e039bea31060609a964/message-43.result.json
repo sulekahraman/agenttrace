@@ -1,0 +1,23 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    40
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target is a bare “DONE”, which functions as a minimal acknowledgment/status signal rather than substantive content. Given the repeated DONE messages in the surrounding sequence, it most likely marks completion or presence, but the observable communicative function is simply acknowledgment.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    }
+  ]
+}

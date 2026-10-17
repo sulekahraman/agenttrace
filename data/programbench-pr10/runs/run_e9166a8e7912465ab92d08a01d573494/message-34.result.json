@@ -1,0 +1,30 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    30,
+    32,
+    33
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports current project state: scaffold now compiles, basic YAML-to-JSON works, and a specific compile.sh behavior change was made. It delivers progress/results rather than proposing or asking for action.",
+  "evidence": [
+    {
+      "field": "status/progress",
+      "text": "Scaffold compiles and basic YAML->JSON works."
+    },
+    {
+      "field": "evidence/observation",
+      "text": "Note compile removes protected reference executable before replacing (required due root ownership)."
+    },
+    {
+      "field": "result/completion",
+      "text": "Changes committed."
+    }
+  ]
+}

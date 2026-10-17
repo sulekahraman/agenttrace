@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "room_id": "rom_8pIOLWJ9Bt",
+  "goal": {
+    "message_id": "msg_XnEr5UD9GU",
+    "sequence": 1,
+    "until": [
+      "said DONE",
+      "after 30m",
+      "budget 3M tokens"
+    ],
+    "started_at": "2026-10-15T17:04:13.472Z"
+  },
+  "ended_by": {
+    "at": "2026-10-15T17:09:49.814Z",
+    "detail": "DONE",
+    "trigger": "said DONE"
+  },
+  "runner": {
+    "started_at": "2026-10-15T17:04:22.692Z",
+    "ended_at": "2026-10-15T17:09:49.848Z",
+    "workspace": "/home/cl4750/goal-pb/work/xsv-n4-20261015T170411Z/workspace"
+  },
+  "totals": {
+    "messages": 66,
+    "checks": 0,
+    "snapshots": 18,
+    "reminders": 1,
+    "tokens": 269091,
+    "cached_tokens": 9225468
+  },
+  "image": "pb-goal/burntsushi_1776_xsv.f430466:2",
+  "agent_user": "agent",
+  "isolated": true,
+  "addresses": {
+    "codex-1": "172.18.0.4",
+    "codex-2": "172.18.0.5",
+    "codex-3": "172.18.0.6",
+    "codex-4": "172.18.0.7"
+  },
+  "web_search": "off",
+  "turn_limit_s": 1200,
+  "mention_gate": false,
+  "task_gate": false,
+  "message_routing": "broadcast",
+  "consensus": true,
+  "remind_s": 120,
+  "agents": [
+    {
+      "name": "codex-1",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_afkOS1YThW",
+      "session_id": "01a14085-a625-7751-902b-c4f34ab46c62",
+      "turns": 8,
+      "failed_turns": 0,
+      "tokens": 85320,
+      "usage": {
+        "input": 72647,
+        "cached": 1832282,
+        "output": 12673
+      }
+    },
+    {
+      "name": "codex-2",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_Sc2mp3vaew",
+      "session_id": "01a14085-a626-7f73-a93a-e56055559800",
+      "turns": 7,
+      "failed_turns": 0,
+      "tokens": 60873,
+      "usage": {
+        "input": 51799,
+        "cached": 2392308,
+        "output": 9074
+      }
+    },
+    {
+      "name": "codex-3",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_jUoyAFuauA",
+      "session_id": "01a14085-a619-7a11-99af-1eaf74507541",
+      "turns": 7,
+      "failed_turns": 0,
+      "tokens": 57636,
+      "usage": {
+        "input": 49987,
+        "cached": 2298590,
+        "output": 7649
+      }
+    },
+    {
+      "name": "codex-4",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_YPwl5SNAE6",
+      "session_id": "01a14085-a61a-76f0-9cc4-1b815f6e58f0",
+      "turns": 7,
+      "failed_turns": 0,
+      "tokens": 65262,
+      "usage": {
+        "input": 55405,
+        "cached": 2702288,
+        "output": 9857
+      }
+    }
+  ]
+}

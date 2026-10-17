@@ -1,0 +1,26 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_572e6eaefa31485aa52f83d87d998eac",
+  "trace_id": "trace_abb6da728982d695",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.1.0",
+    "kind": "pipeline"
+  },
+  "status": "failed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:00.294901+00:00",
+    "started_at": "2026-10-17T16:15:00.296287+00:00",
+    "completed_at": "2026-10-17T16:15:08.098482+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "3",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": null,
+  "error": "Message #6 failed annotation validation after 3 attempts: Returned evidence not in the target message body."
+}

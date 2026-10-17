@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe results and observed behavior across several CLI cases, so its main function is result delivery with factual observations embedded.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probes: default YAML->JSON compact; -jy YAML output ends each doc with newline, lists indented 2 spaces."
+    },
+    {
+      "field": "secondary_types",
+      "text": "JSON null accepted YAML but TOML/HCL writers omit/error. YAML yes/no/ON/off are strings; ~ null; .inf/- .Inf/.NaN become strings Infinity/-Infinity/NaN by default."
+    },
+    {
+      "field": "replies_to",
+      "text": "Probes: default YAML->JSON compact; -jy YAML output ends each doc with newline, lists indented 2 spaces."
+    }
+  ]
+}

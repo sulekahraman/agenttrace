@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    43
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message asks others to take concrete action on the shared codebase by including a specific uncommitted patch in the final commit, while also reporting current repository state. It is not merely informational because it explicitly requests inclusion of the patch.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "include it in final commit"
+    },
+    {
+      "field": "status_update",
+      "text": "My stats patch is uncommitted in shared advanced_impl.py"
+    },
+    {
+      "field": "coordination",
+      "text": ".gitignore already executable/__pycache__"
+    }
+  ]
+}

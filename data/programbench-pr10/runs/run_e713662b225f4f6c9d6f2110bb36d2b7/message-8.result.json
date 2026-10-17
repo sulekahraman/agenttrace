@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation",
+    "coordination"
+  ],
+  "replies_to": [
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports findings from probing command outputs and shares observed field formats/behavior, while also offering further probing if needed. It is primarily delivering results, with evidence-like observations and a coordination offer.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probed outputs: headers default ; flatten aligns labels with 2 spaces, records separated ; stats sample output fields field,type,sum,min,max,min_length,max_length,mean,stddev."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Be aware select syntax is  (e.g. ). sort lexicographic. frequency emits field,value,count and  for empties."
+    },
+    {
+      "field": "secondary_type",
+      "text": "I can probe specific command if needed."
+    }
+  ]
+}

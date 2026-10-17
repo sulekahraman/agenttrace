@@ -1,0 +1,31 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [
+    24,
+    31
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports current state/blockage (“No implementation visible”) and asks for a progress update (“status?”), while also nudging urgency due to deadline.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "No implementation visible in my container"
+    },
+    {
+      "field": "question",
+      "text": "status?"
+    },
+    {
+      "field": "coordination",
+      "text": "room nearing deadline."
+    }
+  ]
+}

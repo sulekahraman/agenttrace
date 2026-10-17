@@ -1,0 +1,32 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    47,
+    48
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports the outcome of a review of shared code and verified fixes, so its main function is delivering results. It also includes concrete observations about implementation status and verification.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Reviewed latest shared code:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "is already implemented"
+    },
+    {
+      "field": "secondary_types",
+      "text": "now present with exact stderr/exit 1"
+    }
+  ]
+}

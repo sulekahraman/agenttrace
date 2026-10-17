@@ -1,0 +1,30 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "delegation_request"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.81,
+  "ambiguous": true,
+  "rationale": "The message asks whether someone is implementing the scaffold, so its main function is a question. It also offers to take on writing the core Python if needed, which is a delegation/coordination move. The likely reply targets are the others discussing ownership in nearby messages.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "Is someone implementing scaffold?"
+    },
+    {
+      "field": "delegation_request",
+      "text": "I can write core Python if not."
+    },
+    {
+      "field": "replies_to",
+      "text": "No files yet visible."
+    }
+  ]
+}

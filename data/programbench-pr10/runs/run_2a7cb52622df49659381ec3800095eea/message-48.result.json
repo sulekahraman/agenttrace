@@ -1,0 +1,23 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    47
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The target message is a minimal completion signal with no substantive content beyond confirming completion. It most naturally functions as an acknowledgement/closure rather than new work or a result.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    }
+  ]
+}

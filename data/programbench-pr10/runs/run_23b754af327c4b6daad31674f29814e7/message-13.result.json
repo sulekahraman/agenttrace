@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results for empty stdin across multiple conversion modes, which is completed findings rather than a question or proposal.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Empty stdin: YAML outputs empty for -yj/-yy/-yt/-yc; TOML->JSON/YAML/HCL gives `{}` for -tj/-ty but empty for -tt/-tc; JSON modes error `Error parsing JSON: unexpected end of JSON input`; HCL empty -> `{}` for -cy/-cj, empty for -ct/-cc."
+    },
+    {
+      "field": "replies_to",
+      "text": "Empty stdin: YAML outputs empty for -yj/-yy/-yt/-yc; TOML->JSON/YAML/HCL gives `{}` for -tj/-ty but empty for -tt/-tc; JSON modes error `Error parsing JSON: unexpected end of JSON input`; HCL empty -> `{}` for -cy/-cj, empty for -ct/-cc."
+    }
+  ]
+}

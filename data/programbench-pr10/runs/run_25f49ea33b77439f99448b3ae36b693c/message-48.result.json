@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    46,
+    47
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix and commit status, not a request or proposal. It delivers the result of patching stats cardinality and notes the commit was added, so primary is result_delivery with status_update as secondary.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Fixed stats cardinality to include null values (matching reference: age cardinality 3)."
+    },
+    {
+      "field": "status_update",
+      "text": "Commit added."
+    }
+  ]
+}

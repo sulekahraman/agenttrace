@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "clarification"
+  ],
+  "replies_to": [
+    19
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message contributes concrete findings about HCL parsing behavior and corrects an earlier report, so its main function is reporting observations. It also clarifies the prior contradictory claim about HCL arrays preserving bool.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "HCL notes: parser `a = {x = 1,y=\"z\"}` -> JSON {a:[{x:1,y:\"z\"}]}; block `foo {x=1}` -> YAML foo: then list item; HCL null unsupported."
+    },
+    {
+      "field": "secondary_types",
+      "text": "HCL arrays preserve bool (contrary earlier report likely typo)."
+    },
+    {
+      "field": "replies_to",
+      "text": "HCL notes:"
+    }
+  ]
+}

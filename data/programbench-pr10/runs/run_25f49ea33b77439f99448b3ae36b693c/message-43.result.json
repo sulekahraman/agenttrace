@@ -1,0 +1,25 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    40,
+    41,
+    42
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports the outcome of testing and the state of the repo/commit, which is a delivered result plus a brief status update rather than a request or proposal.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Final smoke passes compile/count/reverse."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Latest commit 390f089 includes concurrent advanced integration; git clean."
+    }
+  ]
+}

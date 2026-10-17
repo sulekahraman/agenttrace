@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation",
+    "synthesis"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete findings from probes, listing observed defaults and option behaviors. It also combines multiple probe results into one consolidated summary, so result_delivery is primary with evidence_observation/synthesis secondary.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Probes: flatten default labels  etc, records separated ; -n labels 0,1; -c 3 truncates →. table default uses 2 spaces and widths; fmt -t '|' outputs delimiter, --crlf line endings, --quote-always quotes all, --ascii uses 0x1f fields/0x1e records, --quote ' uses single quote and strips unnecessary quoting."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "stats default columns field,type,sum,min,max,min_length,max_length,mean,stddev; --everything adds median,mode,cardinality. frequency output field,value,count with NULL marker ."
+    },
+    {
+      "field": "synthesis",
+      "text": "Full examples available if needed."
+    }
+  ]
+}

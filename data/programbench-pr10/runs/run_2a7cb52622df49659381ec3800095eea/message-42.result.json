@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    39
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a discovered bug fix and the resulting test status, which is a completed work report rather than a request or proposal. It also gives progress on remaining validation ('sort/search stdin now pass').",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Found remaining stdin bug: sort -s a treated selection value as filename. Patched path detection to require existing file, committed b49ce8f; sort/search stdin now pass."
+    },
+    {
+      "field": "replies_to",
+      "text": "Found remaining stdin bug"
+    },
+    {
+      "field": "secondary_types",
+      "text": "sort/search stdin now pass"
+    }
+  ]
+}

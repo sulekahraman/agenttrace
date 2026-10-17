@@ -1,0 +1,33 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    9,
+    10,
+    11
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe findings about xsv commands and their observed behavior, not a plan or question. It delivers results from experimentation, with multiple command-specific observations and a note about count input limits.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Cat probes: rows a,b(header)+2 rows and c,d+1 => `cat rows` outputs first header then all 3 data; `-n` outputs both headers as rows."
+    },
+    {
+      "field": "primary_type",
+      "text": "columns outputs combined first headers a,b,c,d and only min data rows; --pad emits extra `3,4,,`."
+    },
+    {
+      "field": "primary_type",
+      "text": "headers with multiple files outputs all first-file? Probe showed a,b,c,d (concatenated headers from each input), -j same each line. count accepts one input only."
+    }
+  ]
+}

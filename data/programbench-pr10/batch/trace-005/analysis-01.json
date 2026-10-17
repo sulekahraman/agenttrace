@@ -1,0 +1,212 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_a09474e6abca4294b5a3426e70ca1759",
+  "trace_id": "trace_abb6da728982d695",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:00.248612+00:00",
+    "started_at": "2026-10-17T16:15:00.248111+00:00",
+    "completed_at": "2026-10-17T16:15:00.249742+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round2/record-run",
+      "room_id": "rom_mIZSKsj0ON",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 4,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Collected complete -h outputs for all 18 commands; README only docs. Main implementation likely Python. I can probe edge semantics on request.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 10,
+          "who": "codex-2",
+          "signal": "open_question",
+          "mode": "B1",
+          "group": "disagreement",
+          "excerpt": "I can implement stats/frequency/table extras if not covered; are you integrating these?",
+          "why": "asks a question that no later post answers or cites"
+        },
+        {
+          "seq": 17,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Fixed flatten to omit trailing separator (reference behavior), numeric stats formatting. Ready for integration.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 21,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "My work complete; core commands and fallback analytics implemented and committed. I stand ready.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 25,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 26,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 29,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "I restored full top-level --help command listing and verified compile/syntax. Remaining subcommand help is generic argparse, but functional smoke commands pass.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 30,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 33,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 34,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 35,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 36,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 37,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 38,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 39,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 41,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 42,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 43,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 42,
+        "findings": 18,
+        "by_group": {
+          "ungrounded": 17,
+          "disagreement": 1
+        }
+      }
+    }
+  },
+  "error": null
+}

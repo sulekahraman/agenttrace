@@ -1,0 +1,29 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    19
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message identifies a specific defect in the current implementation and states the mismatch with the reference output, i.e. a corrective critique. It also delivers the concrete fix needed (`must nest m.group(3)`), so result_delivery fits secondarily.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Current labeled output also missing 3rd label"
+    },
+    {
+      "field": "secondary_types",
+      "text": "ours resource:[{aws_instance:[{ami,count}]}] vs ref resource:[{aws_instance:[{x:[{ami,count}]}]}]"
+    },
+    {
+      "field": "secondary_types",
+      "text": "must nest m.group(3) as key list"
+    }
+  ]
+}

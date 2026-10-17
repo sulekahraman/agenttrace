@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    5
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The target contributes concrete probe results and behavioral observations about YAML/TOML/JSON conversion flags, so its main function is delivering results. It also reports observed edge cases and outputs, fitting evidence_observation as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "More probes: YAML parse: yes stays string, null/~ -> null, dates -> ISO `2020-01-01T00:00:00Z`, `.inf` -> Infinity by default; -n turns Infinity numeric max float (NaN remains string)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "TOML omits null keys. JSON flags: -jji pretty 2-space; -jje escapes < > & as \\\\u003c etc. YAML->TOML nested map becomes blank line + [section]."
+    },
+    {
+      "field": "addressed_to",
+      "text": "`-k` can error on keys like true/null (reflect Set zero value), while default keys quoted when needed."
+    }
+  ]
+}

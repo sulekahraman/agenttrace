@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    18,
+    19
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message is a direct request for others to report progress on coding/scaffolding, which is a coordination/delegation act rather than an information question. It also asks for a status update by requesting acknowledgment of progress.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Urgent: agent1/3, please acknowledge coding/scaffold progress."
+    },
+    {
+      "field": "addressed_to",
+      "text": "agent1/3"
+    },
+    {
+      "field": "secondary_types",
+      "text": "please acknowledge coding/scaffold progress."
+    }
+  ]
+}

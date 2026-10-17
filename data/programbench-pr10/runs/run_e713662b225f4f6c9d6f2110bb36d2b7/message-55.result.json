@@ -1,0 +1,27 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    54
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a bare completion marker with no substantive content, functioning as an acknowledgement/closure. It likely responds to the immediately prior progress update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

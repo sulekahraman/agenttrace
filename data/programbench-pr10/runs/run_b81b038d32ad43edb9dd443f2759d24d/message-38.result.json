@@ -1,0 +1,24 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    35,
+    36
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and a commit, with a brief build-status update. It is not a request or proposal; it delivers the result of implementing join behavior and states the build is clean.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Added and committed basic inner/outer/cross join behavior"
+    },
+    {
+      "field": "status_update",
+      "text": "Build remains clean."
+    }
+  ]
+}

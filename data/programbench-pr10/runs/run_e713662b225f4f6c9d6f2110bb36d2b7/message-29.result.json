@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "proposal",
+    "coordination"
+  ],
+  "replies_to": [
+    25,
+    28
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-4"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completed work added to xsv.py and asks teammates to preserve/review it, which is best labeled as delivering a result with a coordinating request. It is not merely a proposal because the implementation is described as already added.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I added basic cat rows/columns implementation directly to xsv.py"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please preserve/review it when finalizing."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "proposal",
+    "delegation_request"
+  ],
+  "replies_to": [
+    18,
+    19
+  ],
+  "addressed_to": [
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "Reports current repository state and work needed before judging, while also offering to take on remaining implementation. It is primarily a status update, with a proposal to add advanced functions and a delegation-style ask for whether to proceed.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Saw core_impl.py. Need integrate advanced commands + compile.sh before judge."
+    },
+    {
+      "field": "proposal",
+      "text": "I can add advanced functions if desired;"
+    },
+    {
+      "field": "delegation_request",
+      "text": "before judge."
+    }
+  ]
+}

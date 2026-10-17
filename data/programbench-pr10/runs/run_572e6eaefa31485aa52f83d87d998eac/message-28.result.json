@@ -1,0 +1,24 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "proposal",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    27
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message flags a problem with current behavior relative to the reference and suggests a fix. It observes that help output is incomplete and warns tests may fail, then proposes restoring full help text.",
+  "evidence": [
+    {
+      "field": "problem_observation",
+      "text": "Noticed main  output currently only , unlike full reference help listing; hidden help tests may fail."
+    },
+    {
+      "field": "proposal",
+      "text": "Consider restoring full help text if time."
+    }
+  ]
+}

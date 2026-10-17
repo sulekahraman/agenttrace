@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    21
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix to the stats implementation, specifically a final correction to cardinality handling. It is a concise progress/result update rather than a question or proposal.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Final stats correction: cardinality includes NULL/empty values, matching reference."
+    },
+    {
+      "field": "replies_to",
+      "text": "Final stats correction"
+    },
+    {
+      "field": "addressed_to",
+      "text": "matching reference."
+    }
+  ]
+}

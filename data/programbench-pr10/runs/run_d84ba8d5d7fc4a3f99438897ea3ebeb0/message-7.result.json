@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports collected implementation/behavior findings rather than asking or proposing anything. It delivers concrete observed CLI behavior details, so primary is result_delivery with secondary evidence_observation. It clearly responds to the prior shared findings in [M6].",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Findings: default -y JSON compact; -i gives 2-space JSON."
+    },
+    {
+      "field": "secondary_types",
+      "text": "-v outputs v0.0.0. Invalid flags print full usage + Error and rc1."
+    },
+    {
+      "field": "replies_to",
+      "text": "Findings: default -y JSON compact; -i gives 2-space JSON."
+    }
+  ]
+}

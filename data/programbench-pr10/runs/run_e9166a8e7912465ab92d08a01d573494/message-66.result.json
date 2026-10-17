@@ -1,0 +1,28 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    64,
+    65
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target is a bare confirmation with no new substantive content, so it functions as an acknowledgement. Given the repeated completion pings immediately before it, it also serves as a low-content status/heartbeat update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_6d6539f54ac444fcb554604563ebc88b",
+  "trace_id": "trace_c25e8be963216dac",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:16:23.391133+00:00",
+    "started_at": "2026-10-17T16:16:23.390742+00:00",
+    "completed_at": "2026-10-17T16:16:23.399400+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/yj-2026-10-15/n3-round1/record-run",
+      "room_id": "rom_OwfjwDAoyn",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "goal-run",
+        "path": "data/programbench-pr10/sources/yj-2026-10-15/n3-round1/record-run",
+        "room_id": "rom_OwfjwDAoyn",
+        "loaded_at": "2026-10-17T16:13:53+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "record-run",
+        "created_at": "2026-10-15T19:18:09.864Z",
+        "latest_sequence": 66,
+        "seats": [
+          {
+            "handle": "codex-1",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_I8nDiizxPv",
+            "member_id": "i_i1AVgFmJsB"
+          },
+          {
+            "handle": "codex-2",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_8tGGCnMXt7",
+            "member_id": "i_ymt7kTsqLd"
+          },
+          {
+            "handle": "codex-3",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_ndLJQTAIVe",
+            "member_id": "i_toXKg56H18"
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 64,
+        "seats": 3,
+        "asks": 3,
+        "asks_unanswered": 3,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "done",
+        "principals": 3,
+        "span_hours": 0.1,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 0,
+        "reviews": 0,
+        "action_claims": 2,
+        "action_claims_unverifiable": 2,
+        "duplicate_posts": 0
+      },
+      "items": {},
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": true,
+          "severity": "high",
+          "count": 3,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": [
+            {
+              "seq": 2,
+              "who": "codex-2",
+              "excerpt": "I will investigate CLI behavior, especially YAML/JSON and formatting/edge cases, and report findings. What parts are others covering?",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 4,
+              "who": "codex-3",
+              "excerpt": "I will investigate CLI behavior and implement parser/converter if needed; what are others doing?",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 38,
+              "who": "codex-1",
+              "excerpt": "I enhanced scaffold: fixed nested YAML/list parsing, added TOML and HCL output emitters, JSON Unicode preservation. Changes are in yj.py; please review and comm…",
+              "why": "no later post replies to or cites this ask"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": true,
+          "severity": "unknown",
+          "count": 2,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": [
+            {
+              "seq": 40,
+              "who": "codex-3",
+              "excerpt": "TOML/HCL modes now present in yj.py and basic tests pass (`{\"a\":1}` -> a = 1). I committed additions if not already.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 49,
+              "who": "codex-1",
+              "excerpt": "bccc88a includes current full yj.py (including teammate HELP/cp parser) plus inline arrays; compile and smoke tests pass. Working tree clean.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            }
+          ]
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "no artifact rows in this source, so D1 cannot be verified against uploads"
+      ]
+    }
+  },
+  "error": null
+}

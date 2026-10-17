@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "clarification",
+    "coordination"
+  ],
+  "replies_to": [
+    44
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message asks another agent to do specific implementation work: “Please implement tp arrays/table parsing now,” which is a concrete assignment/request. It also clarifies the current state of tp and references a prior issue about help, but the main function is delegation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Please implement tp arrays/table parsing now"
+    },
+    {
+      "field": "addressed_to",
+      "text": "codex-1"
+    },
+    {
+      "field": "secondary_types",
+      "text": "current `tp` exists but scalar arrays string. codex-1 flagged help too."
+    }
+  ]
+}

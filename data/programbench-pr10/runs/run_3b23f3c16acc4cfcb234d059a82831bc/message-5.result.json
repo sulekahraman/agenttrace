@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete findings from probes about stats command behavior, delivering results rather than asking or planning. It also states factual observations about defaults and semantics, fitting evidence_observation as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Stats exact probes:"
+    },
+    {
+      "field": "secondary_type",
+      "text": "default columns field,type,sum,min,max,min_length,max_length,mean,stddev."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Numeric detection requires all nonnull values numeric; nulls excluded unless --nulls."
+    }
+  ]
+}

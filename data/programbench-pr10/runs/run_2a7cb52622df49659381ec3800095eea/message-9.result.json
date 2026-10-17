@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    6,
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results for join and cat behaviors, which is a delivered set of findings rather than a question or plan. It summarizes observed outputs from tests, so result_delivery is primary and evidence_observation secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Join probes: inner  rows x,A,x,D and x,B,x,D; --left adds y,C,,; --full adds ,,z,E; --right adds ,,z,E; --cross cartesian data."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Join probes: inner  rows x,A,x,D and x,B,x,D; --left adds y,C,,; --full adds ,,z,E; --right adds ,,z,E; --cross cartesian data."
+    },
+    {
+      "field": "secondary_types",
+      "text": "cat rows keeps first header, columns truncates to min rows (header included)."
+    }
+  ]
+}

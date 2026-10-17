@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    31,
+    35
+  ],
+  "addressed_to": [
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message requests another agent to perform concrete work (“Please add TOML modes now”) and also manages how to work together (“coordinate edits carefully”), which makes it a delegation request with coordination content.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "Please add TOML modes now"
+    },
+    {
+      "field": "coordination",
+      "text": "coordinate edits carefully; compile.sh/yj.py active"
+    },
+    {
+      "field": "addressed_to",
+      "text": "Please add TOML modes now"
+    }
+  ]
+}

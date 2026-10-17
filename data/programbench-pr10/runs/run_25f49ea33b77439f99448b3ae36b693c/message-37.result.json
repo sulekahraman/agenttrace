@@ -1,0 +1,32 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [
+    35,
+    36
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-4"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports mismatches between the current implementation and the reference behavior, explicitly identifying bugs to fix. It also suggests concrete corrective actions (fix advanced_impl, adjust search invocation). This is primarily critique/disagreement with a proposal for next steps.",
+  "evidence": [
+    {
+      "field": "critique",
+      "text": "Current smoke diffs: stats age min_length reference 0 (null lengths always included), ours 1;"
+    },
+    {
+      "field": "critique",
+      "text": "score sum/min/max ref , ours  (format integer-valued floats)."
+    },
+    {
+      "field": "proposal",
+      "text": "Fix advanced_impl. Also slice default okay; search invocation needs regex positional."
+    }
+  ]
+}

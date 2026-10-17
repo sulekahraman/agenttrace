@@ -1,0 +1,32 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "coordination",
+    "delegation_request"
+  ],
+  "replies_to": [
+    5
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.91,
+  "ambiguous": false,
+  "rationale": "The message asks whether someone is implementing the core and requests status/ownership, while also coordinating by offering to take fallback work but avoid conflict. It explicitly references prior ownership discussion, so it replies to the earlier request for status.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "No files visible yet; is someone implementing core?"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can write fallback but avoid conflict."
+    },
+    {
+      "field": "addressed_to",
+      "text": "is someone implementing core?"
+    }
+  ]
+}

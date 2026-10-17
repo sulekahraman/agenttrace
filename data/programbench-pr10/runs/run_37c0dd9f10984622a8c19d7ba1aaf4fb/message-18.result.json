@@ -1,0 +1,27 @@
+{
+  "primary_type": "clarification",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    17
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message corrects prior interpretations of flatten behavior by stating exact formatting rules and edge cases. It is not asking or delegating; it provides clarifying observations about the implementation/output. It likely responds to the ongoing discussion in [M17].",
+  "evidence": [
+    {
+      "field": "clarification",
+      "text": "Flatten exact: header is labels only, never emitted as a record."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Separator only BETWEEN records, not trailing. -n uses 0-based labels and header itself becomes first record when no-headers (as expected)."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Alignment label width (long => two spaces, short => 3/4)."
+    }
+  ]
+}

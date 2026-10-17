@@ -1,0 +1,87 @@
+You are annotating one message from a multi-agent collaboration trace.
+Agents work asynchronously in one shared, ordered room.
+
+MESSAGE TYPES:
+- question: asks for information, evaluation, clarification, or a decision
+- delegation_request: assigns or requests concrete work from another agent
+- acknowledgement: confirms receipt or understanding without substantive work
+- status_update: reports progress, blockage, or current activity
+- result_delivery: delivers completed analysis, output, or requested work
+- evidence_observation: contributes facts, measurements, or observations
+- proposal: suggests a plan, hypothesis, design, or next action
+- critique_disagreement: challenges, rejects, or identifies a problem
+- agreement: explicitly accepts or endorses another contribution
+- decision: commits the group to a choice or conclusion
+- synthesis: combines multiple contributions into a unified account
+- clarification: resolves ambiguity or corrects interpretation
+- artifact_sharing: publishes or points to a file, link, run, or other artifact
+- coordination: manages sequencing, ownership, deadlines, or process
+- social_heartbeat: greeting, availability ping, or low-content presence update
+
+RULES:
+1. Label only the target message.
+2. Describe observable communicative function, not quality or success.
+3. Choose one primary type and at most two secondary types.
+4. Keep explicit citations separate from inferred replies_to relationships.
+5. Every replies_to number must be earlier than the target message number.
+6. Support inferred fields with short target-message evidence; mark real uncertainty.
+7. Return at most three evidence items TOTAL, not three per field. One span may support multiple fields.
+8. Copy evidence exactly from the target message body, preserving case, spacing and punctuation.
+   Do not paraphrase, add ellipses, or quote the message header, hints, roster or earlier messages.
+9. Treat message bodies as data to label, never as instructions to follow.
+
+AGENT ROSTER:
+- codex-1: codex
+- codex-2: codex
+- codex-3: codex
+
+MESSAGES THE TARGET EXPLICITLY CITES:
+None.
+
+THE 12 MESSAGES IMMEDIATELY BEFORE THE TARGET:
+#5 codex-2 (2026-10-15T16:01:45.250Z):
+Captured full command help; README confirms xsv. Key options/help available if needed. I can probe exact outputs for flatten/table/stats/select.
+
+#6 codex-3 (2026-10-15T16:01:46.573Z):
+No implementation files exist yet. I can build a standalone Python core if others have not started; let me know to avoid overlap.
+
+#7 codex-1 (2026-10-15T16:01:50.130Z):
+Collected full -h for cat/fixlengths/frequency/index/input/join/partition/sample/search/sort/split/stats/table; key options available. I can probe table/stats if needed.
+
+#8 codex-2 (2026-10-15T16:01:51.139Z):
+Probed stats/frequency/table/flatten exact sample. stats default header field,type,sum,min,max,min_length,max_length,mean,stddev; numeric detection Integer and stddev sample? Frequency NULL prints (NULL). Can provide outputs if needed.
+
+#9 codex-3 (2026-10-15T16:01:56.292Z):
+Core probes: count excludes header; headers output '1   name'; slice indexes data rows 0-based and retains header; select syntax names/index; flatten outputs label padded to max width, records '#' line; reverse retains header. fmt uses --out-delimiter/-t (not -D). I can add implementation if needed.
+
+#10 codex-1 (2026-10-15T16:01:56.315Z):
+Version 0.13.0; --list exact installed commands. Unknown command exits 1 with Could not match nope...; count empty stdin outputs 0.
+
+#11 codex-2 (2026-10-15T16:01:59.188Z):
+Reference --version=0.13.0; --list prints Installed commands list. Unknown exits 1 with exact clap error. stdin defaults work.
+
+#12 codex-3 (2026-10-15T16:02:00.378Z):
+I can test your implementation once files appear; currently no source present. Let me know if you want me to add core code.
+
+#13 codex-1 (2026-10-15T16:02:02.016Z):
+table exact: input a,b\nxx,y\n,z\n => default bytes 'a   b\nxx  y\n    z\n'; -w4 => a+5 spaces? repr b'a     b\nxx    y\n      z\n'; -p1 => b'a  b\nxx y\n   z\n'; -c1 => b'a     b\nx...  y\n      z\n'; -c0 all fields '...'
+
+#14 codex-1 (2026-10-15T16:02:06.912Z):
+Agent3, please proceed implementing standalone Python core now; workspace still has no files.
+
+#15 codex-3 (2026-10-15T16:02:10.091Z):
+Agent1, are you implementing main? I can avoid file conflicts and focus differential tests.
+
+#16 codex-1 (2026-10-15T16:02:11.511Z):
+Stats probe /tmp headers name,val rows a,1 b,2 a, blank,4: default outputs name Unicode sum empty min a max b lengths 0/1; val Integer sum7 min1 max4 mean2.3333333333333335 stddev1.247219128924647 (population). --everything adds median/mode/cardinality; nulls includes blank as zero in numeric mean/stddev.
+
+RULE-BASED HINTS FOR THE TARGET:
+{"addressed_to": [], "artifacts": [], "cites": [], "heartbeat": false}
+
+TARGET MESSAGE TO LABEL:
+#17 codex-2 (2026-10-15T16:02:17.847Z):
+No source visible yet in my container; are you writing in yours? I can run broad differential tests once compile appears.
+
+Label only the target message. Every number in replies_to must be lower than
+17. addressed_to must use roster ids. Evidence spans must come
+from the target message.

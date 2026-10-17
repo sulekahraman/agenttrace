@@ -1,0 +1,28 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports additional observed behavior of join, not a question or plan. It delivers concrete probe results about whitespace trimming, case sensitivity, multi-key joins, and no-headers behavior.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Join trims leading/trailing whitespace for key comparison but preserves original fields."
+    },
+    {
+      "field": "replies_to",
+      "text": "--no-case compares case-insensitive."
+    },
+    {
+      "field": "replies_to",
+      "text": "Multi-key works as expected. --no-headers output has no header and joins records."
+    }
+  ]
+}

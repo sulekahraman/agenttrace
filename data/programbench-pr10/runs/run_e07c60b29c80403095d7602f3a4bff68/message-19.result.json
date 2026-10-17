@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    16,
+    17,
+    18
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors of stats options and numeric handling, not a plan or question. It delivers results from probing: population stddev, NaN propagation, formatting, exclusion of empty/null from numeric stats, and cardinality behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Stats details: stddev is population (1,2,3 => 0.816496580927726), Float NaN propagates; integer formatting normal; empty/null excluded numeric stats but min_length includes 0; cardinality excludes null (d foo + null =>2)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Stats details: stddev is population (1,2,3 => 0.816496580927726), Float NaN propagates; integer formatting normal; empty/null excluded numeric stats but min_length includes 0; cardinality excludes null (d foo + null =>2)."
+    },
+    {
+      "field": "replies_to",
+      "text": "Stats details: stddev is population (1,2,3 => 0.816496580927726), Float NaN propagates; integer formatting normal; empty/null excluded numeric stats but min_length includes 0; cardinality excludes null (d foo + null =>2)."
+    }
+  ]
+}

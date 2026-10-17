@@ -1,0 +1,30 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery",
+    "coordination"
+  ],
+  "replies_to": [
+    34,
+    35,
+    37
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completion of the sender’s work/review status, notes included fixes, and states no further action will be taken. It is not asking or delegating; it primarily updates progress/completion and secondarily delivers the result and coordinates by closing out the work.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "My probe/review is complete"
+    },
+    {
+      "field": "secondary_types",
+      "text": "flatten minimum-width fix included and working tree clean"
+    },
+    {
+      "field": "secondary_types",
+      "text": "No further changes from me."
+    }
+  ]
+}

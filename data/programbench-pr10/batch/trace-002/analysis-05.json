@@ -1,0 +1,849 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_9b9c8d11c359411c8914209075f73875",
+  "trace_id": "trace_f18bef1f6956af75",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.1.0",
+    "kind": "pipeline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:14:25.793502+00:00",
+    "started_at": "2026-10-17T16:14:25.794948+00:00",
+    "completed_at": "2026-10-17T16:14:34.156478+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "3",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": {
+    "findings": [
+      {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "Both agents independently probe and report overlapping command behavior without a clear synthesis handoff: codex-1 enumerates flatten/table/stats and other command probes [M3][M4][M5][M6], while codex-2 separately says it implemented a broad Python xsv CLI covering many of the same commands [M9]. Later, codex-1 again revisits sample parsing and stats behavior after codex-2’s implementation updates [M15][M16][M18][M19], showing repeated effort on the same areas rather than a clean division of labor.",
+        "confidence": 0.79,
+        "message_numbers": [
+          4,
+          5,
+          6,
+          7,
+          10,
+          16,
+          17,
+          19,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      },
+      {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "There is an early handoff request from codex-1 asking for an assigned subset and offering to focus on gaps [M2], but codex-2 does not explicitly accept a scoped assignment; instead it broadly announces implementation of many commands [M9]. Later, codex-2 asks codex-1 to run a final regression and mark DONE [M14], and codex-1 responds with more bug findings and fixes rather than a straightforward acceptance/closure of that handoff [M15][M16][M18][M19]. This indicates requested work was not cleanly handed off and integrated.",
+        "confidence": 0.88,
+        "message_numbers": [
+          3,
+          10,
+          15,
+          16,
+          18,
+          19
+        ]
+      },
+      {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Several concrete probe findings from codex-1 are initially used to drive fixes [M10][M11], but later important observed behavior is still left unresolved or only partly integrated: codex-1 notes sample --seed 1 still differs from reference [M19], and there is also a lingering note that search behavior differs in how regex is applied [M16]. The final messages acknowledge some fixes and smoke-test success [M17][M18][M23][M25], but the sample RNG discrepancy is not resolved in the visible exchange, so relevant information from the earlier probe was not fully incorporated into the final decision.",
+        "confidence": 0.74,
+        "message_numbers": [
+          17,
+          18,
+          19,
+          20,
+          23,
+          24,
+          25,
+          26
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "message_number": 2,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "question",
+          "proposal"
+        ],
+        "replies_to": [],
+        "addressed_to": [],
+        "confidence": 0.94,
+        "ambiguous": false,
+        "rationale": "The message coordinates work division by stating planned tasks and asking about the other agent’s area. It is primarily sequencing/ownership management, with a question and a proposed plan embedded.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "I will probe reference help/core commands and implement broad Python CLI; what area are you handling?"
+          },
+          {
+            "field": "secondary_type",
+            "text": "I will probe reference help/core commands and implement broad Python CLI;"
+          },
+          {
+            "field": "secondary_type",
+            "text": "what area are you handling?"
+          }
+        ]
+      },
+      {
+        "message_number": 3,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          2
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The speaker reports current work in progress and scope, not a question or deliverable. It also coordinates with the other agent by asking for an assigned subset and stating intended focus.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "I’m inspecting command help/edge behavior now"
+          },
+          {
+            "field": "coordination",
+            "text": "let me know if you have an assigned subset"
+          },
+          {
+            "field": "coordination",
+            "text": "I’ll focus on any gaps and regression comparison"
+          }
+        ]
+      },
+      {
+        "message_number": 4,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          3
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports concrete observed behaviors from probing commands, not a plan or question. It delivers findings/results about flatten, table, and stats behavior.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Probed flatten/table/stats: flatten default labels header, separator '#' line; -n emits numeric labels and treats header as data."
+          },
+          {
+            "field": "secondary_type",
+            "text": "-c 3 truncates to first 3 chars + '...'."
+          },
+          {
+            "field": "secondary_type",
+            "text": "stats default columns field,type,sum,min,max,min_length,max_length,mean,stddev; --everything adds median,mode,cardinality; null shown (NULL) in frequency."
+          }
+        ]
+      },
+      {
+        "message_number": 5,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          3,
+          4
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed probe results about several commands, so its main function is delivering findings. It also includes direct observations of specific behaviors, making evidence_observation a secondary fit.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Additional probes: select supports ! exclusion (select !2 => a,c); sort default lexicographic by whole row, -s named; slice retains header and indices exclude header; reverse retains header."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Additional probes: select supports ! exclusion (select !2 => a,c); sort default lexicographic by whole row, -s named; slice retains header and indices exclude header; reverse retains header."
+          },
+          {
+            "field": "replies_to",
+            "text": "Additional probes: select supports ! exclusion (select !2 => a,c); sort default lexicographic by whole row, -s named; slice retains header and indices exclude header; reverse retains header."
+          }
+        ]
+      },
+      {
+        "message_number": 6,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed probe results and observed behaviors for cat, columns, and join, which is a direct delivery of findings rather than a question or plan.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Cat/join probes: cat rows skips subsequent headers unless -n; columns defaults min row count, --pad emits empty fields."
+          },
+          {
+            "field": "evidence_observation",
+            "text": "join header duplicates key columns (k,l,k,m), inner preserves right/hash ordering; --left/full pads missing with empties; --cross emits cartesian rows."
+          }
+        ]
+      },
+      {
+        "message_number": 7,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports concrete observed behaviors of commands (fmt/input) from probing, so it functions as evidence/observations and also delivers results from the investigation.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "fmt preserves CSV quoting, --quote-always quotes every field, --crlf emits CRLF."
+          },
+          {
+            "field": "secondary_types",
+            "text": "input outputs normalized CSV; malformed/no-quoting errors include CSV error and nonzero."
+          }
+        ]
+      },
+      {
+        "message_number": 8,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "question",
+          "status_update"
+        ],
+        "replies_to": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message is a direct check-in requesting progress/status from codex-2 and coordinating next steps around regression testing. It does not provide substantive content beyond process coordination.",
+        "evidence": [
+          {
+            "field": "addressed_to",
+            "text": "codex-2"
+          },
+          {
+            "field": "primary_type",
+            "text": "status?"
+          },
+          {
+            "field": "secondary_types",
+            "text": "I can regression-test once implementation appears."
+          }
+        ]
+      },
+      {
+        "message_number": 9,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          8
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports concrete probe findings about version/list output and sample behavior, not a request or plan. It delivers observed results from testing, so primary is evidence_observation with result_delivery as secondary.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Reference --version is 0.13.0; --list exact heading 'Installed commands:' and same command list."
+          },
+          {
+            "field": "secondary_types",
+            "text": "sample --seed 1 size2 consistently header + a,d."
+          }
+        ]
+      },
+      {
+        "message_number": 10,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update",
+          "artifact_sharing"
+        ],
+        "replies_to": [
+          2,
+          3,
+          8
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and the delivered implementation/artifacts. It also implicitly responds to the earlier request for an implementation/status update from codex-1, and mentions concrete files/commit.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Implemented broad Python xsv CLI in xsv.py, compile.sh, gitignore; commit created."
+          },
+          {
+            "field": "artifact_sharing",
+            "text": "xsv.py, compile.sh, gitignore"
+          },
+          {
+            "field": "status_update",
+            "text": "Implemented broad Python xsv CLI"
+          }
+        ]
+      },
+      {
+        "message_number": 11,
+        "primary_type": "critique_disagreement",
+        "secondary_types": [
+          "delegation_request",
+          "clarification"
+        ],
+        "replies_to": [
+          10
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message points out specific mismatches against prior probes and asks for fixes, which is primarily a critique/disagreement. It also requests action (“Please fix”) and clarifies the expected outputs by naming correct behaviors.",
+        "evidence": [
+          {
+            "field": "critique",
+            "text": "Critical mismatches vs probes:"
+          },
+          {
+            "field": "delegation_request",
+            "text": "Please fix."
+          },
+          {
+            "field": "clarification",
+            "text": "flatten output is  (label padded, NO colon), separator behavior; stats header must field,type,sum,min,max,min_length,max_length,mean,stddev (not non-empty/empty), --everything extras; --version output reference  (no xsv prefix). headers default uses tab indices."
+          }
+        ]
+      },
+      {
+        "message_number": 12,
+        "primary_type": "critique_disagreement",
+        "secondary_types": [
+          "delegation_request",
+          "clarification"
+        ],
+        "replies_to": [
+          10,
+          11
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message identifies concrete defects in the implementation and requests remediation. It challenges the current state (“major mismatches”) while directing the other agent to fix them before finalization.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Important: xsv.py currently has major mismatches"
+          },
+          {
+            "field": "secondary_type",
+            "text": "Please fix before final."
+          },
+          {
+            "field": "replies_to",
+            "text": "Important: xsv.py currently has major mismatches: flatten uses colon but reference uses padded label + two spaces; stats header reference is field,type,sum,min,max,min_length,max_length,mean,stddev; --version reference is 0.13.0 without xsv prefix."
+          }
+        ]
+      },
+      {
+        "message_number": 13,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          11,
+          12
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and specific fixes applied, which is a status update; it also implicitly delivers results of implementation changes. It directly responds to prior bug reports about formatting/schema/list heading/compile behavior.",
+        "evidence": [
+          {
+            "field": "status/update content",
+            "text": "Fixed flatten formatting, stats schema/types matching probes, --list heading, compile removes protected binary before rebuild."
+          }
+        ]
+      },
+      {
+        "message_number": 14,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          13
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reports completed fixes and current state of the implementation, not a question or request. It summarizes two concrete corrections: version output and list formatting.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "Reference version is plain 0.13.0; corrected."
+          },
+          {
+            "field": "result_delivery",
+            "text": "--list now heading plus indented commands."
+          }
+        ]
+      },
+      {
+        "message_number": 15,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "status_update",
+          "delegation_request"
+        ],
+        "replies_to": [
+          13,
+          14
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports build status and asks the other agent to perform a final regression and then mark DONE, which is process coordination with a delegated next step. It also updates the current state of the workspace.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "Current workspace builds independently via ./compile.sh; broad command coverage committed."
+          },
+          {
+            "field": "delegation_request",
+            "text": "Please run any final regression and mark DONE if acceptable."
+          }
+        ]
+      },
+      {
+        "message_number": 16,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "critique_disagreement",
+          "proposal"
+        ],
+        "replies_to": [
+          15
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed patching and regression findings, then identifies a remaining mismatch and suggests a next fix. This is mainly delivering results from testing, with a critique of the current behavior and a proposal for further correction.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Patched shared xsv.py: version now 0.13.0, flatten labels padded and no trailing separator."
+          },
+          {
+            "field": "critique_disagreement",
+            "text": "Regression shows stats age min_length=1 but reference gives 0 (empty fields included in length stats);"
+          },
+          {
+            "field": "proposal",
+            "text": "consider fix."
+          }
+        ]
+      },
+      {
+        "message_number": 17,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          16
+        ],
+        "addressed_to": [],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reports the current state of the implementation and remaining behavior differences versus reference, without asking for action or making a decision. It also provides concrete observed discrepancies in stats and search behavior and notes flatten now matches sample.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "Current stats implementation now has correct header/types, but min_length/max_length excludes nulls: reference age with values 2, reports 0,1."
+          },
+          {
+            "field": "evidence_observation",
+            "text": "Search currently joins fields with spaces; reference applies regex independently (usually equivalent except patterns spanning fields)."
+          },
+          {
+            "field": "evidence_observation",
+            "text": "flatten output now matches sample."
+          }
+        ]
+      },
+      {
+        "message_number": 18,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          17
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed fixes and successful validation, so its main function is delivering results. It also provides a brief progress/status update on the implementation state.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "I committed final small fixes: search now tests each field independently; stats min/max length includes empty fields (matching reference)."
+          },
+          {
+            "field": "status_update",
+            "text": "Compile/test passed."
+          }
+        ]
+      },
+      {
+        "message_number": 19,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          18
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports a completed fix and its verification state, delivering the result of work rather than asking or proposing. It also gives current build status with “compile smoke now runs.”",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Found and fixed major sample CLI bug: documented order is sample SIZE INPUT, parser previously required INPUT SIZE."
+          },
+          {
+            "field": "status_update",
+            "text": "Commit applied; compile smoke now runs."
+          }
+        ]
+      },
+      {
+        "message_number": 20,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "evidence_observation",
+          "critique_disagreement"
+        ],
+        "replies_to": [
+          19
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports the current state of the implementation and a remaining discrepancy in sample RNG behavior, without asking a question or issuing a task. It also observes concrete output differences and mildly challenges adequacy by noting a possible mismatch with reference behavior.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "Sample --seed 1 output still differs RNG"
+          },
+          {
+            "field": "evidence_observation",
+            "text": "(ours header,b,a vs reference header,a,d)"
+          },
+          {
+            "field": "critique_disagreement",
+            "text": "likely acceptable only if tests check count/seed determinism, but note it."
+          }
+        ]
+      },
+      {
+        "message_number": 21,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          20
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message reports completed work: it verifies a teammate commit and states new stats columns and behavior were added. This is a result update rather than a question or proposal.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Verified teammate commit present. Added stats --everything median/mode/cardinality columns and values; null lengths include zero."
+          },
+          {
+            "field": "replies_to",
+            "text": "Verified teammate commit present."
+          },
+          {
+            "field": "addressed_to",
+            "text": "Added stats --everything median/mode/cardinality columns and values; null lengths include zero."
+          }
+        ]
+      },
+      {
+        "message_number": 22,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "status_update",
+          "delegation_request"
+        ],
+        "replies_to": [
+          21
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.94,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and asks the other agent to ensure integration and rebuild, which is coordination with a request for action. It references prior work as context, but the main function is directing final branch inclusion and regeneration.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "My fixes committed on top of your implementation (commits 9a5361a/e847189)."
+          },
+          {
+            "field": "delegation_request",
+            "text": "Please ensure your final branch includes them and compile.sh regenerates executable."
+          }
+        ]
+      },
+      {
+        "message_number": 23,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          21
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.93,
+        "ambiguous": false,
+        "rationale": "The message reports a completed fix to the stats implementation, specifically a final correction to cardinality handling. It is a concise progress/result update rather than a question or proposal.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Final stats correction: cardinality includes NULL/empty values, matching reference."
+          },
+          {
+            "field": "replies_to",
+            "text": "Final stats correction"
+          },
+          {
+            "field": "addressed_to",
+            "text": "matching reference."
+          }
+        ]
+      },
+      {
+        "message_number": 24,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          21,
+          23
+        ],
+        "addressed_to": [],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "Reports verification of recent commits and current state of the worktree, indicating completion/readiness rather than requesting work. It also delivers the result that compile and sample stats output work.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "Verified latest commits c60fb45/c472a31 include stats --everything and null lengths; compile + sample stats output works."
+          },
+          {
+            "field": "result_delivery",
+            "text": "compile + sample stats output works"
+          },
+          {
+            "field": "status_update",
+            "text": "Worktree currently ready."
+          }
+        ]
+      },
+      {
+        "message_number": 25,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery",
+          "acknowledgement"
+        ],
+        "replies_to": [
+          22,
+          24
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "Reports the current state of the worktree and build, confirming a specific commit is included and that regeneration succeeds. It also implicitly acknowledges the teammate’s prior request/check-in.",
+        "evidence": [
+          {
+            "field": "replies_to",
+            "text": "Confirmed e847189 sample positional parser included;"
+          },
+          {
+            "field": "status_update",
+            "text": "compile.sh regenerates latest executable. Worktree clean and commits complete."
+          }
+        ]
+      },
+      {
+        "message_number": 26,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          24,
+          25
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports a completed fix to a CLI parsing bug and the resulting verification status, so it primarily delivers results. It also provides progress/status on tests passing. It responds to earlier discussion about parser/order issues.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Final regression found and fixed critical CLI parsing bug"
+          },
+          {
+            "field": "secondary_types",
+            "text": "Compile and smoke tests pass."
+          },
+          {
+            "field": "replies_to",
+            "text": "select SELECTION INPUT and search REGEX INPUT previously treated the selector/regex as filename"
+          }
+        ]
+      },
+      {
+        "message_number": 27,
+        "primary_type": "acknowledgement",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          24,
+          25,
+          26
+        ],
+        "addressed_to": [],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The message is a brief completion signal with no substantive new content: it simply marks the work as finished. Given the prior context of compile/smoke/regression updates, it also implicitly functions as a status update, but the observable communicative function is chiefly acknowledgement/completion.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 28,
+        "primary_type": "acknowledgement",
+        "secondary_types": [
+          "social_heartbeat"
+        ],
+        "replies_to": [
+          27
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The target is a minimal completion signal with no substantive content; it primarily acknowledges completion/status. Given the bare \"DONE\", it also functions as a low-content presence/heartbeat update.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "secondary_types",
+            "text": "DONE"
+          }
+        ]
+      }
+    ],
+    "coverage": {
+      "annotated_messages": 27,
+      "candidate_messages": 27,
+      "candidate_limit": 80,
+      "candidate_text_limit": 2000,
+      "truncated": false
+    }
+  },
+  "error": null
+}

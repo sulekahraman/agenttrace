@@ -27,6 +27,8 @@ logger = logging.getLogger(__name__)
 REPOSITORY = Path(__file__).resolve().parents[3]
 SCOUT = "scout_collaboration_v1"
 DEFAULT_SCOUT_MODEL = "openai/gpt-5.4-mini"
+SCOUT_VERSION = "2.1.4"
+SCOUT_PROMPT_VERSION = "7"
 
 
 def default_scout_model() -> str:
@@ -73,7 +75,7 @@ def analyzer_catalog(trace: Trace | None = None) -> list[dict]:
             ) if not supported else None,
         })
     available.append({
-        "name": SCOUT, "version": "2.1.0", "kind": "pipeline",
+        "name": SCOUT, "version": SCOUT_VERSION, "kind": "pipeline",
         "available": importlib.util.find_spec("inspect_scout") is not None,
         "default_model": default_scout_model(),
     })
@@ -288,9 +290,9 @@ def create_app(
                 })
         analysis = AnalysisRun(
             trace_id=identifier,
-            analyzer=Analyzer(name=SCOUT, version="2.1.0", kind="pipeline"),
+            analyzer=Analyzer(name=SCOUT, version=SCOUT_VERSION, kind="pipeline"),
             provenance=Provenance(
-                model=model, prompt_version="3",
+                model=model, prompt_version=SCOUT_PROMPT_VERSION,
                 package_versions={
                     package: version(package) for package in ("commsfail", "agenttrace-api")
                 },

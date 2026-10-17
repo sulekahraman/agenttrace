@@ -1,0 +1,38 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target is a bare confirmation word with no new substantive content, so it functions as an acknowledgement of prior updates and completion status.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

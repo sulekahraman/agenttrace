@@ -1,0 +1,19 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    36
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a minimal completion marker confirming the sender is done; it does not add substantive content or instructions. In context it functions as an acknowledgement/status update after the prior progress report.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    }
+  ]
+}

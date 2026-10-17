@@ -1,0 +1,32 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [
+    2,
+    3
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message proposes the speaker's own work plan and simultaneously asks teammates what subsystem they are taking. It is mainly a proposal/plan, with a coordinating question directed at others.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I will investigate CLI behavior/help and focus on one command if needed"
+    },
+    {
+      "field": "secondary_types",
+      "text": "what subsystem are others taking?"
+    },
+    {
+      "field": "addressed_to",
+      "text": "what subsystem are others taking?"
+    }
+  ]
+}

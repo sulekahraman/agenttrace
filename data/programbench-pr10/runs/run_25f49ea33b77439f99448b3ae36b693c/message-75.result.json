@@ -1,0 +1,24 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    73,
+    74
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The target is a minimal confirmation-only message: \"DONE\". In this trace context, that functions as acknowledging completion/receipt rather than delivering substantive new information.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    }
+  ]
+}

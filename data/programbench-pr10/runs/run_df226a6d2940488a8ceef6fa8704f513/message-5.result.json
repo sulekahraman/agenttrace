@@ -1,0 +1,23 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports progress from a probe (“Probed modes...”) and summarizes findings so far, then states more findings will follow. It is not a question or proposal, but a status update with partial results delivered.",
+  "evidence": [
+    {
+      "field": "status",
+      "text": "Probed modes: help/version as README; JSON->YAML emits block style, JSON->TOML omits nested scalar key table odd formatting; HCL outputs quoted keys and blank lines."
+    },
+    {
+      "field": "future_action",
+      "text": "Will send edge-case findings shortly."
+    }
+  ]
+}

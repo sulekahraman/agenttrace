@@ -1,0 +1,27 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    16
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports the current state of the implementation and remaining behavior differences versus reference, without asking for action or making a decision. It also provides concrete observed discrepancies in stats and search behavior and notes flatten now matches sample.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Current stats implementation now has correct header/types, but min_length/max_length excludes nulls: reference age with values 2, reports 0,1."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Search currently joins fields with spaces; reference applies regex independently (usually equivalent except patterns spanning fields)."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "flatten output now matches sample."
+    }
+  ]
+}

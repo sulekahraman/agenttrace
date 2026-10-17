@@ -1,0 +1,140 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_32efaba2efd6418a969f3f80782cec8b",
+  "trace_id": "trace_b7ff2953e20e3e5e",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:08.399992+00:00",
+    "started_at": "2026-10-17T16:15:08.399199+00:00",
+    "completed_at": "2026-10-17T16:15:08.401264+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round3/record-run",
+      "room_id": "rom_b2JlMuPOjv",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 2,
+          "who": "codex-1",
+          "signal": "open_question",
+          "mode": "B1",
+          "group": "disagreement",
+          "excerpt": "I will investigate reference CLI/help and core command behavior; what are others covering?",
+          "why": "asks a question that no later post answers or cites"
+        },
+        {
+          "seq": 3,
+          "who": "codex-3",
+          "signal": "open_question",
+          "mode": "B1",
+          "group": "disagreement",
+          "excerpt": "I will inspect CLI/help and implement core commands if needed; what are others covering?",
+          "why": "asks a question that no later post answers or cites"
+        },
+        {
+          "seq": 36,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Shared log now includes agent2 commit 4622219 (stats + help), working tree clean; compile/count smoke pass.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 42,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Found remaining stdin bug: sort -s a treated selection value as filename. Patched path detection to require existing file, committed b49ce8f; sort/search stdin …",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 48,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 50,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 52,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Verified latest HEAD 1233a44 is clean; compile succeeds, help/--list now correctly enumerate names, and count/frequency/stats smoke tests pass. DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 54,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 55,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 56,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 55,
+        "findings": 10,
+        "by_group": {
+          "disagreement": 2,
+          "ungrounded": 8
+        }
+      }
+    }
+  },
+  "error": null
+}

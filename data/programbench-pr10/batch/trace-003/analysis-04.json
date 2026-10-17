@@ -1,0 +1,102 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_d41bb68aac5a4f47b201a4afd9b42422",
+  "trace_id": "trace_3ce5b38eb14b6137",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:14:35.932050+00:00",
+    "started_at": "2026-10-17T16:14:35.931681+00:00",
+    "completed_at": "2026-10-17T16:14:35.933705+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n2-round3/record-run",
+      "room_id": "rom_hDLchHv131",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 29,
+        "participantCount": 2,
+        "totalWords": 697,
+        "averageWordsPerMessage": 24.0,
+        "p95WordsPerMessage": 64,
+        "durationMs": 146821,
+        "contributionBalance": 94.8,
+        "turnSwitchRate": 53.6,
+        "medianResponseLatencyMs": 3374,
+        "questionMessages": 2,
+        "questionFollowUpRate": 0.0,
+        "links": 0,
+        "codeBlocks": 1
+      },
+      "participants": [
+        {
+          "id": "codex-2",
+          "sender": "codex-2",
+          "instance": "codex-2",
+          "runtime": "codex",
+          "messages": 16,
+          "words": 511,
+          "questions": 2,
+          "agreement": 0,
+          "challenge": 1,
+          "coordination": 6
+        },
+        {
+          "id": "codex-1",
+          "sender": "codex-1",
+          "instance": "codex-1",
+          "runtime": "codex",
+          "messages": 13,
+          "words": 186,
+          "questions": 0,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 2
+        }
+      ],
+      "transitions": [
+        {
+          "source": "codex-2",
+          "target": "codex-1",
+          "count": 8
+        },
+        {
+          "source": "codex-1",
+          "target": "codex-2",
+          "count": 7
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "dominance",
+          "severity": "high",
+          "title": "Contribution dominance",
+          "detail": "codex-2 produced 55.2% of all messages.",
+          "threshold": "Triggered when one agent produces at least 40% of messages.",
+          "evidence": "A high share can indicate coordinator bottlenecks or weak participation."
+        }
+      ]
+    }
+  },
+  "error": null
+}

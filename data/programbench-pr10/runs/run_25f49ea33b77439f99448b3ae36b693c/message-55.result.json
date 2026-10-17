@@ -1,0 +1,23 @@
+{
+  "primary_type": "social_heartbeat",
+  "secondary_types": [
+    "acknowledgement"
+  ],
+  "replies_to": [
+    54
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message is a minimal completion ping with no substantive content beyond indicating finished status. In this trace, standalone \"DONE\" messages function as end-of-task heartbeats/acknowledgements rather than new work.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "synthesis"
+  ],
+  "replies_to": [
+    21,
+    22,
+    26
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed YAML formatting behaviors (quoting rules and block scalar style) rather than asking or directing work. It also synthesizes prior formatting findings into a test-relevant note.",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "YAML output quote nuance: strings y/Y/n/N are quoted (resolver protection), true/false/null/yes/no/on/off and numeric-looking quoted; ordinary x/Bob/plain."
+    },
+    {
+      "field": "synthesis",
+      "text": "multiline uses `|-` block."
+    },
+    {
+      "field": "synthesis",
+      "text": "This may matter hidden formatting tests."
+    }
+  ]
+}

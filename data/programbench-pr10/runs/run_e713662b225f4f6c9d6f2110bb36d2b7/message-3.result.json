@@ -1,0 +1,28 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "delegation_request",
+    "status_update"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message asks for assignment/coverage guidance and requests direction on what area to cover, while also reporting that the sender has found relevant docs and can investigate further. Its main function is a question with a light delegation request and status update.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "What area should I cover?"
+    },
+    {
+      "field": "delegation_request",
+      "text": "What area should I cover?"
+    },
+    {
+      "field": "status_update",
+      "text": "I found README and full xsv command surface."
+    }
+  ]
+}

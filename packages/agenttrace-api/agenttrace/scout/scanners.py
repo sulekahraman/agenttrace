@@ -153,6 +153,11 @@ async def analyze_collaboration(
     candidates = _candidate_messages(transcript, positions)
     messages_as_str, extract_refs = message_numbering()
     candidate_text = await messages_as_str(candidates)
+    original_numbers = [int(message.metadata["sequence"]) for message in candidates]
+    reference_map = "\n".join(
+        f"[M{position}] -> AgentTrace turn #{number}"
+        for position, number in enumerate(original_numbers, 1)
+    )
     question = f"""
 Use the message annotations as candidate-generation evidence, then verify every
 finding against the candidate message text.
@@ -162,6 +167,14 @@ ANNOTATION INDEX:
 
 CANDIDATE MESSAGES:
 {candidate_text}
+
+CANDIDATE REFERENCE MAP:
+{reference_map}
+Allowed message_numbers: {original_numbers}
+Display labels and original turn numbers are different identifiers. Original
+turn numbers can have gaps because non-agent messages are excluded. For each
+[M#] explanation citation, use its mapped original turn in message_numbers.
+Never infer missing turns or cite annotation-only messages.
 
 Return exactly one record for each category:
 

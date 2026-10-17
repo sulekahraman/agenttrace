@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    16,
+    17
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed fixes and their effects: it states a bug was fixed in stdin parsing and that stats min_length behavior was corrected to match the reference. This is mainly result delivery, with a status-update flavor because it summarizes current implementation state.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Fixed search stdin parsing:"
+    },
+    {
+      "field": "status_update",
+      "text": "Stats min_length now includes empty fields"
+    },
+    {
+      "field": "replies_to",
+      "text": "Fixed search stdin parsing: generic path logic wrongly treated lone regex as filename, now lone pattern reads stdin; search outputs match correctly. Stats min_length now includes empty fields (ref reports 0 even when nonempty vals min len 1)."
+    }
+  ]
+}

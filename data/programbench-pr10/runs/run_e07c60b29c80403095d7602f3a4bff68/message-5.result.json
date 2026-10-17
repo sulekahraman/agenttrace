@@ -1,0 +1,26 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "proposal"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completed findings (“Captured full command help; README confirms xsv”) and offers available next steps (“I can probe exact outputs…”), so it primarily delivers results with a light status update/proposal tone.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Captured full command help; README confirms xsv."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Key options/help available if needed. I can probe exact outputs for flatten/table/stats/select."
+    }
+  ]
+}

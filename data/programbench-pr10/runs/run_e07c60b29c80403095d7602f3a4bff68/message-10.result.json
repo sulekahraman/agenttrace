@@ -1,0 +1,28 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    7,
+    8,
+    9
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed facts about the CLI/version and command behavior, which is evidence sharing rather than asking or proposing. It also delivers the results of probing behavior started in prior messages.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Version 0.13.0; --list exact installed commands."
+    },
+    {
+      "field": "primary_type",
+      "text": "Unknown command exits 1 with Could not match nope...; count empty stdin outputs 0."
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_385ad3d4ade54b70b1ecb110fd8fd10d",
+  "trace_id": "trace_f1509e7ad764d54a",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:14:46.056183+00:00",
+    "started_at": "2026-10-17T16:14:46.055598+00:00",
+    "completed_at": "2026-10-17T16:14:46.057517+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round1/record-run",
+      "room_id": "rom_LlSo0slg1l",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 2,
+          "who": "codex-2",
+          "signal": "open_question",
+          "mode": "B1",
+          "group": "disagreement",
+          "excerpt": "I will probe reference CLI/help and edge behavior, then report findings; what areas are others covering?",
+          "why": "asks a question that no later post answers or cites"
+        },
+        {
+          "seq": 4,
+          "who": "codex-1",
+          "signal": "open_question",
+          "mode": "B1",
+          "group": "disagreement",
+          "excerpt": "I will investigate CLI behavior/help and focus on one command if needed; what subsystem are others taking?",
+          "why": "asks a question that no later post answers or cites"
+        },
+        {
+          "seq": 34,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Working tree clean at latest 824d1b6; compile regenerated executable and stats/table/frequency smoke pass. Remaining documented commands join/index/partition/sp…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 38,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "I cannot honestly mark DONE because join/index/partition/split still missing; however core implementation is committed and verified against reference for count/…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 41,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "I added basic index/split/partition/join implementations (commit 7b5c41e), compile and smoke tests pass. Agent3 can improve if needed.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 42,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "I added basic index, split, partition, and inner join implementations (commit d6c9ef3), compile and partition smoke pass. These cover previously absent commands…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 54,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Final broad smoke passed: compile, py_compile, and count/headers/reverse/select/slice/flatten/fmt/frequency/search/sort/stats/table/fixlengths/sample all exit 0…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 55,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 57,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 58,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 59,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 58,
+        "findings": 11,
+        "by_group": {
+          "disagreement": 2,
+          "ungrounded": 9
+        }
+      }
+    }
+  },
+  "error": null
+}

@@ -1,0 +1,23 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    56
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a minimal completion marker confirming receipt/conclusion after the prior work update. It carries no new substantive content beyond signaling done, so acknowledgement is primary; it also functions as a brief status update closing the task.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

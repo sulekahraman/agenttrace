@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results for flatten and table formatting, not a request or proposal. It delivers observed output details that refine prior findings.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Flatten exact: input a,long / foo,hello gives `a     foo` and `long  hello` (label width 4 + two spaces), no-header labels `0`, `1`."
+    },
+    {
+      "field": "secondary_types",
+      "text": "table -w 5 -p 1 yields first row `a     b` (column width 5 then one pad)."
+    },
+    {
+      "field": "replies_to",
+      "text": "Flatten exact:"
+    }
+  ]
+}

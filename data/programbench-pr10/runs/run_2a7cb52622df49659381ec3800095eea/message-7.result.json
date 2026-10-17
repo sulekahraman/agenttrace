@@ -1,0 +1,34 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe findings and observed outputs for select and slice behavior, which is a delivered result rather than a question or proposal. It also provides factual observations from testing.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Probes: select supports 1,3; 3-1; 2-; !2; names."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "slice default preserves header; -i 1 gives header+second data; -e1 gives header+first row; negative start errors."
+    },
+    {
+      "field": "result_delivery",
+      "text": "Basic output observed."
+    }
+  ]
+}

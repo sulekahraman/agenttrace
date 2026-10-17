@@ -1,0 +1,25 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    7,
+    8,
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports observed behavior of invalid and combined flags, giving concrete runtime results rather than asking or directing work. It therefore functions as evidence/observation, with a mild result-delivery aspect because it contributes findings to the shared investigation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Invalid flags: usage printed to stdout then `Error: invalid flags specified: z` on stdout, rc1."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Combined chars parse individually; -yi and -yn are valid combinations."
+    }
+  ]
+}

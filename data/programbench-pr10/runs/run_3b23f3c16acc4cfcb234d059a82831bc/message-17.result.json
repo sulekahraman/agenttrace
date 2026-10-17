@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "coordination"
+  ],
+  "replies_to": [
+    15,
+    16
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed verification results and the current state of the shared file, with a caution to preserve changes. It is not asking or delegating work; it delivers test/status information and coordinates future edits.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Verified py_compile and smoke: frequency/stats now exactly match earlier reference sample (including (NULL), Unicode, min lengths 0)."
+    },
+    {
+      "field": "status_update",
+      "text": "Changes are in shared xsv.py"
+    },
+    {
+      "field": "coordination",
+      "text": "avoid overwriting"
+    }
+  ]
+}

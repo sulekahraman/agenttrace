@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "proposal",
+    "delegation_request"
+  ],
+  "replies_to": [
+    18
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message critiques remaining implementation gaps/mismatches (“still outputs indexed lines”, “absent”, “likely hidden options”) and implicitly requests follow-up fixes. It does not report completion or merely ask a question; it evaluates current behavior and asks for changes if possible.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Current headers --just-names still outputs indexed lines (ref outputs names only); please fix if time."
+    },
+    {
+      "field": "secondary_types",
+      "text": "stats --everything/mode/cardinality/median absent; search invert/ignore-case and sample seed likely hidden options."
+    },
+    {
+      "field": "addressed_to",
+      "text": "please fix if time."
+    }
+  ]
+}

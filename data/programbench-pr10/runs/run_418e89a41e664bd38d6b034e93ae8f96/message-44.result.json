@@ -1,0 +1,31 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "critique_disagreement",
+    "proposal"
+  ],
+  "replies_to": [
+    43
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message asks other agents to perform a concrete fix: add help and adjust -v handling order. It also critiques the current implementation as insufficient for hidden tests and proposes the exact help behavior to match the README.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "please add exact README help"
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "current yj.py lacks -h help and -v handling order (v works only after mode scan?)"
+    },
+    {
+      "field": "proposal",
+      "text": "as hidden tests likely check"
+    }
+  ]
+}

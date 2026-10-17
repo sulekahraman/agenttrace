@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors from probing commands, not a plan or question. It delivers findings/results about flatten, table, and stats behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probed flatten/table/stats: flatten default labels header, separator '#' line; -n emits numeric labels and treats header as data."
+    },
+    {
+      "field": "secondary_type",
+      "text": "-c 3 truncates to first 3 chars + '...'."
+    },
+    {
+      "field": "secondary_type",
+      "text": "stats default columns field,type,sum,min,max,min_length,max_length,mean,stddev; --everything adds median,mode,cardinality; null shown (NULL) in frequency."
+    }
+  ]
+}

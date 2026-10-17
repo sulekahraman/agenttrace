@@ -1,0 +1,23 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe findings about version/list output and sample behavior, not a request or plan. It delivers observed results from testing, so primary is evidence_observation with result_delivery as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Reference --version is 0.13.0; --list exact heading 'Installed commands:' and same command list."
+    },
+    {
+      "field": "secondary_types",
+      "text": "sample --seed 1 size2 consistently header + a,d."
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_54e6221d59e84d6b8c25ce93ede509db",
+  "trace_id": "trace_a49b03f1df3bca94",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:24.631943+00:00",
+    "started_at": "2026-10-17T16:15:24.631619+00:00",
+    "completed_at": "2026-10-17T16:15:24.640696+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n4-round1/record-run",
+      "room_id": "rom_se6ixHjc7l",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "goal-run",
+        "path": "data/programbench-pr10/sources/xsv-2026-10-15/n4-round1/record-run",
+        "room_id": "rom_se6ixHjc7l",
+        "loaded_at": "2026-10-17T16:13:53+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "record-run",
+        "created_at": "2026-10-15T16:14:32.330Z",
+        "latest_sequence": 61,
+        "seats": [
+          {
+            "handle": "codex-1",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_LcNSoPN5N9",
+            "member_id": "i_UxOl15cX8D"
+          },
+          {
+            "handle": "codex-2",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_rhYaOC99lE",
+            "member_id": "i_2oziUalD4Q"
+          },
+          {
+            "handle": "codex-3",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_jVlTOM66fv",
+            "member_id": "i_s2GxTt4eBi"
+          },
+          {
+            "handle": "codex-4",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_OnTswBB0dS",
+            "member_id": "i_Bg3zLNt3f7"
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 60,
+        "seats": 4,
+        "asks": 2,
+        "asks_unanswered": 2,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "done",
+        "principals": 4,
+        "span_hours": 0.1,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 1,
+        "reviews": 0,
+        "action_claims": 4,
+        "action_claims_unverifiable": 4,
+        "duplicate_posts": 0
+      },
+      "items": {
+        "compile.sh": {
+          "first_mention": 13,
+          "claims": [],
+          "done": [
+            {
+              "seq": 31,
+              "who": "codex-1"
+            }
+          ],
+          "reviews": [],
+          "uploads": [
+            {
+              "seq": 43,
+              "who": "codex-1"
+            }
+          ],
+          "status_at_end": "done"
+        }
+      },
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": true,
+          "severity": "high",
+          "count": 2,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": [
+            {
+              "seq": 4,
+              "who": "codex-2",
+              "excerpt": "I’ll investigate CLI surface/edge behavior and report findings; what area are others implementing?",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 20,
+              "who": "codex-2",
+              "excerpt": "I can patch flatten/version/list/stats if nobody is editing xsv.py; please confirm.",
+              "why": "no later post replies to or cites this ask"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": true,
+          "severity": "unknown",
+          "count": 4,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": [
+            {
+              "seq": 43,
+              "who": "codex-1",
+              "excerpt": "Ran ./compile.sh successfully; built executable reports 0.13.0 and count smoke test passes. No further action needed from me.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 44,
+              "who": "codex-4",
+              "excerpt": "Implemented and committed index artifact creation, split chunk files, partition outputs, flatten --condense, plus fixed split/partition positional parsing. Comm…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 45,
+              "who": "codex-3",
+              "excerpt": "Latest commit 42717a4 adds remaining file commands. Verified split --size 1 now matches reference chunk files (0.csv/1.csv with headers). Working tree clean.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 56,
+              "who": "codex-1",
+              "excerpt": "Fixed remaining input mismatch: custom quote/delimiter now parses stdin correctly (avoids consuming stdin before reparse), and patharg ignores option values. Co…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            }
+          ]
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "no artifact rows in this source, so D1 cannot be verified against uploads"
+      ]
+    }
+  },
+  "error": null
+}

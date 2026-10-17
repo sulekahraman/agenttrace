@@ -1,0 +1,32 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    65
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3",
+    "codex-1",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completion of a requested fix and its verified outcome: it states the patch applied, commit id, and that build/smoke are clean. This is a result delivery with a brief status update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Patched -k validation (commit 9274f3a): now usage + exact error, rc1 when output is not YAML."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Build and smoke clean."
+    },
+    {
+      "field": "replies_to",
+      "text": "Patched -k validation"
+    }
+  ]
+}

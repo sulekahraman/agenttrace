@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed test findings about CLI edge cases and output behavior, so its main function is result delivery. It also contains multiple concrete observations about flags and YAML/TOML handling, making evidence_observation a fitting secondary type.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Edge findings: invalid/missing flags exit1, stderr is full one-line Usage (path-dependent) then Error."
+    },
+    {
+      "field": "secondary_types",
+      "text": "YAML special .inf/- .Inf/.NaN default JSON strings Infinity/-Infinity/NaN; -n gives maxfloat/-maxfloat/null."
+    },
+    {
+      "field": "replies_to",
+      "text": "Edge findings: invalid/missing flags exit1, stderr is full one-line Usage (path-dependent) then Error."
+    }
+  ]
+}

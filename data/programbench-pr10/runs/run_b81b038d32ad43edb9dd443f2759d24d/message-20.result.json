@@ -1,0 +1,24 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [
+    19
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message asks others to confirm before the speaker performs a concrete code patch, which is a request for coordination/action permission. It is phrased as a question, but the main function is seeking confirmation to proceed with work.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I can patch flatten/version/list/stats if nobody is editing xsv.py"
+    },
+    {
+      "field": "secondary_types",
+      "text": "please confirm."
+    }
+  ]
+}

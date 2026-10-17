@@ -1,0 +1,30 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    11,
+    14
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message asks for a prompt confirmation about who will take ownership of the main implementation, while also coordinating who should do what next. It is not itself assigning work, but requesting an immediate decision from a specific teammate.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "confirm immediately whether you're writing main"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can scaffold if needed"
+    },
+    {
+      "field": "addressed_to",
+      "text": "you're writing main"
+    }
+  ]
+}

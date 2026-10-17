@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    51
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports verified results from the latest build and test run, not a request or plan. It delivers the final state (clean compile, help/--list behavior, smoke tests pass) and closes with DONE, so result_delivery is primary with status_update as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Verified latest HEAD 1233a44 is clean; compile succeeds, help/--list now correctly enumerate names, and count/frequency/stats smoke tests pass."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Verified latest HEAD 1233a44 is clean; compile succeeds, help/--list now correctly enumerate names, and count/frequency/stats smoke tests pass."
+    },
+    {
+      "field": "replies_to",
+      "text": "Verified latest HEAD 1233a44 is clean; compile succeeds, help/--list now correctly enumerate names, and count/frequency/stats smoke tests pass."
+    }
+  ]
+}

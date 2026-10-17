@@ -1,0 +1,29 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "artifact_sharing",
+    "delegation_request"
+  ],
+  "replies_to": [
+    2,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed findings about help outputs and README, which is a progress/status update. It also points to where the information can be found, functioning as artifact sharing. The offer to investigate or implement if assigned is a low-level delegation request/availability note.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Collected full -h outputs for all commands; README confirms xsv."
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "Main help/options details available in /reference;"
+    },
+    {
+      "field": "delegation_request",
+      "text": "I can investigate edge behavior or implement specific command if assigned."
+    }
+  ]
+}

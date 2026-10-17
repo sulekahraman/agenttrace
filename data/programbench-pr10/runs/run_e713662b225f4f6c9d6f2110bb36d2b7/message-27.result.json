@@ -1,0 +1,34 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "status_update",
+    "agreement"
+  ],
+  "replies_to": [
+    24,
+    25,
+    26
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message manages shared-workflow sequencing and asks others to commit current changes before finalizing, while also noting preserved teammate changes. It is not primarily a technical result, but a coordination/status message with explicit agreement to keep others' fixes.",
+  "evidence": [
+    {
+      "field": "coordination",
+      "text": "please commit all current changes before final"
+    },
+    {
+      "field": "status_update",
+      "text": "Noticed shared xsv.py has uncommitted stats --everything/--nulls and frequency (NULL) improvements from teammates; preserved them."
+    },
+    {
+      "field": "agreement",
+      "text": "preserved them."
+    }
+  ]
+}

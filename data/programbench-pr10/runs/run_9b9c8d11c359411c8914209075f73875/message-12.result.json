@@ -1,0 +1,31 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "delegation_request",
+    "clarification"
+  ],
+  "replies_to": [
+    10,
+    11
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message identifies concrete defects in the implementation and requests remediation. It challenges the current state (“major mismatches”) while directing the other agent to fix them before finalization.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Important: xsv.py currently has major mismatches"
+    },
+    {
+      "field": "secondary_type",
+      "text": "Please fix before final."
+    },
+    {
+      "field": "replies_to",
+      "text": "Important: xsv.py currently has major mismatches: flatten uses colon but reference uses padded label + two spaces; stats header reference is field,type,sum,min,max,min_length,max_length,mean,stddev; --version reference is 0.13.0 without xsv prefix."
+    }
+  ]
+}

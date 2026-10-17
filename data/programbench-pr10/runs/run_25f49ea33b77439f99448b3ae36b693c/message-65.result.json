@@ -1,0 +1,27 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    64
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message contains only \"DONE\", which is a minimal confirmation of completion/receipt with no substantive content. It functions as an acknowledgement and also as a low-content presence update in the thread.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

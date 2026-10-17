@@ -1,0 +1,25 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    40
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on xsv.py and test results, which is result delivery. It also gives a brief progress/status update on what was integrated and verified.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Integrated advanced stats/frequency into xsv.py; fixed headers return and options."
+    },
+    {
+      "field": "status_update",
+      "text": "Recompiled/tested: stats now matches reference sample incl null min_length=0; frequency works --limit/--asc/--no-nulls."
+    }
+  ]
+}

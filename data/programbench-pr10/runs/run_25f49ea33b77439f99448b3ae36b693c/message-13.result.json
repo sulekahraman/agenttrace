@@ -1,0 +1,28 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    11,
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target provides concrete observed formatting behaviors and option effects, not a plan or question. It reports exact semantics for flatten and fmt, so evidence_observation is primary; it also functions as a small result delivery of findings from prior probing.",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "Flatten exact: each  padded to max header width + 2 spaces; multiline field emits raw newline; separator line '#'."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "-c 3 appends ... only if over limit."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "fmt --quote-always quotes all; --crlf emits CRLF."
+    }
+  ]
+}

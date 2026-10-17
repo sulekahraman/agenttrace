@@ -31,7 +31,7 @@ def test_standalone_scanner_files_are_discoverable():
         assert len(scanners_from_file(str(root / "scout" / filename), {})) == 1
 
 
-def mock_structured_generation(monkeypatch, invalid_reference=False):
+def mock_structured_generation(monkeypatch, invalid_reference=False, original_reference=1):
     from inspect_scout._llm_scanner import generate
 
     async def generate_structured(input, schema, **kwargs):
@@ -50,7 +50,7 @@ def mock_structured_generation(monkeypatch, invalid_reference=False):
             data = {"results": [
                 {"category": category, "found": category == "weak_handoff",
                  "explanation": "Candidate message [M1].", "confidence": 0.8,
-                 "message_numbers": [999 if invalid_reference else 1] if category == "weak_handoff" else []}
+                 "message_numbers": [999 if invalid_reference else original_reference] if category == "weak_handoff" else []}
                 for category in ("duplicated_work", "weak_handoff", "unintegrated_information")
             ]}
         output = ModelOutput.from_content("mockllm/model", json.dumps(data))
@@ -76,6 +76,21 @@ def test_scout_invalid_evidence_fails(monkeypatch, share):
     transcript = transcript_from_report(build_view_model(from_share(share, {"kind": "share"})))
     with pytest.raises(ValueError, match="outside"):
         asyncio.run(analyze_collaboration(transcript, model="mockllm/model"))
+
+
+def test_noncontiguous_original_numbers_are_mapped_explicitly(monkeypatch, share, tmp_path):
+    mock_structured_generation(monkeypatch, original_reference=2)
+    transcript = transcript_from_report(build_view_model(from_share(share, {"kind": "share"})))
+    for sequence, message in zip((2, 4, 6), transcript.messages):
+        message.metadata["sequence"] = sequence
+    result = asyncio.run(analyze_collaboration(transcript, model="mockllm/model", artifacts=tmp_path))
+    prompt = (tmp_path / "collaboration.prompt.txt").read_text()
+    assert "CANDIDATE REFERENCE MAP:" in prompt
+    assert "[M1] -> AgentTrace turn #2" in prompt
+    assert "[M2] -> AgentTrace turn #4" in prompt
+    assert "[M3] -> AgentTrace turn #6" in prompt
+    assert "Allowed message_numbers: [2, 4, 6]" in prompt
+    assert result["findings"][1]["message_numbers"] == [2]
 
 
 def test_failed_annotation_cancels_other_model_calls(monkeypatch, share):

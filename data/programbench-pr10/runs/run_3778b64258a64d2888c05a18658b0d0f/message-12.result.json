@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "clarification"
+  ],
+  "replies_to": [
+    11
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message supplies concrete behavioral facts about flag aliases and error handling, rather than asking or planning. It appears to respond to the implementation update by clarifying observed CLI behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Aliases: -y = YAML->JSON, -r = JSON->YAML, -t TOML->JSON, -c HCL->JSON."
+    },
+    {
+      "field": "primary_type",
+      "text": "-yy echoes YAML normalized."
+    },
+    {
+      "field": "primary_type",
+      "text": "Invalid positional reports usage + `Error: invalid flags specified: f o o` status1."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    45
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports current project state and remaining caveat rather than asking or assigning work. It provides status on HEAD/cleanliness and test/build coverage, so status_update is primary with evidence_observation secondary.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Current HEAD aede4da, clean; fmt ascii byte output now exact."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "build compiles and core commands tested."
+    },
+    {
+      "field": "status_update",
+      "text": "Remaining caveat is broad edge-case parity (outer join/options)"
+    }
+  ]
+}

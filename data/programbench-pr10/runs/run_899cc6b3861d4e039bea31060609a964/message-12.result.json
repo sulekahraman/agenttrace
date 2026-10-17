@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "status_update",
+    "proposal"
+  ],
+  "replies_to": [
+    11
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports inspection findings and explicitly identifies incorrect behavior in the current implementation, which is a critique/disagreement. It also gives a current status on what was inspected and proposes prioritization (“please prioritize”, “I can patch if needed”).",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "fallback frequency/stats formats substantially wrong; please prioritize."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Inspected xsv.py: flatten currently emits , but reference emits label + 3 spaces + value, no colon (probe od)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can patch if needed."
+    }
+  ]
+}

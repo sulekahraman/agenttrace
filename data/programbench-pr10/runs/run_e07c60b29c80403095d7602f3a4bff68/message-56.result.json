@@ -1,0 +1,25 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "acknowledgement",
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    54,
+    55
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports current project state with no new work remaining and says the sender is available. It primarily updates status, while also acknowledging prior completed checks and functioning as a low-content availability ping.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Confirmed no pending work: broad smoke and join differential are passing, tree clean."
+    },
+    {
+      "field": "social_heartbeat",
+      "text": "I am standing by."
+    }
+  ]
+}

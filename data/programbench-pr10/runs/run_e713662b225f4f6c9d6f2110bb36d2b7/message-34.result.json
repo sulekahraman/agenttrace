@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    30,
+    31,
+    32,
+    33
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and its outcome: a commit was made, compilation succeeds, and smoke tests passed. It also implicitly shares the commit artifact via the hash.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Committed shared current changes as 947637d (xsv fixes + compile rm protection)."
+    },
+    {
+      "field": "status_update",
+      "text": "compile succeeds; cat rows/columns smoke-tested."
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "947637d"
+    }
+  ]
+}

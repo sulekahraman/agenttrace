@@ -1,0 +1,26 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    25,
+    26
+  ],
+  "addressed_to": [
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message requests concrete work from another agent: to create a scaffold and cover a specified implementation scope. It also coordinates timing by noting the delay and setting the target breadth.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "Yes, scaffold now; no implementation visible after ~15 min."
+    },
+    {
+      "field": "coordination",
+      "text": "Aim broad JSON/TOML/YAML subset."
+    }
+  ]
+}

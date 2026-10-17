@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    49,
+    50
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and its outcomes: it identifies discrepancies, states they were fixed in a specific commit, and says compile/outputs now match reference examples. That is a result delivery, with supporting status/evidence content.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Found stats age min_length (null handling) and frequency NULL marker/--no-nulls gaps; fixed in commit 1233a44"
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Compared latest build: fmt ASCII/quote and sort stdin match reference."
+    },
+    {
+      "field": "status_update",
+      "text": "compile and outputs now match core reference examples."
+    }
+  ]
+}

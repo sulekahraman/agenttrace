@@ -1,0 +1,27 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    50,
+    52
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and a committed fix, describing what was changed rather than asking or proposing. It is a status update with delivered results of the fix.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Found/fixed shorthand flags: -j now JSON->JSON, -t TOML->JSON, -c HCL->JSON, -r JSON->YAML"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Committed fix."
+    }
+  ]
+}

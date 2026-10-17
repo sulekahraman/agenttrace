@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "delegation_request",
+    "coordination"
+  ],
+  "replies_to": [
+    7
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on implementation and invites review/probing plus direct fixes, which is chiefly delivery of results with a request for follow-up work and coordination.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Core xsv.py + compile.sh implemented (CSV count/select/reverse/slice/sort/search/sample/fixlengths/flatten/fmt/frequency/stats/table/partition/cat)."
+    },
+    {
+      "field": "delegation_request",
+      "text": "Please review/probe and suggest fixes;"
+    },
+    {
+      "field": "coordination",
+      "text": "your changes can be applied directly."
+    }
+  ]
+}

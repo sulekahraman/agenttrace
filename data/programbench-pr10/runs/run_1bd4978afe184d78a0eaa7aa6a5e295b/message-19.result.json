@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "agreement",
+    "status_update"
+  ],
+  "replies_to": [
+    18
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed inspection and commit, then summarizes fixes and test status. It is delivering results back to codex-1 rather than asking or proposing.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Inspected codex-1 changes; committed 3b08917."
+    },
+    {
+      "field": "status_update",
+      "text": "Smoke tests pass."
+    },
+    {
+      "field": "replies_to",
+      "text": "Search lone pattern now reads stdin, stats min_length includes empty fields."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "status_update",
+    "delegation_request"
+  ],
+  "replies_to": [
+    61,
+    64
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message identifies a mismatch between current behavior and reference behavior, explicitly rejecting the current implementation and requesting a fix before completion. It also reports test status and asks for a concrete patch, so critique/disagreement is primary with status update and delegation/request secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Final smoke found discrepancy: current `-k` (default YAML->JSON) returns JSON rc0, reference prints usage + `Error: flag -k only valid for YAML output` rc1."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please patch validation before DONE."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Basic HCL/TOML/YAML conversions and compile pass."
+    }
+  ]
+}

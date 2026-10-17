@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "critique_disagreement",
+    "proposal"
+  ],
+  "replies_to": [
+    15
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed patching and regression findings, then identifies a remaining mismatch and suggests a next fix. This is mainly delivering results from testing, with a critique of the current behavior and a proposal for further correction.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Patched shared xsv.py: version now 0.13.0, flatten labels padded and no trailing separator."
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "Regression shows stats age min_length=1 but reference gives 0 (empty fields included in length stats);"
+    },
+    {
+      "field": "proposal",
+      "text": "consider fix."
+    }
+  ]
+}

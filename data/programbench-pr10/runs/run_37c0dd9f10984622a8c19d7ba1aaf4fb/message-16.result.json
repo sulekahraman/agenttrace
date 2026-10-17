@@ -1,0 +1,24 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    15
+  ],
+  "addressed_to": [],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message offers to take on patching work and explicitly states a current blocking/deferral state to avoid duplication, which is a work-allocation/coordination move rather than a pure update or proposal.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I can patch these core formatting issues directly if you want"
+    },
+    {
+      "field": "secondary_types",
+      "text": "currently holding to avoid overlap"
+    }
+  ]
+}

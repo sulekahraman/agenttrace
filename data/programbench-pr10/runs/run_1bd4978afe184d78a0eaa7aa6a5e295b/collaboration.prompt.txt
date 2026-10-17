@@ -1,0 +1,132 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#2 | codex-2 | primary=delegation_request | secondary=proposal | replies_to=[] | addressed_to=['codex-1'] | confidence=0.98 | rationale=The message assigns concrete work to the other agent by asking them to cover specific areas, while also proposing the speaker's own implementation scope. It is not a report of completed work.
+#3 | codex-1 | primary=result_delivery | secondary=evidence_observation | replies_to=[2] | addressed_to=['codex-2'] | confidence=0.98 | rationale=The message reports tested join behaviors and concrete outputs, so it delivers results. It also states observed edge-case facts from probing, fitting evidence_observation as secondary.
+#4 | codex-1 | primary=evidence_observation | secondary=result_delivery | replies_to=[3] | addressed_to=['codex-2'] | confidence=0.96 | rationale=The message reports additional experimental findings about xsv behavior and specific output formats, so its main function is evidence reporting. It also delivers the probed results to the collaborator who asked for joins/edge behaviors.
+#5 | codex-1 | primary=evidence_observation | secondary=result_delivery | replies_to=[3, 4] | addressed_to=[] | confidence=0.95 | rationale=The message reports additional observed behavior of join, not a question or plan. It delivers concrete probe results about whitespace trimming, case sensitivity, multi-key joins, and no-headers behavior.
+#6 | codex-2 | primary=result_delivery | secondary=delegation_request,status_update | replies_to=[2, 3, 4, 5] | addressed_to=['codex-1'] | confidence=0.96 | rationale=The message reports completed work (“Core implementation xsv.py + compile.sh added”) and also asks the other agent to act on specific issues (“Please review/fix joins/index and integrate as needed”), making it a result delivery with a deleg
+#7 | codex-1 | primary=result_delivery | secondary=evidence_observation | replies_to=[2, 3, 4, 5, 6] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed probe results about select behavior, which is a delivered finding rather than a question or plan. It also lists concrete observed edge cases and parsing behavior, fitting evidence_observation as a secondary typ
+#8 | codex-1 | primary=evidence_observation | secondary=result_delivery | replies_to=[7] | addressed_to=[] | confidence=0.97 | rationale=The message reports concrete observed behaviors for cat and fixlengths commands from probing, without proposing or requesting work. It delivers test results/implementation behavior details, so evidence_observation is primary and result_deli
+#9 | codex-2 | primary=result_delivery | secondary=status_update,artifact_sharing | replies_to=[4, 6] | addressed_to=['codex-1'] | confidence=0.93 | rationale=The message reports completed work and current state: it says the stats implementation was added and the shared tree is current, while also pointing to specific commits. This is primarily a result delivery, with a status update and artifact
+#10 | codex-1 | primary=critique_disagreement | secondary=evidence_observation,proposal | replies_to=[9] | addressed_to=['codex-2'] | confidence=0.98 | rationale=The message critiques the current implementation by identifying mismatches and missing features. It also observes specific behaviors of xsv.py and implicitly proposes areas needing work, but the dominant function is evaluative critique.
+#11 | codex-2 | primary=result_delivery | secondary=status_update | replies_to=[9, 10] | addressed_to=['codex-1'] | confidence=0.93 | rationale=The message reports completed fixes to the implementation, which is a result/status update rather than a question or proposal. It directly responds to prior review feedback about version output and NULL rendering.
+#12 | codex-2 | primary=delegation_request | secondary=status_update | replies_to=[10] | addressed_to=['codex-1'] | confidence=0.98 | rationale=The message asks another agent to perform concrete work: add the join implementation. It also reports current state/blockage (“Current passthrough; hidden likely tests.”), which is a status update.
+#13 | codex-1 | primary=result_delivery | secondary=artifact_sharing,coordination | replies_to=[12] | addressed_to=['codex-2'] | confidence=0.98 | rationale=The message reports completed work added to xsv.py and points to a patch in the shared workspace, so it primarily delivers a result. It also shares an artifact and asks the other agent to inspect/retain it while merging, which adds coordina
+#14 | codex-2 | primary=status_update | secondary=delegation_request | replies_to=[13] | addressed_to=['codex-1'] | confidence=0.97 | rationale=The message reports the sender’s current work state and remaining issue, with a directive-like nudge to the other agent. It says no more edits are pending and identifies the join task as the main remaining gap for codex-1.
+#15 | codex-1 | primary=result_delivery | secondary=evidence_observation | replies_to=[10, 13] | addressed_to=[] | confidence=0.96 | rationale=The message reports completed validation results for the join patch and notes the version correction. It is a status/result report rather than a proposal or request.
+#16 | codex-1 | primary=result_delivery | secondary=status_update,proposal | replies_to=[14, 15] | addressed_to=['codex-2'] | confidence=0.98 | rationale=The message reports completed fixes and current state of implementation. It delivers concrete results (“Found/fixed major search bug”, “Also fixed stats --cardinality”) and includes a suggestion for verification of another possibly concurre
+#17 | codex-2 | primary=result_delivery | secondary=status_update,evidence_observation | replies_to=[13, 15, 16] | addressed_to=['codex-1'] | confidence=0.96 | rationale=The message reports completed work and verification results, not a request or proposal. It states the join patch is present and smoke-tested, and also lists additional fixes made.
+#18 | codex-1 | primary=result_delivery | secondary=status_update | replies_to=[16, 17] | addressed_to=['codex-2'] | confidence=0.97 | rationale=The message reports completed fixes and their effects: it states a bug was fixed in stdin parsing and that stats min_length behavior was corrected to match the reference. This is mainly result delivery, with a status-update flavor because i
+#19 | codex-2 | primary=result_delivery | secondary=agreement,status_update | replies_to=[18] | addressed_to=['codex-1'] | confidence=0.97 | rationale=The message reports completed inspection and commit, then summarizes fixes and test status. It is delivering results back to codex-1 rather than asking or proposing.
+#20 | codex-1 | primary=acknowledgement | secondary=agreement,status_update | replies_to=[19] | addressed_to=['codex-2'] | confidence=0.97 | rationale=The message confirms receipt/understanding of prior work and states no more action is needed, without adding new substantive work. It also implicitly agrees that the fixes are integrated and committed, and reports current status.
+#21 | codex-2 | primary=acknowledgement | secondary=status_update | replies_to=[20] | addressed_to=[] | confidence=0.98 | rationale=The target is a minimal confirmation with no new substantive content. In context it serves as a receipt/closure after the prior completion update, so acknowledgement is primary; it also implicitly signals status completion.
+#22 | codex-1 | primary=status_update | secondary=evidence_observation | replies_to=[20, 21] | addressed_to=['codex-2'] | confidence=0.96 | rationale=The message reports current state and test results, not a request or new task. It also notes an environment-specific permission issue as an observation. It follows up on [M20]-[M21] by confirming the integrated commit and completion status.
+#23 | codex-1 | primary=social_heartbeat | secondary=acknowledgement | replies_to=[20, 21, 22] | addressed_to=[] | confidence=0.98 | rationale=The target is a minimal completion ping with no substantive content beyond signaling task completion. It most naturally functions as a social heartbeat/closure acknowledgement in context.
+
+CANDIDATE MESSAGES:
+[M1] AGENT CODEX-2:
+AgentTrace turn #2; agent codex-2
+I will implement core xsv commands in Python, focusing CLI/help, CSV transforms, select/slice/count/headers/search/sort/frequency/stats/table. Please cover joins or probe edge behaviors.
+
+[M2] AGENT CODEX-1:
+AgentTrace turn #3; agent codex-1
+Probed join: with l id,name rows 1,2B,2C,3D,empty and r key,val 2X,2Y,3Z,4W,empty: inner outputs header then 2B-X,2B-Y,2C-X,2C-Y,3D-Z. --left appends unmatched left in left order (1 then empty). --right ordering is right-driven: 2B-X,2C-X,2B-Y,2C-Y,3D-Z, then unmatched 4W and empty. --full: unmatched left first (1), matches, then empty-left, then unmatched rights. Empty keys ignored unless --nulls, which matches empty. --cross includes all records including empties.
+
+[M3] AGENT CODEX-1:
+AgentTrace turn #4; agent codex-1
+More probes: --version outputs 0.13.0. stats output columns exact: field,type,sum,min,max,min_length,max_length,mean,stddev; --everything adds median,mode,cardinality. Empty strings excluded from type/min/max/sum but cardinality includes NULL as value? sample name a,b,a, gives cardinality 3; frequency renders empty as (NULL). stats --nulls includes empty as zero in mean/std denominator (val 1,2,,4 => mean 1.75). stats mode ties/none => N/A. flatten output headers fields padded then # separator; table uses 2 spaces.
+
+[M4] AGENT CODEX-1:
+AgentTrace turn #5; agent codex-1
+Join trims leading/trailing whitespace for key comparison but preserves original fields. --no-case compares case-insensitive. Multi-key works as expected. --no-headers output has no header and joins records.
+
+[M5] AGENT CODEX-2:
+AgentTrace turn #6; agent codex-2
+Core implementation xsv.py + compile.sh added. Workspace executable is protected reference so local compile cannot overwrite; evaluator compile will. Please review/fix joins/index and integrate as needed.
+
+[M6] AGENT CODEX-1:
+AgentTrace turn #7; agent codex-1
+Select probes: duplicate header B: selector B picks first; B[2] is third occurrence (0-based index) and errors if absent. 3-1 reverses range. !1-2 excludes columns. 3- selects through end. Bare -2 parsed as unknown flag unless use --.
+
+[M7] AGENT CODEX-1:
+AgentTrace turn #8; agent codex-1
+cat/fixlengths: cat rows uses first header only, ignores subsequent headers. cat columns combines all headers (a,b,c,d) and pairs data rows up to minimum by default; --pad extends. fixlengths computes max record width incl trailing? input header a,b; row 1; row 2,3,4 => outputs a,b then 1, then 2,3,4 (does not pad header to max); --length 2 truncates/pads each data incl header.
+
+[M8] AGENT CODEX-2:
+AgentTrace turn #9; agent codex-2
+Added stats implementation matching observed headers/values (mean/stddev/median/mode/cardinality). Commits 95b939e + a778637; shared tree current.
+
+[M9] AGENT CODEX-1:
+AgentTrace turn #10; agent codex-1
+Review: xsv.py --version currently prints "xsv 0.13.0" but ref prints exactly "0.13.0". --list ref starts "Installed commands:" and indented descriptions, not bare names (may matter). join is entirely missing (currently falls through passthrough), major likely hidden tests. Also fmt --crlf/quote options and flatten --condense unimplemented.
+
+[M10] AGENT CODEX-2:
+AgentTrace turn #11; agent codex-2
+Corrected --version to exact 0.13.0 and frequency NULL rendering.
+
+[M11] AGENT CODEX-2:
+AgentTrace turn #12; agent codex-2
+Can you add join implementation directly to xsv.py soon? Current passthrough; hidden likely tests.
+
+[M12] AGENT CODEX-1:
+AgentTrace turn #13; agent codex-1
+I inserted an independent join implementation into xsv.py (supports inner/left/right/full/cross, duplicate keys, trim/no-case/nulls, headers). Please inspect/retain while merging; patch is in shared workspace.
+
+[M13] AGENT CODEX-2:
+AgentTrace turn #14; agent codex-2
+No further edits pending on my side; xsv.py commits are clean. Join remains highest-priority gap for codex-1.
+
+[M14] AGENT CODEX-1:
+AgentTrace turn #15; agent codex-1
+Join patch smoke-tests exactly match reference for inner/left/right examples. Version appears concurrently corrected to 0.13.0.
+
+[M15] AGENT CODEX-1:
+AgentTrace turn #16; agent codex-1
+Found/fixed major search bug (it was treating any nonempty field as match due to Python precedence). Also fixed stats --cardinality to include empty/null values, matching ref cardinality (e.g. a,b,a, => 3). Frequency NULL rendering may already be concurrently adjusted; please verify.
+
+[M16] AGENT CODEX-2:
+AgentTrace turn #17; agent codex-2
+Join patch present and smoke-tested against reference; committed as 7e306e6. Also fixed search regex filtering and stats cardinality including NULL.
+
+[M17] AGENT CODEX-1:
+AgentTrace turn #18; agent codex-1
+Fixed search stdin parsing: generic path logic wrongly treated lone regex as filename, now lone pattern reads stdin; search outputs match correctly. Stats min_length now includes empty fields (ref reports 0 even when nonempty vals min len 1).
+
+[M18] AGENT CODEX-2:
+AgentTrace turn #19; agent codex-2
+Inspected codex-1 changes; committed 3b08917. Search lone pattern now reads stdin, stats min_length includes empty fields. Smoke tests pass.
+
+[M19] AGENT CODEX-1:
+AgentTrace turn #20; agent codex-1
+Codex-2 confirms integrated and committed all fixes (3b08917); smoke tests pass. No further changes needed from me.
+
+[M20] AGENT CODEX-2:
+AgentTrace turn #21; agent codex-2
+DONE
+
+[M21] AGENT CODEX-1:
+AgentTrace turn #22; agent codex-1
+Final check: committed tree is clean at 3b08917 (plus prior commits); version/count/search smoke tests pass. ./compile.sh cannot overwrite the root-owned protected reference executable in this observation workspace (permission denied), which is expected per harness; compile.sh itself is correct for fresh evaluation checkout.
+
+[M22] AGENT CODEX-1:
+AgentTrace turn #23; agent codex-1
+DONE
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

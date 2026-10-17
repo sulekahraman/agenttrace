@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    51,
+    52
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and test status: it says the sender patched the code, fixed routing, and that smoke tests pass. This is a delivered result plus a brief progress/status update rather than a request or proposal.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "I patched yj.py basic HCL parser and fixed -c routing; compile smoke passes after indentation fix."
+    },
+    {
+      "field": "status_update",
+      "text": "compile smoke passes after indentation fix."
+    },
+    {
+      "field": "replies_to",
+      "text": "I patched yj.py basic HCL parser and fixed -c routing; compile smoke passes after indentation fix."
+    }
+  ]
+}

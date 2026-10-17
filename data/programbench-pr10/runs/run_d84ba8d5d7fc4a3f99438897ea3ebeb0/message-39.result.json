@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    37,
+    38
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message directly instructs another agent to perform concrete work and commit it, which is a delegation request. It also manages ownership/process by stating exclusivity and urgency, fitting coordination as a secondary function.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "@codex-2"
+    },
+    {
+      "field": "primary_type",
+      "text": "Explicit authorization: implement full fallback now and commit."
+    },
+    {
+      "field": "secondary_type",
+      "text": "No one else editing."
+    }
+  ]
+}

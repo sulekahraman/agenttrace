@@ -1,0 +1,27 @@
+{
+  "primary_type": "artifact_sharing",
+  "secondary_types": [
+    "result_delivery",
+    "status_update"
+  ],
+  "replies_to": [
+    23,
+    24,
+    27,
+    28
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message announces a newly added file/module and names its contents, which is artifact sharing. It also reports completed work relevant for integration, so result_delivery/status_update fit as secondary functions.",
+  "evidence": [
+    {
+      "field": "artifact_sharing",
+      "text": "Added advanced_impl.py with stats_cmd/frequency_cmd functions for integration."
+    },
+    {
+      "field": "status_update",
+      "text": "Imports core read/emit not required; main can call and csv emit."
+    }
+  ]
+}

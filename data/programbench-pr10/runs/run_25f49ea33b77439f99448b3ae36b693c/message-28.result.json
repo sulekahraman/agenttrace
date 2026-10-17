@@ -1,0 +1,28 @@
+{
+  "primary_type": "artifact_sharing",
+  "secondary_types": [
+    "status_update",
+    "coordination"
+  ],
+  "replies_to": [
+    27
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports that the sender has created files and describes their contents, which is artifact sharing. It also updates the team on current progress/status and asks others to integrate/extend, so status_update and coordination fit as secondary functions.",
+  "evidence": [
+    {
+      "field": "artifact",
+      "text": "I created xsv.py + compile.sh fallback implementing count/headers/reverse/slice/fixlengths/select/flatten/fmt."
+    },
+    {
+      "field": "status_update",
+      "text": "files now visible"
+    },
+    {
+      "field": "coordination",
+      "text": "Please integrate/extend"
+    }
+  ]
+}

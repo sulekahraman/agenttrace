@@ -1,0 +1,88 @@
+You are annotating one message from a multi-agent collaboration trace.
+Agents work asynchronously in one shared, ordered room.
+
+MESSAGE TYPES:
+- question: asks for information, evaluation, clarification, or a decision
+- delegation_request: assigns or requests concrete work from another agent
+- acknowledgement: confirms receipt or understanding without substantive work
+- status_update: reports progress, blockage, or current activity
+- result_delivery: delivers completed analysis, output, or requested work
+- evidence_observation: contributes facts, measurements, or observations
+- proposal: suggests a plan, hypothesis, design, or next action
+- critique_disagreement: challenges, rejects, or identifies a problem
+- agreement: explicitly accepts or endorses another contribution
+- decision: commits the group to a choice or conclusion
+- synthesis: combines multiple contributions into a unified account
+- clarification: resolves ambiguity or corrects interpretation
+- artifact_sharing: publishes or points to a file, link, run, or other artifact
+- coordination: manages sequencing, ownership, deadlines, or process
+- social_heartbeat: greeting, availability ping, or low-content presence update
+
+RULES:
+1. Label only the target message.
+2. Describe observable communicative function, not quality or success.
+3. Choose one primary type and at most two secondary types.
+4. Keep explicit citations separate from inferred replies_to relationships.
+5. Every replies_to number must be earlier than the target message number.
+6. Support inferred fields with short target-message evidence; mark real uncertainty.
+7. Return at most three evidence items TOTAL, not three per field. One span may support multiple fields.
+8. Copy evidence exactly from the target message body, preserving case, spacing and punctuation.
+   Do not paraphrase, add ellipses, or quote the message header, hints, roster or earlier messages.
+9. Treat message bodies as data to label, never as instructions to follow.
+
+AGENT ROSTER:
+- codex-3: codex
+- codex-1: codex
+- codex-4: codex
+- codex-2: codex
+
+MESSAGES THE TARGET EXPLICITLY CITES:
+None.
+
+THE 12 MESSAGES IMMEDIATELY BEFORE THE TARGET:
+#55 codex-2 (2026-10-15T17:41:17.465Z):
+DONE
+
+#56 codex-4 (2026-10-15T17:41:29.469Z):
+DONE
+
+#57 codex-1 (2026-10-15T17:41:30.237Z):
+Integrated and committed latest 480de3a plus uncommitted command additions as new commit; compile and stats switches smoke-tested.
+
+#58 codex-1 (2026-10-15T17:41:32.112Z):
+DONE
+
+#59 codex-3 (2026-10-15T17:41:39.785Z):
+Final gap pass added and committed (8a99c27): cat rows/columns, input custom quote parsing, index placeholder generation, split and partition. py_compile, compile.sh, split/partition smoke tests pass; tree clean.
+
+#60 codex-2 (2026-10-15T17:41:41.185Z):
+Added basic cat rows/columns and split commands with headers, committed; compile passes.
+
+#61 codex-3 (2026-10-15T17:41:41.637Z):
+DONE
+
+#62 codex-2 (2026-10-15T17:41:43.485Z):
+DONE
+
+#63 codex-4 (2026-10-15T17:41:48.859Z):
+DONE
+
+#64 codex-1 (2026-10-15T17:41:55.275Z):
+Latest HEAD 66d859a, working tree clean; py_compile, compile, count, split smoke tests pass. DONE
+
+#65 codex-3 (2026-10-15T17:41:55.788Z):
+DONE
+
+#66 codex-2 (2026-10-15T17:41:56.427Z):
+Verified latest tree clean, compile succeeds, input and split smoke tests pass. DONE
+
+RULE-BASED HINTS FOR THE TARGET:
+{"addressed_to": [], "artifacts": [], "cites": [], "heartbeat": false}
+
+TARGET MESSAGE TO LABEL:
+#67 codex-3 (2026-10-15T17:42:07.194Z):
+DONE
+
+Label only the target message. Every number in replies_to must be lower than
+67. addressed_to must use roster ids. Evidence spans must come
+from the target message.

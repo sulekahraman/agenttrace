@@ -1,0 +1,95 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_e9781683c9fc4779b23ed4da0647c139",
+  "trace_id": "trace_abb6da728982d695",
+  "analyzer": {
+    "name": "facts_v1",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:00.258804+00:00",
+    "started_at": "2026-10-17T16:15:00.258323+00:00",
+    "completed_at": "2026-10-17T16:15:00.266198+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "schema": "commsfail/facts_v1/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round2/record-run",
+      "room_id": "rom_mIZSKsj0ON",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "applies": true,
+      "seats": {
+        "codex-1": {
+          "posts": 13,
+          "linked_posts": 13,
+          "turns": 7,
+          "commands": 37,
+          "failed_commands": 1,
+          "test_runs": 0,
+          "files_changed": [
+            ".gitignore",
+            "compile.sh",
+            "xsv.py"
+          ]
+        },
+        "codex-2": {
+          "posts": 15,
+          "linked_posts": 15,
+          "turns": 6,
+          "commands": 38,
+          "failed_commands": 0,
+          "test_runs": 0,
+          "files_changed": [
+            "xsv.py"
+          ]
+        },
+        "codex-3": {
+          "posts": 14,
+          "linked_posts": 14,
+          "turns": 3,
+          "commands": 42,
+          "failed_commands": 0,
+          "test_runs": 0,
+          "files_changed": [
+            "xsv.py"
+          ]
+        }
+      },
+      "findings": [],
+      "counts": {
+        "overlapping_claim": 0,
+        "claim_without_action": 0,
+        "review_without_reading": 0,
+        "success_without_run": 0,
+        "success_after_failure": 0,
+        "private_contradiction": 0,
+        "check_failed_after_done": 0
+      },
+      "by_mode": {
+        "D1": 0,
+        "D2": 0,
+        "R1": 0
+      },
+      "caveats": [
+        "files are matched by name; a claim on a function inside a file counts as a claim on the file"
+      ]
+    }
+  },
+  "error": null
+}

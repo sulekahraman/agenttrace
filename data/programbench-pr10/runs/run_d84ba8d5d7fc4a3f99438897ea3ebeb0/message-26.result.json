@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    21,
+    22,
+    25
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The target reports concrete observed outputs for several flag combinations and data shapes, without asking or proposing action. It delivers findings/results from tests, so evidence_observation is primary, with result_delivery as secondary.",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "More exact JSON sample: -jt outputs a=1, b=\"x\", arr=[true,false], blank, [obj] x=2 y=\"z\"."
+    },
+    {
+      "field": "result_delivery",
+      "text": "-jc outputs each top-level quoted assignment separated blank lines; bool array unexpectedly becomes [] (likely HCL encoder quirk); object value uses braces with blank lines."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "-jy YAML obj y key quoted while x plain."
+    }
+  ]
+}

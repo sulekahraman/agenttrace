@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    9,
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results about JSON output behavior, so its main function is delivering findings. It also contributes factual observations from testing. It explicitly continues the prior probe thread on output formats.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "JSON output probes: -e escapes <>& as `\\\\u003c\\\\u0026\\\\u003e`; -i pretty."
+    },
+    {
+      "field": "secondary_types",
+      "text": "YAML emitter quotes ambiguous keys e.g. `n` (but not a,b), preserves float 1.0; values true/number strings quoted."
+    },
+    {
+      "field": "replies_to",
+      "text": "JSON output probes"
+    }
+  ]
+}

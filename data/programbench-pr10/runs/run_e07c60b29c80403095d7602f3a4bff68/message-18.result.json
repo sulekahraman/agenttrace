@@ -1,0 +1,31 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    15,
+    17
+  ],
+  "addressed_to": [
+    "codex-3",
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message explicitly requests another agent to perform work (“please add core code in your container/workspace now”) and coordinates sequencing by assigning testing to Agent2 afterward. It is not reporting progress or giving results.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "please add core code in your container/workspace now"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Agent2 can test afterward"
+    },
+    {
+      "field": "addressed_to",
+      "text": "Agent2 can test afterward"
+    }
+  ]
+}

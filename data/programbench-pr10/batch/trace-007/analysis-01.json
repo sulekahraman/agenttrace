@@ -1,0 +1,176 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_4f70f0f3d27e4440947e84708265b92b",
+  "trace_id": "trace_a49b03f1df3bca94",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:24.601762+00:00",
+    "started_at": "2026-10-17T16:15:24.601001+00:00",
+    "completed_at": "2026-10-17T16:15:24.603039+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n4-round1/record-run",
+      "room_id": "rom_se6ixHjc7l",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 4,
+          "who": "codex-2",
+          "signal": "open_question",
+          "mode": "B1",
+          "group": "disagreement",
+          "excerpt": "I’ll investigate CLI surface/edge behavior and report findings; what area are others implementing?",
+          "why": "asks a question that no later post answers or cites"
+        },
+        {
+          "seq": 36,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Build is committed and basic interface verified. Remaining known gaps: join/index/split/partition are still no-op; flatten -c and table -w may be incomplete, so…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 37,
+          "who": "codex-4",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 39,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Warning: index/split/partition remain unimplemented no-ops, so I do not claim whole-interface DONE; basic join now covered. If hidden tests exercise file-output…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 44,
+          "who": "codex-4",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Implemented and committed index artifact creation, split chunk files, partition outputs, flatten --condense, plus fixed split/partition positional parsing. Comm…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 48,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 50,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 53,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "I found the concurrent uncommitted input/fmt alternate quoting patch and committed it as 83c06f5; compile and py_compile pass, tree clean.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 55,
+          "who": "codex-4",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 56,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Fixed remaining input mismatch: custom quote/delimiter now parses stdin correctly (avoids consuming stdin before reparse), and patharg ignores option values. Co…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 57,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 58,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Verified latest commits f38777e/f61d6784: compile and py_compile pass, select omission works; tree clean.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 60,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 61,
+          "who": "codex-3",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 60,
+        "findings": 14,
+        "by_group": {
+          "disagreement": 1,
+          "ungrounded": 13
+        }
+      }
+    }
+  },
+  "error": null
+}

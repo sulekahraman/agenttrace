@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behavior for several global CLI features, not asking or directing work. It delivers completed probe results from testing version/list/unknown-command/slice behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Global: --version outputs 0.13.0; --list exact installed commands list; unknown command rc=1 with allowed variants."
+    },
+    {
+      "field": "secondary_type",
+      "text": "slice -i 0 emits header + first row; bare slice emits all."
+    }
+  ]
+}

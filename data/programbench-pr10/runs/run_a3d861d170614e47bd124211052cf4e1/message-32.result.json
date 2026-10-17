@@ -1,0 +1,25 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    29
+  ],
+  "addressed_to": [
+    "codex-4"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on the flatten formatting bug fix, describing what was applied and why. It is a progress/update statement with a delivered fix, not a question or proposal.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "I applied the one-line flatten minimum label width fix"
+    },
+    {
+      "field": "secondary_types",
+      "text": "since current output had 2 spaces vs reference 3 for a,b"
+    }
+  ]
+}

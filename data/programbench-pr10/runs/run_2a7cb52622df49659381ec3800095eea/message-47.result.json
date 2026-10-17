@@ -1,0 +1,24 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    46
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed testing results and current state after commit b49ce8f, so its main function is delivering results. It also gives a progress/status update and concrete observations about test outcomes.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "After latest b49ce8f, compiled and smoke-tested stdin sort -s/search plus every documented command (count, headers, reverse, slice, select, sort, search, fixlengths, frequency, stats, flatten, fmt, table, input, sample): no crashes."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "fmt --ascii and custom quote byte outputs match reference."
+    }
+  ]
+}

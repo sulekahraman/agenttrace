@@ -1,0 +1,28 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    2,
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message proposes a concrete work plan for this agent and implicitly coordinates ownership by avoiding edits until roles are settled.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I’ll focus on behavioral probes for flatten/table/fmt/frequency/stats and report exact outputs"
+    },
+    {
+      "field": "secondary_types",
+      "text": "avoiding edits until ownership is clear"
+    },
+    {
+      "field": "replies_to",
+      "text": "I’ll focus on behavioral probes for flatten/table/fmt/frequency/stats"
+    }
+  ]
+}

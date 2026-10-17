@@ -1,0 +1,22 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    11,
+    12
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and specific fixes applied, which is a status update; it also implicitly delivers results of implementation changes. It directly responds to prior bug reports about formatting/schema/list heading/compile behavior.",
+  "evidence": [
+    {
+      "field": "status/update content",
+      "text": "Fixed flatten formatting, stats schema/types matching probes, --list heading, compile removes protected binary before rebuild."
+    }
+  ]
+}

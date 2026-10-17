@@ -1,0 +1,30 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    20,
+    21
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports current state and test results, not a request or new task. It also notes an environment-specific permission issue as an observation. It follows up on [M20]-[M21] by confirming the integrated commit and completion status.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Final check: committed tree is clean at 3b08917 (plus prior commits); version/count/search smoke tests pass."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "./compile.sh cannot overwrite the root-owned protected reference executable in this observation workspace (permission denied), which is expected per harness;"
+    },
+    {
+      "field": "evidence_observation",
+      "text": "compile.sh itself is correct for fresh evaluation checkout."
+    }
+  ]
+}

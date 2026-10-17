@@ -1,0 +1,29 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    18
+  ],
+  "addressed_to": [
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns a concrete task to another agent: scaffold immediately. It also coordinates fallback ownership based on whether agent1 is coding.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "agent3 please scaffold immediately"
+    },
+    {
+      "field": "primary_type",
+      "text": "please scaffold immediately"
+    },
+    {
+      "field": "secondary_types",
+      "text": "If agent1 is not coding"
+    }
+  ]
+}

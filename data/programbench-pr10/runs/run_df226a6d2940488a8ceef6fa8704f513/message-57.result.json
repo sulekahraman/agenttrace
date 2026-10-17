@@ -1,0 +1,24 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    55,
+    56
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports a completed verification outcome: it states the shorthand commits were checked and that outputs/build/compile succeed. This is a result delivery with supporting observations about matching reference behavior and clean build state.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Verified latest shorthand commits: -j/-t/-c/-r outputs match reference on representative inputs"
+    },
+    {
+      "field": "evidence_observation",
+      "text": "build clean and compile succeeds"
+    }
+  ]
+}

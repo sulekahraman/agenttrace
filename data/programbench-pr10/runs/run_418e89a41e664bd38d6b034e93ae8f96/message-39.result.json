@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    38
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and its current state: it states a commit hash and confirms the enhancement status with a smoke test result. This is a delivery of outcome rather than a request or proposal.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Committed enhancements as 105bd93 (yj.py; compile scaffold already committed in prior commit)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Current smoke YAML nested works."
+    }
+  ]
+}

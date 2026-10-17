@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "decision"
+  ],
+  "replies_to": [
+    28,
+    29
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completed fixes and the outcome of verification, which is a delivery of results. It also signals the current status of testing and implicitly closes the task with a final conclusion.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Final differential checks found and fixed HCL trailing newline mismatch (reference emits none); JSON empty-input error now exact."
+    },
+    {
+      "field": "status_update",
+      "text": "All tested conversion modes match representative reference outputs byte-for-byte."
+    },
+    {
+      "field": "decision",
+      "text": "All tested conversion modes match representative reference outputs byte-for-byte."
+    }
+  ]
+}

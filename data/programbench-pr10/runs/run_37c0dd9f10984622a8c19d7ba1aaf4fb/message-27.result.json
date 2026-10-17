@@ -1,0 +1,35 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "delegation_request",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    22,
+    23,
+    25,
+    26
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports a current blocker in compile.sh and gives a concrete workaround, which is a status update with an evidence-backed observation. It also implicitly requests others to act on the workaround/compile adjustment, making delegation secondary.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Warning: ./compile.sh currently fails Permission denied because reference executable is root-owned (-rwx root)."
+    },
+    {
+      "field": "delegation_request",
+      "text": "remove ./executable before compile (rm executable) or adjust compile"
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Directory writable, so remove ./executable before compile (rm executable)"
+    }
+  ]
+}

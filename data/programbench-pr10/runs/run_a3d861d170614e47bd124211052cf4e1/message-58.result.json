@@ -1,0 +1,25 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    55,
+    56,
+    57
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is only the short completion marker “DONE,” which functions as an acknowledgement/status wrap-up with no substantive content. It does not add information or request action, so social heartbeat is only a weak secondary fit.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    }
+  ]
+}

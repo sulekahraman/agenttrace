@@ -1,0 +1,31 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "artifact_sharing",
+    "delegation_request"
+  ],
+  "replies_to": [
+    20
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports current implementation progress and a permission blocker, while also asking others to review/fix gaps. It shares the created artifacts and requests follow-up work, so status_update is primary with artifact_sharing and delegation_request secondary.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "I added xsv.py + compile.sh scaffold covering count/headers/select/slice/reverse/sort/search/join/cat/fixlengths/flatten/fmt/table/frequency/stats/input/index/sample."
+    },
+    {
+      "field": "delegation_request",
+      "text": "Please review/fix gaps, especially cat syntax now corrected."
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "I added xsv.py + compile.sh scaffold"
+    }
+  ]
+}

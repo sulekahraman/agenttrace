@@ -1,0 +1,108 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_6b99b5792ff14c958eb702762d653d97",
+  "trace_id": "trace_a49b03f1df3bca94",
+  "analyzer": {
+    "name": "facts_v1",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:24.613264+00:00",
+    "started_at": "2026-10-17T16:15:24.612907+00:00",
+    "completed_at": "2026-10-17T16:15:24.624906+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "schema": "commsfail/facts_v1/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n4-round1/record-run",
+      "room_id": "rom_se6ixHjc7l",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "applies": true,
+      "seats": {
+        "codex-1": {
+          "posts": 14,
+          "linked_posts": 14,
+          "turns": 4,
+          "commands": 51,
+          "failed_commands": 1,
+          "test_runs": 0,
+          "files_changed": [
+            ".gitignore",
+            "compile.sh",
+            "xsv.py"
+          ]
+        },
+        "codex-2": {
+          "posts": 18,
+          "linked_posts": 18,
+          "turns": 6,
+          "commands": 62,
+          "failed_commands": 2,
+          "test_runs": 0,
+          "files_changed": [
+            "compile.sh"
+          ]
+        },
+        "codex-3": {
+          "posts": 15,
+          "linked_posts": 15,
+          "turns": 3,
+          "commands": 56,
+          "failed_commands": 2,
+          "test_runs": 0,
+          "files_changed": [
+            "xsv.py"
+          ]
+        },
+        "codex-4": {
+          "posts": 13,
+          "linked_posts": 13,
+          "turns": 3,
+          "commands": 50,
+          "failed_commands": 0,
+          "test_runs": 0,
+          "files_changed": [
+            "0.csv",
+            "2.csv",
+            "xsv.py"
+          ]
+        }
+      },
+      "findings": [],
+      "counts": {
+        "overlapping_claim": 0,
+        "claim_without_action": 0,
+        "review_without_reading": 0,
+        "success_without_run": 0,
+        "success_after_failure": 0,
+        "private_contradiction": 0,
+        "check_failed_after_done": 0
+      },
+      "by_mode": {
+        "D1": 0,
+        "D2": 0,
+        "R1": 0
+      },
+      "caveats": [
+        "files are matched by name; a claim on a function inside a file counts as a claim on the file"
+      ]
+    }
+  },
+  "error": null
+}

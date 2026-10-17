@@ -1,0 +1,19 @@
+{
+  "primary_type": "decision",
+  "secondary_types": [
+    "agreement"
+  ],
+  "replies_to": [
+    52
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a terse commitment that the work is complete, with no new information beyond finalizing the shared task.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "room_id": "rom_79bBNzemWi",
+  "goal": {
+    "message_id": "msg_9CcNPrumSG",
+    "sequence": 1,
+    "until": [
+      "said DONE",
+      "after 30m",
+      "budget 3M tokens"
+    ],
+    "started_at": "2026-10-15T16:43:34.215Z"
+  },
+  "ended_by": {
+    "at": "2026-10-15T16:45:41.379Z",
+    "detail": "DONE",
+    "trigger": "said DONE"
+  },
+  "runner": {
+    "started_at": "2026-10-15T16:43:38.113Z",
+    "ended_at": "2026-10-15T16:45:41.414Z",
+    "workspace": "/home/cl4750/goal-pb/work/xsv-n2-20261015T164332Z/workspace"
+  },
+  "totals": {
+    "messages": 28,
+    "checks": 0,
+    "snapshots": 13,
+    "reminders": 0,
+    "tokens": 104874,
+    "cached_tokens": 3194481
+  },
+  "image": "pb-goal/burntsushi_1776_xsv.f430466:2",
+  "agent_user": "agent",
+  "isolated": true,
+  "addresses": {
+    "codex-1": "172.18.0.4",
+    "codex-2": "172.18.0.5"
+  },
+  "web_search": "off",
+  "turn_limit_s": 1200,
+  "mention_gate": false,
+  "task_gate": false,
+  "message_routing": "broadcast",
+  "consensus": true,
+  "remind_s": 120,
+  "agents": [
+    {
+      "name": "codex-1",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_BUt2opMiA5",
+      "session_id": "01a14072-a854-75a3-8a68-58c8ae50a8a5",
+      "turns": 2,
+      "failed_turns": 0,
+      "tokens": 56436,
+      "usage": {
+        "input": 48347,
+        "cached": 1797795,
+        "output": 8089
+      }
+    },
+    {
+      "name": "codex-2",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_Eg2s0WmGO2",
+      "session_id": "01a14072-a855-7043-903e-b6c9dd27b06b",
+      "turns": 4,
+      "failed_turns": 0,
+      "tokens": 48438,
+      "usage": {
+        "input": 39543,
+        "cached": 1396686,
+        "output": 8895
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    24,
+    25,
+    26
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a brief completion signal with no substantive new content: it simply marks the work as finished. Given the prior context of compile/smoke/regression updates, it also implicitly functions as a status update, but the observable communicative function is chiefly acknowledgement/completion.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    }
+  ]
+}

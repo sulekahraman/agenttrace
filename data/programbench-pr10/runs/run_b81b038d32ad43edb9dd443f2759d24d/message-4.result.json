@@ -1,0 +1,24 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "delegation_request"
+  ],
+  "replies_to": [
+    2,
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message asks for information about others’ implementation areas while also stating the sender will investigate and report findings, so its main function is a question with a mild delegation/request for coordination.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "what area are others implementing?"
+    },
+    {
+      "field": "delegation_request",
+      "text": "I’ll investigate CLI surface/edge behavior and report findings"
+    }
+  ]
+}

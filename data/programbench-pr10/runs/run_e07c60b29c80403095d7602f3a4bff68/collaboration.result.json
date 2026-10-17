@@ -1,0 +1,1714 @@
+{
+  "findings": [
+    {
+      "category": "duplicated_work",
+      "found": true,
+      "explanation": "Multiple agents independently repeated the same kind of probing/verification around the same CLI behaviors. For example, [M7] and [M18] both report stats-probing results; [M12] and [M24] both investigate table formatting; [M45] and [M48] both re-check join edge cases. These are not just acknowledgements\u2014they are materially overlapping checks without clear synthesis or a distinct verification handoff.",
+      "confidence": 0.91,
+      "message_numbers": [
+        8,
+        19,
+        13,
+        25,
+        45,
+        48
+      ]
+    },
+    {
+      "category": "weak_handoff",
+      "found": true,
+      "explanation": "There are several direct requests for another agent to implement missing commands, but the handoff is not cleanly resolved in the same thread. For instance, [M20] asks for implementation and compile.sh, [M32] says missing commands remain and suggests adding them before final, and [M38] again requests join/index/partition/split. Although work is later delivered, the repeated re-requests show unclear ownership and a weak handoff pattern rather than a single accepted assignment.",
+      "confidence": 0.84,
+      "message_numbers": [
+        21,
+        33,
+        39
+      ]
+    },
+    {
+      "category": "unintegrated_information",
+      "found": true,
+      "explanation": "Visible information about remaining gaps was later not fully integrated into the final state for a period, especially the repeated note that join/index/partition/split were still absent. [M28] and [M33] explicitly state these commands are missing, [M37] repeats that they remain missing, yet the conversation continues with finalization signals [M53]-[M58] only after later patches. This shows the important status information was not immediately incorporated into the decision to finish and had to be resurfaced multiple times.",
+      "confidence": 0.77,
+      "message_numbers": [
+        29,
+        34,
+        38,
+        52,
+        54,
+        55,
+        56,
+        57,
+        58
+      ]
+    }
+  ],
+  "annotations": [
+    {
+      "message_number": 2,
+      "primary_type": "proposal",
+      "secondary_types": [
+        "question",
+        "coordination"
+      ],
+      "replies_to": [],
+      "addressed_to": [],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message proposes a concrete plan of action (\u201cI will probe reference CLI/help and edge behavior, then report findings\u201d) and also asks a coordinating question about coverage (\u201cwhat areas are others covering?\u201d).",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "I will probe reference CLI/help and edge behavior, then report findings"
+        },
+        {
+          "field": "secondary_types",
+          "text": "what areas are others covering?"
+        }
+      ]
+    },
+    {
+      "message_number": 3,
+      "primary_type": "delegation_request",
+      "secondary_types": [
+        "status_update",
+        "proposal"
+      ],
+      "replies_to": [
+        2
+      ],
+      "addressed_to": [],
+      "confidence": 0.93,
+      "ambiguous": false,
+      "rationale": "The message both reports the speaker's own planned work and explicitly asks for task allocation to others. The main communicative function is requesting delegation/coordination rather than providing results.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "please assign others as needed"
+        },
+        {
+          "field": "secondary_types",
+          "text": "I will probe and implement core commands (count, headers, select, slice, reverse, flatten, fmt) and report findings"
+        },
+        {
+          "field": "replies_to",
+          "text": "I will probe and implement core commands (count, headers, select, slice, reverse, flatten, fmt) and report findings; please assign others as needed."
+        }
+      ]
+    },
+    {
+      "message_number": 4,
+      "primary_type": "proposal",
+      "secondary_types": [
+        "question",
+        "coordination"
+      ],
+      "replies_to": [
+        2,
+        3
+      ],
+      "addressed_to": [
+        "codex-2",
+        "codex-3"
+      ],
+      "confidence": 0.93,
+      "ambiguous": false,
+      "rationale": "The message proposes the speaker's own work plan and simultaneously asks teammates what subsystem they are taking. It is mainly a proposal/plan, with a coordinating question directed at others.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "I will investigate CLI behavior/help and focus on one command if needed"
+        },
+        {
+          "field": "secondary_types",
+          "text": "what subsystem are others taking?"
+        },
+        {
+          "field": "addressed_to",
+          "text": "what subsystem are others taking?"
+        }
+      ]
+    },
+    {
+      "message_number": 5,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update",
+        "proposal"
+      ],
+      "replies_to": [
+        2,
+        3,
+        4
+      ],
+      "addressed_to": [],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message reports completed findings (\u201cCaptured full command help; README confirms xsv\u201d) and offers available next steps (\u201cI can probe exact outputs\u2026\u201d), so it primarily delivers results with a light status update/proposal tone.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Captured full command help; README confirms xsv."
+        },
+        {
+          "field": "secondary_types",
+          "text": "Key options/help available if needed. I can probe exact outputs for flatten/table/stats/select."
+        }
+      ]
+    },
+    {
+      "message_number": 6,
+      "primary_type": "proposal",
+      "secondary_types": [
+        "coordination",
+        "status_update"
+      ],
+      "replies_to": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "addressed_to": [],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message proposes a contingent plan (\u201cI can build a standalone Python core\u201d) and coordinates to avoid duplicated work (\u201clet me know to avoid overlap\u201d). It also reports current state (\u201cNo implementation files exist yet\u201d).",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "I can build a standalone Python core if others have not started"
+        },
+        {
+          "field": "secondary_types",
+          "text": "let me know to avoid overlap"
+        },
+        {
+          "field": "secondary_types",
+          "text": "No implementation files exist yet"
+        }
+      ]
+    },
+    {
+      "message_number": 7,
+      "primary_type": "evidence_observation",
+      "secondary_types": [
+        "status_update",
+        "coordination"
+      ],
+      "replies_to": [
+        2,
+        4,
+        5
+      ],
+      "addressed_to": [],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports gathered information from help output and states available options, which is an evidence contribution. It also updates progress on what was collected and offers to take on probing if needed, serving coordination/status functions.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Collected full -h for cat/fixlengths/frequency/index/input/join/partition/sample/search/sort/split/stats/table; key options available."
+        },
+        {
+          "field": "secondary_types",
+          "text": "I can probe table/stats if needed."
+        }
+      ]
+    },
+    {
+      "message_number": 8,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        5,
+        7
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completed probing results and concrete observed outputs, which is a result delivery with supporting evidence/observations. It does not ask for action or make a plan.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Probed stats/frequency/table/flatten exact sample."
+        },
+        {
+          "field": "evidence_observation",
+          "text": "stats default header field,type,sum,min,max,min_length,max_length,mean,stddev; numeric detection Integer and stddev sample?"
+        },
+        {
+          "field": "evidence_observation",
+          "text": "Frequency NULL prints (NULL)."
+        }
+      ]
+    },
+    {
+      "message_number": 9,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "evidence_observation",
+        "proposal"
+      ],
+      "replies_to": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "addressed_to": [],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message reports discovered CLI behaviors and option details from probes, which is a delivered result. It also states concrete observations about command semantics, so evidence_observation fits as secondary. The final sentence proposes implementation follow-up.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Core probes: count excludes header; headers output '1   name'; slice indexes data rows 0-based and retains header; select syntax names/index; flatten outputs label padded to max width, records '#' line; reverse retains header. fmt uses --out-delimiter/-t (not -D)."
+        },
+        {
+          "field": "secondary_types",
+          "text": "Core probes: count excludes header; headers output '1   name'; slice indexes data rows 0-based and retains header; select syntax names/index; flatten outputs label padded to max width, records '#' line; reverse retains header. fmt uses --out-delimiter/-t (not -D)."
+        },
+        {
+          "field": "secondary_types",
+          "text": "I can add implementation if needed."
+        }
+      ]
+    },
+    {
+      "message_number": 10,
+      "primary_type": "evidence_observation",
+      "secondary_types": [
+        "result_delivery"
+      ],
+      "replies_to": [
+        7,
+        8,
+        9
+      ],
+      "addressed_to": [
+        "codex-2",
+        "codex-3"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports concrete observed facts about the CLI/version and command behavior, which is evidence sharing rather than asking or proposing. It also delivers the results of probing behavior started in prior messages.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Version 0.13.0; --list exact installed commands."
+        },
+        {
+          "field": "primary_type",
+          "text": "Unknown command exits 1 with Could not match nope...; count empty stdin outputs 0."
+        }
+      ]
+    },
+    {
+      "message_number": 11,
+      "primary_type": "evidence_observation",
+      "secondary_types": [
+        "result_delivery"
+      ],
+      "replies_to": [
+        10
+      ],
+      "addressed_to": [],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports observed CLI facts: version, list behavior, unknown-command exit, and stdin defaults. It is primarily an evidence dump rather than a request or plan, with a light result-delivery function because it summarizes findings for the group.",
+      "evidence": [
+        {
+          "field": "replies_to",
+          "text": "Reference --version=0.13.0; --list prints Installed commands list. Unknown exits 1 with exact clap error. stdin defaults work."
+        },
+        {
+          "field": "primary_type",
+          "text": "Reference --version=0.13.0; --list prints Installed commands list."
+        }
+      ]
+    },
+    {
+      "message_number": 12,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "delegation_request",
+        "proposal"
+      ],
+      "replies_to": [
+        6,
+        9
+      ],
+      "addressed_to": [],
+      "confidence": 0.92,
+      "ambiguous": false,
+      "rationale": "The message reports current state/blocker (\u201cno source present\u201d) and offers next steps. It also requests direction on whether to add core code, which is a delegated action/proposal rather than a substantive result.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "currently no source present"
+        },
+        {
+          "field": "delegation_request",
+          "text": "Let me know if you want me to add core code."
+        },
+        {
+          "field": "proposal",
+          "text": "I can test your implementation once files appear"
+        }
+      ]
+    },
+    {
+      "message_number": 13,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "addressed_to": [
+        "codex-2",
+        "codex-3"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports concrete probe results for `table` behavior and exact outputs, which is a completed finding rather than a question or plan. It also implicitly responds to prior requests for findings/outputs from [M2], [M7], [M8], [M9], [M10], and [M11].",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "table exact: input a,b\\nxx,y\\n,z\\n => default bytes 'a   b\\nxx  y\\n    z\\n'; -w4 => a+5 spaces? repr b'a     b\\nxx    y\\n      z\\n'; -p1 => b'a  b\\nxx y\\n   z\\n'; -c1 => b'a     b\\nx...  y\\n      z\\n'; -c0 all fields '...'"
+        }
+      ]
+    },
+    {
+      "message_number": 14,
+      "primary_type": "delegation_request",
+      "secondary_types": [
+        "status_update",
+        "coordination"
+      ],
+      "replies_to": [
+        12
+      ],
+      "addressed_to": [
+        "codex-3"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message directly asks another agent to take concrete action: implement the standalone Python core. It also reports current workspace status (\u201cstill has no files\u201d), and coordinates ownership by specifying who should proceed.",
+      "evidence": [
+        {
+          "field": "delegation_request",
+          "text": "Agent3, please proceed implementing standalone Python core now"
+        },
+        {
+          "field": "status_update",
+          "text": "workspace still has no files"
+        },
+        {
+          "field": "addressed_to",
+          "text": "Agent3"
+        }
+      ]
+    },
+    {
+      "message_number": 15,
+      "primary_type": "question",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        14
+      ],
+      "addressed_to": [
+        "codex-1"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message asks whether Agent1 is implementing main, seeking information/confirmation rather than assigning work. It also coordinates task partitioning by offering to avoid conflicts and focus on differential tests.",
+      "evidence": [
+        {
+          "field": "question",
+          "text": "Agent1, are you implementing main?"
+        },
+        {
+          "field": "coordination",
+          "text": "I can avoid file conflicts and focus differential tests."
+        }
+      ]
+    },
+    {
+      "message_number": 16,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        15
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports concrete probe results and observed behaviors from running stats, so its main function is delivering results with factual observations. It does not ask or propose; it summarizes outputs and option effects.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Stats probe /tmp headers name,val rows a,1 b,2 a, blank,4: default outputs name Unicode sum empty min a max b lengths 0/1; val Integer sum7 min1 max4 mean2.3333333333333335 stddev1.247219128924647 (population)."
+        },
+        {
+          "field": "evidence_observation",
+          "text": "--everything adds median/mode/cardinality; nulls includes blank as zero in numeric mean/stddev."
+        }
+      ]
+    },
+    {
+      "message_number": 17,
+      "primary_type": "question",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        15
+      ],
+      "addressed_to": [
+        "codex-1"
+      ],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message asks for a status update about whether another agent is writing code in their container, and it coordinates next steps by offering to run tests once compilation appears.",
+      "evidence": [
+        {
+          "field": "question",
+          "text": "are you writing in yours?"
+        },
+        {
+          "field": "coordination",
+          "text": "I can run broad differential tests once compile appears."
+        }
+      ]
+    },
+    {
+      "message_number": 18,
+      "primary_type": "delegation_request",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        15,
+        17
+      ],
+      "addressed_to": [
+        "codex-3",
+        "codex-2"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message explicitly requests another agent to perform work (\u201cplease add core code in your container/workspace now\u201d) and coordinates sequencing by assigning testing to Agent2 afterward. It is not reporting progress or giving results.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "please add core code in your container/workspace now"
+        },
+        {
+          "field": "secondary_types",
+          "text": "Agent2 can test afterward"
+        },
+        {
+          "field": "addressed_to",
+          "text": "Agent2 can test afterward"
+        }
+      ]
+    },
+    {
+      "message_number": 19,
+      "primary_type": "evidence_observation",
+      "secondary_types": [
+        "result_delivery"
+      ],
+      "replies_to": [
+        16,
+        17,
+        18
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports concrete observed behaviors of stats options and numeric handling, not a plan or question. It delivers results from probing: population stddev, NaN propagation, formatting, exclusion of empty/null from numeric stats, and cardinality behavior.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Stats details: stddev is population (1,2,3 => 0.816496580927726), Float NaN propagates; integer formatting normal; empty/null excluded numeric stats but min_length includes 0; cardinality excludes null (d foo + null =>2)."
+        },
+        {
+          "field": "secondary_types",
+          "text": "Stats details: stddev is population (1,2,3 => 0.816496580927726), Float NaN propagates; integer formatting normal; empty/null excluded numeric stats but min_length includes 0; cardinality excludes null (d foo + null =>2)."
+        },
+        {
+          "field": "replies_to",
+          "text": "Stats details: stddev is population (1,2,3 => 0.816496580927726), Float NaN propagates; integer formatting normal; empty/null excluded numeric stats but min_length includes 0; cardinality excludes null (d foo + null =>2)."
+        }
+      ]
+    },
+    {
+      "message_number": 20,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        18,
+        19
+      ],
+      "addressed_to": [],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message reports a completed observation/result about the behavior of partitioning stdin into output files. It is not asking or proposing; it states an outcome: files created, contents included, and CSV format used.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Partition stdin k,v rows creates a.csv/b.csv; each includes header and original rows, output files standard CSV."
+        }
+      ]
+    },
+    {
+      "message_number": 21,
+      "primary_type": "delegation_request",
+      "secondary_types": [
+        "status_update",
+        "coordination"
+      ],
+      "replies_to": [
+        17,
+        18
+      ],
+      "addressed_to": [
+        "codex-2",
+        "codex-3"
+      ],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message asks other agents to take concrete action: create the implementation and compile script. It also reports a time constraint, which functions as a status/progress coordination update. It is addressed generally to the team, especially the agents previously discussing source availability and implementation.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "please create implementation and compile.sh ASAP."
+        },
+        {
+          "field": "secondary_types",
+          "text": "Any progress on source? Time limited;"
+        },
+        {
+          "field": "addressed_to",
+          "text": "please create implementation and compile.sh ASAP."
+        }
+      ]
+    },
+    {
+      "message_number": 22,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "critique_disagreement",
+        "artifact_sharing"
+      ],
+      "replies_to": [
+        17,
+        21
+      ],
+      "addressed_to": [
+        "codex-1"
+      ],
+      "confidence": 0.93,
+      "ambiguous": false,
+      "rationale": "The message reports current state/blockers in the workspace and notes issues found in source and formatting, so its main function is a status update. It also criticizes specific problems in the code/CLI output and points to an artifact/source file, but it is not primarily a request or proposal.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Source appeared; xsv.py currently syntax error"
+        },
+        {
+          "field": "critique_disagreement",
+          "text": "--list formatting differs"
+        },
+        {
+          "field": "artifact_sharing",
+          "text": "xsv.py"
+        }
+      ]
+    },
+    {
+      "message_number": 23,
+      "primary_type": "coordination",
+      "secondary_types": [
+        "delegation_request",
+        "proposal"
+      ],
+      "replies_to": [
+        22
+      ],
+      "addressed_to": [
+        "codex-1"
+      ],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message manages process and ownership: it notes the file now exists, proposes a constrained contribution, and asks for confirmation to avoid conflicting edits. It is not asking for information so much as coordinating next steps.",
+      "evidence": [
+        {
+          "field": "coordination",
+          "text": "I can patch stats/frequency/join etc if desired, but avoid conflicts; confirm."
+        },
+        {
+          "field": "replies_to",
+          "text": "I see xsv.py now (likely your implementation)."
+        },
+        {
+          "field": "addressed_to",
+          "text": "if desired, but avoid conflicts; confirm."
+        }
+      ]
+    },
+    {
+      "message_number": 24,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "critique_disagreement",
+        "delegation_request"
+      ],
+      "replies_to": [
+        23
+      ],
+      "addressed_to": [
+        "codex-2"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports observed test results and mismatches, then asks another agent to make specific changes. Its main function is delivering feedback/results, with critique of the current implementation and a request to adjust code and compile changes.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Source now visible. Smoke count works. Major mismatches:"
+        },
+        {
+          "field": "critique_disagreement",
+          "text": "Major mismatches: table should use 2-space separator (default output a   b, current a  b), frequency output must field,value,count with selected header names (current value,count), fmt arg quote handling."
+        },
+        {
+          "field": "delegation_request",
+          "text": "Ensure commit compile changes."
+        }
+      ]
+    },
+    {
+      "message_number": 25,
+      "primary_type": "artifact_sharing",
+      "secondary_types": [
+        "status_update",
+        "delegation_request"
+      ],
+      "replies_to": [
+        24
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message shares an implementation artifact and reports build status, while also requesting follow-up work on specific missing commands.",
+      "evidence": [
+        {
+          "field": "artifact_sharing",
+          "text": "Standalone implementation committed at ab543e1: xsv.py + compile.sh + .gitignore."
+        },
+        {
+          "field": "status_update",
+          "text": "Build succeeds;"
+        },
+        {
+          "field": "delegation_request",
+          "text": "please inspect/extend missing join/index/partition/stats/split."
+        }
+      ]
+    },
+    {
+      "message_number": 26,
+      "primary_type": "artifact_sharing",
+      "secondary_types": [
+        "result_delivery",
+        "status_update"
+      ],
+      "replies_to": [
+        25
+      ],
+      "addressed_to": [
+        "codex-3"
+      ],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports a completed code patch with specific behavior changes and references a commit hash, which is artifact/result sharing rather than a request or question. It also updates collaborators on implemented fixes.",
+      "evidence": [
+        {
+          "field": "artifact_sharing",
+          "text": "I patched xsv.py"
+        },
+        {
+          "field": "result_delivery",
+          "text": "table now matches default spacing/min width/condense basics; frequency emits field,value,count, supports multi-select/limit/asc/no-nulls."
+        },
+        {
+          "field": "status_update",
+          "text": "Commit bc701d9 (executable intentionally ignored; compile regenerates)."
+        }
+      ]
+    },
+    {
+      "message_number": 27,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        26
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-3"
+      ],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message reports completed work on the stats implementation, successful compilation, and verification against a reference sample, which is a delivered result. It also updates teammates on where the changes live and that they are uncommitted, making it a status update as well.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "I inserted stats implementation into xsv.py and compiled successfully"
+        },
+        {
+          "field": "secondary_types",
+          "text": "verified sample output matches reference basic stats"
+        },
+        {
+          "field": "secondary_types",
+          "text": "Changes are uncommitted in shared tree for you to include"
+        }
+      ]
+    },
+    {
+      "message_number": 28,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update",
+        "artifact_sharing"
+      ],
+      "replies_to": [
+        27
+      ],
+      "addressed_to": [],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message reports completed work and verification of an implementation change, so its main function is delivering results. It also gives a brief status update and references a commit artifact.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Also added basic stats (--everything/mode/cardinality/median, numeric population stddev) commit 8221e64; compile verified."
+        },
+        {
+          "field": "secondary_types",
+          "text": "compile verified"
+        },
+        {
+          "field": "secondary_types",
+          "text": "commit 8221e64"
+        }
+      ]
+    },
+    {
+      "message_number": 29,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "artifact_sharing"
+      ],
+      "replies_to": [
+        25,
+        26,
+        28
+      ],
+      "addressed_to": [
+        "codex-2",
+        "codex-3"
+      ],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports the current state of the implementation and repository, including clean working tree, specific commits, executable compile.sh, and remaining missing features. It is primarily a status update, with artifact sharing because it points to commits/artifacts.",
+      "evidence": [
+        {
+          "field": "status",
+          "text": "Working tree clean, commits ab543e1 + bc701d9 + 8221e64."
+        },
+        {
+          "field": "artifact",
+          "text": "compile.sh executable, .gitignore excludes generated executable."
+        },
+        {
+          "field": "status",
+          "text": "Final implementation still lacks join/index/partition/split but core commands covered."
+        }
+      ]
+    },
+    {
+      "message_number": 30,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        27,
+        28
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-3"
+      ],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports a completed code change and its verification status: it explains the fix, says the improved stats are active, and notes a successful sample verification and commit. This is best labeled as result_delivery with a status_update secondary.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Important: duplicate stats branches existed; I disabled inaccurate first branch so improved stats now active."
+        },
+        {
+          "field": "status_update",
+          "text": "Verified sample exactly matches reference (including Unicode score)."
+        },
+        {
+          "field": "result_delivery",
+          "text": "Commit made."
+        }
+      ]
+    },
+    {
+      "message_number": 31,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        27,
+        28,
+        30
+      ],
+      "addressed_to": [],
+      "confidence": 0.94,
+      "ambiguous": false,
+      "rationale": "The message reports current progress and verification results: compile and stats smoke passed, and table output matches reference spacing. It does not request work or make a new decision; it is a status update with factual observations.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Verified compile and stats smoke."
+        },
+        {
+          "field": "evidence_observation",
+          "text": "Table output matches reference spacing."
+        },
+        {
+          "field": "status_update",
+          "text": "current history fbb1314/63b6675"
+        }
+      ]
+    },
+    {
+      "message_number": 32,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "result_delivery",
+        "evidence_observation"
+      ],
+      "replies_to": [
+        31
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-3"
+      ],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports verification status and current state of the work, not a request or proposal. It also delivers a concrete result about stats matching the reference sample and the tree/compile state.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Stats --everything now verified exactly against reference sample: median age=3, cardinality age=3 (null counted)."
+        },
+        {
+          "field": "result_delivery",
+          "text": "Stats --everything now verified exactly against reference sample: median age=3, cardinality age=3 (null counted)."
+        },
+        {
+          "field": "evidence_observation",
+          "text": "Tree clean; compile succeeds."
+        }
+      ]
+    },
+    {
+      "message_number": 33,
+      "primary_type": "proposal",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        29
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-3"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message proposes a next action: adding missing implementations before final, based on the current code gaps noted in msg29. It also coordinates effort by framing this as time-sensitive work for the team.",
+      "evidence": [
+        {
+          "field": "replies_to",
+          "text": "Current implementation lacks join/index/partition/split per msg29; hidden tests may cover."
+        },
+        {
+          "field": "primary_type",
+          "text": "If time, add simple implementations before final."
+        }
+      ]
+    },
+    {
+      "message_number": 34,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        29,
+        31,
+        32,
+        33
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports current state and verification results (\u201cWorking tree clean... smoke pass\u201d) and also notes missing functionality as an observation. It is not asking for work or proposing a plan.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Working tree clean at latest 824d1b6; compile regenerated executable and stats/table/frequency smoke pass."
+        },
+        {
+          "field": "evidence_observation",
+          "text": "Remaining documented commands join/index/partition/split absent, but core stable."
+        }
+      ]
+    },
+    {
+      "message_number": 35,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update",
+        "artifact_sharing"
+      ],
+      "replies_to": [
+        34
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports a completed fix and verification status, plus the commit identifier. It is primarily delivering the result of the patch; it also updates the team on the current state and points to a commit artifact.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Fixed table -c condensed width bug; now exact sample output, commit c1c51d3."
+        },
+        {
+          "field": "status_update",
+          "text": "Working tree clean."
+        }
+      ]
+    },
+    {
+      "message_number": 36,
+      "primary_type": "coordination",
+      "secondary_types": [
+        "question",
+        "delegation_request"
+      ],
+      "replies_to": [
+        29,
+        33,
+        34
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-2"
+      ],
+      "confidence": 0.94,
+      "ambiguous": false,
+      "rationale": "The message is coordinating remaining work by asking whether anyone is already handling specific commands and requesting an urgent confirmation. It proposes taking on the implementation if unclaimed, which functions as process coordination with an implicit delegation check rather than a substantive technical report.",
+      "evidence": [
+        {
+          "field": "coordination",
+          "text": "Can implement simple join/partition/split/index now if no one else is doing them"
+        },
+        {
+          "field": "question",
+          "text": "confirm urgently"
+        },
+        {
+          "field": "delegation_request",
+          "text": "if no one else is doing them"
+        }
+      ]
+    },
+    {
+      "message_number": 37,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "result_delivery"
+      ],
+      "replies_to": [
+        34,
+        35,
+        36
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports the current state of work and verification results (\u201cFinal local verification... git clean, compile.sh succeeds... table and stats match probes\u201d) and also summarizes remaining missing functionality, which fits a status update with delivered verification results.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Final local verification: git clean, compile.sh succeeds, generated executable runs; table and stats match probes."
+        },
+        {
+          "field": "result_delivery",
+          "text": "table and stats match probes"
+        },
+        {
+          "field": "status_update",
+          "text": "Remaining known gaps are join/index/partition/split."
+        }
+      ]
+    },
+    {
+      "message_number": 38,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "result_delivery",
+        "critique_disagreement"
+      ],
+      "replies_to": [
+        37
+      ],
+      "addressed_to": [],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports current project status and a remaining blocker, while also summarizing completed verified work. It is not a request or a decision; the main function is a status update with delivered progress details and a mild disagreement with marking DONE.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "I cannot honestly mark DONE because join/index/partition/split still missing"
+        },
+        {
+          "field": "result_delivery",
+          "text": "core implementation is committed and verified against reference for count/headers/select/slice/reverse/flatten/fmt/search/sort/frequency/table/stats/sample/fixlengths"
+        },
+        {
+          "field": "critique_disagreement",
+          "text": "I cannot honestly mark DONE"
+        }
+      ]
+    },
+    {
+      "message_number": 39,
+      "primary_type": "delegation_request",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        36,
+        38
+      ],
+      "addressed_to": [
+        "codex-2",
+        "codex-3"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message explicitly asks other agents to carry out concrete implementation work and specifies prioritization and follow-up action, which is a delegation request with coordination of task order.",
+      "evidence": [
+        {
+          "field": "delegation_request",
+          "text": "Please implement simple join/partition/split/index now in xsv.py;"
+        },
+        {
+          "field": "coordination",
+          "text": "prioritize join and index, then compile/commit."
+        }
+      ]
+    },
+    {
+      "message_number": 40,
+      "primary_type": "delegation_request",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        39
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-3"
+      ],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message directs other agents to carry out concrete implementation work and specifies priorities, so it is a delegation request. It also coordinates sequencing by saying what to prioritize.",
+      "evidence": [
+        {
+          "field": "delegation_request",
+          "text": "Proceed implementing simple join/partition/split/index immediately;"
+        },
+        {
+          "field": "coordination",
+          "text": "prioritize command existence and basic documented behavior."
+        }
+      ]
+    },
+    {
+      "message_number": 41,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        39,
+        40
+      ],
+      "addressed_to": [
+        "codex-3"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completed work and verification: it states new implementations were added and that compile/smoke tests pass. It also notes a handoff/offer for further improvement to another agent, making it a result delivery with a brief status update.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "I added basic index/split/partition/join implementations (commit 7b5c41e), compile and smoke tests pass."
+        },
+        {
+          "field": "addressed_to",
+          "text": "Agent3 can improve if needed."
+        }
+      ]
+    },
+    {
+      "message_number": 42,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update",
+        "artifact_sharing"
+      ],
+      "replies_to": [
+        41
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completed work and verification status: it states the implementations were added, cites a commit, and notes compile/smoke pass. This is a delivered result rather than a request or proposal.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "I added basic index, split, partition, and inner join implementations (commit d6c9ef3)"
+        },
+        {
+          "field": "status_update",
+          "text": "compile and partition smoke pass"
+        },
+        {
+          "field": "artifact_sharing",
+          "text": "(commit d6c9ef3)"
+        }
+      ]
+    },
+    {
+      "message_number": 43,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "coordination"
+      ],
+      "replies_to": [
+        41,
+        42
+      ],
+      "addressed_to": [
+        "codex-3"
+      ],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "Reports current repository status and the effect of a newer concurrent commit, while also coordinating a next step (rerun compile smoke) before finalization.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Agent3 concurrent commit d6c9ef3 now latest, tree clean"
+        },
+        {
+          "field": "coordination",
+          "text": "compile smoke should be rerun before final"
+        },
+        {
+          "field": "replies_to",
+          "text": "supersedes my 7b5c41e"
+        }
+      ]
+    },
+    {
+      "message_number": 44,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update",
+        "evidence_observation"
+      ],
+      "replies_to": [
+        41,
+        42,
+        43
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-2"
+      ],
+      "confidence": 0.97,
+      "ambiguous": false,
+      "rationale": "The message reports completed verification of implemented commands and their observed outputs, while also noting current repository state. It is mainly a delivered result, with status/update and factual observations included.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Commands now present and smoke-tested: join inner output correct, partition creates value.csv files, split creates 0.csv/2.csv, index creates .idx."
+        },
+        {
+          "field": "status_update",
+          "text": "but tree clean and behavior works."
+        },
+        {
+          "field": "evidence_observation",
+          "text": "join inner output correct, partition creates value.csv files, split creates 0.csv/2.csv, index creates .idx."
+        }
+      ]
+    },
+    {
+      "message_number": 45,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        42,
+        43,
+        44
+      ],
+      "addressed_to": [],
+      "confidence": 0.95,
+      "ambiguous": false,
+      "rationale": "The message reports current verification status and notes an observed remaining discrepancy in help formatting. It does not request work or make a decision; it updates the room on results and observations from the latest commit.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Verified latest d6c9ef3 compiles and core smoke tests."
+        },
+        {
+          "field": "evidence_observation",
+          "text": "xsv.py contains duplicate unreachable join/index/split/partition branches (first implementations are active but harmless); join --no-headers/help formatting still differs from reference."
+        }
+      ]
+    },
+    {
+      "message_number": 46,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        45
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-3"
+      ],
+      "confidence": 0.94,
+      "ambiguous": false,
+      "rationale": "The message reports a completed code change and its outcome: an improved join implementation matching reference behavior, plus build status. It is primarily a result delivery, with a status update component.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Improved join to emit Cartesian matches for duplicate keys (reference behavior), commit included; build remains clean."
+        },
+        {
+          "field": "secondary_types",
+          "text": "build remains clean"
+        },
+        {
+          "field": "replies_to",
+          "text": "Improved join to emit Cartesian matches for duplicate keys (reference behavior), commit included; build remains clean."
+        }
+      ]
+    },
+    {
+      "message_number": 47,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        46
+      ],
+      "addressed_to": [
+        "codex-1",
+        "codex-2"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports a completed code fix and verification outcome, which is a result delivery. It also gives current state/verification status (compiled, smoke-tested, committed/clean), so status_update fits as secondary. It replies to the immediately prior discussion of join behavior.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Fixed active join implementation for --no-headers (no phantom header row), compiled and smoke-tested."
+        },
+        {
+          "field": "secondary_types",
+          "text": "compiled and smoke-tested. Tree committed/clean."
+        },
+        {
+          "field": "replies_to",
+          "text": "Fixed active join implementation for --no-headers (no phantom header row)"
+        }
+      ]
+    },
+    {
+      "message_number": 48,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        47
+      ],
+      "addressed_to": [
+        "codex-2",
+        "codex-3"
+      ],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completed work on join edge cases and the resulting state of the codebase, rather than asking or proposing. It also gives a brief progress/status update with commit and build status.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Probed join edge cases and fixed active join branch to ignore empty key fields by default, while --nulls matches them; duplicate Cartesian joins remain correct."
+        },
+        {
+          "field": "secondary_type",
+          "text": "Commit 8d9c85c, tree/build clean."
+        },
+        {
+          "field": "replies_to",
+          "text": "Probed join edge cases and fixed active join branch"
+        }
+      ]
+    },
+    {
+      "message_number": 49,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "result_delivery"
+      ],
+      "replies_to": [
+        48
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports current progress on a code change, including completed enhancements and verification steps, which is a status update; it also delivers the result of recompiling and smoke-testing. It explicitly references the latest concurrent commits and current tree state, so replying to [M48] is reasonable.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Latest concurrent commits enhanced active join with no-headers, multi-column keys, case/outer/null handling, and empty-key semantics."
+        },
+        {
+          "field": "result_delivery",
+          "text": "Recompiled and smoke-tested; tree clean."
+        }
+      ]
+    },
+    {
+      "message_number": 50,
+      "primary_type": "evidence_observation",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        48,
+        49
+      ],
+      "addressed_to": [],
+      "confidence": 0.94,
+      "ambiguous": false,
+      "rationale": "The message reports observed verification results about the current build and join behavior, rather than requesting or assigning work. It is a progress/status report with factual claims about test outcomes and repository state.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Verified current 8d9c85c build: --no-case join matches both X/x rows; compile succeeds and tree clean."
+        },
+        {
+          "field": "secondary_types",
+          "text": "Verified current 8d9c85c build: --no-case join matches both X/x rows; compile succeeds and tree clean."
+        },
+        {
+          "field": "replies_to",
+          "text": "Latest room claims correspond to existing join fixes."
+        }
+      ]
+    },
+    {
+      "message_number": 51,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "evidence_observation"
+      ],
+      "replies_to": [
+        50
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completed verification/results for the current build and specific join behaviors. It is not asking, delegating, or coordinating; it delivers status/results with observed evidence of successful compile and behavior checks.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Latest 8d9c85c clean; compile and py_compile succeed."
+        },
+        {
+          "field": "secondary_types",
+          "text": "Duplicate-key Cartesian join and --nulls behavior verified against expected reference semantics."
+        }
+      ]
+    },
+    {
+      "message_number": 52,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "evidence_observation",
+        "status_update"
+      ],
+      "replies_to": [
+        49,
+        51
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports completed validation results for the current join implementation, including exact stdout match and build status. It is primarily delivering results, with supporting observations and status on compile/tree cleanliness.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "Differential-tested current join against reference for --no-case and --left with duplicate/case/empty keys; stdout matches exactly."
+        },
+        {
+          "field": "secondary_type",
+          "text": "Compile, py_compile, and tree clean."
+        }
+      ]
+    },
+    {
+      "message_number": 53,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "acknowledgement"
+      ],
+      "replies_to": [
+        52
+      ],
+      "addressed_to": [],
+      "confidence": 0.98,
+      "ambiguous": false,
+      "rationale": "The message reports the current state of the work and indicates no more action is needed, rather than proposing or requesting anything. It acknowledges the successful status of the tree/build/version.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Current tree remains clean, compile succeeds, version 0.13.0."
+        },
+        {
+          "field": "acknowledgement",
+          "text": "No further changes needed from me."
+        }
+      ]
+    },
+    {
+      "message_number": 54,
+      "primary_type": "result_delivery",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        53
+      ],
+      "addressed_to": [],
+      "confidence": 0.99,
+      "ambiguous": false,
+      "rationale": "The message reports completed validation results across many commands and the repository state, which is a delivered outcome rather than a request or proposal. It also functions as a brief progress/status report on the final smoke test pass.",
+      "evidence": [
+        {
+          "field": "result_delivery",
+          "text": "Final broad smoke passed: compile, py_compile, and count/headers/reverse/select/slice/flatten/fmt/frequency/search/sort/stats/table/fixlengths/sample all exit 0 on CSV fixture; tree clean."
+        },
+        {
+          "field": "status_update",
+          "text": "Final broad smoke passed"
+        },
+        {
+          "field": "replies_to",
+          "text": "Final broad smoke passed"
+        }
+      ]
+    },
+    {
+      "message_number": 55,
+      "primary_type": "acknowledgement",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        54
+      ],
+      "addressed_to": [],
+      "confidence": 0.99,
+      "ambiguous": false,
+      "rationale": "The target is a minimal completion signal indicating the agent is finished. It does not add substantive results, so it is best labeled as an acknowledgement, with a light status-update nuance.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "DONE"
+        },
+        {
+          "field": "replies_to",
+          "text": "DONE"
+        }
+      ]
+    },
+    {
+      "message_number": 56,
+      "primary_type": "status_update",
+      "secondary_types": [
+        "acknowledgement",
+        "social_heartbeat"
+      ],
+      "replies_to": [
+        54,
+        55
+      ],
+      "addressed_to": [],
+      "confidence": 0.96,
+      "ambiguous": false,
+      "rationale": "The message reports current project state with no new work remaining and says the sender is available. It primarily updates status, while also acknowledging prior completed checks and functioning as a low-content availability ping.",
+      "evidence": [
+        {
+          "field": "status_update",
+          "text": "Confirmed no pending work: broad smoke and join differential are passing, tree clean."
+        },
+        {
+          "field": "social_heartbeat",
+          "text": "I am standing by."
+        }
+      ]
+    },
+    {
+      "message_number": 57,
+      "primary_type": "acknowledgement",
+      "secondary_types": [
+        "social_heartbeat"
+      ],
+      "replies_to": [
+        55,
+        56
+      ],
+      "addressed_to": [],
+      "confidence": 0.99,
+      "ambiguous": false,
+      "rationale": "The target is a minimal completion signal with no substantive content, so it functions as an acknowledgement/closure marker. It also serves as a brief presence/status heartbeat in context.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "DONE"
+        },
+        {
+          "field": "secondary_types",
+          "text": "DONE"
+        }
+      ]
+    },
+    {
+      "message_number": 58,
+      "primary_type": "social_heartbeat",
+      "secondary_types": [
+        "acknowledgement"
+      ],
+      "replies_to": [
+        55,
+        57
+      ],
+      "addressed_to": [],
+      "confidence": 0.99,
+      "ambiguous": false,
+      "rationale": "The message contains only a brief completion/availability cue with no substantive content. In this trace, identical 'DONE' messages function as low-content status/heartbeat acknowledgments rather than result delivery.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "DONE"
+        }
+      ]
+    },
+    {
+      "message_number": 59,
+      "primary_type": "acknowledgement",
+      "secondary_types": [
+        "status_update"
+      ],
+      "replies_to": [
+        55,
+        56,
+        57,
+        58
+      ],
+      "addressed_to": [],
+      "confidence": 0.99,
+      "ambiguous": false,
+      "rationale": "The target is a minimal confirmation with no substantive content. Given the preceding sequence of DONE messages, it most naturally functions as an acknowledgement/status closure rather than new work.",
+      "evidence": [
+        {
+          "field": "primary_type",
+          "text": "DONE"
+        },
+        {
+          "field": "replies_to",
+          "text": "DONE"
+        },
+        {
+          "field": "secondary_types",
+          "text": "DONE"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "annotated_messages": 58,
+    "candidate_messages": 58,
+    "candidate_limit": 80,
+    "candidate_text_limit": 2000,
+    "truncated": false
+  }
+}

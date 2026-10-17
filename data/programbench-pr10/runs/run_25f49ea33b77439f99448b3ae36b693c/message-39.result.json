@@ -1,0 +1,32 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    38
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports repository state and a needed process step, not new work output. It informs the group that commit preparation requires an added git step and notes the executable ignore status.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "git status shows xsv.py staged + unstaged (AM)"
+    },
+    {
+      "field": "coordination",
+      "text": "so commit must git add -A"
+    },
+    {
+      "field": "status_update",
+      "text": "executable ignored correctly."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "clarification"
+  ],
+  "replies_to": [
+    19,
+    21
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code change and its effect, specifically that flatten behavior was fixed and a commit amended. It also clarifies the intended output by citing the reference format.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Fixed flatten to omit header as a data record (header only labels), matching reference `a     foo\\nlong  hello`; amended commit."
+    }
+  ]
+}

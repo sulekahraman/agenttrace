@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    3,
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probing results for the flatten and fmt commands, including concrete output behaviors and option effects. It is primarily delivering results, with observed factual findings as a secondary function.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probed flatten: default output labels aligned with two spaces: `name  Alice\\nage    30\\n#\\n`; each record separator line, no trailing # after final."
+    },
+    {
+      "field": "secondary_types",
+      "text": "-n labels indices padded (`0   name`). -c 3 truncates to first 3 chars + `...` (so 6 chars output). -s @ emits @ newline between records."
+    },
+    {
+      "field": "secondary_types",
+      "text": "fmt default preserves CSV; --quote-always quotes all fields."
+    }
+  ]
+}

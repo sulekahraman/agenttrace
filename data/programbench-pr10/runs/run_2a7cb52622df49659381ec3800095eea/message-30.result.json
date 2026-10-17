@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    24,
+    25,
+    27,
+    29
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed integration and test status of the shared build, and also points to a commit/artifact that contains the patches. It is not asking or proposing; it delivers results and current status.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Current shared build smoke matches count/headers/select/slice/flatten/table/stats."
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "My patches are included in commit 57f5aa7"
+    },
+    {
+      "field": "status_update",
+      "text": "compile uses temp+mv and .gitignore."
+    }
+  ]
+}

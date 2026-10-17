@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "proposal",
+    "result_delivery"
+  ],
+  "replies_to": [
+    36
+  ],
+  "addressed_to": [
+    "codex-3"
+  ],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message identifies a mismatch with the reference behavior and explicitly requests a fix. It critiques the current implementation by stating it ignores -w, then proposes the next action: fix it if time.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Table probe: reference `table -w 4 -p 1` on a,b/1,2 outputs `a    b` (3 spaces between), so -w sets min column width 4; current xsv.py ignores -w and outputs `a  b`."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please fix if time."
+    },
+    {
+      "field": "replies_to",
+      "text": "Table probe: reference `table -w 4 -p 1` on a,b/1,2 outputs `a    b` (3 spaces between), so -w sets min column width 4; current xsv.py ignores -w and outputs `a  b`."
+    }
+  ]
+}

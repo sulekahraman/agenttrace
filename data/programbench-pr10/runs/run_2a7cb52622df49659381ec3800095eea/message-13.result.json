@@ -1,0 +1,26 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    6,
+    8,
+    10,
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports newly observed command behaviors and outputs from probes, not a question or plan. It delivers additional findings about version, list, index error behavior, and stdin count support.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Additional: --version outputs 0.13.0; --list starts `Installed commands:`."
+    },
+    {
+      "field": "secondary_types",
+      "text": "`index -` errors `Cannot use <stdin> here` status1. count stdin works."
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_11b57b652ab54829bf00e7eaae9ad25e",
+  "trace_id": "trace_f1509e7ad764d54a",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:14:46.085561+00:00",
+    "started_at": "2026-10-17T16:14:46.085195+00:00",
+    "completed_at": "2026-10-17T16:14:46.093511+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round1/record-run",
+      "room_id": "rom_LlSo0slg1l",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "goal-run",
+        "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round1/record-run",
+        "room_id": "rom_LlSo0slg1l",
+        "loaded_at": "2026-10-17T16:13:53+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "record-run",
+        "created_at": "2026-10-15T16:01:26.608Z",
+        "latest_sequence": 59,
+        "seats": [
+          {
+            "handle": "codex-1",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_5nyZPecHpz",
+            "member_id": "i_UEhAgsGKL8"
+          },
+          {
+            "handle": "codex-2",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_7eadgEGjKT",
+            "member_id": "i_58EYhAGBHY"
+          },
+          {
+            "handle": "codex-3",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_AfKgkhFAm1",
+            "member_id": "i_TRuPZLMoKi"
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 58,
+        "seats": 3,
+        "asks": 2,
+        "asks_unanswered": 2,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "done",
+        "principals": 3,
+        "span_hours": 0.1,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 0,
+        "reviews": 0,
+        "action_claims": 7,
+        "action_claims_unverifiable": 7,
+        "duplicate_posts": 0
+      },
+      "items": {},
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": true,
+          "severity": "high",
+          "count": 2,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": [
+            {
+              "seq": 2,
+              "who": "codex-2",
+              "excerpt": "I will probe reference CLI/help and edge behavior, then report findings; what areas are others covering?",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 4,
+              "who": "codex-1",
+              "excerpt": "I will investigate CLI behavior/help and focus on one command if needed; what subsystem are others taking?",
+              "why": "no later post replies to or cites this ask"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": true,
+          "severity": "unknown",
+          "count": 7,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": [
+            {
+              "seq": 26,
+              "who": "codex-1",
+              "excerpt": "I patched xsv.py: table now matches default spacing/min width/condense basics; frequency emits field,value,count, supports multi-select/limit/asc/no-nulls. Comm…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 28,
+              "who": "codex-1",
+              "excerpt": "Also added basic stats (--everything/mode/cardinality/median, numeric population stddev) commit 8221e64; compile verified.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 35,
+              "who": "codex-1",
+              "excerpt": "Fixed table -c condensed width bug; now exact sample output, commit c1c51d3. Working tree clean.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 41,
+              "who": "codex-1",
+              "excerpt": "I added basic index/split/partition/join implementations (commit 7b5c41e), compile and smoke tests pass. Agent3 can improve if needed.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 42,
+              "who": "codex-2",
+              "excerpt": "I added basic index, split, partition, and inner join implementations (commit d6c9ef3), compile and partition smoke pass. These cover previously absent commands…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 43,
+              "who": "codex-1",
+              "excerpt": "Agent3 concurrent commit d6c9ef3 now latest, tree clean; it supersedes my 7b5c41e with missing-command implementations. compile smoke should be rerun before fin…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 48,
+              "who": "codex-1",
+              "excerpt": "Probed join edge cases and fixed active join branch to ignore empty key fields by default, while --nulls matches them; duplicate Cartesian joins remain correct.…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            }
+          ]
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "no artifact rows in this source, so D1 cannot be verified against uploads"
+      ]
+    }
+  },
+  "error": null
+}

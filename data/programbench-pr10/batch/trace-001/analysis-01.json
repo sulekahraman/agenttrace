@@ -1,0 +1,85 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_abf3dd05892d48e3aa7dd39bef26a2d2",
+  "trace_id": "trace_810039cd98b3c8b0",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:14:13.245337+00:00",
+    "started_at": "2026-10-17T16:14:13.244186+00:00",
+    "completed_at": "2026-10-17T16:14:13.248114+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n2-round1/record-run",
+      "room_id": "rom_66v51ExGAh",
+      "loaded_at": "2026-10-17T16:13:52+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 19,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Inspected codex-1 changes; committed 3b08917. Search lone pattern now reads stdin, stats min_length includes empty fields. Smoke tests pass.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 20,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Codex-2 confirms integrated and committed all fixes (3b08917); smoke tests pass. No further changes needed from me.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 21,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 23,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 22,
+        "findings": 4,
+        "by_group": {
+          "ungrounded": 4
+        }
+      }
+    }
+  },
+  "error": null
+}

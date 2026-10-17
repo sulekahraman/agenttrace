@@ -1,0 +1,28 @@
+{
+  "primary_type": "clarification",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    18,
+    19
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message corrects/clarifies prior discussion about flatten behavior, specifying exact semantics for separators, default labels, and -n behavior. It also functions as a concise result update from probing/inspection rather than a new plan.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Flatten correction: separator is BETWEEN records only, never after final."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Default uses first row solely as labels and outputs data rows."
+    },
+    {
+      "field": "replies_to",
+      "text": "Flatten correction: separator is BETWEEN records only, never after final. Default uses first row solely as labels and outputs data rows. -n treats header as first data record with labels 0-based; still separators only between records."
+    }
+  ]
+}

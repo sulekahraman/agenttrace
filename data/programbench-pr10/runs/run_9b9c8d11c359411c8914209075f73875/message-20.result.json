@@ -1,0 +1,30 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "evidence_observation",
+    "critique_disagreement"
+  ],
+  "replies_to": [
+    19
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports the current state of the implementation and a remaining discrepancy in sample RNG behavior, without asking a question or issuing a task. It also observes concrete output differences and mildly challenges adequacy by noting a possible mismatch with reference behavior.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Sample --seed 1 output still differs RNG"
+    },
+    {
+      "field": "evidence_observation",
+      "text": "(ours header,b,a vs reference header,a,d)"
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "likely acceptable only if tests check count/seed determinism, but note it."
+    }
+  ]
+}

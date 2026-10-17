@@ -1,0 +1,32 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    3,
+    5,
+    7
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-4"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behavior and output-column details for stats, frequency, and sample, without asking or directing action. It primarily contributes facts from investigation, so evidence_observation fits best; it also delivers findings to the group, so result_delivery is secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Reference stats output columns: default field,type,sum,min,max,min_length,max_length,mean,stddev; --everything adds median,mode,cardinality."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Nulls excluded by default; --nulls includes nulls in mean/stddev only."
+    },
+    {
+      "field": "replies_to",
+      "text": "Reference stats output columns: default field,type,sum,min,max,min_length,max_length,mean,stddev; --everything adds median,mode,cardinality. Nulls excluded by default; --nulls includes nulls in mean/stddev only. Frequency header field,value,count; null rendered (NULL), default limit10 count desc (ties behavior varies hash), --asc asc. Sample tested /tmp data."
+    }
+  ]
+}

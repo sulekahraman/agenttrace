@@ -1,0 +1,3238 @@
+{
+  "report_date": "2026-10-17",
+  "source": {
+    "repository": "xisen-w/commsfail",
+    "pull_request": 10,
+    "commit": "913ad1805642a38e5248d67e5d8c3b83c48b51b5",
+    "state_at_acquisition": "OPEN"
+  },
+  "reader_sha256": "c3f4d451868ed8886bfbe5ef089a73e6c5849aff85f9c943c1c0c3ed0336de5c",
+  "counts": {
+    "citation_mismatch_records": 20,
+    "traces": 12,
+    "raw_posts": 618,
+    "agent_posts": 602,
+    "turn_logs": 195,
+    "operations": 2322,
+    "commands": 1874,
+    "annotations": 602,
+    "judgments": 36,
+    "candidate_messages": 602,
+    "candidate_count_truncated": 0,
+    "messages_over_2000_chars": 0,
+    "messages_over_8000_chars": 0,
+    "fact_flags": 4,
+    "selected_analyses": 60,
+    "substantive_offline": 36,
+    "demo": 12,
+    "scout_completed": 12,
+    "historical_runs": 68,
+    "failed_attempts": 8
+  },
+  "selected_analyzers": {
+    "example_kickstart": 12,
+    "facts_v1": 12,
+    "regex_v1": 12,
+    "agenttrace_heuristics_v1": 12,
+    "scout_collaboration_v1": 12
+  },
+  "raw_scout_positive_judgments": {
+    "duplicated_work": 12,
+    "weak_handoff": 12,
+    "unintegrated_information": 12
+  },
+  "facts_v1_counts": {
+    "overlapping_claim": 0,
+    "claim_without_action": 0,
+    "review_without_reading": 0,
+    "success_without_run": 0,
+    "success_after_failure": 1,
+    "private_contradiction": 3,
+    "check_failed_after_done": 0
+  },
+  "history_status": {
+    "completed": 60,
+    "failed": 8
+  },
+  "scout_versions": [
+    {
+      "analyzer": "2.1.0",
+      "prompt": "3",
+      "model": "openai/gpt-5.4-mini",
+      "traces": 7
+    },
+    {
+      "analyzer": "2.1.1",
+      "prompt": "4",
+      "model": "openai/gpt-5.4-mini",
+      "traces": 4
+    },
+    {
+      "analyzer": "2.1.4",
+      "prompt": "7",
+      "model": "openai/gpt-5.4-mini",
+      "traces": 1
+    }
+  ],
+  "groups": [
+    {
+      "task": "xsv",
+      "agents": 2,
+      "runs": 3,
+      "mean_raw_posts": 27,
+      "mean_runtime_seconds": 366.6396666666667,
+      "mean_runner_tokens": 143485
+    },
+    {
+      "task": "xsv",
+      "agents": 3,
+      "runs": 3,
+      "mean_raw_posts": 52.666666666666664,
+      "mean_runtime_seconds": 207.15966666666665,
+      "mean_runner_tokens": 186739
+    },
+    {
+      "task": "xsv",
+      "agents": 4,
+      "runs": 3,
+      "mean_raw_posts": 67.66666666666667,
+      "mean_runtime_seconds": 289.504,
+      "mean_runner_tokens": 255404
+    },
+    {
+      "task": "yj",
+      "agents": 2,
+      "runs": 1,
+      "mean_raw_posts": 33,
+      "mean_runtime_seconds": 173.266,
+      "mean_runner_tokens": 104935
+    },
+    {
+      "task": "yj",
+      "agents": 3,
+      "runs": 1,
+      "mean_raw_posts": 66,
+      "mean_runtime_seconds": 372.782,
+      "mean_runner_tokens": 210850
+    },
+    {
+      "task": "yj",
+      "agents": 4,
+      "runs": 1,
+      "mean_raw_posts": 77,
+      "mean_runtime_seconds": 335.923,
+      "mean_runner_tokens": 267656
+    }
+  ],
+  "audits": [
+    {
+      "slug": "xsv-n3-round3",
+      "seqs": [
+        48
+      ],
+      "fact": "success_after_failure",
+      "assessment": "not_confirmed_shell_status_ambiguity",
+      "observation": "The cited command is a smoke-test reporting loop ending in a conditional echo. Its exit status can be 1 when the last condition is false. Its full output is empty; post #47 reports no crashes. This is not evidence of a hidden-test failure."
+    },
+    {
+      "slug": "yj-n2-round1",
+      "seqs": [
+        31
+      ],
+      "fact": "private_contradiction",
+      "assessment": "unsupported_by_cited_evidence",
+      "observation": "The cited same-turn text announces a plan to check error behavior, not a failed result. The actual final harness message is DONE. The broad error-keyword rule mistakes a test plan for contradiction."
+    },
+    {
+      "slug": "yj-n4-round1",
+      "seqs": [
+        68,
+        69
+      ],
+      "fact": "private_contradiction",
+      "assessment": "unsupported_by_cited_evidence",
+      "observation": "The cited harness text describes expected exit-code-1 validation for an invalid -k configuration, alongside successful builds. Mentioning the expected error is not a contradiction of completion. These are two rule flags, not two verified failures."
+    }
+  ],
+  "traces": [
+    {
+      "slug": "xsv-n2-round1",
+      "study": "xsv-2026-10-15",
+      "configuration": "n2-round1",
+      "source": "sources/xsv-2026-10-15/n2-round1/record-run",
+      "trace_id": "trace_810039cd98b3c8b0",
+      "posts": 23,
+      "agent_posts": 22,
+      "seats": 2,
+      "linked_agent_posts": 22,
+      "operations": 82,
+      "commands": 64,
+      "turn_log_files": 6,
+      "ref": "N1",
+      "runtime_seconds": 823.994,
+      "runner_tokens": 226106,
+      "runner_cached_tokens": 3035218,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T15:51:53.026Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "There is clear independent reimplementation of the same feature: Codex-2 asks Codex-1 to add join support [M11], then Codex-1 says it inserted an independent join implementation into xsv.py with the same join variants and options [M12]. Later Codex-2 also reports the join patch is present and smoke-tested [M16]. This is materially overlapping work on the same component, though it is later used for verification/merging.",
+          "confidence": 0.95,
+          "message_numbers": [
+            12,
+            13,
+            17
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "The join task is requested explicitly [M11], and Codex-1 responds with a standalone implementation that is only later checked for smoke tests [M12, M14]. However, the handoff is initially weak because Codex-2 had asked for direct implementation in xsv.py and Codex-1 instead created an independent patch in the shared workspace, asking the other agent to \"inspect/retain while merging\" rather than clearly handing over an integrated change [M12]. This makes ownership and integration slightly ambiguous until later commits [M16].",
+          "confidence": 0.72,
+          "message_numbers": [
+            12,
+            13,
+            17
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Codex-1 flags several remaining issues after the join work: the implementation review notes that join is missing, and also that fmt --crlf/quote and flatten --condense are unimplemented [M9]. The later dialogue focuses on join, search, and stats fixes [M15-M18], but there is no visible follow-up using the noted fmt/flatten gaps before closure [M19-M22]. That means relevant information was left unused despite an opportunity to incorporate it into the remaining work.",
+          "confidence": 0.63,
+          "message_numbers": [
+            10,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            11,
+            12,
+            16
+          ],
+          "mapped_original_turns": [
+            12,
+            13,
+            17
+          ],
+          "structured_turns": [
+            12,
+            13,
+            17
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            11,
+            12,
+            16
+          ],
+          "mapped_original_turns": [
+            12,
+            13,
+            17
+          ],
+          "structured_turns": [
+            12,
+            13,
+            17
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            9
+          ],
+          "mapped_original_turns": [
+            10
+          ],
+          "structured_turns": [
+            10,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22
+          ],
+          "display_citations_missing_from_structured_turns": false
+        }
+      ],
+      "scout_run_id": "run_1bd4978afe184d78a0eaa7aa6a5e295b",
+      "scout_coverage": {
+        "annotated_messages": 22,
+        "candidate_messages": 22,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_abf3dd05892d48e3aa7dd39bef26a2d2",
+          "file": "batch/trace-001/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:13.245337+00:00",
+            "started_at": "2026-10-17T16:14:13.244186+00:00",
+            "completed_at": "2026-10-17T16:14:13.248114+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_ca23146c20ad4e91ae56bf54ce6bc026",
+          "file": "batch/trace-001/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:13.254005+00:00",
+            "started_at": "2026-10-17T16:14:13.253450+00:00",
+            "completed_at": "2026-10-17T16:14:13.258544+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_005ccd747c1e440794be31c17dc85a4a",
+          "file": "batch/trace-001/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:13.263724+00:00",
+            "started_at": "2026-10-17T16:14:13.263320+00:00",
+            "completed_at": "2026-10-17T16:14:13.268206+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_335057fdc17746b4858fe1256faae6f4",
+          "file": "batch/trace-001/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:13.274409+00:00",
+            "started_at": "2026-10-17T16:14:13.273637+00:00",
+            "completed_at": "2026-10-17T16:14:13.276390+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_1bd4978afe184d78a0eaa7aa6a5e295b",
+          "file": "batch/trace-001/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T17:06:06.910837+00:00",
+            "started_at": "2026-10-17T17:06:06.916554+00:00",
+            "completed_at": "2026-10-17T17:06:15.194183+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "4",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.1"
+        }
+      ],
+      "agent_only_p95_words": 79
+    },
+    {
+      "slug": "xsv-n2-round2",
+      "study": "xsv-2026-10-15",
+      "configuration": "n2-round2",
+      "source": "sources/xsv-2026-10-15/n2-round2/record-run",
+      "trace_id": "trace_f18bef1f6956af75",
+      "posts": 28,
+      "agent_posts": 27,
+      "seats": 2,
+      "linked_agent_posts": 27,
+      "operations": 97,
+      "commands": 74,
+      "turn_log_files": 6,
+      "ref": "N2",
+      "runtime_seconds": 123.301,
+      "runner_tokens": 104874,
+      "runner_cached_tokens": 3194481,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T16:45:41.379Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Both agents independently probe and report overlapping command behavior without a clear synthesis handoff: codex-1 enumerates flatten/table/stats and other command probes [M3][M4][M5][M6], while codex-2 separately says it implemented a broad Python xsv CLI covering many of the same commands [M9]. Later, codex-1 again revisits sample parsing and stats behavior after codex-2’s implementation updates [M15][M16][M18][M19], showing repeated effort on the same areas rather than a clean division of labor.",
+          "confidence": 0.79,
+          "message_numbers": [
+            4,
+            5,
+            6,
+            7,
+            10,
+            16,
+            17,
+            19,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There is an early handoff request from codex-1 asking for an assigned subset and offering to focus on gaps [M2], but codex-2 does not explicitly accept a scoped assignment; instead it broadly announces implementation of many commands [M9]. Later, codex-2 asks codex-1 to run a final regression and mark DONE [M14], and codex-1 responds with more bug findings and fixes rather than a straightforward acceptance/closure of that handoff [M15][M16][M18][M19]. This indicates requested work was not cleanly handed off and integrated.",
+          "confidence": 0.88,
+          "message_numbers": [
+            3,
+            10,
+            15,
+            16,
+            18,
+            19
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Several concrete probe findings from codex-1 are initially used to drive fixes [M10][M11], but later important observed behavior is still left unresolved or only partly integrated: codex-1 notes sample --seed 1 still differs from reference [M19], and there is also a lingering note that search behavior differs in how regex is applied [M16]. The final messages acknowledge some fixes and smoke-test success [M17][M18][M23][M25], but the sample RNG discrepancy is not resolved in the visible exchange, so relevant information from the earlier probe was not fully incorporated into the final decision.",
+          "confidence": 0.74,
+          "message_numbers": [
+            17,
+            18,
+            19,
+            20,
+            23,
+            24,
+            25,
+            26
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            3,
+            4,
+            5,
+            6,
+            9,
+            15,
+            16,
+            18,
+            19
+          ],
+          "mapped_original_turns": [
+            4,
+            5,
+            6,
+            7,
+            10,
+            16,
+            17,
+            19,
+            20
+          ],
+          "structured_turns": [
+            4,
+            5,
+            6,
+            7,
+            10,
+            16,
+            17,
+            19,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            2,
+            9,
+            14,
+            15,
+            16,
+            18,
+            19
+          ],
+          "mapped_original_turns": [
+            3,
+            10,
+            15,
+            16,
+            17,
+            19,
+            20
+          ],
+          "structured_turns": [
+            3,
+            10,
+            15,
+            16,
+            18,
+            19
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            10,
+            11,
+            16,
+            17,
+            18,
+            19,
+            23,
+            25
+          ],
+          "mapped_original_turns": [
+            11,
+            12,
+            17,
+            18,
+            19,
+            20,
+            24,
+            26
+          ],
+          "structured_turns": [
+            17,
+            18,
+            19,
+            20,
+            23,
+            24,
+            25,
+            26
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_9b9c8d11c359411c8914209075f73875",
+      "scout_coverage": {
+        "annotated_messages": 27,
+        "candidate_messages": 27,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_a3234de1531941cb8bdd492714c2090d",
+          "file": "batch/trace-002/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:25.749512+00:00",
+            "started_at": "2026-10-17T16:14:25.737816+00:00",
+            "completed_at": "2026-10-17T16:14:25.750474+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_b639c6214a9b4f8cb32a21d63f966000",
+          "file": "batch/trace-002/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:25.759181+00:00",
+            "started_at": "2026-10-17T16:14:25.758702+00:00",
+            "completed_at": "2026-10-17T16:14:25.763926+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_7e5c51cac1cc4e3fb1d2a4bc6b2fb5e9",
+          "file": "batch/trace-002/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:25.771319+00:00",
+            "started_at": "2026-10-17T16:14:25.770789+00:00",
+            "completed_at": "2026-10-17T16:14:25.776129+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_c75e53fcfab8469db7d71d573a7d253f",
+          "file": "batch/trace-002/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:25.784077+00:00",
+            "started_at": "2026-10-17T16:14:25.783662+00:00",
+            "completed_at": "2026-10-17T16:14:25.785630+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_9b9c8d11c359411c8914209075f73875",
+          "file": "batch/trace-002/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:25.793502+00:00",
+            "started_at": "2026-10-17T16:14:25.794948+00:00",
+            "completed_at": "2026-10-17T16:14:34.156478+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "3",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.0"
+        }
+      ],
+      "agent_only_p95_words": 51
+    },
+    {
+      "slug": "xsv-n2-round3",
+      "study": "xsv-2026-10-15",
+      "configuration": "n2-round3",
+      "source": "sources/xsv-2026-10-15/n2-round3/record-run",
+      "trace_id": "trace_3ce5b38eb14b6137",
+      "posts": 30,
+      "agent_posts": 29,
+      "seats": 2,
+      "linked_agent_posts": 29,
+      "operations": 103,
+      "commands": 80,
+      "turn_log_files": 6,
+      "ref": "N3",
+      "runtime_seconds": 152.624,
+      "runner_tokens": 99475,
+      "runner_cached_tokens": 2843523,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T17:19:13.598Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Both agents independently investigate and report overlapping CLI behavior before a clear handoff/synthesis: codex-2 probes help/core commands and outputs ([M1], [M2], [M3], [M4], [M7], [M8]) while codex-1 also states it will implement the main engine and asks for the same kinds of edge-output probes ([M6], [M9]). This is a material overlap in analysis/execution rather than a simple status update.",
+          "confidence": 0.89,
+          "message_numbers": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There are repeated requests for specific follow-up work that are not cleanly integrated or acknowledged at the moment they are issued. For example, codex-2 asks codex-1 to confirm the implementation split and later to commit changes ([M1], [M5], [M20]), and codex-1 later responds with a commit/status update only after several intervening turns ([M12], [M15], [M21], [M23], [M26], [M28]). The handoff is functional overall, but several requests are deferred rather than promptly closed, making ownership and completion signals somewhat weak in the exchange.",
+          "confidence": 0.73,
+          "message_numbers": [
+            2,
+            6,
+            13,
+            15,
+            21,
+            26
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Useful evidence is provided but then not fully incorporated into subsequent actions. Codex-2 flags specific missing/incorrect behaviors and hidden options such as stats --everything/mode/cardinality/median, search invert/ignore-case, sample seed, and headers --just-names ([M10], [M11], [M18]), yet later follow-up from codex-1 only confirms some patches and commits while leaving those other identified gaps unaddressed in the visible decisions ([M15], [M21], [M23], [M26], [M28]). The trace shows relevant information being surfaced but not fully used in the final integration visible here.",
+          "confidence": 0.81,
+          "message_numbers": [
+            11,
+            18,
+            21,
+            23,
+            26,
+            28
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9
+          ],
+          "mapped_original_turns": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10
+          ],
+          "structured_turns": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            1,
+            5,
+            12,
+            15,
+            20,
+            21,
+            23,
+            26,
+            28
+          ],
+          "mapped_original_turns": [
+            2,
+            6,
+            13,
+            16,
+            21,
+            22,
+            24,
+            27,
+            29
+          ],
+          "structured_turns": [
+            2,
+            6,
+            13,
+            15,
+            21,
+            26
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            10,
+            11,
+            15,
+            18,
+            21,
+            23,
+            26,
+            28
+          ],
+          "mapped_original_turns": [
+            11,
+            12,
+            16,
+            19,
+            22,
+            24,
+            27,
+            29
+          ],
+          "structured_turns": [
+            11,
+            18,
+            21,
+            23,
+            26,
+            28
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_3b23f3c16acc4cfcb234d059a82831bc",
+      "scout_coverage": {
+        "annotated_messages": 29,
+        "candidate_messages": 29,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_9e8724285b464c9a96440a00561267da",
+          "file": "batch/trace-003/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:35.898744+00:00",
+            "started_at": "2026-10-17T16:14:35.898109+00:00",
+            "completed_at": "2026-10-17T16:14:35.899743+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_a3b3eb9654be459e8c819e12c26e8cc3",
+          "file": "batch/trace-003/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:35.908720+00:00",
+            "started_at": "2026-10-17T16:14:35.908250+00:00",
+            "completed_at": "2026-10-17T16:14:35.913777+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_ea2fd01e39df4b0fbf83f2e623a44aac",
+          "file": "batch/trace-003/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:35.920458+00:00",
+            "started_at": "2026-10-17T16:14:35.920049+00:00",
+            "completed_at": "2026-10-17T16:14:35.925330+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_d41bb68aac5a4f47b201a4afd9b42422",
+          "file": "batch/trace-003/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:35.932050+00:00",
+            "started_at": "2026-10-17T16:14:35.931681+00:00",
+            "completed_at": "2026-10-17T16:14:35.933705+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_3b23f3c16acc4cfcb234d059a82831bc",
+          "file": "batch/trace-003/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:35.940271+00:00",
+            "started_at": "2026-10-17T16:14:35.941408+00:00",
+            "completed_at": "2026-10-17T16:14:44.502748+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "3",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.0"
+        }
+      ],
+      "agent_only_p95_words": 64
+    },
+    {
+      "slug": "xsv-n3-round1",
+      "study": "xsv-2026-10-15",
+      "configuration": "n3-round1",
+      "source": "sources/xsv-2026-10-15/n3-round1/record-run",
+      "trace_id": "trace_f1509e7ad764d54a",
+      "posts": 59,
+      "agent_posts": 58,
+      "seats": 3,
+      "linked_agent_posts": 58,
+      "operations": 228,
+      "commands": 190,
+      "turn_log_files": 21,
+      "ref": "N4",
+      "runtime_seconds": 262.132,
+      "runner_tokens": 198357,
+      "runner_cached_tokens": 8589041,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T16:05:56.927Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Multiple agents independently repeated the same kind of probing/verification around the same CLI behaviors. For example, [M7] and [M18] both report stats-probing results; [M12] and [M24] both investigate table formatting; [M45] and [M48] both re-check join edge cases. These are not just acknowledgements—they are materially overlapping checks without clear synthesis or a distinct verification handoff.",
+          "confidence": 0.91,
+          "message_numbers": [
+            8,
+            19,
+            13,
+            25,
+            45,
+            48
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There are several direct requests for another agent to implement missing commands, but the handoff is not cleanly resolved in the same thread. For instance, [M20] asks for implementation and compile.sh, [M32] says missing commands remain and suggests adding them before final, and [M38] again requests join/index/partition/split. Although work is later delivered, the repeated re-requests show unclear ownership and a weak handoff pattern rather than a single accepted assignment.",
+          "confidence": 0.84,
+          "message_numbers": [
+            21,
+            33,
+            39
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Visible information about remaining gaps was later not fully integrated into the final state for a period, especially the repeated note that join/index/partition/split were still absent. [M28] and [M33] explicitly state these commands are missing, [M37] repeats that they remain missing, yet the conversation continues with finalization signals [M53]-[M58] only after later patches. This shows the important status information was not immediately incorporated into the decision to finish and had to be resurfaced multiple times.",
+          "confidence": 0.77,
+          "message_numbers": [
+            29,
+            34,
+            38,
+            52,
+            54,
+            55,
+            56,
+            57,
+            58
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            7,
+            12,
+            18,
+            24,
+            45,
+            48
+          ],
+          "mapped_original_turns": [
+            8,
+            13,
+            19,
+            25,
+            46,
+            49
+          ],
+          "structured_turns": [
+            8,
+            19,
+            13,
+            25,
+            45,
+            48
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            20,
+            32,
+            38
+          ],
+          "mapped_original_turns": [
+            21,
+            33,
+            39
+          ],
+          "structured_turns": [
+            21,
+            33,
+            39
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            28,
+            33,
+            37,
+            53,
+            58
+          ],
+          "mapped_original_turns": [
+            29,
+            34,
+            38,
+            54,
+            59
+          ],
+          "structured_turns": [
+            29,
+            34,
+            38,
+            52,
+            54,
+            55,
+            56,
+            57,
+            58
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_e07c60b29c80403095d7602f3a4bff68",
+      "scout_coverage": {
+        "annotated_messages": 58,
+        "candidate_messages": 58,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_385ad3d4ade54b70b1ecb110fd8fd10d",
+          "file": "batch/trace-004/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:46.056183+00:00",
+            "started_at": "2026-10-17T16:14:46.055598+00:00",
+            "completed_at": "2026-10-17T16:14:46.057517+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_ce8d7787abd44ee29cea181b5c09b154",
+          "file": "batch/trace-004/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:46.067713+00:00",
+            "started_at": "2026-10-17T16:14:46.067273+00:00",
+            "completed_at": "2026-10-17T16:14:46.078360+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_11b57b652ab54829bf00e7eaae9ad25e",
+          "file": "batch/trace-004/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:46.085561+00:00",
+            "started_at": "2026-10-17T16:14:46.085195+00:00",
+            "completed_at": "2026-10-17T16:14:46.093511+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_9114bc792f0b4afca8197c3274922f3a",
+          "file": "batch/trace-004/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:46.101115+00:00",
+            "started_at": "2026-10-17T16:14:46.100755+00:00",
+            "completed_at": "2026-10-17T16:14:46.103662+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_e07c60b29c80403095d7602f3a4bff68",
+          "file": "batch/trace-004/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:14:46.110021+00:00",
+            "started_at": "2026-10-17T16:14:46.111017+00:00",
+            "completed_at": "2026-10-17T16:15:00.016483+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "3",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.0"
+        }
+      ],
+      "agent_only_p95_words": 45
+    },
+    {
+      "slug": "xsv-n3-round2",
+      "study": "xsv-2026-10-15",
+      "configuration": "n3-round2",
+      "source": "sources/xsv-2026-10-15/n3-round2/record-run",
+      "trace_id": "trace_abb6da728982d695",
+      "posts": 43,
+      "agent_posts": 42,
+      "seats": 3,
+      "linked_agent_posts": 42,
+      "operations": 154,
+      "commands": 117,
+      "turn_log_files": 16,
+      "ref": "N5",
+      "runtime_seconds": 173.533,
+      "runner_tokens": 172680,
+      "runner_cached_tokens": 5262240,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T16:55:58.699Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "There is clear repeated implementation/probing of the same functionality by multiple agents without an obvious new synthesis step. Codex-1 announces implementation of the core commands and analytics ([M10], turn #11), then Codex-2 reports patching the same fallback parser/flatten logic and analytics formatting ([M17], turn #18, and [M22], turn #23), while Codex-3 also separately adds join support ([M23], turn #24) and later help/option fixes ([M28], turn #29, [M39], turn #40). This is not merely verification: the messages show overlapping independent edits to the same codebase and similar analytics/help work being redone by different agents.",
+          "confidence": 0.86,
+          "message_numbers": [
+            11,
+            18,
+            23,
+            24,
+            29,
+            40
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "Several requests are made, but ownership/next steps are repeatedly left ambiguous or re-requested rather than cleanly handed off. For example, Codex-1 asks others to inspect/extend its implementation ([M10], turn #11), Codex-3 requests specific patches and says it will review ([M12], turn #13), and Codex-2 later asks Codex-1 to rerun compile because the executable may be stale ([M18], turn #19). The work is eventually delivered, but the handoff is weak because the same tasks are repeatedly reassigned and confirmation is needed before the next step proceeds.",
+          "confidence": 0.73,
+          "message_numbers": [
+            11,
+            13,
+            19
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Visible information is later omitted from decisions and follow-up planning even when it could have been used. Codex-3 warns that the top-level help output is incomplete and that hidden help tests may fail, suggesting restoration of full help text ([M27], turn #28). Later, Codex-2 says the top-level help is present and compile verified ([M30], turn #31), and Codex-1 follows by adding only the documented help subcommand ([M31], turn #32), but there is no explicit resolution of the earlier warning about subcommand help being generic or about hidden help tests. That means the earlier concern was not fully integrated into the later decision-making thread.",
+          "confidence": 0.67,
+          "message_numbers": [
+            28,
+            31,
+            32
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            10,
+            17,
+            22,
+            23,
+            28,
+            39
+          ],
+          "mapped_original_turns": [
+            11,
+            18,
+            23,
+            24,
+            29,
+            40
+          ],
+          "structured_turns": [
+            11,
+            18,
+            23,
+            24,
+            29,
+            40
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            10,
+            12,
+            18
+          ],
+          "mapped_original_turns": [
+            11,
+            13,
+            19
+          ],
+          "structured_turns": [
+            11,
+            13,
+            19
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            27,
+            30,
+            31
+          ],
+          "mapped_original_turns": [
+            28,
+            31,
+            32
+          ],
+          "structured_turns": [
+            28,
+            31,
+            32
+          ],
+          "display_citations_missing_from_structured_turns": false
+        }
+      ],
+      "scout_run_id": "run_899cc6b3861d4e039bea31060609a964",
+      "scout_coverage": {
+        "annotated_messages": 42,
+        "candidate_messages": 42,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_a09474e6abca4294b5a3426e70ca1759",
+          "file": "batch/trace-005/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:00.248612+00:00",
+            "started_at": "2026-10-17T16:15:00.248111+00:00",
+            "completed_at": "2026-10-17T16:15:00.249742+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_e9781683c9fc4779b23ed4da0647c139",
+          "file": "batch/trace-005/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:00.258804+00:00",
+            "started_at": "2026-10-17T16:15:00.258323+00:00",
+            "completed_at": "2026-10-17T16:15:00.266198+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_e3259f1ad4664ff5b0674abee6248e8b",
+          "file": "batch/trace-005/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:00.272856+00:00",
+            "started_at": "2026-10-17T16:15:00.272410+00:00",
+            "completed_at": "2026-10-17T16:15:00.277740+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_7430e9a1a1cf4bb290f53269355323a7",
+          "file": "batch/trace-005/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:00.284928+00:00",
+            "started_at": "2026-10-17T16:15:00.284554+00:00",
+            "completed_at": "2026-10-17T16:15:00.286853+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_899cc6b3861d4e039bea31060609a964",
+          "file": "batch/trace-005/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T17:06:15.602637+00:00",
+            "started_at": "2026-10-17T17:06:15.604187+00:00",
+            "completed_at": "2026-10-17T17:06:22.669126+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "4",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.1"
+        }
+      ],
+      "agent_only_p95_words": 45
+    },
+    {
+      "slug": "xsv-n3-round3",
+      "study": "xsv-2026-10-15",
+      "configuration": "n3-round3",
+      "source": "sources/xsv-2026-10-15/n3-round3/record-run",
+      "trace_id": "trace_b7ff2953e20e3e5e",
+      "posts": 56,
+      "agent_posts": 55,
+      "seats": 3,
+      "linked_agent_posts": 55,
+      "operations": 211,
+      "commands": 170,
+      "turn_log_files": 12,
+      "ref": "N6",
+      "runtime_seconds": 185.814,
+      "runner_tokens": 189180,
+      "runner_cached_tokens": 7682665,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T17:31:27.761Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [
+        {
+          "fact": "success_after_failure",
+          "mode": "D1",
+          "seq": 48,
+          "who": "codex-3",
+          "turn": 2,
+          "op": 8,
+          "excerpt": "DONE",
+          "why": "claims success right after its last work command, `/bin/bash -lc \"set +e; for q in 'count -n /tmp/f.csv' 'headers -j /tmp/f.csv' 'r…`, exited 1"
+        }
+      ],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Multiple agents independently repeated the same probe/investigation work without a clear handoff or synthesis purpose. Agent 1 and Agent 3 both separately reported help/CLI and core-command probing early on ([M1], [M2], [M5], [M6]), and later Agent 2 and Agent 1 both independently worked on/announced flatten formatting behavior around the same time ([M26], [M31]). This is not just verification: the messages show overlapping execution on materially similar areas before the team had fully converged on ownership.",
+          "confidence": 0.84,
+          "message_numbers": [
+            2,
+            3,
+            6,
+            7,
+            27,
+            32
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There is a clear ownership request that is not cleanly settled before others keep redirecting or asking for confirmation. Agent 1 asks who is implementing the scaffold ([M9]), Agent 3 then says 'No scaffold yet; agent1 please implement main Python CLI urgently. Agent2 can add stats/fmt after scaffold' ([M10]), but Agent 2 then continues to negotiate ownership rather than simply accepting the handoff, saying 'Agent1 should proceed writing main Python CLI now; no scaffold visible. I can review once files appear' ([M13]) and later 'please let agent1 scaffold' ([M15]). The work is eventually done, but the exchange shows ownership ambiguity and repeated re-asking before the handoff is fully stabilized.",
+          "confidence": 0.91,
+          "message_numbers": [
+            10,
+            11,
+            14,
+            16,
+            17
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Visible information from one agent is later not fully incorporated into the evolving shared understanding. Agent 2 explicitly reports a concrete issue that should affect integration: 'git index lock currently held by your commit; no commit needed from me if your commit captures them' ([M28]). Soon after, the team continues to summarize the shared state as if everything is settled, but the message thread shows the lock/ownership constraint was not directly resolved in the decision path. More strongly, Agent 1 later reports the shared state as 'clean' and that no further changes are needed ([M48], [M52]) despite Agent 1’s own earlier caveat that a remaining gap existed for partition/join edge cases ([M36], [M45]). This indicates relevant caveated information was available but not consistently carried into later closure decisions.",
+          "confidence": 0.74,
+          "message_numbers": [
+            29,
+            46,
+            48,
+            52
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            1,
+            2,
+            5,
+            6,
+            26,
+            31
+          ],
+          "mapped_original_turns": [
+            2,
+            3,
+            6,
+            7,
+            27,
+            32
+          ],
+          "structured_turns": [
+            2,
+            3,
+            6,
+            7,
+            27,
+            32
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            9,
+            10,
+            13,
+            15
+          ],
+          "mapped_original_turns": [
+            10,
+            11,
+            14,
+            16
+          ],
+          "structured_turns": [
+            10,
+            11,
+            14,
+            16,
+            17
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            28,
+            36,
+            45,
+            48,
+            52
+          ],
+          "mapped_original_turns": [
+            29,
+            37,
+            46,
+            49,
+            53
+          ],
+          "structured_turns": [
+            29,
+            46,
+            48,
+            52
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_2a7cb52622df49659381ec3800095eea",
+      "scout_coverage": {
+        "annotated_messages": 55,
+        "candidate_messages": 55,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_32efaba2efd6418a969f3f80782cec8b",
+          "file": "batch/trace-006/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:08.399992+00:00",
+            "started_at": "2026-10-17T16:15:08.399199+00:00",
+            "completed_at": "2026-10-17T16:15:08.401264+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_50d5792334b84b0ba15569c1b5ac219f",
+          "file": "batch/trace-006/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:08.413483+00:00",
+            "started_at": "2026-10-17T16:15:08.413027+00:00",
+            "completed_at": "2026-10-17T16:15:08.423107+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_b3b1d21231834b04863a3bf4896680ff",
+          "file": "batch/trace-006/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:08.430581+00:00",
+            "started_at": "2026-10-17T16:15:08.430226+00:00",
+            "completed_at": "2026-10-17T16:15:08.437694+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_df3f2aa666e840eeac1fa7522adcd2c3",
+          "file": "batch/trace-006/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:08.445591+00:00",
+            "started_at": "2026-10-17T16:15:08.445235+00:00",
+            "completed_at": "2026-10-17T16:15:08.448012+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_2a7cb52622df49659381ec3800095eea",
+          "file": "batch/trace-006/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:08.454285+00:00",
+            "started_at": "2026-10-17T16:15:08.455171+00:00",
+            "completed_at": "2026-10-17T16:15:22.853220+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "3",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.0"
+        }
+      ],
+      "agent_only_p95_words": 60
+    },
+    {
+      "slug": "xsv-n4-round1",
+      "study": "xsv-2026-10-15",
+      "configuration": "n4-round1",
+      "source": "sources/xsv-2026-10-15/n4-round1/record-run",
+      "trace_id": "trace_a49b03f1df3bca94",
+      "posts": 61,
+      "agent_posts": 60,
+      "seats": 4,
+      "linked_agent_posts": 60,
+      "operations": 269,
+      "commands": 219,
+      "turn_log_files": 16,
+      "ref": "N7",
+      "runtime_seconds": 197.519,
+      "runner_tokens": 269373,
+      "runner_cached_tokens": 10630011,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T16:17:59.504Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "There is clear duplicated work on the shared implementation: codex-1 says it added a broad Python implementation and asks others to inspect before committing [M12], then codex-4 independently says it patched the shared xsv.py with overlapping fixes to version/list, frequency NULL rendering, flatten alignment, and stats extras [M25]. Later codex-1 also notes teammates have improved stats/frequency and that its own flatten fix is only one slice of the shared changes [M26]. This shows materially overlapping implementation effort across agents without a clean handoff boundary.",
+          "confidence": 0.92,
+          "message_numbers": [
+            13,
+            26
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "A requested handoff is not cleanly completed because codex-2 asks for confirmation before patching xsv.py [M19], but the thread then moves into other agents reporting/committing overlapping changes rather than that request being explicitly acknowledged as the next action. More importantly, codex-3 explicitly asks Agent1 to ensure xsv.py/compile.sh changes are committed and visible, and says Agent2/4 findings should be applied [M17], which is later echoed by codex-1 as a reminder to commit current changes before finalizing [M26]. The repeated need to remind about committing/integration indicates an initially weak handoff on ownership and final integration.",
+          "confidence": 0.81,
+          "message_numbers": [
+            20,
+            18,
+            26
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Relevant information is visible but not fully integrated into the shared code status: codex-2 flags a concrete compile.sh fix needed because `cp xsv.py executable` fails on a protected root-owned binary and proposes `rm -f executable; cp xsv.py executable; chmod +x executable` [M21]. That issue is then acted on later [M29], but before that codex-1 still reports the shared tree and asks for commits without explicitly incorporating the compile-script blocker into the status/decision [M30]. The same pattern appears with codex-4 noting `table --width` needs a minimum override and flatten `-c` remains unsupported [M27], yet the subsequent coordination messages focus on committing rather than explicitly resolving/propagating those gaps in the shared plan [M30].",
+          "confidence": 0.74,
+          "message_numbers": [
+            22,
+            29,
+            30
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            12,
+            25,
+            26
+          ],
+          "mapped_original_turns": [
+            13,
+            26,
+            27
+          ],
+          "structured_turns": [
+            13,
+            26
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            17,
+            19,
+            26
+          ],
+          "mapped_original_turns": [
+            18,
+            20,
+            27
+          ],
+          "structured_turns": [
+            20,
+            18,
+            26
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            21,
+            27,
+            29,
+            30
+          ],
+          "mapped_original_turns": [
+            22,
+            28,
+            30,
+            31
+          ],
+          "structured_turns": [
+            22,
+            29,
+            30
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_e713662b225f4f6c9d6f2110bb36d2b7",
+      "scout_coverage": {
+        "annotated_messages": 60,
+        "candidate_messages": 60,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_4f70f0f3d27e4440947e84708265b92b",
+          "file": "batch/trace-007/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:24.601762+00:00",
+            "started_at": "2026-10-17T16:15:24.601001+00:00",
+            "completed_at": "2026-10-17T16:15:24.603039+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_6b99b5792ff14c958eb702762d653d97",
+          "file": "batch/trace-007/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:24.613264+00:00",
+            "started_at": "2026-10-17T16:15:24.612907+00:00",
+            "completed_at": "2026-10-17T16:15:24.624906+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_54e6221d59e84d6b8c25ce93ede509db",
+          "file": "batch/trace-007/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:24.631943+00:00",
+            "started_at": "2026-10-17T16:15:24.631619+00:00",
+            "completed_at": "2026-10-17T16:15:24.640696+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_28cdbcaa34ec4d81af696fa7d9d933de",
+          "file": "batch/trace-007/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:24.648183+00:00",
+            "started_at": "2026-10-17T16:15:24.647796+00:00",
+            "completed_at": "2026-10-17T16:15:24.651082+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_e713662b225f4f6c9d6f2110bb36d2b7",
+          "file": "batch/trace-007/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T17:06:23.779130+00:00",
+            "started_at": "2026-10-17T17:06:23.781319+00:00",
+            "completed_at": "2026-10-17T17:06:30.744663+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "4",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.1"
+        }
+      ],
+      "agent_only_p95_words": 60
+    },
+    {
+      "slug": "xsv-n4-round2",
+      "study": "xsv-2026-10-15",
+      "configuration": "n4-round2",
+      "source": "sources/xsv-2026-10-15/n4-round2/record-run",
+      "trace_id": "trace_abaad9e890b53c8a",
+      "posts": 66,
+      "agent_posts": 64,
+      "seats": 4,
+      "linked_agent_posts": 64,
+      "operations": 259,
+      "commands": 205,
+      "turn_log_files": 29,
+      "ref": "N8",
+      "runtime_seconds": 327.156,
+      "runner_tokens": 269091,
+      "runner_cached_tokens": 9225468,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T17:09:49.814Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Multiple agents independently investigated and reported essentially the same formatting behaviors for the same commands without a clear synthesis/handoff boundary. For example, codex-4 and codex-3 both separately probed flatten/table/fixlengths/fmt and then repeated near-identical corrections about flatten separators and headers ([M11], [M13], [M14], [M16], [M17], [M20], [M21], [M25], [M26], [M28], [M31], [M32], [M36], [M37], [M42], [M47], [M49], [M51]). This is more than a deliberate independent check because the same command semantics were re-probed and re-stated across agents before being integrated.",
+          "confidence": 0.86,
+          "message_numbers": [
+            12,
+            14,
+            15,
+            16,
+            17,
+            20,
+            21,
+            25,
+            26,
+            28,
+            31,
+            32,
+            36,
+            37,
+            42,
+            47,
+            49,
+            51
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There are several clear cases where a request was made but the handoff was not cleanly acknowledged or the work was only partially integrated before being re-requested. A key example is codex-2 asking codex-4 to patch core formatting issues ([M18]) after prior discussion, followed by codex-4 later saying it was holding to avoid overlap ([M15]) and then other agents still needing to ask again for the same flatten fix ([M25], [M26], [M29]). Another example is the compile workaround: codex-2 reported the protected executable and asked for replacement behavior ([M21], [M22]), and later codex-4 had to repeat the permission-denied workaround and ask for removal before compile ([M26], [M33]). These sequences show requests circulating without a single clear owner and repeated prompting rather than a crisp delivered handoff.",
+          "confidence": 0.9,
+          "message_numbers": [
+            19,
+            22,
+            25,
+            26,
+            27,
+            29,
+            33,
+            34
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Visible probe findings were later contradicted or omitted in downstream discussion instead of being fully incorporated. A strong example is codex-4 noting that slice behavior was still wrong when using attached `-s1` and that the unspecified end should be `st+1` ([M46]), but codex-4 then immediately retracts the issue as a parser difference without an explicit integration path ([M49]); later, the thread shifts to completion pings without showing a concrete slice fix. Similarly, codex-4 repeatedly observed that table `-w`/`--width` was unimplemented or ignored ([M36], [M41], [M52]), yet later updates focus on other fixes and completion markers without that observation being visibly resolved in the same discussion segment. The information was visible, but the thread shows gaps between observation and decision/action.",
+          "confidence": 0.73,
+          "message_numbers": [
+            47,
+            49,
+            52
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            11,
+            13,
+            14,
+            16,
+            17,
+            20,
+            21,
+            25,
+            26,
+            28,
+            31,
+            32,
+            36,
+            37,
+            42,
+            47,
+            49,
+            51
+          ],
+          "mapped_original_turns": [
+            12,
+            14,
+            15,
+            17,
+            18,
+            21,
+            22,
+            26,
+            27,
+            29,
+            32,
+            33,
+            37,
+            38,
+            43,
+            48,
+            50,
+            52
+          ],
+          "structured_turns": [
+            12,
+            14,
+            15,
+            16,
+            17,
+            20,
+            21,
+            25,
+            26,
+            28,
+            31,
+            32,
+            36,
+            37,
+            42,
+            47,
+            49,
+            51
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            15,
+            18,
+            21,
+            22,
+            25,
+            26,
+            29,
+            33
+          ],
+          "mapped_original_turns": [
+            16,
+            19,
+            22,
+            23,
+            26,
+            27,
+            30,
+            34
+          ],
+          "structured_turns": [
+            19,
+            22,
+            25,
+            26,
+            27,
+            29,
+            33,
+            34
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            36,
+            41,
+            46,
+            49,
+            52
+          ],
+          "mapped_original_turns": [
+            37,
+            42,
+            47,
+            50,
+            53
+          ],
+          "structured_turns": [
+            47,
+            49,
+            52
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_37c0dd9f10984622a8c19d7ba1aaf4fb",
+      "scout_coverage": {
+        "annotated_messages": 64,
+        "candidate_messages": 64,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_c6f99270d81a410ba847434c77571cbb",
+          "file": "batch/trace-008/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:34.763175+00:00",
+            "started_at": "2026-10-17T16:15:34.762465+00:00",
+            "completed_at": "2026-10-17T16:15:34.764339+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_62c30a51b48f401dbf1037290a0d7b69",
+          "file": "batch/trace-008/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:34.774761+00:00",
+            "started_at": "2026-10-17T16:15:34.774404+00:00",
+            "completed_at": "2026-10-17T16:15:34.787057+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_44118248a3ad4e5991230529b338a6d1",
+          "file": "batch/trace-008/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:34.794342+00:00",
+            "started_at": "2026-10-17T16:15:34.793970+00:00",
+            "completed_at": "2026-10-17T16:15:34.802457+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_052d6477fa324da5a8645712bd28699d",
+          "file": "batch/trace-008/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:34.821799+00:00",
+            "started_at": "2026-10-17T16:15:34.821046+00:00",
+            "completed_at": "2026-10-17T16:15:34.825382+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_37c0dd9f10984622a8c19d7ba1aaf4fb",
+          "file": "batch/trace-008/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T17:06:31.925520+00:00",
+            "started_at": "2026-10-17T17:06:31.926667+00:00",
+            "completed_at": "2026-10-17T17:06:38.294501+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "4",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.1"
+        }
+      ],
+      "agent_only_p95_words": 69
+    },
+    {
+      "slug": "xsv-n4-round3",
+      "study": "xsv-2026-10-15",
+      "configuration": "n4-round3",
+      "source": "sources/xsv-2026-10-15/n4-round3/record-run",
+      "trace_id": "trace_f4edfa23b99faa29",
+      "posts": 76,
+      "agent_posts": 74,
+      "seats": 4,
+      "linked_agent_posts": 74,
+      "operations": 272,
+      "commands": 216,
+      "turn_log_files": 36,
+      "ref": "N9",
+      "runtime_seconds": 343.837,
+      "runner_tokens": 227748,
+      "runner_cached_tokens": 9536125,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T17:44:53.755Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Multiple agents independently re-investigated and reported the same help/command semantics before any clear synthesis or handoff. For example, [M5], [M6], [M8], [M11], [M12], and [M16] all present overlapping observations about stats columns, frequency behavior, flatten/fmt details, and sample semantics. This is not merely a deliberate verification pass because the messages repeatedly restate materially equivalent findings across agents.",
+          "confidence": 0.94,
+          "message_numbers": [
+            6,
+            7,
+            9,
+            12,
+            13,
+            17
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There is evidence of a request for another agent to create the main executable/scaffold and then repeated follow-up because the handoff was incomplete. [M23] asks Agent1 to create the main executable, [M25] says the workspace still lacks the main/compile after 20 minutes and asks urgently, and [M26] again requests confirmation/urgency to avoid collision. The work was not cleanly acknowledged as owned and continued to bounce between agents, indicating a weak handoff.",
+          "confidence": 0.91,
+          "message_numbers": [
+            24,
+            26,
+            27
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "A clear opportunity to incorporate known information was missed when [M31] reports that advanced_impl.py is not integrated and specifically points out missing command support and a headers bug. Despite this visible feedback, [M32] only fixes the headers return and minimal fmt handling, while [M33] and later messages continue advancing integration piecemeal. The earlier observation about missing advanced command integration was not fully resolved at that point, so relevant information was temporarily unintegrated.",
+          "confidence": 0.86,
+          "message_numbers": [
+            32,
+            33,
+            34
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            5,
+            6,
+            8,
+            11,
+            12,
+            16
+          ],
+          "mapped_original_turns": [
+            6,
+            7,
+            9,
+            12,
+            13,
+            17
+          ],
+          "structured_turns": [
+            6,
+            7,
+            9,
+            12,
+            13,
+            17
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            23,
+            25,
+            26
+          ],
+          "mapped_original_turns": [
+            24,
+            26,
+            27
+          ],
+          "structured_turns": [
+            24,
+            26,
+            27
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            31,
+            32,
+            33
+          ],
+          "mapped_original_turns": [
+            32,
+            33,
+            34
+          ],
+          "structured_turns": [
+            32,
+            33,
+            34
+          ],
+          "display_citations_missing_from_structured_turns": false
+        }
+      ],
+      "scout_run_id": "run_25f49ea33b77439f99448b3ae36b693c",
+      "scout_coverage": {
+        "annotated_messages": 74,
+        "candidate_messages": 74,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_e8b0f15891294b5a82e893f07b431d16",
+          "file": "batch/trace-009/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:48.972900+00:00",
+            "started_at": "2026-10-17T16:15:48.971526+00:00",
+            "completed_at": "2026-10-17T16:15:48.974541+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_7321e328fd8e4fc095019f074578b6a8",
+          "file": "batch/trace-009/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:48.986020+00:00",
+            "started_at": "2026-10-17T16:15:48.985610+00:00",
+            "completed_at": "2026-10-17T16:15:49.001575+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_72a578f4fb574744838cb631994ee6bc",
+          "file": "batch/trace-009/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:49.009233+00:00",
+            "started_at": "2026-10-17T16:15:49.008909+00:00",
+            "completed_at": "2026-10-17T16:15:49.016601+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_e090e020268d47da866466f7dada2e5d",
+          "file": "batch/trace-009/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:49.029877+00:00",
+            "started_at": "2026-10-17T16:15:49.029135+00:00",
+            "completed_at": "2026-10-17T16:15:49.034386+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_25f49ea33b77439f99448b3ae36b693c",
+          "file": "batch/trace-009/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:15:49.043196+00:00",
+            "started_at": "2026-10-17T16:15:49.044518+00:00",
+            "completed_at": "2026-10-17T16:16:06.279378+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "3",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.0"
+        }
+      ],
+      "agent_only_p95_words": 39
+    },
+    {
+      "slug": "yj-n2-round1",
+      "study": "yj-2026-10-15",
+      "configuration": "n2-round1",
+      "source": "sources/yj-2026-10-15/n2-round1/record-run",
+      "trace_id": "trace_b128ff4c92d47fa5",
+      "posts": 33,
+      "agent_posts": 32,
+      "seats": 2,
+      "linked_agent_posts": 32,
+      "operations": 138,
+      "commands": 114,
+      "turn_log_files": 5,
+      "ref": "N10",
+      "runtime_seconds": 173.266,
+      "runner_tokens": 104935,
+      "runner_cached_tokens": 3574676,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T19:13:08.959Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [
+        {
+          "fact": "private_contradiction",
+          "mode": "D1",
+          "seq": 31,
+          "who": "codex-2",
+          "turn": 3,
+          "op": 9,
+          "excerpt": "DONE",
+          "why": "claims success; in the same turn its own final text says: I’ll perform a final matrix check across all documented conversion modes, aliases, formatting flags, empty input, and er…"
+        }
+      ],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Both agents independently performed overlapping implementation/probing work around HCL parsing without a clear division beyond a tentative handoff: codex-2 says it will implement the core parser and asks codex-1 to probe HCL [M2], but codex-1 then also performs extensive HCL probes and later proposes parsing logic/fixes [M4][M14][M19]. This is not just verification; it shows materially overlapping analysis/execution on the same HCL area.",
+          "confidence": 0.83,
+          "message_numbers": [
+            3,
+            5,
+            15,
+            20
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There is a clear ownership request from codex-2 for codex-1 to handle HCL specifics [M2], and codex-1 acknowledges deferring source work while being available to patch HCL once files appear [M8]. However, the handoff remains weak because codex-1 later has to repeatedly request patches from codex-2 and the HCL work is not cleanly closed until much later [M21], indicating the requested work was not fully or promptly delivered back through the handoff.",
+          "confidence": 0.86,
+          "message_numbers": [
+            3,
+            9,
+            22
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Codex-1 surfaces concrete HCL block-label parsing gaps and even proposes a general algorithm [M12][M14][M19][M20], but codex-2’s later update only claims fixes for labeled block parsing, empty YAML handling, and Infinity conversion [M13][M20][M22], without explicitly integrating the more detailed 3-label nesting defect that codex-1 identified. That omission is visible when codex-1 immediately reports the remaining 3-label mismatch after codex-2’s update [M21].",
+          "confidence": 0.9,
+          "message_numbers": [
+            13,
+            15,
+            21,
+            22
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            2,
+            4,
+            14,
+            19
+          ],
+          "mapped_original_turns": [
+            3,
+            5,
+            15,
+            20
+          ],
+          "structured_turns": [
+            3,
+            5,
+            15,
+            20
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            2,
+            8,
+            21
+          ],
+          "mapped_original_turns": [
+            3,
+            9,
+            22
+          ],
+          "structured_turns": [
+            3,
+            9,
+            22
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            12,
+            13,
+            14,
+            19,
+            20,
+            21,
+            22
+          ],
+          "mapped_original_turns": [
+            13,
+            14,
+            15,
+            20,
+            21,
+            22,
+            23
+          ],
+          "structured_turns": [
+            13,
+            15,
+            21,
+            22
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_3778b64258a64d2888c05a18658b0d0f",
+      "scout_coverage": {
+        "annotated_messages": 32,
+        "candidate_messages": 32,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_5af928d303eb40779f22f0e0649225a3",
+          "file": "batch/trace-010/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:07.162287+00:00",
+            "started_at": "2026-10-17T16:16:07.161702+00:00",
+            "completed_at": "2026-10-17T16:16:07.162770+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_2cfc4de09dd54fdb9ce568b98a8ebcce",
+          "file": "batch/trace-010/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:07.169975+00:00",
+            "started_at": "2026-10-17T16:16:07.169526+00:00",
+            "completed_at": "2026-10-17T16:16:07.175377+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_4d65772ddd7f43e381d259088ee728ea",
+          "file": "batch/trace-010/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:07.181507+00:00",
+            "started_at": "2026-10-17T16:16:07.181214+00:00",
+            "completed_at": "2026-10-17T16:16:07.185379+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_aef942374c9f45e79286db2bcf7ef5d4",
+          "file": "batch/trace-010/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:07.191712+00:00",
+            "started_at": "2026-10-17T16:16:07.191380+00:00",
+            "completed_at": "2026-10-17T16:16:07.193308+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_3778b64258a64d2888c05a18658b0d0f",
+          "file": "batch/trace-010/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:07.200236+00:00",
+            "started_at": "2026-10-17T16:16:07.201441+00:00",
+            "completed_at": "2026-10-17T16:16:22.849070+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "3",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.0"
+        }
+      ],
+      "agent_only_p95_words": 67
+    },
+    {
+      "slug": "yj-n3-round1",
+      "study": "yj-2026-10-15",
+      "configuration": "n3-round1",
+      "source": "sources/yj-2026-10-15/n3-round1/record-run",
+      "trace_id": "trace_c25e8be963216dac",
+      "posts": 66,
+      "agent_posts": 64,
+      "seats": 3,
+      "linked_agent_posts": 64,
+      "operations": 233,
+      "commands": 196,
+      "turn_log_files": 17,
+      "ref": "N11",
+      "runtime_seconds": 372.782,
+      "runner_tokens": 210850,
+      "runner_cached_tokens": 7857239,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T19:24:30.987Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "There are repeated, materially similar probes into the same CLI behaviors by multiple agents before any synthesis: codex-1 says it will probe CLI behavior/help and edge cases [M2], codex-3 says it will investigate CLI behavior and implement parser/converter if needed [M3], and codex-2 also says it will investigate CLI behavior and report findings [M1]. These are not acknowledgements or verifications; they show overlapping independent investigation scopes with no clear division of labor yet.",
+          "confidence": 0.88,
+          "message_numbers": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "The handoff from requests to implementation is initially weak because work is asked for but not clearly owned or delivered in the shared workspace: codex-2 asks codex-3 to begin implementation ASAP [M21], codex-1 says no files are visible and asks to be notified when implementation lands [M20], and codex-3 replies that no source files are yet in the workspace and it can only differential-test once implementation lands [M17]. This shows a request/response pattern where the requested work is still pending and ownership is not yet concretely established in the workspace.",
+          "confidence": 0.82,
+          "message_numbers": [
+            20,
+            21,
+            17
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Important observations are later available but not fully integrated into the next action. For example, codex-3 notes that the scaffold compiles and basic YAML-to-JSON works, but also flags that compile removes a protected reference executable and that additional gaps remain [M33], while codex-2 immediately follows with a request to add TOML modes and coordinate edits, focusing on the next feature rather than incorporating the compile-script caveat or the named gaps into a specific plan [M35]. More concretely, codex-3’s explicit warning that significant gaps remain (help exact text, TOML/HCL input parsers, YAML scalar/date semantics) is not resolved in that turn’s decision context [M41], indicating relevant information was surfaced but not yet integrated into an actionable synthesis.",
+          "confidence": 0.67,
+          "message_numbers": [
+            33,
+            35,
+            41
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            1,
+            2,
+            3
+          ],
+          "mapped_original_turns": [
+            2,
+            3,
+            4
+          ],
+          "structured_turns": [
+            2,
+            3,
+            4
+          ],
+          "display_citations_missing_from_structured_turns": false
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            17,
+            20,
+            21
+          ],
+          "mapped_original_turns": [
+            18,
+            21,
+            22
+          ],
+          "structured_turns": [
+            20,
+            21,
+            17
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            33,
+            35,
+            41
+          ],
+          "mapped_original_turns": [
+            34,
+            36,
+            42
+          ],
+          "structured_turns": [
+            33,
+            35,
+            41
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_418e89a41e664bd38d6b034e93ae8f96",
+      "scout_coverage": {
+        "annotated_messages": 64,
+        "candidate_messages": 64,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_703c9b51ccc247c587c16aa11c969fee",
+          "file": "batch/trace-011/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:23.360021+00:00",
+            "started_at": "2026-10-17T16:16:23.358738+00:00",
+            "completed_at": "2026-10-17T16:16:23.361272+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_28207a3513e546699a809cdc76be4e13",
+          "file": "batch/trace-011/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:23.369545+00:00",
+            "started_at": "2026-10-17T16:16:23.369135+00:00",
+            "completed_at": "2026-10-17T16:16:23.383165+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_6d6539f54ac444fcb554604563ebc88b",
+          "file": "batch/trace-011/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:23.391133+00:00",
+            "started_at": "2026-10-17T16:16:23.390742+00:00",
+            "completed_at": "2026-10-17T16:16:23.399400+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_8f027f1d52b040d38ed795566cbe28d5",
+          "file": "batch/trace-011/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:23.407544+00:00",
+            "started_at": "2026-10-17T16:16:23.407179+00:00",
+            "completed_at": "2026-10-17T16:16:23.410291+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_418e89a41e664bd38d6b034e93ae8f96",
+          "file": "batch/trace-011/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T17:15:38.737888+00:00",
+            "started_at": "2026-10-17T17:15:38.739658+00:00",
+            "completed_at": "2026-10-17T17:15:44.706904+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "7",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.4"
+        }
+      ],
+      "agent_only_p95_words": 44
+    },
+    {
+      "slug": "yj-n4-round1",
+      "study": "yj-2026-10-15",
+      "configuration": "n4-round1",
+      "source": "sources/yj-2026-10-15/n4-round1/record-run",
+      "trace_id": "trace_ae5cc6010f6d3028",
+      "posts": 77,
+      "agent_posts": 75,
+      "seats": 4,
+      "linked_agent_posts": 75,
+      "operations": 276,
+      "commands": 229,
+      "turn_log_files": 25,
+      "ref": "N12",
+      "runtime_seconds": 335.923,
+      "runner_tokens": 267656,
+      "runner_cached_tokens": 9297518,
+      "experiment_models": [
+        "gpt-5.6-luna"
+      ],
+      "termination": {
+        "at": "2026-10-15T19:35:11.712Z",
+        "detail": "DONE",
+        "trigger": "said DONE"
+      },
+      "evaluation_status": "unavailable",
+      "fact_findings": [
+        {
+          "fact": "private_contradiction",
+          "mode": "D1",
+          "seq": 68,
+          "who": "codex-3",
+          "turn": 4,
+          "op": 2,
+          "excerpt": "Verified latest commit 9274f3a already includes -k validation. `printf a:1 | ./executable -k` exits 1 and prints usage plus exact error; clean status and rebuil…",
+          "why": "claims success; in the same turn its own final text says: Verified the `-k` validation fix: it now exits 1 with usage and the expected error. Build and smoke tests pass."
+        },
+        {
+          "fact": "private_contradiction",
+          "mode": "D1",
+          "seq": 69,
+          "who": "codex-2",
+          "turn": 6,
+          "op": 2,
+          "excerpt": "DONE",
+          "why": "claims success; in the same turn its own final text says: Patched and verified `-k` validation: - Returns exit code 1 for non-YAML output - Prints the usage and exact error messa…"
+        }
+      ],
+      "scout_findings": [
+        {
+          "category": "duplicated_work",
+          "found": true,
+          "explanation": "Several agents repeated essentially the same verification/observation work after earlier findings were already shared, without a clear synthesis or new purpose. For example, the -k/YAML validation issue is reported by codex-1 in [M26], then revisited by codex-4 in [M64], patched in [M65], and re-verified again in [M66]-[M70]. Likewise, the HCL routing/parser problem is surfaced in [M47]-[M50] and then independently rechecked/fixed again in [M52]-[M56]. This is materially overlapping independent checking rather than a coordinated handoff.",
+          "confidence": 0.81,
+          "message_numbers": [
+            26,
+            47,
+            48,
+            49,
+            50,
+            52,
+            53,
+            54,
+            55,
+            56,
+            64,
+            65,
+            66,
+            67,
+            68,
+            70
+          ]
+        },
+        {
+          "category": "weak_handoff",
+          "found": true,
+          "explanation": "There is a clear weak handoff around the implementation request: codex-1 asks codex-2 to implement and commit the fallback in [M19], but codex-2 later reports no files visible and asks who is implementing in [M22], indicating the request was not cleanly picked up. The ownership ambiguity continues in [M29]-[M40], where multiple agents ask others to commit or take ownership before work is actually visible, showing that the handoff from request to execution was initially weak and required repeated prompting before [M41].",
+          "confidence": 0.93,
+          "message_numbers": [
+            19,
+            22,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ]
+        },
+        {
+          "category": "unintegrated_information",
+          "found": true,
+          "explanation": "Relevant information was later omitted or contradicted without immediate resolution. In [M50], codex-4 reports a smoke failure showing HCL input `a = 1` becomes `{}` and explicitly says HCL parser behavior is missing. Yet later status/result messages such as [M51]-[M53] and [M57]-[M60] focus on build success and general smoke passes, and only much later does the thread revisit the same HCL issue before it is finally fixed. This indicates a period where an important visible defect was not integrated into the apparent decision/status narrative despite being available.",
+          "confidence": 0.72,
+          "message_numbers": [
+            50,
+            51,
+            52,
+            53,
+            57,
+            58,
+            59,
+            60
+          ]
+        }
+      ],
+      "scout_citation_audit": [
+        {
+          "category": "duplicated_work",
+          "display_labels": [
+            26,
+            47,
+            50,
+            52,
+            56,
+            64,
+            65,
+            66,
+            70
+          ],
+          "mapped_original_turns": [
+            27,
+            48,
+            51,
+            53,
+            57,
+            65,
+            66,
+            67,
+            71
+          ],
+          "structured_turns": [
+            26,
+            47,
+            48,
+            49,
+            50,
+            52,
+            53,
+            54,
+            55,
+            56,
+            64,
+            65,
+            66,
+            67,
+            68,
+            70
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "weak_handoff",
+          "display_labels": [
+            19,
+            22,
+            29,
+            40,
+            41
+          ],
+          "mapped_original_turns": [
+            20,
+            23,
+            30,
+            41,
+            42
+          ],
+          "structured_turns": [
+            19,
+            22,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "display_citations_missing_from_structured_turns": true
+        },
+        {
+          "category": "unintegrated_information",
+          "display_labels": [
+            50,
+            51,
+            53,
+            57,
+            60
+          ],
+          "mapped_original_turns": [
+            51,
+            52,
+            54,
+            58,
+            61
+          ],
+          "structured_turns": [
+            50,
+            51,
+            52,
+            53,
+            57,
+            58,
+            59,
+            60
+          ],
+          "display_citations_missing_from_structured_turns": true
+        }
+      ],
+      "scout_run_id": "run_d84ba8d5d7fc4a3f99438897ea3ebeb0",
+      "scout_coverage": {
+        "annotated_messages": 75,
+        "candidate_messages": 75,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "selected_runs": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_49db50433bd345dc83599edfc2dc0390",
+          "file": "batch/trace-012/analysis-01.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:31.533664+00:00",
+            "started_at": "2026-10-17T16:16:31.533199+00:00",
+            "completed_at": "2026-10-17T16:16:31.534835+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_e6e64624fd734b8d8953b11cd6f825b0",
+          "file": "batch/trace-012/analysis-02.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:31.543284+00:00",
+            "started_at": "2026-10-17T16:16:31.542918+00:00",
+            "completed_at": "2026-10-17T16:16:31.558679+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.1.0"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_745e306f04b04b40be1dd6fc27f51a38",
+          "file": "batch/trace-012/analysis-03.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:31.567790+00:00",
+            "started_at": "2026-10-17T16:16:31.567504+00:00",
+            "completed_at": "2026-10-17T16:16:31.576821+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "0.2.0"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_4785f8ce09dd463cb39e3a1cdf80d3ea",
+          "file": "batch/trace-012/analysis-04.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:31.585772+00:00",
+            "started_at": "2026-10-17T16:16:31.585397+00:00",
+            "completed_at": "2026-10-17T16:16:31.588824+00:00",
+            "model": null,
+            "prompt_version": null,
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0"
+            }
+          },
+          "version": "1.0.0"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_d84ba8d5d7fc4a3f99438897ea3ebeb0",
+          "file": "batch/trace-012/analysis-05.json",
+          "provenance": {
+            "created_at": "2026-10-17T16:16:31.595337+00:00",
+            "started_at": "2026-10-17T16:16:31.596231+00:00",
+            "completed_at": "2026-10-17T16:16:49.591138+00:00",
+            "model": "openai/gpt-5.4-mini",
+            "prompt_version": "3",
+            "input_schema": "commsfail/trace.v1",
+            "package_versions": {
+              "commsfail": "0.4.0",
+              "agenttrace-api": "0.1.0",
+              "inspect-scout": "0.5.3"
+            }
+          },
+          "version": "2.1.0"
+        }
+      ],
+      "agent_only_p95_words": 49
+    }
+  ],
+  "combined_inventory": {
+    "traces": 21,
+    "raw_posts": 688,
+    "agent_posts": 661,
+    "selected_analyses": 96,
+    "scout_annotations": 672
+  },
+  "dataset_hashes": {
+    "manifest.json": "08ee55cbb068fe214818c16a4e1be933d5839b1823842d8e6d2ba02b8811c805",
+    "agenttrace.sqlite3": "c2363b1e5a83f585a81b7abf64f3fe9959ff1c5d2fd3b43604e3eb267d7b4ca4",
+    "SHA256SUMS": "9fba00d18d3683f0ee82331a1e9c115b5770f5bafaa25876d4b0d8fe2ac4c7fb"
+  }
+}

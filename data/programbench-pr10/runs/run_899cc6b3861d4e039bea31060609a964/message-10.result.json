@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [
+    7,
+    9
+  ],
+  "addressed_to": [
+    "codex-3",
+    "codex-1"
+  ],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message asks another agent whether they are handling certain work and offers to take on specific components if not, which is a concrete work-allocation request. It also coordinates ownership of remaining tasks.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "I can implement stats/frequency/table extras if not covered"
+    },
+    {
+      "field": "question",
+      "text": "are you integrating these?"
+    },
+    {
+      "field": "coordination",
+      "text": "if not covered"
+    }
+  ]
+}

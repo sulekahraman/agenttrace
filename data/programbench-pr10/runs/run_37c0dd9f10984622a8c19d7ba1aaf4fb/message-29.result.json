@@ -1,0 +1,30 @@
+{
+  "primary_type": "clarification",
+  "secondary_types": [
+    "critique_disagreement",
+    "proposal"
+  ],
+  "replies_to": [
+    28
+  ],
+  "addressed_to": [
+    "codex-4"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message corrects a specific implementation detail in the flatten patch and tells another agent how to change it. It is primarily a clarification/correction, with a small critique of the current patch and a concrete proposal for the fix.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Flatten current patch uses lw=max(labels,0), yielding a two spaces for single-char labels; reference requires a three spaces (minimum label width 2)."
+    },
+    {
+      "field": "primary_type",
+      "text": "reference requires a three spaces (minimum label width 2). Set lw=max([len(x)...]+[2])."
+    },
+    {
+      "field": "addressed_to",
+      "text": "Set lw=max([len(x)...]+[2])."
+    }
+  ]
+}

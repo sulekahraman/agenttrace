@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "status_update",
+    "coordination"
+  ],
+  "replies_to": [
+    33,
+    35
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message asks specific agents to take action by committing files urgently, while also reporting the sender's current workspace state and coordinating around ownership/timing.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "codex-1/2"
+    },
+    {
+      "field": "status_update",
+      "text": "no files visible in my workspace"
+    },
+    {
+      "field": "delegation_request",
+      "text": "please commit source/compile urgently"
+    }
+  ]
+}

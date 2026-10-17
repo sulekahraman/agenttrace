@@ -1,0 +1,23 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    31
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports a newly found issue, the patch applied, and the commit status, which is a progress/status report. It also delivers the result of the fix: TOML special float handling now matches reference, with one remaining note about -n.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Found TOML special float mismatch: ref YAML->TOML emits +inf/-inf, ours quoted strings."
+    },
+    {
+      "field": "result_delivery",
+      "text": "Patched tomlval and committed; -n remains finite max float."
+    }
+  ]
+}

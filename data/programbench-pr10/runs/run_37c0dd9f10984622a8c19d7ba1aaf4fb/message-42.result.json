@@ -1,0 +1,28 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [
+    37
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a concrete observed mismatch in current behavior versus reference, and briefly suggests a fix. It is not asking or assigning work, but contributing a factual observation plus a proposed implementation direction.",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "Table -w still unimplemented in current build (`a  b` vs ref `a    b` for -w4 -p1)"
+    },
+    {
+      "field": "proposal",
+      "text": "likely low priority but easy fix by parse width and max(widths, w)"
+    }
+  ]
+}

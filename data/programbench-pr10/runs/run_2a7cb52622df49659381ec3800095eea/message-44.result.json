@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    43
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on fmt, including specific fixes and that it was smoke-tested, which fits result_delivery. It also serves as a brief progress report on the project state, so status_update is secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Patched fmt to honor --quote-always, --quote, --crlf, --ascii separators, escape; committed fffbc3d and smoke-tested."
+    },
+    {
+      "field": "replies_to",
+      "text": "Patched fmt to honor --quote-always, --quote, --crlf, --ascii separators, escape; committed fffbc3d and smoke-tested."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Patched fmt to honor --quote-always, --quote, --crlf, --ascii separators, escape; committed fffbc3d and smoke-tested."
+    }
+  ]
+}

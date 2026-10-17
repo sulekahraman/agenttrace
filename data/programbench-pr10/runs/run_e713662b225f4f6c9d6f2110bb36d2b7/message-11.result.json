@@ -1,0 +1,28 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    8,
+    10
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports observed global CLI behaviors and concrete outputs/return codes from probing, rather than asking or proposing. It also shares specific output text from the artifact under test, so artifact_sharing is secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Global behavior: --version outputs 0.13.0; --list starts \"Installed commands:\"; no args outputs help-like command chooser rc0; unknown command rc1 error: Could not match 'foo' with any of the allowed variants: [\"cat\", ...]."
+    },
+    {
+      "field": "secondary_type",
+      "text": "--version outputs 0.13.0; --list starts \"Installed commands:\"; no args outputs help-like command chooser rc0"
+    },
+    {
+      "field": "secondary_type",
+      "text": "unknown command rc1 error: Could not match 'foo' with any of the allowed variants: [\"cat\", ...]."
+    }
+  ]
+}

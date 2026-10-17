@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    4,
+    6
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and current state: it says the stats implementation was added and the shared tree is current, while also pointing to specific commits. This is primarily a result delivery, with a status update and artifact sharing element.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Added stats implementation matching observed headers/values (mean/stddev/median/mode/cardinality)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Commits 95b939e + a778637; shared tree current."
+    }
+  ]
+}

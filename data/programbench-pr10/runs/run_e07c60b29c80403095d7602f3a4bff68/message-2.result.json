@@ -1,0 +1,22 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message proposes a concrete plan of action (“I will probe reference CLI/help and edge behavior, then report findings”) and also asks a coordinating question about coverage (“what areas are others covering?”).",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I will probe reference CLI/help and edge behavior, then report findings"
+    },
+    {
+      "field": "secondary_types",
+      "text": "what areas are others covering?"
+    }
+  ]
+}

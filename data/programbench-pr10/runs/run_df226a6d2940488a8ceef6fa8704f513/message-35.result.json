@@ -1,0 +1,27 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns concrete follow-up work to another agent: adding TOML modes/output, and optionally extending nested YAML. It also manages process by saying the speaker will not edit concurrently.",
+  "evidence": [
+    {
+      "field": "delegation",
+      "text": "Please add TOML modes/output directly; I won’t edit concurrently."
+    },
+    {
+      "field": "coordination",
+      "text": "I won’t edit concurrently."
+    },
+    {
+      "field": "secondary_request",
+      "text": "Agent2 extend nested YAML if possible."
+    }
+  ]
+}

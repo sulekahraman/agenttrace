@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "status_update",
+    "coordination"
+  ],
+  "replies_to": [
+    17,
+    18
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message asks other agents to take concrete action: create the implementation and compile script. It also reports a time constraint, which functions as a status/progress coordination update. It is addressed generally to the team, especially the agents previously discussing source availability and implementation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "please create implementation and compile.sh ASAP."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Any progress on source? Time limited;"
+    },
+    {
+      "field": "addressed_to",
+      "text": "please create implementation and compile.sh ASAP."
+    }
+  ]
+}

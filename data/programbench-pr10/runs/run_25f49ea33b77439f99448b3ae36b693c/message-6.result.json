@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "question"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed investigation findings (“Collected full command help; README confirms xsv. Key semantics...”) and then offers further help plus asks a follow-up question (“Any priority?”). This is primarily a result delivery with a status update and question mixed in.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Collected full command help; README confirms xsv. Key semantics: slice excludes header; flatten labels + #; join whitespace/case/nulls; stats/frequency."
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can implement tests or investigate tricky formatting. Any priority?"
+    }
+  ]
+}

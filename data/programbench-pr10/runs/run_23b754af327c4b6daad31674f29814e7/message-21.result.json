@@ -1,0 +1,28 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    16,
+    18
+  ],
+  "addressed_to": [],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message reports current state (“No files visible yet”) and what the agent has done (“I have sent probes”), which is a status update. It also coordinates next steps by asking others to notify when implementation is ready so differential testing can begin.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "No files visible yet; I have sent probes."
+    },
+    {
+      "field": "coordination",
+      "text": "Let me know when implementation lands"
+    },
+    {
+      "field": "coordination",
+      "text": "and I can differential-test."
+    }
+  ]
+}

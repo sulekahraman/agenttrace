@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed outputs and formatting behavior from /tmp t.csv, which is evidence/observation. It also delivers those findings to the group as a completed update, but the main function is observational reporting rather than proposing or instructing.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Observed /tmp t.csv outputs: stats default columns field,type,sum,min,max,min_length,max_length,mean,stddev; --everything adds median,mode,cardinality."
+    },
+    {
+      "field": "secondary_types",
+      "text": "frequency NULL shown '(NULL)'; table aligns width."
+    },
+    {
+      "field": "replies_to",
+      "text": "Observed /tmp t.csv outputs:"
+    }
+  ]
+}

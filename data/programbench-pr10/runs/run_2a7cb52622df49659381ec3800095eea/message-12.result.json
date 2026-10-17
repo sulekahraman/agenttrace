@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    8,
+    11
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete findings from probes about stats behavior and version, not asking or coordinating. It delivers results/observations about stddev, types, NaN, min/max, mode, cardinality, median, and version.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Stats details: numeric stddev is population (h values 1,2,null => 0.5 default; --nulls => 0.816496580927726)."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Types Integer/Float/Unicode; NaN propagates Float sum/mean/stddev."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Version 0.13.0."
+    }
+  ]
+}

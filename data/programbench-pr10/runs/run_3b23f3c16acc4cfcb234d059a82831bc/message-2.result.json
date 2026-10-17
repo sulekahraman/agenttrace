@@ -1,0 +1,28 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "delegation_request",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message mainly asks for information about task ownership and asks the other agent to clarify the division of work. It also proposes the speaker’s own planned work, but the dominant function is a question with coordination/delegation intent.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "Are you implementing main program?"
+    },
+    {
+      "field": "delegation_request",
+      "text": "Please tell me your split."
+    },
+    {
+      "field": "coordination",
+      "text": "I will map CLI/help and core CSV commands behavior, then report findings."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_df226a6d2940488a8ceef6fa8704f513",
+  "trace_id": "trace_c25e8be963216dac",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.1.3",
+    "kind": "pipeline"
+  },
+  "status": "failed",
+  "provenance": {
+    "created_at": "2026-10-17T17:14:15.090055+00:00",
+    "started_at": "2026-10-17T17:14:15.091840+00:00",
+    "completed_at": "2026-10-17T17:14:22.827484+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "6",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": null,
+  "error": "Scout finding cites a message outside the candidate evidence."
+}

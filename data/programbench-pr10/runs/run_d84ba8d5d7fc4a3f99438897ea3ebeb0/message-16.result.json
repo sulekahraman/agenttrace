@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "clarification"
+  ],
+  "replies_to": [
+    15
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports observed flag behavior and formatting outcomes, not a request or decision. It also clarifies prior ambiguity about specific flags and invalid-flag handling.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Flag semantics: -e alone valid default YAML->JSON; -ie pretty+HTML escape; -n harmless."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Invalid -k on non-YAML output prints usage then Error flag -k only valid for YAML output; invalid chars list spaces (e.g. -abc => a b, c selects HCL so no c invalid)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "--help treated invalid."
+    }
+  ]
+}

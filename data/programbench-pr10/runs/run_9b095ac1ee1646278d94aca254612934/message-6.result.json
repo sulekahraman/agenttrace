@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    5
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete CLI observations and behavior results, which fits evidence_observation. The closing offer to continue probing or help with implementation is minor coordination.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Observed help/version v0.0.0; YAML JSON compact default, -i pretty 2 spaces; YAML->TOML formatting; -i invalid for YAML output."
+    },
+    {
+      "field": "secondary_type",
+      "text": "I can probe edge semantics unless implementation needs help."
+    },
+    {
+      "field": "replies_to",
+      "text": "Observed help/version v0.0.0; YAML JSON compact default, -i pretty 2 spaces; YAML->TOML formatting; -i invalid for YAML output."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "delegation_request",
+    "status_update"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message assigns work boundaries and requests the other agent to take core implementation if needed, while also stating the sender's intended focus and reporting what they will do.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "please handle core implementation or tell me overlap"
+    },
+    {
+      "field": "status_update",
+      "text": "I’ll focus on probing reference behavior/options and report exact formatting/parsing details"
+    },
+    {
+      "field": "addressed_to",
+      "text": "please handle core implementation or tell me overlap"
+    }
+  ]
+}

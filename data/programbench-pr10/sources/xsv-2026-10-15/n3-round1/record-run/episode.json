@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "room_id": "rom_LlSo0slg1l",
+  "goal": {
+    "message_id": "msg_aXnHNdiTqk",
+    "sequence": 1,
+    "until": [
+      "said DONE",
+      "after 30m",
+      "budget 3M tokens"
+    ],
+    "started_at": "2026-10-15T16:01:26.608Z"
+  },
+  "ended_by": {
+    "at": "2026-10-15T16:05:56.927Z",
+    "detail": "DONE",
+    "trigger": "said DONE"
+  },
+  "runner": {
+    "started_at": "2026-10-15T16:01:34.833Z",
+    "ended_at": "2026-10-15T16:05:56.965Z",
+    "workspace": "/home/cl4750/goal-pb/work/xsv-n3-20261015T160124Z/workspace"
+  },
+  "totals": {
+    "messages": 59,
+    "checks": 0,
+    "snapshots": 16,
+    "reminders": 0,
+    "tokens": 198357,
+    "cached_tokens": 8589041
+  },
+  "image": "pb-goal/burntsushi_1776_xsv.f430466:2",
+  "agent_user": "agent",
+  "isolated": true,
+  "addresses": {
+    "codex-1": "172.18.0.4",
+    "codex-2": "172.18.0.5",
+    "codex-3": "172.18.0.6"
+  },
+  "web_search": "off",
+  "turn_limit_s": 1200,
+  "mention_gate": false,
+  "task_gate": false,
+  "message_routing": "broadcast",
+  "consensus": true,
+  "remind_s": 120,
+  "agents": [
+    {
+      "name": "codex-1",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_UEhAgsGKL8",
+      "session_id": "01a1404c-27b1-7b91-ba9a-b927e00a21fb",
+      "turns": 7,
+      "failed_turns": 0,
+      "tokens": 63159,
+      "usage": {
+        "input": 51992,
+        "cached": 3114193,
+        "output": 11167
+      }
+    },
+    {
+      "name": "codex-2",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_58EYhAGBHY",
+      "session_id": "01a1404c-27b2-72b2-85b3-fe6714e9fd6e",
+      "turns": 7,
+      "failed_turns": 0,
+      "tokens": 64279,
+      "usage": {
+        "input": 54086,
+        "cached": 2875493,
+        "output": 10193
+      }
+    },
+    {
+      "name": "codex-3",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_TRuPZLMoKi",
+      "session_id": "01a1404c-27b2-7ca0-8a2b-223d5ce8d99c",
+      "turns": 7,
+      "failed_turns": 0,
+      "tokens": 70919,
+      "usage": {
+        "input": 58717,
+        "cached": 2599355,
+        "output": 12202
+      }
+    }
+  ]
+}

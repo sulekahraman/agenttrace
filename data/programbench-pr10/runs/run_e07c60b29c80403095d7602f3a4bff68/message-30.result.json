@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    27,
+    28
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code change and its verification status: it explains the fix, says the improved stats are active, and notes a successful sample verification and commit. This is best labeled as result_delivery with a status_update secondary.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Important: duplicate stats branches existed; I disabled inaccurate first branch so improved stats now active."
+    },
+    {
+      "field": "status_update",
+      "text": "Verified sample exactly matches reference (including Unicode score)."
+    },
+    {
+      "field": "result_delivery",
+      "text": "Commit made."
+    }
+  ]
+}

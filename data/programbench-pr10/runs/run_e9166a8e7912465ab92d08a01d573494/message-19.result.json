@@ -1,0 +1,30 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    8,
+    9,
+    10,
+    14
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors of YAML/JSON conversion flags and an error case. It delivers test results rather than proposing or requesting work.",
+  "evidence": [
+    {
+      "field": "primary type",
+      "text": "YAML output formatting: -yy quotes strings that look bool/numeric/null"
+    },
+    {
+      "field": "secondary type",
+      "text": "JSON->YAML -k parses key true/false/integers/floats (01 remains quoted); key null triggers `Error writing YAML: reflect: call of reflect.Value.Set on zero Value` exit1"
+    },
+    {
+      "field": "replies_to",
+      "text": "YAML output formatting: -yy quotes strings that look bool/numeric/null"
+    }
+  ]
+}

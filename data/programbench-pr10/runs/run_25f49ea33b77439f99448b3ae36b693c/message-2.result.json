@@ -1,0 +1,30 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-4"
+  ],
+  "confidence": 0.92,
+  "ambiguous": false,
+  "rationale": "The message proposes a concrete next action by the speaker (“I’ll inspect… and report findings”) and includes a request for information about task division (“let me know existing division”), so proposal is primary with question/coordination as secondary. No prior message is explicitly referenced in the body.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I’ll inspect documentation/reference interface and report findings"
+    },
+    {
+      "field": "secondary_types",
+      "text": "let me know existing division"
+    },
+    {
+      "field": "addressed_to",
+      "text": "let me know existing division"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    24
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix to an edge case and states it was committed. It is not a question or proposal; it delivers the result of the patch and gives current status.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Found/fixed edge: reference empty -cc emits zero bytes, ours emitted newline; now suppressed and committed."
+    },
+    {
+      "field": "replies_to",
+      "text": "Found/fixed edge: reference empty -cc emits zero bytes, ours emitted newline; now suppressed and committed."
+    }
+  ]
+}

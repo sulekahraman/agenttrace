@@ -1,0 +1,95 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_2cfc4de09dd54fdb9ce568b98a8ebcce",
+  "trace_id": "trace_b128ff4c92d47fa5",
+  "analyzer": {
+    "name": "facts_v1",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:16:07.169975+00:00",
+    "started_at": "2026-10-17T16:16:07.169526+00:00",
+    "completed_at": "2026-10-17T16:16:07.175377+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "schema": "commsfail/facts_v1/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/yj-2026-10-15/n2-round1/record-run",
+      "room_id": "rom_7GLGoEbq6f",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "applies": true,
+      "seats": {
+        "codex-1": {
+          "posts": 20,
+          "linked_posts": 20,
+          "turns": 2,
+          "commands": 63,
+          "failed_commands": 0,
+          "test_runs": 0,
+          "files_changed": [
+            "yj.py"
+          ]
+        },
+        "codex-2": {
+          "posts": 12,
+          "linked_posts": 12,
+          "turns": 3,
+          "commands": 51,
+          "failed_commands": 4,
+          "test_runs": 0,
+          "files_changed": [
+            ".gitignore",
+            "compile.sh",
+            "yj.py"
+          ]
+        }
+      },
+      "findings": [
+        {
+          "fact": "private_contradiction",
+          "mode": "D1",
+          "seq": 31,
+          "who": "codex-2",
+          "turn": 3,
+          "op": 9,
+          "excerpt": "DONE",
+          "why": "claims success; in the same turn its own final text says: I’ll perform a final matrix check across all documented conversion modes, aliases, formatting flags, empty input, and er…"
+        }
+      ],
+      "counts": {
+        "overlapping_claim": 0,
+        "claim_without_action": 0,
+        "review_without_reading": 0,
+        "success_without_run": 0,
+        "success_after_failure": 0,
+        "private_contradiction": 1,
+        "check_failed_after_done": 0
+      },
+      "by_mode": {
+        "D1": 1,
+        "D2": 0,
+        "R1": 0
+      },
+      "caveats": [
+        "files are matched by name; a claim on a function inside a file counts as a claim on the file"
+      ]
+    }
+  },
+  "error": null
+}

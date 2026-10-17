@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    46
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code fix and verification outcome, which is a result delivery. It also gives current state/verification status (compiled, smoke-tested, committed/clean), so status_update fits as secondary. It replies to the immediately prior discussion of join behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Fixed active join implementation for --no-headers (no phantom header row), compiled and smoke-tested."
+    },
+    {
+      "field": "secondary_types",
+      "text": "compiled and smoke-tested. Tree committed/clean."
+    },
+    {
+      "field": "replies_to",
+      "text": "Fixed active join implementation for --no-headers (no phantom header row)"
+    }
+  ]
+}

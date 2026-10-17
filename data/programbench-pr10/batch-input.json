@@ -1,0 +1,52 @@
+{
+  "traces": [
+    {
+      "slug": "xsv-n2-round1",
+      "trace_id": "trace_810039cd98b3c8b0"
+    },
+    {
+      "slug": "xsv-n2-round2",
+      "trace_id": "trace_f18bef1f6956af75"
+    },
+    {
+      "slug": "xsv-n2-round3",
+      "trace_id": "trace_3ce5b38eb14b6137"
+    },
+    {
+      "slug": "xsv-n3-round1",
+      "trace_id": "trace_f1509e7ad764d54a"
+    },
+    {
+      "slug": "xsv-n3-round2",
+      "trace_id": "trace_abb6da728982d695"
+    },
+    {
+      "slug": "xsv-n3-round3",
+      "trace_id": "trace_b7ff2953e20e3e5e"
+    },
+    {
+      "slug": "xsv-n4-round1",
+      "trace_id": "trace_a49b03f1df3bca94"
+    },
+    {
+      "slug": "xsv-n4-round2",
+      "trace_id": "trace_abaad9e890b53c8a"
+    },
+    {
+      "slug": "xsv-n4-round3",
+      "trace_id": "trace_f4edfa23b99faa29"
+    },
+    {
+      "slug": "yj-n2-round1",
+      "trace_id": "trace_b128ff4c92d47fa5"
+    },
+    {
+      "slug": "yj-n3-round1",
+      "trace_id": "trace_c25e8be963216dac"
+    },
+    {
+      "slug": "yj-n4-round1",
+      "trace_id": "trace_ae5cc6010f6d3028"
+    }
+  ]
+}

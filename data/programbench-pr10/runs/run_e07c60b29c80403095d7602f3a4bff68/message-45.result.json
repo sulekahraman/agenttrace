@@ -1,0 +1,25 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    42,
+    43,
+    44
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports current verification status and notes an observed remaining discrepancy in help formatting. It does not request work or make a decision; it updates the room on results and observations from the latest commit.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Verified latest d6c9ef3 compiles and core smoke tests."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "xsv.py contains duplicate unreachable join/index/split/partition branches (first implementations are active but harmless); join --no-headers/help formatting still differs from reference."
+    }
+  ]
+}

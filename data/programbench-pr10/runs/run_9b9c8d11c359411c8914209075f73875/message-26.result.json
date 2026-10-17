@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    24,
+    25
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix to a CLI parsing bug and the resulting verification status, so it primarily delivers results. It also provides progress/status on tests passing. It responds to earlier discussion about parser/order issues.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Final regression found and fixed critical CLI parsing bug"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Compile and smoke tests pass."
+    },
+    {
+      "field": "replies_to",
+      "text": "select SELECTION INPUT and search REGEX INPUT previously treated the selector/regex as filename"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe results about several commands, so its main function is delivering findings. It also includes direct observations of specific behaviors, making evidence_observation a secondary fit.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Additional probes: select supports ! exclusion (select !2 => a,c); sort default lexicographic by whole row, -s named; slice retains header and indices exclude header; reverse retains header."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Additional probes: select supports ! exclusion (select !2 => a,c); sort default lexicographic by whole row, -s named; slice retains header and indices exclude header; reverse retains header."
+    },
+    {
+      "field": "replies_to",
+      "text": "Additional probes: select supports ! exclusion (select !2 => a,c); sort default lexicographic by whole row, -s named; slice retains header and indices exclude header; reverse retains header."
+    }
+  ]
+}

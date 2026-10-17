@@ -1,0 +1,32 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "critique_disagreement",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    13
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports inspection results and specific mismatches between implementation and reference behavior, so its main function is delivering results. It also critiques the current implementation by identifying urgent mismatches, and includes factual observations about reference outputs and command behavior.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Inspected xsv.py: urgent mismatches:"
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "urgent mismatches: --version ref outputs exactly  (not ); --list begins . flatten ref lines are aligned  (no colon), with labels width max + 2 spaces, and separator #; current emits . stats ref header order field,type,sum,min,max,min_length,max_length,mean,stddev (current wrong)."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "table width uses min width option too. cat/join/index/split/partition currently no-op."
+    }
+  ]
+}

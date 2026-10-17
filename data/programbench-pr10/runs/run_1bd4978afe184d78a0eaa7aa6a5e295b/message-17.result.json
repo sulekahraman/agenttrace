@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    13,
+    15,
+    16
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and verification results, not a request or proposal. It states the join patch is present and smoke-tested, and also lists additional fixes made.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Join patch present and smoke-tested against reference; committed as 7e306e6."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Also fixed search regex filtering and stats cardinality including NULL."
+    }
+  ]
+}

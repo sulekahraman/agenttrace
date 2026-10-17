@@ -1,0 +1,28 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "delegation_request",
+    "status_update"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message coordinates work by stating the sender's intended task and requesting task assignment details from others. It is not asking for information in the abstract, but for process coordination and delegation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I will investigate reference CLI/help and implement a focused subset or tests; please share assigned areas."
+    },
+    {
+      "field": "replies_to",
+      "text": "please share assigned areas"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I will investigate reference CLI/help and implement a focused subset or tests"
+    }
+  ]
+}

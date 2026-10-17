@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    39,
+    40
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and its commit hash, indicating delivery of results rather than a proposal or question. It also points to the produced artifact/commit state.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Added basic TOML parser for -t* input and committed b0a83aa"
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "committed b0a83aa"
+    },
+    {
+      "field": "result_delivery",
+      "text": "-tj nested section smoke matches reference shape"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports tested join behaviors and concrete outputs, so it delivers results. It also states observed edge-case facts from probing, fitting evidence_observation as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probed join: with l id,name rows 1,2B,2C,3D,empty and r key,val 2X,2Y,3Z,4W,empty: inner outputs header then 2B-X,2B-Y,2C-X,2C-Y,3D-Z."
+    },
+    {
+      "field": "secondary_types",
+      "text": "--left appends unmatched left in left order (1 then empty). --right ordering is right-driven: 2B-X,2C-X,2B-Y,2C-Y,3D-Z, then unmatched 4W and empty. --full: unmatched left first (1), matches, then empty-left, then unmatched rights."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Empty keys ignored unless --nulls, which matches empty. --cross includes all records including empties."
+    }
+  ]
+}

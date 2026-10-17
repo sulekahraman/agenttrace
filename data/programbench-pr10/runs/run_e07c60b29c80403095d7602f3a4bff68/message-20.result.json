@@ -1,0 +1,20 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    18,
+    19
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports a completed observation/result about the behavior of partitioning stdin into output files. It is not asking or proposing; it states an outcome: files created, contents included, and CSV format used.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Partition stdin k,v rows creates a.csv/b.csv; each includes header and original rows, output files standard CSV."
+    }
+  ]
+}

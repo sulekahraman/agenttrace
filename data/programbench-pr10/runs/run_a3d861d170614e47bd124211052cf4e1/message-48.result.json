@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    47
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and the resulting state of the codebase, not a question or proposal. It summarizes final fixes applied and notes a commit, which fits result delivery with a brief status update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Applied final edge fixes: fixlengths without --length now rejects stdin with documented error; table spacing now matches probes (default 2 spaces, -w4 -p1 4 spaces)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Committed."
+    },
+    {
+      "field": "replies_to",
+      "text": "Applied final edge fixes: fixlengths without --length now rejects stdin with documented error; table spacing now matches probes (default 2 spaces, -w4 -p1 4 spaces)."
+    }
+  ]
+}

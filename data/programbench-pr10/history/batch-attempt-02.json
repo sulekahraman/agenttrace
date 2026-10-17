@@ -1,0 +1,676 @@
+{
+  "schema": "agenttrace/batch.v1",
+  "created_at": "2026-10-17T17:06:06.851001+00:00",
+  "server": "http://127.0.0.1:3001",
+  "scout_requested": true,
+  "traces": [
+    {
+      "name": "xsv-n2-round1",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_abf3dd05892d48e3aa7dd39bef26a2d2",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_810039cd98b3c8b0&run=run_abf3dd05892d48e3aa7dd39bef26a2d2",
+          "error": null,
+          "file": "trace-001/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_ca23146c20ad4e91ae56bf54ce6bc026",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_810039cd98b3c8b0&run=run_ca23146c20ad4e91ae56bf54ce6bc026",
+          "error": null,
+          "file": "trace-001/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_005ccd747c1e440794be31c17dc85a4a",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_810039cd98b3c8b0&run=run_005ccd747c1e440794be31c17dc85a4a",
+          "error": null,
+          "file": "trace-001/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_335057fdc17746b4858fe1256faae6f4",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_810039cd98b3c8b0&run=run_335057fdc17746b4858fe1256faae6f4",
+          "error": null,
+          "file": "trace-001/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_1bd4978afe184d78a0eaa7aa6a5e295b",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3001/?trace=trace_810039cd98b3c8b0&run=run_1bd4978afe184d78a0eaa7aa6a5e295b",
+          "error": null,
+          "file": "trace-001/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_810039cd98b3c8b0",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_810039cd98b3c8b0",
+      "status": "completed",
+      "report_file": "trace-001/report.json"
+    },
+    {
+      "name": "xsv-n2-round2",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_a3234de1531941cb8bdd492714c2090d",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f18bef1f6956af75&run=run_a3234de1531941cb8bdd492714c2090d",
+          "error": null,
+          "file": "trace-002/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_b639c6214a9b4f8cb32a21d63f966000",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f18bef1f6956af75&run=run_b639c6214a9b4f8cb32a21d63f966000",
+          "error": null,
+          "file": "trace-002/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_7e5c51cac1cc4e3fb1d2a4bc6b2fb5e9",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f18bef1f6956af75&run=run_7e5c51cac1cc4e3fb1d2a4bc6b2fb5e9",
+          "error": null,
+          "file": "trace-002/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_c75e53fcfab8469db7d71d573a7d253f",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f18bef1f6956af75&run=run_c75e53fcfab8469db7d71d573a7d253f",
+          "error": null,
+          "file": "trace-002/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_9b9c8d11c359411c8914209075f73875",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f18bef1f6956af75&run=run_9b9c8d11c359411c8914209075f73875",
+          "error": null,
+          "file": "trace-002/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_f18bef1f6956af75",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_f18bef1f6956af75",
+      "status": "completed",
+      "report_file": "trace-002/report.json"
+    },
+    {
+      "name": "xsv-n2-round3",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_9e8724285b464c9a96440a00561267da",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_3ce5b38eb14b6137&run=run_9e8724285b464c9a96440a00561267da",
+          "error": null,
+          "file": "trace-003/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_a3b3eb9654be459e8c819e12c26e8cc3",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_3ce5b38eb14b6137&run=run_a3b3eb9654be459e8c819e12c26e8cc3",
+          "error": null,
+          "file": "trace-003/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_ea2fd01e39df4b0fbf83f2e623a44aac",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_3ce5b38eb14b6137&run=run_ea2fd01e39df4b0fbf83f2e623a44aac",
+          "error": null,
+          "file": "trace-003/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_d41bb68aac5a4f47b201a4afd9b42422",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_3ce5b38eb14b6137&run=run_d41bb68aac5a4f47b201a4afd9b42422",
+          "error": null,
+          "file": "trace-003/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_3b23f3c16acc4cfcb234d059a82831bc",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_3ce5b38eb14b6137&run=run_3b23f3c16acc4cfcb234d059a82831bc",
+          "error": null,
+          "file": "trace-003/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_3ce5b38eb14b6137",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_3ce5b38eb14b6137",
+      "status": "completed",
+      "report_file": "trace-003/report.json"
+    },
+    {
+      "name": "xsv-n3-round1",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_385ad3d4ade54b70b1ecb110fd8fd10d",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f1509e7ad764d54a&run=run_385ad3d4ade54b70b1ecb110fd8fd10d",
+          "error": null,
+          "file": "trace-004/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_ce8d7787abd44ee29cea181b5c09b154",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f1509e7ad764d54a&run=run_ce8d7787abd44ee29cea181b5c09b154",
+          "error": null,
+          "file": "trace-004/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_11b57b652ab54829bf00e7eaae9ad25e",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f1509e7ad764d54a&run=run_11b57b652ab54829bf00e7eaae9ad25e",
+          "error": null,
+          "file": "trace-004/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_9114bc792f0b4afca8197c3274922f3a",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f1509e7ad764d54a&run=run_9114bc792f0b4afca8197c3274922f3a",
+          "error": null,
+          "file": "trace-004/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_e07c60b29c80403095d7602f3a4bff68",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f1509e7ad764d54a&run=run_e07c60b29c80403095d7602f3a4bff68",
+          "error": null,
+          "file": "trace-004/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_f1509e7ad764d54a",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_f1509e7ad764d54a",
+      "status": "completed",
+      "report_file": "trace-004/report.json"
+    },
+    {
+      "name": "xsv-n3-round2",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_a09474e6abca4294b5a3426e70ca1759",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abb6da728982d695&run=run_a09474e6abca4294b5a3426e70ca1759",
+          "error": null,
+          "file": "trace-005/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_e9781683c9fc4779b23ed4da0647c139",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abb6da728982d695&run=run_e9781683c9fc4779b23ed4da0647c139",
+          "error": null,
+          "file": "trace-005/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_e3259f1ad4664ff5b0674abee6248e8b",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abb6da728982d695&run=run_e3259f1ad4664ff5b0674abee6248e8b",
+          "error": null,
+          "file": "trace-005/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_7430e9a1a1cf4bb290f53269355323a7",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abb6da728982d695&run=run_7430e9a1a1cf4bb290f53269355323a7",
+          "error": null,
+          "file": "trace-005/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_899cc6b3861d4e039bea31060609a964",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3001/?trace=trace_abb6da728982d695&run=run_899cc6b3861d4e039bea31060609a964",
+          "error": null,
+          "file": "trace-005/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_abb6da728982d695",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_abb6da728982d695",
+      "status": "completed",
+      "report_file": "trace-005/report.json"
+    },
+    {
+      "name": "xsv-n3-round3",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_32efaba2efd6418a969f3f80782cec8b",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b7ff2953e20e3e5e&run=run_32efaba2efd6418a969f3f80782cec8b",
+          "error": null,
+          "file": "trace-006/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_50d5792334b84b0ba15569c1b5ac219f",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b7ff2953e20e3e5e&run=run_50d5792334b84b0ba15569c1b5ac219f",
+          "error": null,
+          "file": "trace-006/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_b3b1d21231834b04863a3bf4896680ff",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b7ff2953e20e3e5e&run=run_b3b1d21231834b04863a3bf4896680ff",
+          "error": null,
+          "file": "trace-006/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_df3f2aa666e840eeac1fa7522adcd2c3",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b7ff2953e20e3e5e&run=run_df3f2aa666e840eeac1fa7522adcd2c3",
+          "error": null,
+          "file": "trace-006/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_2a7cb52622df49659381ec3800095eea",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b7ff2953e20e3e5e&run=run_2a7cb52622df49659381ec3800095eea",
+          "error": null,
+          "file": "trace-006/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_b7ff2953e20e3e5e",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_b7ff2953e20e3e5e",
+      "status": "completed",
+      "report_file": "trace-006/report.json"
+    },
+    {
+      "name": "xsv-n4-round1",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_4f70f0f3d27e4440947e84708265b92b",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_a49b03f1df3bca94&run=run_4f70f0f3d27e4440947e84708265b92b",
+          "error": null,
+          "file": "trace-007/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_6b99b5792ff14c958eb702762d653d97",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_a49b03f1df3bca94&run=run_6b99b5792ff14c958eb702762d653d97",
+          "error": null,
+          "file": "trace-007/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_54e6221d59e84d6b8c25ce93ede509db",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_a49b03f1df3bca94&run=run_54e6221d59e84d6b8c25ce93ede509db",
+          "error": null,
+          "file": "trace-007/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_28cdbcaa34ec4d81af696fa7d9d933de",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_a49b03f1df3bca94&run=run_28cdbcaa34ec4d81af696fa7d9d933de",
+          "error": null,
+          "file": "trace-007/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_e713662b225f4f6c9d6f2110bb36d2b7",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3001/?trace=trace_a49b03f1df3bca94&run=run_e713662b225f4f6c9d6f2110bb36d2b7",
+          "error": null,
+          "file": "trace-007/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_a49b03f1df3bca94",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_a49b03f1df3bca94",
+      "status": "completed",
+      "report_file": "trace-007/report.json"
+    },
+    {
+      "name": "xsv-n4-round2",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_c6f99270d81a410ba847434c77571cbb",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abaad9e890b53c8a&run=run_c6f99270d81a410ba847434c77571cbb",
+          "error": null,
+          "file": "trace-008/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_62c30a51b48f401dbf1037290a0d7b69",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abaad9e890b53c8a&run=run_62c30a51b48f401dbf1037290a0d7b69",
+          "error": null,
+          "file": "trace-008/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_44118248a3ad4e5991230529b338a6d1",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abaad9e890b53c8a&run=run_44118248a3ad4e5991230529b338a6d1",
+          "error": null,
+          "file": "trace-008/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_052d6477fa324da5a8645712bd28699d",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_abaad9e890b53c8a&run=run_052d6477fa324da5a8645712bd28699d",
+          "error": null,
+          "file": "trace-008/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_37c0dd9f10984622a8c19d7ba1aaf4fb",
+          "status": "completed",
+          "reused": false,
+          "url": "http://127.0.0.1:3001/?trace=trace_abaad9e890b53c8a&run=run_37c0dd9f10984622a8c19d7ba1aaf4fb",
+          "error": null,
+          "file": "trace-008/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_abaad9e890b53c8a",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_abaad9e890b53c8a",
+      "status": "completed",
+      "report_file": "trace-008/report.json"
+    },
+    {
+      "name": "xsv-n4-round3",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_e8b0f15891294b5a82e893f07b431d16",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f4edfa23b99faa29&run=run_e8b0f15891294b5a82e893f07b431d16",
+          "error": null,
+          "file": "trace-009/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_7321e328fd8e4fc095019f074578b6a8",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f4edfa23b99faa29&run=run_7321e328fd8e4fc095019f074578b6a8",
+          "error": null,
+          "file": "trace-009/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_72a578f4fb574744838cb631994ee6bc",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f4edfa23b99faa29&run=run_72a578f4fb574744838cb631994ee6bc",
+          "error": null,
+          "file": "trace-009/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_e090e020268d47da866466f7dada2e5d",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f4edfa23b99faa29&run=run_e090e020268d47da866466f7dada2e5d",
+          "error": null,
+          "file": "trace-009/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_25f49ea33b77439f99448b3ae36b693c",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_f4edfa23b99faa29&run=run_25f49ea33b77439f99448b3ae36b693c",
+          "error": null,
+          "file": "trace-009/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_f4edfa23b99faa29",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_f4edfa23b99faa29",
+      "status": "completed",
+      "report_file": "trace-009/report.json"
+    },
+    {
+      "name": "yj-n2-round1",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_5af928d303eb40779f22f0e0649225a3",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b128ff4c92d47fa5&run=run_5af928d303eb40779f22f0e0649225a3",
+          "error": null,
+          "file": "trace-010/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_2cfc4de09dd54fdb9ce568b98a8ebcce",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b128ff4c92d47fa5&run=run_2cfc4de09dd54fdb9ce568b98a8ebcce",
+          "error": null,
+          "file": "trace-010/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_4d65772ddd7f43e381d259088ee728ea",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b128ff4c92d47fa5&run=run_4d65772ddd7f43e381d259088ee728ea",
+          "error": null,
+          "file": "trace-010/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_aef942374c9f45e79286db2bcf7ef5d4",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b128ff4c92d47fa5&run=run_aef942374c9f45e79286db2bcf7ef5d4",
+          "error": null,
+          "file": "trace-010/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_3778b64258a64d2888c05a18658b0d0f",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_b128ff4c92d47fa5&run=run_3778b64258a64d2888c05a18658b0d0f",
+          "error": null,
+          "file": "trace-010/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_b128ff4c92d47fa5",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_b128ff4c92d47fa5",
+      "status": "completed",
+      "report_file": "trace-010/report.json"
+    },
+    {
+      "name": "yj-n3-round1",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_703c9b51ccc247c587c16aa11c969fee",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_c25e8be963216dac&run=run_703c9b51ccc247c587c16aa11c969fee",
+          "error": null,
+          "file": "trace-011/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_28207a3513e546699a809cdc76be4e13",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_c25e8be963216dac&run=run_28207a3513e546699a809cdc76be4e13",
+          "error": null,
+          "file": "trace-011/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_6d6539f54ac444fcb554604563ebc88b",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_c25e8be963216dac&run=run_6d6539f54ac444fcb554604563ebc88b",
+          "error": null,
+          "file": "trace-011/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_8f027f1d52b040d38ed795566cbe28d5",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_c25e8be963216dac&run=run_8f027f1d52b040d38ed795566cbe28d5",
+          "error": null,
+          "file": "trace-011/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_23b754af327c4b6daad31674f29814e7",
+          "status": "failed",
+          "reused": false,
+          "url": "http://127.0.0.1:3001/?trace=trace_c25e8be963216dac&run=run_23b754af327c4b6daad31674f29814e7",
+          "error": "Message #17 failed annotation validation after 3 attempts: Returned evidence not in the target message body. Rejected spans (JSON, at most 240 characters each): [\"HCL parser requires quoted attribute keys: \\\"a\\\" = \\\"x\\\"; unquoted a = \\\"x\\\" errors.\"]. Choose shorter contiguous verbatim spans from the target; do not combine separate passages or normalize punctuation.",
+          "file": "trace-011/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_c25e8be963216dac",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_c25e8be963216dac",
+      "status": "incomplete",
+      "report_file": "trace-011/report.json"
+    },
+    {
+      "name": "yj-n4-round1",
+      "analyses": [
+        {
+          "analyzer": "example_kickstart",
+          "run_id": "run_49db50433bd345dc83599edfc2dc0390",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_ae5cc6010f6d3028&run=run_49db50433bd345dc83599edfc2dc0390",
+          "error": null,
+          "file": "trace-012/analysis-01.json"
+        },
+        {
+          "analyzer": "facts_v1",
+          "run_id": "run_e6e64624fd734b8d8953b11cd6f825b0",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_ae5cc6010f6d3028&run=run_e6e64624fd734b8d8953b11cd6f825b0",
+          "error": null,
+          "file": "trace-012/analysis-02.json"
+        },
+        {
+          "analyzer": "regex_v1",
+          "run_id": "run_745e306f04b04b40be1dd6fc27f51a38",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_ae5cc6010f6d3028&run=run_745e306f04b04b40be1dd6fc27f51a38",
+          "error": null,
+          "file": "trace-012/analysis-03.json"
+        },
+        {
+          "analyzer": "agenttrace_heuristics_v1",
+          "run_id": "run_4785f8ce09dd463cb39e3a1cdf80d3ea",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_ae5cc6010f6d3028&run=run_4785f8ce09dd463cb39e3a1cdf80d3ea",
+          "error": null,
+          "file": "trace-012/analysis-04.json"
+        },
+        {
+          "analyzer": "scout_collaboration_v1",
+          "run_id": "run_d84ba8d5d7fc4a3f99438897ea3ebeb0",
+          "status": "completed",
+          "reused": true,
+          "url": "http://127.0.0.1:3001/?trace=trace_ae5cc6010f6d3028&run=run_d84ba8d5d7fc4a3f99438897ea3ebeb0",
+          "error": null,
+          "file": "trace-012/analysis-05.json"
+        }
+      ],
+      "trace_id": "trace_ae5cc6010f6d3028",
+      "room": "record-run",
+      "url": "http://127.0.0.1:3001/?trace=trace_ae5cc6010f6d3028",
+      "status": "completed",
+      "report_file": "trace-012/report.json"
+    }
+  ],
+  "scout_setup": {
+    "model": "openai/gpt-5.4-mini",
+    "ready": true,
+    "issues": [],
+    "install_command": "python -m pip install -e \"./packages/agenttrace-api[scout]\"",
+    "start_command": "agenttrace"
+  },
+  "completed_at": "2026-10-17T17:06:44.205936+00:00"
+}

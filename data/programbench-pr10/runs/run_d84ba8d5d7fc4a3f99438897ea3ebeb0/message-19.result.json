@@ -1,0 +1,24 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    11,
+    13
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports observed parsing/formatting behavior for HCL and a codec option, without proposing or asking. It delivers concrete findings from tests, so primary is evidence_observation, with result_delivery as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "HCL details: `a = { x = 1, y = \"q\" }` parses JSON a:[{x:1,y:q}], because object treated block/list; `a { x=1 }` same. HCL null invalid. Arrays and scalar straightforward."
+    },
+    {
+      "field": "secondary_types",
+      "text": "-cc emits quoted keys, blank lines between object fields."
+    }
+  ]
+}

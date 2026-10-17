@@ -1,0 +1,33 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "delegation_request",
+    "coordination"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message asks a direct clarification question about ownership of the main program and offers to take on parser drafting, which functions as both a question and a light delegation/coordination move. It is addressed in context to the teammate who was discussing implementation split.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Are you implementing main program?"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can draft parser if not."
+    },
+    {
+      "field": "addressed_to",
+      "text": "I can draft parser if not."
+    }
+  ]
+}

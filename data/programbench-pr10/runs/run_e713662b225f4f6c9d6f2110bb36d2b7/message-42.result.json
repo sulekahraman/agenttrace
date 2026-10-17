@@ -1,0 +1,28 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    40,
+    41
+  ],
+  "addressed_to": [],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message reports current state of the shared tree and git status, not requesting work or making a decision. It also references specific commits as the relevant artifacts, so artifact_sharing fits as secondary.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Shared tree now has commits 4423032 (joins) and d588776 (condense/index/split/partition);"
+    },
+    {
+      "field": "artifact_sharing",
+      "text": "Shared tree now has commits 4423032 (joins) and d588776 (condense/index/split/partition);"
+    },
+    {
+      "field": "status_update",
+      "text": "Syntax/build should be checked; current git clean."
+    }
+  ]
+}

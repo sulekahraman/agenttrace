@@ -1,0 +1,31 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message proposes a contingent plan (“I can build a standalone Python core”) and coordinates to avoid duplicated work (“let me know to avoid overlap”). It also reports current state (“No implementation files exist yet”).",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I can build a standalone Python core if others have not started"
+    },
+    {
+      "field": "secondary_types",
+      "text": "let me know to avoid overlap"
+    },
+    {
+      "field": "secondary_types",
+      "text": "No implementation files exist yet"
+    }
+  ]
+}

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Preserve Unicode line separators inside JSONL strings and link every post from compound
+  `sharednet say` commands. Existing operations retain their first `posted` sequence; multi-post
+  commands additionally expose `posted_seqs`. Regression tests cover LF/CRLF and both omissions.
+
 - Move the standard automated annotator to `commsfail/annotators/standard/`; update imports and packaged prompts, and list it in `commsfail annotators`. The `annotate` and `annotate-batch` commands and output schema are unchanged.
 
 - Add resumable `annotate-batch` with two workers, E3 artifact validation, per-case logs and incremental summaries. Reject nonempty single-run output directories and fail when graded verdict retries are exhausted.

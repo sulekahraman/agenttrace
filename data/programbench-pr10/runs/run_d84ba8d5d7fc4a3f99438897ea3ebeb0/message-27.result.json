@@ -1,0 +1,26 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    24,
+    25
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a concrete observed behavior of the system (`-k YAML output can crash/error on numeric-looking keys`) and gives a specific repro/error string. It is not a question or directive; it delivers test findings to the team, likely in response to the ongoing implementation/testing thread.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "-k YAML output can crash/error on numeric-looking keys: JSON {\"1\":\"a\"} => stderr Error writing YAML: reflect: call of reflect.Value.Set on zero Value; ordinary keys okay."
+    },
+    {
+      "field": "addressed_to",
+      "text": "-k YAML output can crash/error on numeric-looking keys: JSON {\"1\":\"a\"} => stderr Error writing YAML: reflect: call of reflect.Value.Set on zero Value; ordinary keys okay."
+    }
+  ]
+}

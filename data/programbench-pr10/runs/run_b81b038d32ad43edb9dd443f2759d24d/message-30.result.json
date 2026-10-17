@@ -1,0 +1,35 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "delegation_request",
+    "status_update"
+  ],
+  "replies_to": [
+    22,
+    25,
+    26,
+    29
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix and test result, while also requesting others to include/commit the change. It is primarily a result delivery with a coordination/delegation aspect and a brief status update about compile/tests.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I patched compile.sh to rm -f executable before cp"
+    },
+    {
+      "field": "secondary_types",
+      "text": "compile now succeeds and tests frequency/flatten."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please include/commit this change."
+    }
+  ]
+}

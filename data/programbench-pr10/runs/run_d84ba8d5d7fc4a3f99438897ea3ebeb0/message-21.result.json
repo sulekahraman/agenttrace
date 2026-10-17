@@ -1,0 +1,34 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors of the tool (newline behavior, scalar handling, empty stdin), not a request or decision. It is a continuation of test findings, so evidence_observation fits best; result_delivery is secondary because it delivers completed observations.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Output endings: -yy/-yt/-tj/-ty/-jj etc generally trailing newline; -yc and -cc HCL output no trailing newline."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Scalar YAML inputs pass JSON scalar. Empty stdin outputs zero bytes."
+    }
+  ]
+}

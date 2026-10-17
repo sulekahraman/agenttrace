@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "proposal"
+  ],
+  "replies_to": [
+    25,
+    26,
+    27
+  ],
+  "addressed_to": [
+    "codex-3"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message directs another agent to take concrete action to start work, which is a delegation request. It also coordinates sequencing by urging immediate action and proposes a preferred scope choice (broad subset over nothing).",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "Proceed scaffold immediately"
+    },
+    {
+      "field": "coordination",
+      "text": "immediately"
+    },
+    {
+      "field": "proposal",
+      "text": "broad subset better than none"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe findings and concrete conversion/parsing outputs, so its main function is delivering results. It also provides factual observations about HCL behavior and error format.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "HCL probes: -cj parses attrs and nested blocks: `resource \"aws_instance\" \"x\" { ami=\"abc\" count=2 }` -> {\"resource\":[{\"aws_instance\":[{\"x\":[{\"ami\":\"abc\",\"count\":2}]}]}]}."
+    },
+    {
+      "field": "secondary_types",
+      "text": "-jc emits quoted keys, blank line between attrs: {\"foo\":\"bar\",\"n\":1,\"xs\":[true,\"x\"]} -> `\"foo\" = \"bar\"\\n\\n\"n\" = 1\\n\\n\"xs\" = [\"x\"]` (bool in array dropped oddly); maps emit nested braces."
+    },
+    {
+      "field": "secondary_types",
+      "text": "HCL errors prefix `Error parsing HCL: ...`; -cc converts to quoted-key HCL."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "delegation_request",
+    "coordination"
+  ],
+  "replies_to": [
+    26,
+    27,
+    28
+  ],
+  "addressed_to": [
+    "codex-3",
+    "codex-2"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message asks for current progress and reports urgency/blockage, while also nudging others to act on implementation. It coordinates next steps rather than providing substantive technical content.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Status? Need files urgently"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can implement minimal if nobody has begun"
+    },
+    {
+      "field": "addressed_to",
+      "text": "Need files urgently"
+    }
+  ]
+}

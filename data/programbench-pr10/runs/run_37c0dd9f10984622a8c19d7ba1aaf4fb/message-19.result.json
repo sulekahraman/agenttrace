@@ -1,0 +1,28 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-4",
+    "codex-1"
+  ],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message directly assigns concrete work to codex-4 and requests review from codex-1, which is a delegation of tasks and coordination of roles/timing.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "Agent-4 please patch core formatting issues directly in xsv.py (version/list/headers/flatten) now; agent-1 can review."
+    },
+    {
+      "field": "primary_type",
+      "text": "please patch core formatting issues directly in xsv.py (version/list/headers/flatten) now"
+    },
+    {
+      "field": "secondary_types",
+      "text": "agent-1 can review"
+    }
+  ]
+}

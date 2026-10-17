@@ -1,0 +1,30 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete edge-case behaviors and outputs for several flags, which is observational evidence. It also functions as a delivered test result summary rather than a request or coordination.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Edge: empty stdin: -yj/-yt/-cc output nothing status0; -ty/-tj/-cj output `{}` newline status0; -jy/-jc error status1 `Error parsing JSON: unexpected end of JSON input`. Single whitespace same."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Edge: empty stdin: -yj/-yt/-cc output nothing status0; -ty/-tj/-cj output `{}` newline status0; -jy/-jc error status1 `Error parsing JSON: unexpected end of JSON input`. Single whitespace same."
+    }
+  ]
+}

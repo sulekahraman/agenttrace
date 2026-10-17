@@ -1,0 +1,19 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    22
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed change: it says the conversion was implemented and notes the remaining special case behavior. It is a status/result update in response to the prior request to patch the converter, but it does not ask or propose anything new.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Also implemented -n conversion of Infinity/-Infinity to max float recursively (NaN remains string), matching probe."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed conversion/formatting behaviors for TOML and YAML, not a question or plan. It delivers test results/probes: formatting rules, indentation, and array/map conversion details.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "TOML formatting: -jt {a:1,s:x,b:true,arr:[1,\"x\",true],obj:{x:2,y:z}} => attrs each `a = 1` etc, blank line then `[obj]` and x/y."
+    },
+    {
+      "field": "primary_type",
+      "text": "-jti indents nested table attrs by 2 spaces (`  x = 2`)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "-ty TOML arrays become YAML list; nested map key y oddly quoted in sample (`  \"y\": z`)."
+    }
+  ]
+}

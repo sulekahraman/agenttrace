@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    5,
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probing results and concrete observed outputs, which is a result delivery with supporting evidence/observations. It does not ask for action or make a plan.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Probed stats/frequency/table/flatten exact sample."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "stats default header field,type,sum,min,max,min_length,max_length,mean,stddev; numeric detection Integer and stddev sample?"
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Frequency NULL prints (NULL)."
+    }
+  ]
+}

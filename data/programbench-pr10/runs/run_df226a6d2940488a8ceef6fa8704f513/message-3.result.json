@@ -1,0 +1,29 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.91,
+  "ambiguous": false,
+  "rationale": "The message proposes the sender’s planned work on CLI behavior and invites coordination about overlapping implementation efforts. It is not a status update because it mostly states intended action, with a coordination request appended.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I’ll probe CLI behavior/help and focus on edge cases and conversion details"
+    },
+    {
+      "field": "secondary_types",
+      "text": "let me know if another implementation is underway"
+    },
+    {
+      "field": "addressed_to",
+      "text": "let me know if another implementation is underway"
+    }
+  ]
+}

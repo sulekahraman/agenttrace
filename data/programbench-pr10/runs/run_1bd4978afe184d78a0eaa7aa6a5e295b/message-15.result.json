@@ -1,0 +1,24 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    10,
+    13
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed validation results for the join patch and notes the version correction. It is a status/result report rather than a proposal or request.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Join patch smoke-tests exactly match reference for inner/left/right examples."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Version appears concurrently corrected to 0.13.0."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    19
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete CLI behavior findings from tests: invalid flags, flag parsing, and combined flag handling. It is delivering results rather than asking or proposing.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "CLI: `-x` invalid; `--help` invalid (prints usage + Error invalid flags); `--` ends flags."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Unknown chars listed in error. Combined `-yin` accepted (mode yj + -i + -n), output pretty."
+    }
+  ]
+}

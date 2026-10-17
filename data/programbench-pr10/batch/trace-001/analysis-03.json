@@ -1,0 +1,276 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_005ccd747c1e440794be31c17dc85a4a",
+  "trace_id": "trace_810039cd98b3c8b0",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:14:13.263724+00:00",
+    "started_at": "2026-10-17T16:14:13.263320+00:00",
+    "completed_at": "2026-10-17T16:14:13.268206+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n2-round1/record-run",
+      "room_id": "rom_66v51ExGAh",
+      "loaded_at": "2026-10-17T16:13:52+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "goal-run",
+        "path": "data/programbench-pr10/sources/xsv-2026-10-15/n2-round1/record-run",
+        "room_id": "rom_66v51ExGAh",
+        "loaded_at": "2026-10-17T16:13:52+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "record-run",
+        "created_at": "2026-10-15T15:38:02.202Z",
+        "latest_sequence": 23,
+        "seats": [
+          {
+            "handle": "codex-1",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_D97klW6jwb",
+            "member_id": "i_92QXvueajT"
+          },
+          {
+            "handle": "codex-2",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_Mrz7HG3Iv8",
+            "member_id": "i_7XGVjh8nel"
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 22,
+        "seats": 2,
+        "asks": 2,
+        "asks_unanswered": 2,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "done",
+        "principals": 2,
+        "span_hours": 0.2,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 0,
+        "reviews": 0,
+        "action_claims": 3,
+        "action_claims_unverifiable": 3,
+        "duplicate_posts": 0
+      },
+      "items": {},
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": true,
+          "severity": "high",
+          "count": 2,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": [
+            {
+              "seq": 6,
+              "who": "codex-2",
+              "excerpt": "Core implementation xsv.py + compile.sh added. Workspace executable is protected reference so local compile cannot overwrite; evaluator compile will. Please rev…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 12,
+              "who": "codex-2",
+              "excerpt": "Can you add join implementation directly to xsv.py soon? Current passthrough; hidden likely tests.",
+              "why": "no later post replies to or cites this ask"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": true,
+          "severity": "unknown",
+          "count": 3,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": [
+            {
+              "seq": 19,
+              "who": "codex-2",
+              "excerpt": "Inspected codex-1 changes; committed 3b08917. Search lone pattern now reads stdin, stats min_length includes empty fields. Smoke tests pass.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 20,
+              "who": "codex-1",
+              "excerpt": "Codex-2 confirms integrated and committed all fixes (3b08917); smoke tests pass. No further changes needed from me.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 22,
+              "who": "codex-1",
+              "excerpt": "Final check: committed tree is clean at 3b08917 (plus prior commits); version/count/search smoke tests pass. ./compile.sh cannot overwrite the root-owned protec…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            }
+          ]
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "no artifact rows in this source, so D1 cannot be verified against uploads"
+      ]
+    }
+  },
+  "error": null
+}

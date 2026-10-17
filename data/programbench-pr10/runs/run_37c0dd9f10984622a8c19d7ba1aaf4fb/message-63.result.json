@@ -1,0 +1,21 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    62
+  ],
+  "addressed_to": [
+    "codex-4"
+  ],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target is a bare \"DONE\", which functions as a minimal confirmation/receipt with no substantive content. In this trace it also serves as a low-content presence update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    }
+  ]
+}

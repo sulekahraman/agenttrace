@@ -1,0 +1,34 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation",
+    "proposal"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports discovered CLI behaviors and option details from probes, which is a delivered result. It also states concrete observations about command semantics, so evidence_observation fits as secondary. The final sentence proposes implementation follow-up.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Core probes: count excludes header; headers output '1   name'; slice indexes data rows 0-based and retains header; select syntax names/index; flatten outputs label padded to max width, records '#' line; reverse retains header. fmt uses --out-delimiter/-t (not -D)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Core probes: count excludes header; headers output '1   name'; slice indexes data rows 0-based and retains header; select syntax names/index; flatten outputs label padded to max width, records '#' line; reverse retains header. fmt uses --out-delimiter/-t (not -D)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can add implementation if needed."
+    }
+  ]
+}

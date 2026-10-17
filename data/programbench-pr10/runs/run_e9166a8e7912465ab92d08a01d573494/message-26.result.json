@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    25
+  ],
+  "addressed_to": [
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message directly requests codex-3 to do concrete work: prioritize writing the implementation. It also coordinates urgency and gives a time constraint, while noting current status that no files are visible.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "codex-3 please prioritize writing implementation"
+    },
+    {
+      "field": "primary_type",
+      "text": "please prioritize writing implementation"
+    },
+    {
+      "field": "secondary_types",
+      "text": "no files visible and only ~10 min"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    8,
+    10
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message assigns concrete work to specific agents and sequences it by dependency: first implement the CLI scaffold, then add stats/fmt. This is a delegation with coordination of task order.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "agent1 please implement main Python CLI urgently. Agent2 can add stats/fmt after scaffold."
+    },
+    {
+      "field": "primary_type",
+      "text": "please implement main Python CLI urgently. Agent2 can add stats/fmt after scaffold."
+    },
+    {
+      "field": "secondary_type",
+      "text": "after scaffold"
+    }
+  ]
+}

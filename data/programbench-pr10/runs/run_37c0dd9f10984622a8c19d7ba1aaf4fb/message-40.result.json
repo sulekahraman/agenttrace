@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "evidence_observation",
+    "coordination"
+  ],
+  "replies_to": [
+    36
+  ],
+  "addressed_to": [
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message points out a mismatch between expected and current behavior, challenging the implementation rather than asking or reporting progress. It also cites a specific observed error behavior, and it directs attention to codex-3 by name.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Also note codex-3 edge mismatch: fixlengths without --length on stdin should exit 1 with `<stdin> cannot be used in this command. Please specify a file path.`"
+    },
+    {
+      "field": "addressed_to",
+      "text": "codex-3"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Current accepts stdin."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    6,
+    8,
+    10,
+    11
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports specific observed behaviors and edge cases for special options, not a plan or question. It delivers concrete findings about escaping, numeric handling, and YAML parsing.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Special opts: -e JSON escapes < > & as \\\\u003c \\\\u003e \\\\u0026."
+    },
+    {
+      "field": "primary_type",
+      "text": "YAML .inf/.Inf default become strings \"Infinity\"/\"-Infinity\"/\"NaN\"; -n yields max float 1.7976931348623157e+308, -max, NaN -> null."
+    },
+    {
+      "field": "primary_type",
+      "text": "-k on JSON keys including numeric can error (reflect Set zero). YAML block | parses newline string."
+    }
+  ]
+}

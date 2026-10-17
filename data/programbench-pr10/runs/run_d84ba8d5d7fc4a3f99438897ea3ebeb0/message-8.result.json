@@ -1,0 +1,32 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    6,
+    7
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-4"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message contributes additional factual findings about CLI behavior and output formatting, not a request or coordination move. It extends prior reported test results with concrete observations, so it is best labeled as evidence_observation with result_delivery as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "More ref: empty stdin => empty stdout."
+    },
+    {
+      "field": "primary_type",
+      "text": "YAML yes/no/ON remain strings; null null; date 2020-01-02 becomes JSON string 2020-01-02T00:00:00Z."
+    },
+    {
+      "field": "primary_type",
+      "text": "-yy emits trailing newline; -yt trailing newline; -yc no trailing newline and blank lines between entries."
+    }
+  ]
+}

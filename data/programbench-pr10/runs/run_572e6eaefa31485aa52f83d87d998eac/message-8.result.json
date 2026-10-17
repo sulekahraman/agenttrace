@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completed probing results for formatting-related command behavior, which is a delivered result rather than a question or plan. It also contains concrete observed outputs and formatting rules, so evidence_observation fits as a secondary type.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probed formatting:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "table input a,b / xx,y / 1,long outputs"
+    },
+    {
+      "field": "secondary_types",
+      "text": "fmt -t ';' removes quotes when no need"
+    }
+  ]
+}

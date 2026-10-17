@@ -1,0 +1,37 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "coordination",
+    "proposal"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message asks for confirmation about implementation ownership and asks another agent to confirm, while proposing to take the core work only if there is no conflict. It is primarily a question with coordination/proposal elements.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "Are you implementing main script?"
+    },
+    {
+      "field": "proposal",
+      "text": "I can implement core, but avoid conflicts."
+    },
+    {
+      "field": "coordination",
+      "text": "Please confirm."
+    }
+  ]
+}

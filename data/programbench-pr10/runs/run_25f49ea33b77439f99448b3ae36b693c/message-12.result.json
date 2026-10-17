@@ -1,0 +1,24 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    8,
+    9
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message reports empirically observed command outputs and semantics from testing, which is an evidence_observation. It also delivers those findings to the group, so result_delivery is a secondary function.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Observed outputs: stats default columns field,type,sum,min,max,min_length,max_length,mean,stddev; Unicode sum/mean blank."
+    },
+    {
+      "field": "secondary_types",
+      "text": "frequency header field,value,count, null shown (NULL). join header concatenates both headers, duplicate keys produce cartesian; --left/right/full pad empties; --cross cartesian incl headers."
+    }
+  ]
+}

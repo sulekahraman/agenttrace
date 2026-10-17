@@ -1,0 +1,28 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "critique_disagreement"
+  ],
+  "replies_to": [
+    49,
+    50
+  ],
+  "addressed_to": [
+    "codex-3",
+    "codex-2",
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports observed differences between reference and current behavior, focusing on missing stats fields and an ignored flag. It functions as a factual bug observation with implicit criticism of the current implementation.",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "Current stats remains major mismatch: ref default header `field,type,sum,min,max,min_length,max_length,mean,stddev`; current emits only field,type,sum,min,max,mean,stddev."
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "Ref --everything adds median,mode,cardinality; current ignores."
+    }
+  ]
+}

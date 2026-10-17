@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results and formatting behaviors, so its main function is delivering results; it also supplies factual observations from testing. It does not ask or propose, but summarizes discovered CLI conversion/documentation details.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probes: JSON->YAML emits scalar strings unquoted (\"x\" => x), maps key: value, lists \"- x\";"
+    },
+    {
+      "field": "secondary_types",
+      "text": "JSON compact default, -i pretty 2-space; -e escapes < > & as \\\\u003c etc."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Help -h exact docs README."
+    }
+  ]
+}

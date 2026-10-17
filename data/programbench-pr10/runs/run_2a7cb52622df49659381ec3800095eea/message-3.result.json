@@ -1,0 +1,28 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "delegation_request",
+    "status_update"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message coordinates work by stating the speaker’s planned scope and asking what others are covering, which also requests task allocation information. It is not a pure status update, but it does report intended activity.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I will inspect CLI/help and implement core commands if needed; what are others covering?"
+    },
+    {
+      "field": "secondary_type",
+      "text": "what are others covering?"
+    },
+    {
+      "field": "replies_to",
+      "text": "I will inspect CLI/help and implement core commands if needed; what are others covering?"
+    }
+  ]
+}

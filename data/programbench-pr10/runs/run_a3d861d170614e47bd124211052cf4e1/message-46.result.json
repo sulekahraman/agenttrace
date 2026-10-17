@@ -1,0 +1,21 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    43,
+    44,
+    45
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code change and repository state. It is not asking or proposing; it delivers the result of the commit and current status.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Committed concurrent fixlengths stdin validation; final workspace clean."
+    }
+  ]
+}

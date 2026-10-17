@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "room_id": "rom_mIZSKsj0ON",
+  "goal": {
+    "message_id": "msg_Kdzl50W97F",
+    "sequence": 1,
+    "until": [
+      "said DONE",
+      "after 30m",
+      "budget 3M tokens"
+    ],
+    "started_at": "2026-10-15T16:52:57.076Z"
+  },
+  "ended_by": {
+    "at": "2026-10-15T16:55:58.699Z",
+    "detail": "DONE",
+    "trigger": "said DONE"
+  },
+  "runner": {
+    "started_at": "2026-10-15T16:53:05.207Z",
+    "ended_at": "2026-10-15T16:55:58.740Z",
+    "workspace": "/home/cl4750/goal-pb/work/xsv-n3-20261015T165254Z/workspace"
+  },
+  "totals": {
+    "messages": 43,
+    "checks": 0,
+    "snapshots": 16,
+    "reminders": 0,
+    "tokens": 172680,
+    "cached_tokens": 5262240
+  },
+  "image": "pb-goal/burntsushi_1776_xsv.f430466:2",
+  "agent_user": "agent",
+  "isolated": true,
+  "addresses": {
+    "codex-1": "172.18.0.4",
+    "codex-2": "172.18.0.5",
+    "codex-3": "172.18.0.6"
+  },
+  "web_search": "off",
+  "turn_limit_s": 1200,
+  "mention_gate": false,
+  "task_gate": false,
+  "message_routing": "broadcast",
+  "consensus": true,
+  "remind_s": 120,
+  "agents": [
+    {
+      "name": "codex-1",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_N8cB8t6ZSx",
+      "session_id": "01a1407b-4fa7-7aa2-9a9a-62b9939e0f7b",
+      "turns": 7,
+      "failed_turns": 0,
+      "tokens": 49255,
+      "usage": {
+        "input": 39555,
+        "cached": 1425519,
+        "output": 9700
+      }
+    },
+    {
+      "name": "codex-2",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_zqYvdQ82oD",
+      "session_id": "01a1407b-4f9f-7332-9864-4dbdfb7facbc",
+      "turns": 6,
+      "failed_turns": 0,
+      "tokens": 59998,
+      "usage": {
+        "input": 50960,
+        "cached": 1783120,
+        "output": 9038
+      }
+    },
+    {
+      "name": "codex-3",
+      "driver": "codex",
+      "model": "gpt-5.6-luna",
+      "member_id": "i_ORcSVRiHZA",
+      "session_id": "01a1407b-4fab-7f53-bf30-d8ea28ad891c",
+      "turns": 3,
+      "failed_turns": 0,
+      "tokens": 63427,
+      "usage": {
+        "input": 53687,
+        "cached": 2053601,
+        "output": 9740
+      }
+    }
+  ]
+}

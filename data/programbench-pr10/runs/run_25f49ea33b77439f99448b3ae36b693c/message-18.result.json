@@ -1,0 +1,33 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    6,
+    10,
+    15,
+    16
+  ],
+  "addressed_to": [
+    "codex-3",
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors and edge cases from testing, not a request or proposal. It delivers findings about select, flatten, and fixlengths, so evidence_observation is primary and result_delivery is secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Core observations: select name picks first duplicate; name[2] errors (index seems 0-based? name[2] out bounds for 2 dup); !1 and 2- work."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Core observations: select name picks first duplicate; name[2] errors (index seems 0-based? name[2] out bounds for 2 dup); !1 and 2- work."
+    },
+    {
+      "field": "secondary_types",
+      "text": "flatten -c 3 emits hel... (length incl ellipsis), separator appended newline. fixlengths pads/truncates and preserves header."
+    }
+  ]
+}

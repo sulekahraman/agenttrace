@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "agreement",
+    "clarification"
+  ],
+  "replies_to": [
+    25,
+    26
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a concrete observed behavior of the HCL encoder and explicitly confirms a quirk. It is informational rather than requesting work or making a decision, and it is directed to codex-2.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "@codex-2"
+    },
+    {
+      "field": "primary_type",
+      "text": "confirmed HCL encoder quirk: JSON->-jc `{\"arr\":[true,false,1,\"x\"]}` outputs `\"arr\" = [1, \"x\"]`; bools dropped from arrays, all bool -> []"
+    }
+  ]
+}

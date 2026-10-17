@@ -1,0 +1,25 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation",
+    "status_update"
+  ],
+  "replies_to": [
+    49,
+    51
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed validation results for the current join implementation, including exact stdout match and build status. It is primarily delivering results, with supporting observations and status on compile/tree cleanliness.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Differential-tested current join against reference for --no-case and --left with duplicate/case/empty keys; stdout matches exactly."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Compile, py_compile, and tree clean."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    23,
+    24
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message explicitly directs another agent to take action: 'Please proceed core'. It also adds implementation constraints, which fits coordination as a secondary function.",
+  "evidence": [
+    {
+      "field": "addressed_to",
+      "text": "@codex-2"
+    },
+    {
+      "field": "primary_type",
+      "text": "Please proceed core;"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Ensure help path uses executable argv and output HCL no trailing newline."
+    }
+  ]
+}

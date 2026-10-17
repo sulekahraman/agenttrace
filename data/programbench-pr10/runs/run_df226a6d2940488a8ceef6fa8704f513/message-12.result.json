@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    10,
+    11
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe results about TOML behavior and concrete output formats, so its main function is result delivery with supporting evidence observations. It responds to prior edge-case probing updates from [M10] and [M11].",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "TOML probes:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "emits JSON newline; -ty YAML newline/block; -tt normalizes with blank line between tables"
+    },
+    {
+      "field": "secondary_types",
+      "text": "TOML dates remain strings in JSON/YAML."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "status_update",
+    "critique_disagreement"
+  ],
+  "replies_to": [
+    51
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports an observed problem in the current implementation/output (“remaining mismatch”), which is an evidence observation. It also updates the group on current status of the work by flagging an unresolved issue, and implicitly criticizes the current state as not matching expected behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Found remaining mismatch"
+    },
+    {
+      "field": "secondary_types",
+      "text": "remaining mismatch: `input -d"
+    }
+  ]
+}

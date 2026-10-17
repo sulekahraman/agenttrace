@@ -1,0 +1,24 @@
+{
+  "primary_type": "social_heartbeat",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    17
+  ],
+  "addressed_to": [],
+  "confidence": 0.88,
+  "ambiguous": false,
+  "rationale": "The message is a low-content availability ping stating willingness to help and inviting follow-up, without assigning concrete work or delivering findings. It coordinates next steps and reports readiness to act.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I can run broad differential tests once shared implementation appears"
+    },
+    {
+      "field": "secondary_types",
+      "text": "ping me if specific code review needed"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    38,
+    40
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target is a minimal completion signal rather than substantive content. It acknowledges the prior discussion and reports task completion/status without adding new information.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    }
+  ]
+}

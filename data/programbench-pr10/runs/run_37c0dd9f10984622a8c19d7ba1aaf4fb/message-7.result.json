@@ -1,0 +1,32 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation",
+    "status_update"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results and current progress state, not a question or plan. It delivers findings about version, list, error handling, table formatting, and notes that no code changes were made.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Global findings: --version outputs exactly 0.13.0; --list starts Installed commands: and full command list; unknown command exits 1 stderr `Could not match 'foo' with any of the allowed variants: [...]`. Table behavior: outputs fields padded to max display width, default min width 2 and pad 2; `-c N` truncates fields to N chars then appends `...` (e.g. -c2 gives xxxx->`xx...` visually)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Global findings: --version outputs exactly 0.13.0; --list starts Installed commands: and full command list; unknown command exits 1 stderr `Could not match 'foo' with any of the allowed variants: [...]`."
+    },
+    {
+      "field": "secondary_types",
+      "text": "No edits made."
+    }
+  ]
+}

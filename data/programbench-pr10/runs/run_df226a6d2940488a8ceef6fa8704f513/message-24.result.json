@@ -1,0 +1,34 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    12,
+    15,
+    17,
+    19,
+    23
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed TOML emitter behavior and formatting details, not a question or request. It delivers test results about scalar, nested object, null, array, and empty table serialization.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "TOML emitter: top scalars each `k = val`; nested object preceded blank line `[o]`; -i adds two leading spaces to nested scalar lines."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Null-only object emits empty. Arrays inline `[1, \"x\"]`. Empty nested table still emits `[empty]\\n`."
+    },
+    {
+      "field": "replies_to",
+      "text": "TOML emitter: top scalars each `k = val`; nested object preceded blank line `[o]`"
+    }
+  ]
+}

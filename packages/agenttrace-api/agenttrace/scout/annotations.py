@@ -204,10 +204,26 @@ async def annotate_message(
             if not isinstance(generated, Result) or not isinstance(generated.parsed, MessageAnnotation):
                 raise _AnnotationValidationError("Returned no structured message annotation.")
             annotation = normalize_annotation(generated.parsed, target_number, roster_ids)
-            if any(number not in valid_previous for number in annotation.replies_to):
-                raise _AnnotationValidationError("Cites a reply not in its supplied context.")
-            if any(item.text not in message.text for item in annotation.evidence):
-                raise _AnnotationValidationError("Returned evidence not in the target message body.")
+            invalid_replies = sorted(set(annotation.replies_to) - valid_previous)
+            if invalid_replies:
+                raise _AnnotationValidationError(
+                    "Cites a reply not in its supplied context. "
+                    f"Rejected reply numbers: {invalid_replies}. "
+                    f"Allowed reply numbers: {sorted(valid_previous)}. "
+                    "Use [] if no supplied earlier message applies."
+                )
+            invalid_spans = [item.text[:240] for item in annotation.evidence if item.text not in message.text]
+            if invalid_spans:
+                example = _message_text(message).split(":", 1)[0][:80]
+                raise _AnnotationValidationError(
+                    "Returned evidence not in the target message body. Rejected spans "
+                    f"(JSON, at most 240 characters each): {json.dumps(invalid_spans)}. "
+                    "Choose shorter contiguous verbatim spans from the target; "
+                    "do not combine separate passages or normalize punctuation. "
+                    "Preserve Markdown backticks and all other formatting characters. "
+                    f"An exact target prefix (JSON) is {json.dumps(example)}; use it "
+                    "only if it supports the field, or choose another exact short span."
+                )
             break
         except (ValidationError, _AnnotationValidationError) as error:
             if isinstance(error, ValidationError):

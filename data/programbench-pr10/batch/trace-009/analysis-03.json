@@ -1,0 +1,324 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_72a578f4fb574744838cb631994ee6bc",
+  "trace_id": "trace_f4edfa23b99faa29",
+  "analyzer": {
+    "name": "regex_v1",
+    "version": "0.2.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:49.009233+00:00",
+    "started_at": "2026-10-17T16:15:49.008909+00:00",
+    "completed_at": "2026-10-17T16:15:49.016601+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "regex_v1",
+      "version": "0.2.0",
+      "schema": "comms-failure/analysis.v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n4-round3/record-run",
+      "room_id": "rom_01X9I0i8d8",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "schema": "comms-failure/analysis.v1",
+      "source": {
+        "kind": "goal-run",
+        "path": "data/programbench-pr10/sources/xsv-2026-10-15/n4-round3/record-run",
+        "room_id": "rom_01X9I0i8d8",
+        "loaded_at": "2026-10-17T16:13:53+00:00",
+        "annotator": "regex_v1@0.2.0"
+      },
+      "room": {
+        "name": "record-run",
+        "created_at": "2026-10-15T17:39:00.450Z",
+        "latest_sequence": 76,
+        "seats": [
+          {
+            "handle": "codex-1",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_2pdyH1WURx",
+            "member_id": "i_gdrTgMnxgb"
+          },
+          {
+            "handle": "codex-2",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_Bc9e3gJlH9",
+            "member_id": "i_nriigCWZ1T"
+          },
+          {
+            "handle": "codex-3",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_55PCfCSFIx",
+            "member_id": "i_wdrZ4MHQl7"
+          },
+          {
+            "handle": "codex-4",
+            "label": null,
+            "driver": "codex",
+            "model": "gpt-5.6-luna",
+            "joined_at": null,
+            "principal": "p_VAPuqW1Xne",
+            "member_id": "i_s3hYYenuEz"
+          }
+        ]
+      },
+      "metrics": {
+        "posts": 74,
+        "seats": 4,
+        "asks": 5,
+        "asks_unanswered": 5,
+        "claims": 0,
+        "re_claims": 0,
+        "heartbeat_posts": 0,
+        "heartbeat_share": 0.0,
+        "open_items_at_end": 0,
+        "last_post_kind": "done",
+        "principals": 4,
+        "span_hours": 0.1,
+        "wait_signals": 0,
+        "claim_posts": 0,
+        "self_contradicting_re_claims": 0,
+        "re_claims_by_position": {
+          "1-20": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "21-40": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "41-60": {
+            "re_claims": 0,
+            "claims": 0
+          },
+          "61+": {
+            "re_claims": 0,
+            "claims": 0
+          }
+        },
+        "done_claims": 0,
+        "reviews": 0,
+        "action_claims": 5,
+        "action_claims_unverifiable": 5,
+        "duplicate_posts": 0
+      },
+      "items": {},
+      "modes": [
+        {
+          "id": "R1",
+          "name": "Open-set decay",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "R2",
+          "name": "Replacement re-does work",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.35,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "B1",
+          "name": "Belief without commitment",
+          "group": "not_binding",
+          "present": true,
+          "severity": "high",
+          "count": 5,
+          "confidence": 0.55,
+          "removed_by": "naming",
+          "evidence": [
+            {
+              "seq": 3,
+              "who": "codex-2",
+              "excerpt": "I will investigate reference CLI/help and implement a focused subset or tests; please share assigned areas.",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 6,
+              "who": "codex-3",
+              "excerpt": "Collected full command help; README confirms xsv. Key semantics: slice excludes header; flatten labels + #; join whitespace/case/nulls; stats/frequency. I can i…",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 10,
+              "who": "codex-4",
+              "excerpt": "No files yet. Are you implementing main script? I can implement core, but avoid conflicts. Please confirm.",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 27,
+              "who": "codex-1",
+              "excerpt": "Agent2 asks scaffold; workspace still only core_impl.py. I can create main scaffold, but agent4 please confirm/act immediately to avoid collision.",
+              "why": "no later post replies to or cites this ask"
+            },
+            {
+              "seq": 40,
+              "who": "codex-1",
+              "excerpt": "Committed implementation f87f045. compile.sh builds executable, .gitignore excludes artifacts. Current smoke: headers/count/search/sort/frequency/stats/table. P…",
+              "why": "no later post replies to or cites this ask"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "name": "Identity drift",
+          "group": "not_binding",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.5,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D1",
+          "name": "Unattested action",
+          "group": "never_done",
+          "present": true,
+          "severity": "unknown",
+          "count": 5,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": [
+            {
+              "seq": 43,
+              "who": "codex-1",
+              "excerpt": "Final smoke passes compile/count/reverse. Latest commit 390f089 includes concurrent advanced integration; git clean.",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 54,
+              "who": "codex-2",
+              "excerpt": "Additional fix committed 480de3a: stats now supports --mode/--cardinality/--median/--nulls switches in main parser, matching documented interface. Compile and s…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 59,
+              "who": "codex-3",
+              "excerpt": "Final gap pass added and committed (8a99c27): cat rows/columns, input custom quote parsing, index placeholder generation, split and partition. py_compile, compi…",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 64,
+              "who": "codex-1",
+              "excerpt": "Latest HEAD 66d859a, working tree clean; py_compile, compile, count, split smoke tests pass. DONE",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            },
+            {
+              "seq": 66,
+              "who": "codex-2",
+              "excerpt": "Verified latest tree clean, compile succeeds, input and split smoke tests pass. DONE",
+              "why": "action claimed (upload / push / tests); this source has no artifact or transfer rows to check it against"
+            }
+          ]
+        },
+        {
+          "id": "D2",
+          "name": "Review of nothing",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.3,
+          "removed_by": "check",
+          "evidence": []
+        },
+        {
+          "id": "D3",
+          "name": "Closure before budget",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.6,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "D4",
+          "name": "Capability not routed",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.4,
+          "removed_by": "none",
+          "evidence": []
+        },
+        {
+          "id": "REP",
+          "name": "Step repetition",
+          "group": "not_read",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.85,
+          "removed_by": "view",
+          "evidence": []
+        },
+        {
+          "id": "HB",
+          "name": "Heartbeat cost",
+          "group": "never_done",
+          "present": false,
+          "severity": "none",
+          "count": 0,
+          "confidence": 0.9,
+          "removed_by": "none",
+          "evidence": []
+        }
+      ],
+      "annotation": {
+        "labels": {
+          "accept": {},
+          "result": {},
+          "review_pass": {}
+        },
+        "facts": {
+          "delivered": {},
+          "acted": {},
+          "passed": {}
+        },
+        "uncertain": [],
+        "annotators": [],
+        "adjudicated": false
+      },
+      "caveats": [
+        "transcript-only detection; every evidence row is a pointer to read, not a label",
+        "no artifact rows in this source, so D1 cannot be verified against uploads"
+      ]
+    }
+  },
+  "error": null
+}

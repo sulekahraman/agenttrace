@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    33
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and the specific fixes included in the commit, which is result delivery; it also notes a rerun of compile, making it a brief status update. It does not ask, delegate, or propose further action.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I committed 4622219 correcting stats numeric min/max (not first/last), Unicode extrema, integer formatting; compile rerun."
+    },
+    {
+      "field": "secondary_types",
+      "text": "compile rerun."
+    }
+  ]
+}

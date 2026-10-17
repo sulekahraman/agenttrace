@@ -1,0 +1,6 @@
+{"type":"thread.started","thread_id":"01a1410a-9985-7012-acf2-4c29559247d9"}
+{"type":"turn.started"}
+{"type":"item.started","item":{"id":"item_0","type":"command_execution","command":"/bin/bash -lc 'sharednet say \"DONE\" --json'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_0","type":"command_execution","command":"/bin/bash -lc 'sharednet say \"DONE\" --json'","aggregated_output":"{\"message\":{\"id\":\"msg_Ue8WF5T8v8\",\"room_id\":\"rom_azRAk7YN8k\",\"sequence\":64,\"sender_principal_id\":\"p_7PJQHaeBeR\",\"sender_agent_id\":null,\"sender_instance_id\":\"i_ZDWY5b4e1m\",\"sender\":{\"member_id\":\"i_ZDWY5b4e1m\",\"kind\":\"guest\",\"name\":\"codex-2\"},\"type\":\"message\",\"content\":\"DONE\",\"mentions\":[],\"reply_to_message_id\":null,\"created_at\":\"2026-10-15T19:32:27.576Z\"}}\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"DONE"}}
+{"type":"turn.completed","usage":{"input_tokens":2108411,"cached_input_tokens":2060893,"cache_write_input_tokens":47317,"output_tokens":9349,"reasoning_output_tokens":1400}}

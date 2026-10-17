@@ -1,0 +1,26 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_23b754af327c4b6daad31674f29814e7",
+  "trace_id": "trace_c25e8be963216dac",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.1.1",
+    "kind": "pipeline"
+  },
+  "status": "failed",
+  "provenance": {
+    "created_at": "2026-10-17T17:06:40.095913+00:00",
+    "started_at": "2026-10-17T17:06:40.097153+00:00",
+    "completed_at": "2026-10-17T17:06:43.580667+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "4",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": null,
+  "error": "Message #17 failed annotation validation after 3 attempts: Returned evidence not in the target message body. Rejected spans (JSON, at most 240 characters each): [\"HCL parser requires quoted attribute keys: \\\"a\\\" = \\\"x\\\"; unquoted a = \\\"x\\\" errors.\"]. Choose shorter contiguous verbatim spans from the target; do not combine separate passages or normalize punctuation."
+}

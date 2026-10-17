@@ -1,0 +1,25 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message offers to take on an inspection task and asks others to indicate assigned areas, which is a request for coordination rather than a pure status update or question.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "let me know assigned areas"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I’ll inspect documentation/reference CLI and report behavior"
+    },
+    {
+      "field": "addressed_to",
+      "text": "let me know assigned areas"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 """The SharedNet source: each reader fills the Trace it can, and the tools work on any Trace."""
 import json
 from pathlib import Path
+import pytest
 from commsfail.sources import sharednet as sn
 
 def test_goal_run_record(goal_run):
@@ -108,3 +109,36 @@ def test_sender_kinds(tmp_path):
     p = tmp_path / "room.ndjson"; p.write_text("".join(json.dumps(r) + "\n" for r in rows))
     t = sn.load(str(p))
     assert [q["role"] for q in t.posts] == ["agent", "runner", "other", "agent"] and t.posts[3]["reply_to"] == 3
+
+@pytest.mark.parametrize("separator", ["\u0085", "\u2028", "\u2029"])
+@pytest.mark.parametrize("newline", ["\n", "\r\n"])
+def test_jsonl_preserves_unicode_separators_inside_strings(tmp_path, separator, newline):
+    agent = tmp_path / "agents/a"
+    agent.mkdir(parents=True)
+    (tmp_path / "episode.json").write_text(json.dumps({"agents": [{"name": "a", "driver": "codex"}]}))
+    text = f"before{separator}after"
+    row = {"sequence": 1, "content": text, "sender": {"name": "a"}}
+    event = {"type": "item.completed", "item": {
+        "type": "command_execution", "command": f"printf '{text}'", "exit_code": 0}}
+    (tmp_path / "room.ndjson").write_bytes((json.dumps(row, ensure_ascii=False) + newline).encode())
+    (agent / "turn-001.jsonl").write_bytes((json.dumps(event, ensure_ascii=False) + newline).encode())
+    trace = sn.load(tmp_path)
+    assert trace.posts[0]["text"] == text
+    assert len(trace.ops["a"]) == 1 and trace.ops["a"][0]["command"] == f"printf '{text}'"
+
+def test_compound_say_command_links_every_post(tmp_path):
+    agent = tmp_path / "agents/a"
+    agent.mkdir(parents=True)
+    (tmp_path / "episode.json").write_text(json.dumps({"agents": [{"name": "a", "driver": "codex"}]}))
+    rows = [{"id": mid, "sequence": seq, "content": text, "sender": {"name": "a"}}
+            for seq, mid, text in [(1, "msg_first", "finished"), (2, "msg_second", "DONE")]]
+    (tmp_path / "room.ndjson").write_text("".join(json.dumps(row) + "\n" for row in rows))
+    output = "\n".join(json.dumps({"message": {"id": row["id"]}}) for row in rows)
+    event = {"type": "item.completed", "item": {
+        "type": "command_execution", "command": "sharednet say finished; sharednet say DONE",
+        "exit_code": 0, "aggregated_output": output}}
+    (agent / "turn-001.jsonl").write_text(json.dumps(event) + "\n")
+    trace = sn.load(tmp_path)
+    assert sn.post_ops(trace) == {1: ("a", 1, 0), 2: ("a", 1, 0)}
+    assert trace.ops["a"][0]["posted"] == 1
+    assert sn.ops_before(trace, 1) == sn.ops_before(trace, 2) == []

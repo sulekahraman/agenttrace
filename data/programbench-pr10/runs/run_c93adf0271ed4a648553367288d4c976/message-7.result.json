@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe results about select behavior, which is a delivered finding rather than a question or plan. It also lists concrete observed edge cases and parsing behavior, fitting evidence_observation as a secondary type.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Select probes: duplicate header B: selector B picks first; B[2] is third occurrence (0-based index) and errors if absent."
+    },
+    {
+      "field": "secondary_type",
+      "text": "3-1 reverses range. !1-2 excludes columns. 3- selects through end."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Bare -2 parsed as unknown flag unless use --."
+    }
+  ]
+}

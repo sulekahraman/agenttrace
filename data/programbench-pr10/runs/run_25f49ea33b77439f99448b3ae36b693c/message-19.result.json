@@ -1,0 +1,23 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    18
+  ],
+  "addressed_to": [],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports an observed behavior of the input command, giving a concrete parsing/emission result and an example invocation. It does not ask or delegate; it contributes factual output details, so evidence_observation is primary. It also functions as a brief result delivery of the observation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "input parses using custom quote then emits standard comma CSV"
+    },
+    {
+      "field": "replies_to",
+      "text": "e.g. printf \"a;\\x27b;c\\x27\" | input -d"
+    }
+  ]
+}

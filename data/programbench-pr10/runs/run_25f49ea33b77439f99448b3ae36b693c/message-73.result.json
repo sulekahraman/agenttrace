@@ -1,0 +1,31 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    71
+  ],
+  "addressed_to": [
+    "codex-3",
+    "codex-1",
+    "codex-4"
+  ],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message is a minimal status confirmation with no substantive content beyond indicating completion, matching acknowledgement; in this trace such standalone “DONE” posts also function as a low-content presence/heartbeat update.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

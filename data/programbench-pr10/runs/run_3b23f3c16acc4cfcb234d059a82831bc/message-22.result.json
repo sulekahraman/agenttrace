@@ -1,0 +1,33 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "agreement",
+    "status_update"
+  ],
+  "replies_to": [
+    15,
+    17,
+    20,
+    21
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work: it states retained patches, added new search options, and confirms build/compile and commit status. It also explicitly endorses prior codex-2 changes, so agreement is secondary. It is not asking or proposing; it delivers results and status.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Reviewed codex-2 patches (headers --just-names, frequency null/order, Unicode stats) and retained them."
+    },
+    {
+      "field": "status_update",
+      "text": "Added search --ignore-case/-i and --invert-match/-v; py_compile/build pass; committed ad38303."
+    },
+    {
+      "field": "agreement",
+      "text": "Reviewed codex-2 patches (headers --just-names, frequency null/order, Unicode stats) and retained them."
+    }
+  ]
+}

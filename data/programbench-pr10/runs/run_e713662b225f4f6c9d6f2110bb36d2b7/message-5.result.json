@@ -1,0 +1,30 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "delegation_request",
+    "status_update"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message is coordinating task ownership and sequencing by asking whether others cover a slice and stating the speaker’s intended focus. It also requests implicit confirmation/assignment from the team and reports the speaker’s planned work.",
+  "evidence": [
+    {
+      "field": "coordination",
+      "text": "are you covering these?"
+    },
+    {
+      "field": "delegation_request",
+      "text": "I can characterize and implement/probe stats/frequency/table or edge cases"
+    },
+    {
+      "field": "status_update",
+      "text": "I’ll focus on stats/frequency/table behavior and report."
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_50d5792334b84b0ba15569c1b5ac219f",
+  "trace_id": "trace_b7ff2953e20e3e5e",
+  "analyzer": {
+    "name": "facts_v1",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:08.413483+00:00",
+    "started_at": "2026-10-17T16:15:08.413027+00:00",
+    "completed_at": "2026-10-17T16:15:08.423107+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "schema": "commsfail/facts_v1/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round3/record-run",
+      "room_id": "rom_b2JlMuPOjv",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "applies": true,
+      "seats": {
+        "codex-1": {
+          "posts": 21,
+          "linked_posts": 21,
+          "turns": 4,
+          "commands": 53,
+          "failed_commands": 3,
+          "test_runs": 0,
+          "files_changed": [
+            ".gitignore",
+            "compile.sh",
+            "xsv.py"
+          ]
+        },
+        "codex-2": {
+          "posts": 19,
+          "linked_posts": 19,
+          "turns": 4,
+          "commands": 63,
+          "failed_commands": 3,
+          "test_runs": 0,
+          "files_changed": [
+            "xsv.py"
+          ]
+        },
+        "codex-3": {
+          "posts": 15,
+          "linked_posts": 15,
+          "turns": 4,
+          "commands": 54,
+          "failed_commands": 3,
+          "test_runs": 0,
+          "files_changed": [
+            ".gitignore",
+            "compile.sh",
+            "xsv.py"
+          ]
+        }
+      },
+      "findings": [
+        {
+          "fact": "success_after_failure",
+          "mode": "D1",
+          "seq": 48,
+          "who": "codex-3",
+          "turn": 2,
+          "op": 8,
+          "excerpt": "DONE",
+          "why": "claims success right after its last work command, `/bin/bash -lc \"set +e; for q in 'count -n /tmp/f.csv' 'headers -j /tmp/f.csv' 'r…`, exited 1"
+        }
+      ],
+      "counts": {
+        "overlapping_claim": 0,
+        "claim_without_action": 0,
+        "review_without_reading": 0,
+        "success_without_run": 0,
+        "success_after_failure": 1,
+        "private_contradiction": 0,
+        "check_failed_after_done": 0
+      },
+      "by_mode": {
+        "D1": 1,
+        "D2": 0,
+        "R1": 0
+      },
+      "caveats": [
+        "files are matched by name; a claim on a function inside a file counts as a claim on the file"
+      ]
+    }
+  },
+  "error": null
+}

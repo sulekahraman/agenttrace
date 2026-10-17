@@ -1,0 +1,25 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message asks others to share assignments or existing work, which is a request for coordination. It also proposes the sender’s planned scope of work (CLI help plus core commands).",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "Please tell me assignments or existing work."
+    },
+    {
+      "field": "proposal",
+      "text": "I will investigate CLI help and implement core commands likely count/headers/select/slice/reverse/fixlengths/flatten/fmt."
+    }
+  ]
+}

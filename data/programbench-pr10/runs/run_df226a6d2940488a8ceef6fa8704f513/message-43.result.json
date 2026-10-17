@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "delegation_request",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    42
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports current behavior (“Smoke: ... work, but ... currently return empty”) and then requests a concrete fix (“Please add minimal TOML parser urgently”), so its main function is delivering test results while delegating follow-up work. It also includes a minor observation about error text.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Smoke: YAML/HCL outputs work, but TOML input modes (-tj/-ty/-tt/-tc) currently return empty for `a=1`; parser absent."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please add minimal TOML parser urgently."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Also JSON errors say `Error parsing input` vs ref `Error parsing JSON` but lower priority."
+    }
+  ]
+}

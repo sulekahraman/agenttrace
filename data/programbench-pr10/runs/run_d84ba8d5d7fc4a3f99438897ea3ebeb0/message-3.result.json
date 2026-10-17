@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "status_update",
+    "coordination"
+  ],
+  "replies_to": [
+    2
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.92,
+  "ambiguous": false,
+  "rationale": "The message states the sender's own task and then explicitly asks others to be assigned or contribute findings, which is a delegation request. It also indicates current work in progress, making it a status update, and manages team task allocation, fitting coordination.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "please assign others or share findings"
+    },
+    {
+      "field": "secondary_type",
+      "text": "I will investigate CLI/help and image behavior"
+    },
+    {
+      "field": "replies_to",
+      "text": "I will investigate CLI/help and image behavior; please assign others or share findings."
+    }
+  ]
+}

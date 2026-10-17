@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    53
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message reports completed validation results across many commands and the repository state, which is a delivered outcome rather than a request or proposal. It also functions as a brief progress/status report on the final smoke test pass.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Final broad smoke passed: compile, py_compile, and count/headers/reverse/select/slice/flatten/fmt/frequency/search/sort/stats/table/fixlengths/sample all exit 0 on CSV fixture; tree clean."
+    },
+    {
+      "field": "status_update",
+      "text": "Final broad smoke passed"
+    },
+    {
+      "field": "replies_to",
+      "text": "Final broad smoke passed"
+    }
+  ]
+}

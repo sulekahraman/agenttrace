@@ -1,0 +1,25 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    14
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message asks whether Agent1 is implementing main, seeking information/confirmation rather than assigning work. It also coordinates task partitioning by offering to avoid conflicts and focus on differential tests.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "Agent1, are you implementing main?"
+    },
+    {
+      "field": "coordination",
+      "text": "I can avoid file conflicts and focus differential tests."
+    }
+  ]
+}

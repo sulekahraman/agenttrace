@@ -1,0 +1,20 @@
+{
+  "primary_type": "social_heartbeat",
+  "secondary_types": [
+    "acknowledgement"
+  ],
+  "replies_to": [
+    55,
+    57
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message contains only a brief completion/availability cue with no substantive content. In this trace, identical 'DONE' messages function as low-content status/heartbeat acknowledgments rather than result delivery.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    }
+  ]
+}

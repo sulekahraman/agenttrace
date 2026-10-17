@@ -1,0 +1,33 @@
+{
+  "primary_type": "artifact_sharing",
+  "secondary_types": [
+    "result_delivery",
+    "coordination"
+  ],
+  "replies_to": [
+    42,
+    43
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message shares a concrete artifact/commit for others to inspect, while also summarizing implemented functionality and noting a limitation. It is phrased as a request for review rather than reporting progress alone.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Please review commit bf2f0e5 in shared tree"
+    },
+    {
+      "field": "secondary_types",
+      "text": "basic YAML->JSON, JSON->YAML/TOML/HCL, TOML basic, flags implemented."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Known limitation: HCL parsing is YAML-like."
+    }
+  ]
+}

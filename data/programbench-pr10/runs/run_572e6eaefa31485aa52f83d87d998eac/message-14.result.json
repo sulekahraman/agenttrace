@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "delegation_request",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    13
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message critiques the current implementation by identifying a mismatch with the reference output and asks for a specific fix. It also reports an observation about frequency behavior being acceptable despite possible tie/order differences.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Smoke diff: stats integer min/max emit 1.0,22.0 but ref emits 1,22; patch numeric formatting."
+    },
+    {
+      "field": "secondary_types",
+      "text": "patch numeric formatting"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Also frequency ties/order may differ but okay."
+    }
+  ]
+}

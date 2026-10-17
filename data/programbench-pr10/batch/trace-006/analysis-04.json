@@ -1,0 +1,134 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_df3f2aa666e840eeac1fa7522adcd2c3",
+  "trace_id": "trace_b7ff2953e20e3e5e",
+  "analyzer": {
+    "name": "agenttrace_heuristics_v1",
+    "version": "1.0.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:15:08.445591+00:00",
+    "started_at": "2026-10-17T16:15:08.445235+00:00",
+    "completed_at": "2026-10-17T16:15:08.448012+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "agenttrace_heuristics_v1",
+      "version": "1.0.0",
+      "schema": "agenttrace/heuristics.v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n3-round3/record-run",
+      "room_id": "rom_b2JlMuPOjv",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "metrics": {
+        "totalMessages": 55,
+        "participantCount": 3,
+        "totalWords": 1227,
+        "averageWordsPerMessage": 22.3,
+        "p95WordsPerMessage": 60,
+        "durationMs": 179401,
+        "contributionBalance": 92.7,
+        "turnSwitchRate": 72.2,
+        "medianResponseLatencyMs": 2318,
+        "questionMessages": 7,
+        "questionFollowUpRate": 1.0,
+        "links": 0,
+        "codeBlocks": 6
+      },
+      "participants": [
+        {
+          "id": "codex-1",
+          "sender": "codex-1",
+          "instance": "codex-1",
+          "runtime": "codex",
+          "messages": 21,
+          "words": 431,
+          "questions": 2,
+          "agreement": 1,
+          "challenge": 1,
+          "coordination": 3
+        },
+        {
+          "id": "codex-2",
+          "sender": "codex-2",
+          "instance": "codex-2",
+          "runtime": "codex",
+          "messages": 19,
+          "words": 475,
+          "questions": 4,
+          "agreement": 0,
+          "challenge": 2,
+          "coordination": 6
+        },
+        {
+          "id": "codex-3",
+          "sender": "codex-3",
+          "instance": "codex-3",
+          "runtime": "codex",
+          "messages": 15,
+          "words": 321,
+          "questions": 1,
+          "agreement": 0,
+          "challenge": 0,
+          "coordination": 2
+        }
+      ],
+      "transitions": [
+        {
+          "source": "codex-2",
+          "target": "codex-1",
+          "count": 8
+        },
+        {
+          "source": "codex-1",
+          "target": "codex-2",
+          "count": 8
+        },
+        {
+          "source": "codex-1",
+          "target": "codex-3",
+          "count": 6
+        },
+        {
+          "source": "codex-3",
+          "target": "codex-2",
+          "count": 6
+        },
+        {
+          "source": "codex-2",
+          "target": "codex-3",
+          "count": 6
+        },
+        {
+          "source": "codex-3",
+          "target": "codex-1",
+          "count": 5
+        }
+      ],
+      "failureModes": [
+        {
+          "id": "none",
+          "severity": "low",
+          "title": "No strong structural flag",
+          "detail": "The deterministic thresholds did not identify a strong failure-mode signal.",
+          "threshold": "No configured threshold was crossed.",
+          "evidence": "This does not imply the collaboration was successful; inspect the transcript and task outcome."
+        }
+      ]
+    }
+  },
+  "error": null
+}

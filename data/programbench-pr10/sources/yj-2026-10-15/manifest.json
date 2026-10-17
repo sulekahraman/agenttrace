@@ -1,0 +1,379 @@
+{
+  "format": "commsfail-sample-copy/v1",
+  "study": "yj-2026-10-15",
+  "copy_policy": "Selected files copied byte-for-byte.",
+  "files": [
+    {
+      "source": "n2-round1/room.ndjson",
+      "path": "n2-round1/record-run/room.ndjson",
+      "bytes": 23615,
+      "sha256": "5670f9de262d472aa44ba52dfbe19cd39505cc5c7cef103f6ac8ba34590d271e"
+    },
+    {
+      "source": "n2-round1/episode.json",
+      "path": "n2-round1/record-run/episode.json",
+      "bytes": 1770,
+      "sha256": "d9ba0b7f56521b68c991d730b0ef2b1d6828fd6b17b170ea5d0a84ee19bb8e28"
+    },
+    {
+      "source": "n2-round1/wakes.ndjson",
+      "path": "n2-round1/record-run/wakes.ndjson",
+      "bytes": 1511,
+      "sha256": "26fb7aaa1385db9030e20c2dac717039e34eab22252711a30105d279b34d327a"
+    },
+    {
+      "source": "n2-round1/checks.ndjson",
+      "path": "n2-round1/record-run/checks.ndjson",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "n2-round1/agents/codex-1/turn-001.jsonl",
+      "path": "n2-round1/record-run/agents/codex-1/turn-001.jsonl",
+      "bytes": 117589,
+      "sha256": "9e3108d6be368d22919e1201809952da3bfe70ae63ec2bb375a568ddadc71e8a"
+    },
+    {
+      "source": "n2-round1/agents/codex-1/turn-002.jsonl",
+      "path": "n2-round1/record-run/agents/codex-1/turn-002.jsonl",
+      "bytes": 11603,
+      "sha256": "dc81aeff567c9ac0892d505b673dd3e598a40a23273326d9e7f378aa2ec82982"
+    },
+    {
+      "source": "n2-round1/agents/codex-2/turn-001.jsonl",
+      "path": "n2-round1/record-run/agents/codex-2/turn-001.jsonl",
+      "bytes": 67938,
+      "sha256": "5c36985cad8392c08300492e3b2cdd5eb1ec93c25febcb56cf72b025c3faf68a"
+    },
+    {
+      "source": "n2-round1/agents/codex-2/turn-002.jsonl",
+      "path": "n2-round1/record-run/agents/codex-2/turn-002.jsonl",
+      "bytes": 18157,
+      "sha256": "d5d33508fdde15a841bed5a38190030b27bb57b282ebdade80780e42c8e9e0fc"
+    },
+    {
+      "source": "n2-round1/agents/codex-2/turn-003.jsonl",
+      "path": "n2-round1/record-run/agents/codex-2/turn-003.jsonl",
+      "bytes": 12327,
+      "sha256": "af8ee7a156418a964943b5d458e9938832136527837c2e088c760b71e7c6673f"
+    },
+    {
+      "source": "n2-round1/TASK.md",
+      "path": "n2-round1/TASK.md",
+      "bytes": 6435,
+      "sha256": "96feabe9087c56cf62379e1d37ef3ad32e46dd59e4d6c9f1c07b470bf0a5297c"
+    },
+    {
+      "source": "n3-round1/room.ndjson",
+      "path": "n3-round1/record-run/room.ndjson",
+      "bytes": 38781,
+      "sha256": "6cd0b13efc8a1bcc7188a84f5548673dc843500d13e3fb58ce447ce48a24cf58"
+    },
+    {
+      "source": "n3-round1/episode.json",
+      "path": "n3-round1/record-run/episode.json",
+      "bytes": 2154,
+      "sha256": "60cb3f5cba63f84534705d9ee4c15eb1a0e3c39bc165ef70db62883f941d1998"
+    },
+    {
+      "source": "n3-round1/wakes.ndjson",
+      "path": "n3-round1/record-run/wakes.ndjson",
+      "bytes": 5187,
+      "sha256": "3c8dec95b47adb21e0b4cf4315a22dda069965036e15087b7a454ece96510356"
+    },
+    {
+      "source": "n3-round1/checks.ndjson",
+      "path": "n3-round1/record-run/checks.ndjson",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "n3-round1/agents/codex-1/turn-001.jsonl",
+      "path": "n3-round1/record-run/agents/codex-1/turn-001.jsonl",
+      "bytes": 100129,
+      "sha256": "f7362c2b0c61d75ccfe655d533a50033e971fcd36c9c72a9ab8e0ccf2ecf7dbb"
+    },
+    {
+      "source": "n3-round1/agents/codex-1/turn-002.jsonl",
+      "path": "n3-round1/record-run/agents/codex-1/turn-002.jsonl",
+      "bytes": 14548,
+      "sha256": "d12771fc05c4e9270b06b2f92e48f19a1185a2b78cdab39173476fbb3a5cfb47"
+    },
+    {
+      "source": "n3-round1/agents/codex-1/turn-003.jsonl",
+      "path": "n3-round1/record-run/agents/codex-1/turn-003.jsonl",
+      "bytes": 2785,
+      "sha256": "5d5e4afc7afca207e84857875caef2c6332aeda0c2980bd5c479fc98c206d839"
+    },
+    {
+      "source": "n3-round1/agents/codex-1/turn-004.jsonl",
+      "path": "n3-round1/record-run/agents/codex-1/turn-004.jsonl",
+      "bytes": 3924,
+      "sha256": "83641262c79a4361972b125af1037c1ffa72fa0565a2933b39d0b676d205f003"
+    },
+    {
+      "source": "n3-round1/agents/codex-1/turn-005.jsonl",
+      "path": "n3-round1/record-run/agents/codex-1/turn-005.jsonl",
+      "bytes": 2365,
+      "sha256": "b6f366f55b5be393913da0e176966c4cb059a7421aa467a49552787817ee45e4"
+    },
+    {
+      "source": "n3-round1/agents/codex-1/turn-006.jsonl",
+      "path": "n3-round1/record-run/agents/codex-1/turn-006.jsonl",
+      "bytes": 1293,
+      "sha256": "6d984ed30bc4c881eb01ccf0bc2dca224056e77eda8bd31647e8b7d4cb7c68e7"
+    },
+    {
+      "source": "n3-round1/agents/codex-2/turn-001.jsonl",
+      "path": "n3-round1/record-run/agents/codex-2/turn-001.jsonl",
+      "bytes": 125614,
+      "sha256": "6c33453b09bf43f6023baf81b93dbcb1fe55cc8ae5fb4d0acbc2687594575374"
+    },
+    {
+      "source": "n3-round1/agents/codex-2/turn-002.jsonl",
+      "path": "n3-round1/record-run/agents/codex-2/turn-002.jsonl",
+      "bytes": 11296,
+      "sha256": "db5e4190480b63450eec5dd35313853040ec630701b0dfd96d6e8b8f372a58ec"
+    },
+    {
+      "source": "n3-round1/agents/codex-2/turn-003.jsonl",
+      "path": "n3-round1/record-run/agents/codex-2/turn-003.jsonl",
+      "bytes": 1503,
+      "sha256": "842ddeae20ced56f943cda63212aa2315c14b777e32af2c358726495014fad35"
+    },
+    {
+      "source": "n3-round1/agents/codex-2/turn-004.jsonl",
+      "path": "n3-round1/record-run/agents/codex-2/turn-004.jsonl",
+      "bytes": 362,
+      "sha256": "4f6dc3e4c7583b4d23e12354865083d87311e2cf7997919d5298518b46b49802"
+    },
+    {
+      "source": "n3-round1/agents/codex-2/turn-005.jsonl",
+      "path": "n3-round1/record-run/agents/codex-2/turn-005.jsonl",
+      "bytes": 1458,
+      "sha256": "40c488930e77c10d0318d8f04c6162a8d01bfd0728e69f23a1a7331f0dcf28eb"
+    },
+    {
+      "source": "n3-round1/agents/codex-3/turn-001.jsonl",
+      "path": "n3-round1/record-run/agents/codex-3/turn-001.jsonl",
+      "bytes": 98627,
+      "sha256": "803ee8e1f3d1467156f74de5f67cf0f6776ebc779ac46404165d9c9518558c59"
+    },
+    {
+      "source": "n3-round1/agents/codex-3/turn-002.jsonl",
+      "path": "n3-round1/record-run/agents/codex-3/turn-002.jsonl",
+      "bytes": 17016,
+      "sha256": "8479883c094a7dcb03d7258e0089429ff1e06c160381d48a4ecff37500308bb7"
+    },
+    {
+      "source": "n3-round1/agents/codex-3/turn-003.jsonl",
+      "path": "n3-round1/record-run/agents/codex-3/turn-003.jsonl",
+      "bytes": 13379,
+      "sha256": "b510085b3584b17d2c3d9e761d3c25567c54806e7f21afb0e6bcb596ab11f4e6"
+    },
+    {
+      "source": "n3-round1/agents/codex-3/turn-004.jsonl",
+      "path": "n3-round1/record-run/agents/codex-3/turn-004.jsonl",
+      "bytes": 3146,
+      "sha256": "bbd2f12464ba39706646e8a1defbb8d48ee4d8abbb74b6669ff24b64291beba7"
+    },
+    {
+      "source": "n3-round1/agents/codex-3/turn-005.jsonl",
+      "path": "n3-round1/record-run/agents/codex-3/turn-005.jsonl",
+      "bytes": 1290,
+      "sha256": "d3bde13204c25453855c97ec0140c0f59bc194a152426d0b9df11ba2da690204"
+    },
+    {
+      "source": "n3-round1/agents/codex-3/turn-006.jsonl",
+      "path": "n3-round1/record-run/agents/codex-3/turn-006.jsonl",
+      "bytes": 1336,
+      "sha256": "4172957958b146d105de32a6c289e90cb8a26aaf80cdcfd85828c7972eb3a888"
+    },
+    {
+      "source": "n3-round1/TASK.md",
+      "path": "n3-round1/TASK.md",
+      "bytes": 6435,
+      "sha256": "96feabe9087c56cf62379e1d37ef3ad32e46dd59e4d6c9f1c07b470bf0a5297c"
+    },
+    {
+      "source": "n4-round1/room.ndjson",
+      "path": "n4-round1/record-run/room.ndjson",
+      "bytes": 43925,
+      "sha256": "578b71aba574abd497b1e8976f72cb5757461e8cd8b1f2e6a5aecec23867952e"
+    },
+    {
+      "source": "n4-round1/episode.json",
+      "path": "n4-round1/record-run/episode.json",
+      "bytes": 2535,
+      "sha256": "5d53f60fe61bce3c661e9cba373b6e1fbd90a10616ed839b19f3061ea2ffc936"
+    },
+    {
+      "source": "n4-round1/wakes.ndjson",
+      "path": "n4-round1/record-run/wakes.ndjson",
+      "bytes": 7632,
+      "sha256": "96e154c84859db01858bf92e8f03d90cbec604b71a4f6553c30bf74e92175cc4"
+    },
+    {
+      "source": "n4-round1/checks.ndjson",
+      "path": "n4-round1/record-run/checks.ndjson",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "n4-round1/agents/codex-1/turn-001.jsonl",
+      "path": "n4-round1/record-run/agents/codex-1/turn-001.jsonl",
+      "bytes": 118432,
+      "sha256": "9bd9c8a052bda0c3f5eed2da1ff3d8b5918e9ac4c94384fea61089bd8b4e242a"
+    },
+    {
+      "source": "n4-round1/agents/codex-1/turn-002.jsonl",
+      "path": "n4-round1/record-run/agents/codex-1/turn-002.jsonl",
+      "bytes": 1918,
+      "sha256": "f303f29039e61840be3c873c0ae7c65da9edf5563bfaaad20da89e48cc3ffc8b"
+    },
+    {
+      "source": "n4-round1/agents/codex-1/turn-003.jsonl",
+      "path": "n4-round1/record-run/agents/codex-1/turn-003.jsonl",
+      "bytes": 361,
+      "sha256": "4a5a65218a43dc4670b5f46ffc9399a7b0195bb7a5f3a5f9a728f9ce831213e3"
+    },
+    {
+      "source": "n4-round1/agents/codex-1/turn-004.jsonl",
+      "path": "n4-round1/record-run/agents/codex-1/turn-004.jsonl",
+      "bytes": 4968,
+      "sha256": "c10cabe93f8f3e31bbf801d12e8e3d8b75bd378439466ef95b646dda83f4f107"
+    },
+    {
+      "source": "n4-round1/agents/codex-1/turn-005.jsonl",
+      "path": "n4-round1/record-run/agents/codex-1/turn-005.jsonl",
+      "bytes": 361,
+      "sha256": "4f1573c3a13e1e3e9cf48443d7714656b48ed1fa78412ae2cf50eef0a98a12e2"
+    },
+    {
+      "source": "n4-round1/agents/codex-1/turn-006.jsonl",
+      "path": "n4-round1/record-run/agents/codex-1/turn-006.jsonl",
+      "bytes": 1366,
+      "sha256": "72daf1f6469b87f216c69ca2c4b655d6858df77fe2c2a03c9eb91a8cb72ca928"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-001.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-001.jsonl",
+      "bytes": 97202,
+      "sha256": "1542f368d52491660fa11b2855b9e74fab73837a707e42f747257d4388d1aaff"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-002.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-002.jsonl",
+      "bytes": 7594,
+      "sha256": "66909ee5633c05b8e0d59b7141759846e573c2219ea51d6820985037fb96a7e1"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-003.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-003.jsonl",
+      "bytes": 20268,
+      "sha256": "fc02988187c3e565425728afa78e264d2e4393b80efb45816116ec36611ce2de"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-004.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-004.jsonl",
+      "bytes": 2783,
+      "sha256": "bc7fa09dad8fb52be8f4b7a7050bf96174f0baa1aa18d275eed8776d3640acab"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-005.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-005.jsonl",
+      "bytes": 1159,
+      "sha256": "18443837f00e396bce30c657d864b1a9ce84a5fe20505fb9b4dbcea38ae2a6b8"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-006.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-006.jsonl",
+      "bytes": 4043,
+      "sha256": "366c616b4b6fd00098968a5953106d856a0cbd89dd1e28ae54208d199c68f490"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-007.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-007.jsonl",
+      "bytes": 437,
+      "sha256": "aa077d15d8795b0f502d394bb8cfad270dbb991a00249dc9a7067acc76ee4156"
+    },
+    {
+      "source": "n4-round1/agents/codex-2/turn-008.jsonl",
+      "path": "n4-round1/record-run/agents/codex-2/turn-008.jsonl",
+      "bytes": 1285,
+      "sha256": "818d161786474e96bc5e878cbc93b3815350d94c9745cf50f9d586486c3b9674"
+    },
+    {
+      "source": "n4-round1/agents/codex-3/turn-001.jsonl",
+      "path": "n4-round1/record-run/agents/codex-3/turn-001.jsonl",
+      "bytes": 115404,
+      "sha256": "f048431eecbcf50fe79cce890d29741964335eb4b4b78ca2e49f502705c65213"
+    },
+    {
+      "source": "n4-round1/agents/codex-3/turn-002.jsonl",
+      "path": "n4-round1/record-run/agents/codex-3/turn-002.jsonl",
+      "bytes": 2129,
+      "sha256": "fc431455f4a5b6ffac8edd622511f84fbefa01cee3a75fb26da9920583cbf72d"
+    },
+    {
+      "source": "n4-round1/agents/codex-3/turn-003.jsonl",
+      "path": "n4-round1/record-run/agents/codex-3/turn-003.jsonl",
+      "bytes": 413,
+      "sha256": "1bca33aab1a98e81ec89df40bcdc806718d16075b1a3d93f706d7db1b18bf038"
+    },
+    {
+      "source": "n4-round1/agents/codex-3/turn-004.jsonl",
+      "path": "n4-round1/record-run/agents/codex-3/turn-004.jsonl",
+      "bytes": 4516,
+      "sha256": "391ad823da01d4e93d26f8dc4c2002c3a51dad16b9c429d2b173a66313fcdf63"
+    },
+    {
+      "source": "n4-round1/agents/codex-3/turn-005.jsonl",
+      "path": "n4-round1/record-run/agents/codex-3/turn-005.jsonl",
+      "bytes": 432,
+      "sha256": "d2015055df35672903f25c84c3f6f35392682444ba8b1289af682c4d186fc824"
+    },
+    {
+      "source": "n4-round1/agents/codex-3/turn-006.jsonl",
+      "path": "n4-round1/record-run/agents/codex-3/turn-006.jsonl",
+      "bytes": 1860,
+      "sha256": "b838fa051de2cfcab06e55360a59c7fb9d69e64cd2ce4696e94c486df6cd4b61"
+    },
+    {
+      "source": "n4-round1/agents/codex-4/turn-001.jsonl",
+      "path": "n4-round1/record-run/agents/codex-4/turn-001.jsonl",
+      "bytes": 99414,
+      "sha256": "d5f6844e38ab2615d8cea862f0ec6af45a0d8270f3a6f0d680575537d77f05e5"
+    },
+    {
+      "source": "n4-round1/agents/codex-4/turn-002.jsonl",
+      "path": "n4-round1/record-run/agents/codex-4/turn-002.jsonl",
+      "bytes": 29443,
+      "sha256": "a3fed1cd6cba2313cf9739569d9a5081b27cadcb85c834dba0fd468b1dd2f37f"
+    },
+    {
+      "source": "n4-round1/agents/codex-4/turn-003.jsonl",
+      "path": "n4-round1/record-run/agents/codex-4/turn-003.jsonl",
+      "bytes": 8776,
+      "sha256": "30df178052df799950fba1a9347fa535cecfcdd4efc195f9ee25c0357b68a46a"
+    },
+    {
+      "source": "n4-round1/agents/codex-4/turn-004.jsonl",
+      "path": "n4-round1/record-run/agents/codex-4/turn-004.jsonl",
+      "bytes": 361,
+      "sha256": "3c9570b3093565e66aa33bc4f61d9a4e09b59d2049e610d0fc3913c83c3b0376"
+    },
+    {
+      "source": "n4-round1/agents/codex-4/turn-005.jsonl",
+      "path": "n4-round1/record-run/agents/codex-4/turn-005.jsonl",
+      "bytes": 1414,
+      "sha256": "3bd7eb99c43a8f8971d348e21810dbec2f408ac8f927be653a0d76ceba144f8b"
+    },
+    {
+      "source": "n4-round1/TASK.md",
+      "path": "n4-round1/TASK.md",
+      "bytes": 6435,
+      "sha256": "96feabe9087c56cf62379e1d37ef3ad32e46dd59e4d6c9f1c07b470bf0a5297c"
+    }
+  ]
+}

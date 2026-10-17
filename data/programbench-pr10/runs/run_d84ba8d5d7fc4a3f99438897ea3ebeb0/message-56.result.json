@@ -1,0 +1,23 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    55
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix and successful test outcome. It does not ask for action or propose future work; it updates the room on current state and delivers the result of the change.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Fixed -c source routing (c now maps to HCL parser)"
+    },
+    {
+      "field": "secondary_types",
+      "text": "tested HCL->JSON"
+    }
+  ]
+}

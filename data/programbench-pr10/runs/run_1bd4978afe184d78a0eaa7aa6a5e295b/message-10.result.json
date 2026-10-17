@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "evidence_observation",
+    "proposal"
+  ],
+  "replies_to": [
+    9
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message critiques the current implementation by identifying mismatches and missing features. It also observes specific behaviors of xsv.py and implicitly proposes areas needing work, but the dominant function is evaluative critique.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Review: xsv.py --version currently prints \"xsv 0.13.0\" but ref prints exactly \"0.13.0\"."
+    },
+    {
+      "field": "primary_type",
+      "text": "join is entirely missing (currently falls through passthrough), major likely hidden tests."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Also fmt --crlf/quote options and flatten --condense unimplemented."
+    }
+  ]
+}

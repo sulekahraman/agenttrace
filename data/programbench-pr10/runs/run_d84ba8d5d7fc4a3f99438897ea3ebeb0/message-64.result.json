@@ -1,0 +1,25 @@
+{
+  "primary_type": "social_heartbeat",
+  "secondary_types": [
+    "acknowledgement"
+  ],
+  "replies_to": [
+    61,
+    62,
+    63
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a minimal completion/availability ping with no substantive content. It functions as a brief acknowledgment that the work is finished rather than new information or coordination.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    }
+  ]
+}

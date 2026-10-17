@@ -1,0 +1,29 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "question",
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message proposes the sender's own investigative scope and asks others to coordinate their coverage. It does not request specific task execution from a named agent, so proposal is primary; the final question about coverage makes question secondary, and the offer to divide work supports coordination.",
+  "evidence": [
+    {
+      "field": "proposal",
+      "text": "I will investigate CLI behavior, especially YAML/JSON and formatting/edge cases, and report findings."
+    },
+    {
+      "field": "question",
+      "text": "What parts are others covering?"
+    },
+    {
+      "field": "coordination",
+      "text": "What parts are others covering?"
+    }
+  ]
+}

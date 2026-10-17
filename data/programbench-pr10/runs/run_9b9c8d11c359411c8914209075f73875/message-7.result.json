@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors of commands (fmt/input) from probing, so it functions as evidence/observations and also delivers results from the investigation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "fmt preserves CSV quoting, --quote-always quotes every field, --crlf emits CRLF."
+    },
+    {
+      "field": "secondary_types",
+      "text": "input outputs normalized CSV; malformed/no-quoting errors include CSV error and nonzero."
+    }
+  ]
+}

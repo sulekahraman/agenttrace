@@ -1,0 +1,21 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message primarily asks for information about task allocation: \"What commands are others covering?\" It also offers a plan to investigate and possibly implement a fallback dispatcher, making proposal a secondary function.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "What commands are others covering?"
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can investigate global CLI/version/help and possibly implement a fallback dispatcher."
+    }
+  ]
+}

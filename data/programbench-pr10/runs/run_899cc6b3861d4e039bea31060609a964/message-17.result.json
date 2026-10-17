@@ -1,0 +1,25 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    13,
+    14,
+    16
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed changes and current readiness rather than asking or proposing. It delivers the result of requested fixes: flatten and numeric stats formatting. The “Ready for integration” phrasing indicates status after work completion.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Fixed flatten to omit trailing separator (reference behavior), numeric stats formatting."
+    },
+    {
+      "field": "status_update",
+      "text": "Ready for integration."
+    }
+  ]
+}

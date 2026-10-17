@@ -1,0 +1,24 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    6,
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe results about YAML behavior, listing observed conversions and edge cases. It is delivering findings rather than asking or coordinating.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "YAML probes: empty input outputs empty; null => `null\\n`; plain true\\nfalse treated scalar \"true false\"; yes/no strings; dates become ISO `2020-01-01T00:00:00Z`; 0x10 numeric; block | preserves trailing newline; anchors resolve; inf/-inf/NaN stringify by default."
+    },
+    {
+      "field": "secondary_type",
+      "text": "YAML probes: empty input outputs empty; null => `null\\n`; plain true\\nfalse treated scalar \"true false\"; yes/no strings; dates become ISO `2020-01-01T00:00:00Z`; 0x10 numeric; block | preserves trailing newline; anchors resolve; inf/-inf/NaN stringify by default."
+    }
+  ]
+}

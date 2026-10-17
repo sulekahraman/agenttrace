@@ -1,0 +1,15 @@
+{
+  "primary_type": "social_heartbeat",
+  "secondary_types": [],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a terse completion ping with no substantive content, functioning as a brief presence/status acknowledgment rather than new work or information.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    }
+  ]
+}

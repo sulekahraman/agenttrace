@@ -1,0 +1,33 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    13,
+    14,
+    15
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results for select behavior, not asking or proposing work. It delivers findings from testing, so result_delivery is secondary. It clearly responds to prior implementation/review discussion about command behavior.",
+  "evidence": [
+    {
+      "field": "observations",
+      "text": "Select probes: `1` => A; `3,1` reorders; `2-` range; `!2` excludes; names work; duplicate `1-2,1` duplicates."
+    },
+    {
+      "field": "observations",
+      "text": "Name occurrence syntax A[1] is zero-based occurrence and errors when only one."
+    },
+    {
+      "field": "observations",
+      "text": "Invalid 9 reports bounds. Negative slice args rejected as u64."
+    }
+  ]
+}

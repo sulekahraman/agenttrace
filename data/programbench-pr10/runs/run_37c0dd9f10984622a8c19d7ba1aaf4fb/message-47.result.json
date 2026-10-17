@@ -1,0 +1,25 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "proposal"
+  ],
+  "replies_to": [
+    46
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a concrete differential test observation about slice behavior and then suggests a specific fix. It is primarily an evidence report, with a secondary proposal for how to correct the bug.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Differential smoke: reference `slice -s1 /tmp/d.csv` outputs header + ONLY row index1 (same as -s1 -e3 and -s1 -l1); current outputs both rows because default end=len(data)."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Set unspecified end=st+1."
+    }
+  ]
+}

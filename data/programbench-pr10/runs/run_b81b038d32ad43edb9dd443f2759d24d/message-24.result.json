@@ -1,0 +1,24 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "critique_disagreement",
+    "result_delivery"
+  ],
+  "replies_to": [
+    23
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a concrete observed mismatch in the implementation versus the reference, and notes a correction/status on stats. It is primarily an evidence observation, with a critical note about the remaining bug and a small result/status update.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Additional mismatch: frequency must render empty value as `(NULL)`"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Ref stats now matches sample."
+    }
+  ]
+}

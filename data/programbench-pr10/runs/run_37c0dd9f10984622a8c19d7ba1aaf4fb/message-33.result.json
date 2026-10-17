@@ -1,0 +1,27 @@
+{
+  "primary_type": "artifact_sharing",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    32
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code change in the shared workspace and references that it has been committed. This is artifact sharing because it points to the latest commit, and also a status update because it reports progress/completion.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Committed final shared flatten alignment tweak (latest commit)."
+    },
+    {
+      "field": "replies_to",
+      "text": "latest commit"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Committed final shared flatten alignment tweak"
+    }
+  ]
+}

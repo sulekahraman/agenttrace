@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    6,
+    7,
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors/output formats for several conversions, without asking or proposing anything. It functions as a results update delivering findings from testing. It also synthesizes multiple observations into one compact report.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Observed: TOML->JSON compact preserves order; TOML->YAML outputs title: hi, arrays dash lines, nested owner."
+    },
+    {
+      "field": "secondary_type",
+      "text": "JSON->TOML emits title = \"hi\" nums = [1, 2] blank then [owner]. YAML->HCL emits quoted keys: \"a\" = 1 blank lines."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Basic YAML booleans only true/false, yes string."
+    }
+  ]
+}

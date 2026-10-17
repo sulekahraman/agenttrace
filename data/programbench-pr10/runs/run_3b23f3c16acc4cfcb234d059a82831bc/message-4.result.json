@@ -1,0 +1,25 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2,
+    3
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports discovered command-output behavior and says more results will follow, so it is primarily delivering findings. It also functions as a brief progress update and factual observation of probe results.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probes: select duplicate names use A[0], A[1] (0-based); ranges 3-1 reverse and !1 exclusion. flatten default labels aligned 2 spaces, separator line; -c 4 truncates to 4 chars + ... ."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Sample outputs/stats sent next."
+    }
+  ]
+}

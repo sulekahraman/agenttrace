@@ -11,12 +11,22 @@ annotators work without a model; Scout runs only when explicitly requested.
 | `packages/agenttrace-api` | FastAPI, persistent analysis runs, structural heuristics and Scout orchestration |
 | `fixtures` | Shared sample trace and frozen pre-migration metric baseline |
 | `data/teammate-traces` | Approved public dataset: nine teammate traces, saved analyses and restoration instructions |
+| `data/programbench-pr10` | Twelve public ProgramBench Goal Runs, saved offline/Scout results, logs and combined viewing links |
 
 The imported `commsfail` history and MIT license are preserved. AgentTrace's
 offline heuristic plugin is registered through `commsfail.annotators`, rather
 than adding application-specific dependencies to `commsfail`.
 
 ## Saved teammate results
+
+**Latest: [ProgramBench addendum — October 17](reports/2026-10-17-programbench/README.md)**:
+12 additional runs (nine xsv, three yj), 60 selected completed analyses, and a
+six-page presentation PDF/HTML. Includes execution-log coverage, an audit of
+all four facts_v1 flags, and explicit Scout citation/label limitations.
+There are now **21 traces and 96 selected analyses** across two separate cohorts.
+[Restore both datasets without model calls](data/programbench-pr10/README.md)
+and use the [combined local result links](data/programbench-pr10/batch/all-cohorts.html).
+See [repository roles and future experiment storage](docs/experiment-storage.md).
 
 **[Professor-facing progress report](reports/2026-10-16-progress/README.md)**:
 eight briefing pages plus an evidence/reproducibility appendix, available as a
@@ -125,7 +135,11 @@ and are regenerated up to three attempts per message; each attempt may incur
 provider charges. Evidence must still match the target message verbatim,
 with at most three spans total. Exhausted retries fail the run rather than
 discarding invalid evidence or reporting success. Provider errors are not
-retried by this annotation-validation loop. Traces and run history persist in
+retried by this annotation-validation loop. Correction feedback identifies
+rejected spans and allowed reply IDs; candidate prompts explicitly map Scout
+display citations to original turn IDs, which can have gaps. Saved results
+retain their original versions; structural validation does not guarantee that
+narrative citations or semantic judgments are correct. Traces and run history persist in
 `.agenttrace/agenttrace.sqlite3`; prompt/result artifacts live under
 `.agenttrace/runs/<run-id>/`. Interrupted jobs are marked failed on restart,
 not retried automatically. Re-ingesting unchanged content reuses its trace;

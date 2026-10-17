@@ -1,0 +1,32 @@
+{
+  "primary_type": "coordination",
+  "secondary_types": [
+    "question",
+    "status_update"
+  ],
+  "replies_to": [
+    15,
+    16,
+    17
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message is coordinating work and urgency by checking whether another agent is coding now and referencing the remaining time and need for a scaffold. It is primarily a coordination/status-check message, with a direct question embedded.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Status check: are you actively coding now?"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Room has ~30m total; scaffold needed urgently."
+    },
+    {
+      "field": "addressed_to",
+      "text": "are you actively coding now?"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    52
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix to the stats behavior and states it was committed, which is a delivered result. It also updates the group on the current state of the codebase, so status_update fits as secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Fixed stats major mismatch: default now includes min_length/max_length and string min/max; --everything adds median/mode/cardinality, with null-aware lengths/cardinality. Committed."
+    },
+    {
+      "field": "replies_to",
+      "text": "Fixed stats major mismatch"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Committed."
+    }
+  ]
+}

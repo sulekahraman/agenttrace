@@ -1,0 +1,24 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    59,
+    60
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports current repository state and test results, which is a status update. It also delivers completion of the work with a final DONE, so result_delivery fits as secondary. It implicitly follows prior progress reports about committed changes and smoke tests.",
+  "evidence": [
+    {
+      "field": "status",
+      "text": "Latest HEAD 66d859a, working tree clean; py_compile, compile, count, split smoke tests pass."
+    },
+    {
+      "field": "completion",
+      "text": "DONE"
+    }
+  ]
+}

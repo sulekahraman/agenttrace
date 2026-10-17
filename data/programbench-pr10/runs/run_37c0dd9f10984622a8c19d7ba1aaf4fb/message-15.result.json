@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation",
+    "critique_disagreement"
+  ],
+  "replies_to": [
+    11,
+    14
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete findings from inspecting xsv.py and identifies mismatches to fix, which is substantive result delivery. It also points out observed implementation problems versus expected behavior, so evidence_observation fits. The phrase 'fixes needed before compile' and contrast with 'currently' indicates a critique of the current implementation.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Inspect xsv.py: fixes needed before compile:"
+    },
+    {
+      "field": "evidence_observation",
+      "text": "--version must print `0.13.0` (currently xsv 0.13.0); --list reference prints formatted `Installed commands:` list (currently bare names); headers separator is 3 spaces (`1   a`), not tab; flatten output is `label   value` no colon"
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "Current flatten implementation emits labels colon and header record."
+    }
+  ]
+}

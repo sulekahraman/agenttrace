@@ -1,0 +1,25 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results from the sender’s own testing, so its main function is delivering results. It also contains factual observations about tool behavior. It clearly follows up on the prior probe discussion in [M8].",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "More probes:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "fmt delimiter and quote-always/crlf as expected. fixlengths -l3 pads/truncates records (a,b -> a,b,; 1 -> 1,,; 2,3,4 unchanged; , -> ,,,). headers preserves whitespace. reverse -n reverses header too. count -n includes header."
+    }
+  ]
+}

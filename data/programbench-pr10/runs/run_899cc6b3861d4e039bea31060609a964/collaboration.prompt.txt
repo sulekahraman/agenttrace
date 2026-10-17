@@ -1,0 +1,232 @@
+Use the message annotations as candidate-generation evidence, then verify every
+finding against the candidate message text.
+
+ANNOTATION INDEX:
+#2 | codex-3 | primary=delegation_request | secondary=coordination | replies_to=[] | addressed_to=[] | confidence=0.94 | rationale=The message offers to take on an inspection task and asks others to indicate assigned areas, which is a request for coordination rather than a pure status update or question.
+#3 | codex-1 | primary=delegation_request | secondary=coordination,proposal | replies_to=[2] | addressed_to=['codex-3', 'codex-2'] | confidence=0.95 | rationale=The message assigns concrete implementation work to the speaker itself while requesting others to coordinate to avoid duplicate effort. It is primarily a delegation/coordination move rather than a status report or result.
+#4 | codex-2 | primary=status_update | secondary=evidence_observation,proposal | replies_to=[2, 3] | addressed_to=[] | confidence=0.95 | rationale=The message reports completed investigative work and current findings, which is a status update. It also provides concrete observations about docs and implementation language, and offers a next step on request.
+#5 | codex-3 | primary=status_update | secondary=artifact_sharing,delegation_request | replies_to=[2, 4] | addressed_to=[] | confidence=0.96 | rationale=The message reports completed findings about help outputs and README, which is a progress/status update. It also points to where the information can be found, functioning as artifact sharing. The offer to investigate or implement if assigne
+#6 | codex-2 | primary=result_delivery | secondary=evidence_observation | replies_to=[4, 5] | addressed_to=['codex-1', 'codex-3'] | confidence=0.97 | rationale=The message delivers concrete probe results for stats/frequency behavior, including observed headers and output values. It is not asking for work; it reports findings from a specific test case.
+#7 | codex-3 | primary=result_delivery | secondary=coordination,status_update | replies_to=[6] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed probing results with concrete behavior details, so it is result delivery. It also updates progress on investigation and asks whether to proceed with implementation, which adds coordination/status-update aspects
+#8 | codex-2 | primary=result_delivery | secondary=evidence_observation | replies_to=[7] | addressed_to=[] | confidence=0.95 | rationale=The message reports completed probing results for formatting-related command behavior, which is a delivered result rather than a question or plan. It also contains concrete observed outputs and formatting rules, so evidence_observation fits
+#9 | codex-3 | primary=result_delivery | secondary=evidence_observation | replies_to=[8] | addressed_to=[] | confidence=0.98 | rationale=The message reports concrete probe findings about command behavior and formatting rules, not a question or plan. It is delivering results from tests, with observational detail.
+#10 | codex-2 | primary=delegation_request | secondary=question,coordination | replies_to=[7, 9] | addressed_to=['codex-3', 'codex-1'] | confidence=0.94 | rationale=The message asks another agent whether they are handling certain work and offers to take on specific components if not, which is a concrete work-allocation request. It also coordinates ownership of remaining tasks.
+#11 | codex-1 | primary=result_delivery | secondary=coordination,delegation_request | replies_to=[3, 7, 10] | addressed_to=['codex-2', 'codex-3'] | confidence=0.96 | rationale=The message reports completed work delivered to the team and also asks others to inspect/extend it. It is not merely a status update because it states the implementation was added; and it includes a concrete follow-up request for review/ext
+#12 | codex-2 | primary=critique_disagreement | secondary=status_update,proposal | replies_to=[11] | addressed_to=['codex-1'] | confidence=0.98 | rationale=The message reports inspection findings and explicitly identifies incorrect behavior in the current implementation, which is a critique/disagreement. It also gives a current status on what was inspected and proposes prioritization (“please 
+#13 | codex-3 | primary=delegation_request | secondary=coordination | replies_to=[12] | addressed_to=['codex-2'] | confidence=0.98 | rationale=The message asks another agent to do concrete work: patch specific implementations and fix formatting. It also manages workflow by indicating permission to proceed and that the sender will review, which is coordination.
+#14 | codex-3 | primary=critique_disagreement | secondary=delegation_request,evidence_observation | replies_to=[13] | addressed_to=['codex-2'] | confidence=0.95 | rationale=The message critiques the current implementation by identifying a mismatch with the reference output and asks for a specific fix. It also reports an observation about frequency behavior being acceptable despite possible tie/order difference
+#15 | codex-1 | primary=result_delivery | secondary=status_update,artifact_sharing | replies_to=[11, 12, 13, 14] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed work and current state: implementation is done, bugs fixed, and a commit was made. It also mentions the build artifact behavior of compile.sh. This is primarily a result delivery with a status update and artifa
+#16 | codex-3 | primary=delegation_request | secondary=critique_disagreement,clarification | replies_to=[15] | addressed_to=['codex-1'] | confidence=0.98 | rationale=The message asks another agent to make specific code changes: add args, implement limit/ascending, and tolerate --jobs. It also critiques current parser behavior as not handling documented options, but the main function is a request for wor
+#17 | codex-1 | primary=status_update | secondary=result_delivery | replies_to=[13, 14, 16] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed changes and current readiness rather than asking or proposing. It delivers the result of requested fixes: flatten and numeric stats formatting. The “Ready for integration” phrasing indicates status after work c
+#18 | codex-2 | primary=result_delivery | secondary=status_update,clarification | replies_to=[16, 17] | addressed_to=[] | confidence=0.98 | rationale=The message reports completed work on xsv.py, specifically that the fallback parser was patched and that compilation succeeds. It also clarifies an observed state change about flatten formatting. This is a result delivery with a progress/st
+#19 | codex-2 | primary=coordination | secondary=status_update,delegation_request | replies_to=[18] | addressed_to=['codex-1'] | confidence=0.97 | rationale=The message asks another agent to perform a concrete next step (“rerun ./compile.sh”) because the source has been edited and the current executable may be stale. This is process coordination plus a request for action, with a brief status up
+#20 | codex-1 | primary=acknowledgement | secondary=status_update | replies_to=[18, 19] | addressed_to=['codex-2'] | confidence=0.95 | rationale=The message mainly confirms receipt of another agent’s edits and reports verification results, without adding substantive new work. It functions as an acknowledgement plus a brief status update.
+#21 | codex-1 | primary=status_update | secondary=acknowledgement,social_heartbeat | replies_to=[20] | addressed_to=[] | confidence=0.97 | rationale=The message reports completion of work and current readiness without asking for action or delivering new substantive analysis. It also implicitly acknowledges prior coordination by stating completion after earlier edits.
+#22 | codex-2 | primary=result_delivery | secondary=status_update | replies_to=[19] | addressed_to=['codex-1', 'codex-3'] | confidence=0.98 | rationale=The message reports completed verification results for the rebuilt executable and states that no further patches are needed, which is a delivered outcome rather than a request or proposal.
+#23 | codex-2 | primary=result_delivery | secondary=status_update | replies_to=[16, 19, 22] | addressed_to=[] | confidence=0.98 | rationale=The message reports completion of the requested code changes and repository state, rather than asking or coordinating. It delivers the result that final analytics patches were committed and adds a status update that the working tree is clea
+#24 | codex-3 | primary=result_delivery | secondary=status_update | replies_to=[23] | addressed_to=['codex-1', 'codex-2'] | confidence=0.93 | rationale=The message reports completed work and commit status: it adds join support and states the smoke test now matches reference, which is a result delivery. It also updates teammates on current status. It is a response to the immediately prior p
+#25 | codex-2 | primary=acknowledgement | secondary=status_update | replies_to=[22, 23, 24] | addressed_to=[] | confidence=0.99 | rationale=A single-word confirmation that the work is finished; it acknowledges prior updates without adding new substantive content.
+#26 | codex-1 | primary=acknowledgement | secondary=social_heartbeat | replies_to=[25] | addressed_to=[] | confidence=0.99 | rationale=The message is a minimal completion signal with no substantive content beyond confirming the exchange is finished. It functions as an acknowledgement / sign-off rather than new information or work.
+#27 | codex-3 | primary=status_update | secondary=result_delivery | replies_to=[24] | addressed_to=['codex-1', 'codex-2'] | confidence=0.91 | rationale=The message reports current repository state and implementation status: it says the repo is clean, notes recent commits, confirms join code and smoke test behavior, and flags remaining simplistic fallback commands. This is a progress/status
+#28 | codex-3 | primary=critique_disagreement | secondary=proposal,evidence_observation | replies_to=[27] | addressed_to=[] | confidence=0.95 | rationale=The message flags a problem with current behavior relative to the reference and suggests a fix. It observes that help output is incomplete and warns tests may fail, then proposes restoring full help text.
+#29 | codex-3 | primary=status_update | secondary=result_delivery | replies_to=[28] | addressed_to=['codex-1', 'codex-2'] | confidence=0.96 | rationale=The message reports completed work and current state: top-level help restored, compile/syntax verified, and notes remaining issue with subcommand help. It is primarily a status update with a result delivery element.
+#30 | codex-3 | primary=acknowledgement | secondary=status_update | replies_to=[29] | addressed_to=[] | confidence=0.98 | rationale=A single-word 'DONE' most naturally functions as confirmation that the speaker has finished the requested work or task. It also implicitly signals completion/status, but does not add substantive results beyond acknowledgment.
+#31 | codex-2 | primary=result_delivery | secondary=agreement,evidence_observation | replies_to=[29] | addressed_to=['codex-3'] | confidence=0.95 | rationale=The message reports a completed verification outcome: top-level help is present, compile was verified, output matches reference, and git status is clean. It also implicitly agrees with codex-3’s prior patch attribution, but the main functio
+#32 | codex-1 | primary=result_delivery | secondary=agreement,status_update | replies_to=[31] | addressed_to=['codex-3', 'codex-2'] | confidence=0.92 | rationale=The message reports completed work and verification, while also explicitly aligning with a teammate’s prior fix. Its main function is delivering the result of the added help subcommand support; it also acknowledges the teammate’s restored t
+#33 | codex-2 | primary=acknowledgement | secondary=status_update | replies_to=[31, 32] | addressed_to=[] | confidence=0.99 | rationale=The message is a minimal completion signal with no substantive content beyond indicating the agent is finished. It most naturally functions as an acknowledgement/status update in response to the ongoing completion reports immediately before
+#34 | codex-1 | primary=acknowledgement | secondary=social_heartbeat | replies_to=[33] | addressed_to=[] | confidence=0.99 | rationale=The target is a bare completion ping with no substantive content, functioning as acknowledgement/status closure rather than new work.
+#35 | codex-2 | primary=acknowledgement | secondary=status_update | replies_to=[31, 33, 34] | addressed_to=[] | confidence=0.99 | rationale=The target is a bare completion marker with no substantive content, functioning as a receipt/closure signal rather than new information. Given the immediately preceding DONE messages, it also serves as a brief status/finish update.
+#36 | codex-1 | primary=acknowledgement | secondary=social_heartbeat | replies_to=[35] | addressed_to=[] | confidence=0.99 | rationale=The message only says 'DONE', which is a brief completion/receipt signal with no substantive content. It most plausibly responds to the prior task completion thread, so acknowledgement is primary; it also functions as a low-content presence
+#37 | codex-2 | primary=acknowledgement | secondary=social_heartbeat | replies_to=[36] | addressed_to=[] | confidence=0.99 | rationale=The target is a bare completion signal with no substantive content, so it functions as an acknowledgement/status ping rather than a report or request.
+#38 | codex-1 | primary=acknowledgement | secondary=social_heartbeat | replies_to=[37] | addressed_to=[] | confidence=0.98 | rationale=The target is a minimal completion marker with no substantive content, functioning as confirmation of task completion. In this trace, repeated standalone "DONE" messages serve as low-content presence/completion pings.
+#39 | codex-1 | primary=status_update | secondary=acknowledgement | replies_to=[38] | addressed_to=[] | confidence=0.98 | rationale=The target is a brief completion/progress report with no new substantive content. In this trace, repeated "DONE" messages function as status updates indicating the agent has finished.
+#40 | codex-3 | primary=result_delivery | secondary=status_update,artifact_sharing | replies_to=[31] | addressed_to=[] | confidence=0.97 | rationale=The message reports completed work and verification status, including a commit hash, which fits result_delivery. It also functions as a status update and artifact sharing because it states the working tree is clean and cites the commit.
+#41 | codex-2 | primary=acknowledgement | secondary=status_update | replies_to=[40] | addressed_to=[] | confidence=0.99 | rationale=The message only says "DONE," which functions as a brief confirmation/closure with no substantive content. It most naturally acknowledges completion of prior work or the ongoing thread, but does not provide new results.
+#42 | codex-1 | primary=acknowledgement | secondary=status_update | replies_to=[41] | addressed_to=[] | confidence=0.99 | rationale=The target is a bare “DONE,” which functions as a low-content confirmation of completion/receipt rather than substantive work. It most directly acknowledges prior progress in the thread and also serves as a minimal status signal.
+#43 | codex-3 | primary=acknowledgement | secondary=social_heartbeat | replies_to=[40] | addressed_to=[] | confidence=0.99 | rationale=The target is a bare “DONE”, which functions as a minimal acknowledgment/status signal rather than substantive content. Given the repeated DONE messages in the surrounding sequence, it most likely marks completion or presence, but the obser
+
+CANDIDATE MESSAGES:
+[M1] AGENT CODEX-3:
+AgentTrace turn #2; agent codex-3
+I’ll inspect documentation/reference CLI and report behavior; let me know assigned areas.
+
+[M2] AGENT CODEX-1:
+AgentTrace turn #3; agent codex-1
+I will implement core CSV commands (count, headers, select, slice, reverse, sort, search, flatten, fmt) and compile.sh; please coordinate overlaps.
+
+[M3] AGENT CODEX-2:
+AgentTrace turn #4; agent codex-2
+Collected complete -h outputs for all 18 commands; README only docs. Main implementation likely Python. I can probe edge semantics on request.
+
+[M4] AGENT CODEX-3:
+AgentTrace turn #5; agent codex-3
+Collected full -h outputs for all commands; README confirms xsv. Main help/options details available in /reference; I can investigate edge behavior or implement specific command if assigned.
+
+[M5] AGENT CODEX-2:
+AgentTrace turn #6; agent codex-2
+Probe stats/frequency: input name,age,score with Alice,10,2.5 / Bob,,3 / Alice,20,4.5 -> frequency default: field,value,count then name Alice 2, Bob 1; age 20 1,(NULL) 1,10 1; score 2.5,3,4.5 each 1. stats default header field,type,sum,min,max,min_length,max_length,mean,stddev; name Unicode,,Alice,Bob,3,5,,,; age Integer,30,10,20,0,2,15,5; score Float,10,2.5,4.5,1,3,3.3333333333333335,0.8498365855987975. --everything appends median,mode,cardinality (name median/mode blank/Alice/card 2; age 15,N/A,3; score 3,N/A,3).
+
+[M6] AGENT CODEX-3:
+AgentTrace turn #7; agent codex-3
+Probed: frequency output header field,value,count; default order count desc (ties odd), --no-nulls omits empty; stats columns field,type,sum,min,max,min_length,max_length,mean,stddev then median,mode,cardinality with --everything. Join duplicates matching left rows. Let me know if I should implement remaining.
+
+[M7] AGENT CODEX-2:
+AgentTrace turn #8; agent codex-2
+Probed formatting: table input a,b / xx,y / 1,long outputs  (spaces to align, no trailing). flatten outputs each record fields as  then next, i.e. 3 spaces separator, headers labels; fmt -t ';' removes quotes when no need ( => x;y,z), --quote-always quotes every field.
+
+[M8] AGENT CODEX-3:
+AgentTrace turn #9; agent codex-3
+Exact probes: table default uses 2 spaces pad but output field widths maxlen+2 except last; flatten emits each field as , # separator. -n labels zero-based indices. fmt quote-always wraps every field; fixlengths --length 3 appends trailing commas even header.
+
+[M9] AGENT CODEX-2:
+AgentTrace turn #10; agent codex-2
+I can implement stats/frequency/table extras if not covered; are you integrating these?
+
+[M10] AGENT CODEX-1:
+AgentTrace turn #11; agent codex-1
+Core implementation xsv.py + compile.sh added. Commands count/headers/select/slice/reverse/sort/search/flatten/fmt/table; fallback others. Compile currently replaces executable. Please inspect/extend as needed.
+
+[M11] AGENT CODEX-2:
+AgentTrace turn #12; agent codex-2
+Inspected xsv.py: flatten currently emits , but reference emits label + 3 spaces + value, no colon (probe od). fallback frequency/stats formats substantially wrong; please prioritize. Also table width logic currently likely okay. I can patch if needed.
+
+[M12] AGENT CODEX-3:
+AgentTrace turn #13; agent codex-3
+Please patch frequency/stats implementations directly in xsv.py (and fix flatten formatting) if you can; proceed, I’ll review.
+
+[M13] AGENT CODEX-3:
+AgentTrace turn #14; agent codex-3
+Current xsv.py now has frequency/stats. Smoke diff: stats integer min/max emit 1.0,22.0 but ref emits 1,22; patch numeric formatting. Also frequency ties/order may differ but okay.
+
+[M14] AGENT CODEX-1:
+AgentTrace turn #15; agent codex-1
+Implemented core + frequency/stats fallbacks, fixed flatten, committed. Commit current branch; compile.sh generates ignored executable.
+
+[M15] AGENT CODEX-3:
+AgentTrace turn #16; agent codex-3
+Stats now exact on sample. Frequency parser rejects documented --limit/--asc; please add args and implement limit/ascending (default limit 10, 0 unlimited). Also fallback parser should tolerate --jobs.
+
+[M16] AGENT CODEX-1:
+AgentTrace turn #17; agent codex-1
+Fixed flatten to omit trailing separator (reference behavior), numeric stats formatting. Ready for integration.
+
+[M17] AGENT CODEX-2:
+AgentTrace turn #18; agent codex-2
+Patched xsv.py fallback parser with frequency --asc/--limit support and sorting; flatten is now label padded + 3 spaces (agent had already changed). py_compile passes.
+
+[M18] AGENT CODEX-2:
+AgentTrace turn #19; agent codex-2
+Please rerun ./compile.sh after my xsv.py edits; source now frequency options and corrected Float integral sum formatting. Current executable may predate patch.
+
+[M19] AGENT CODEX-1:
+AgentTrace turn #20; agent codex-1
+Noticed and committed your frequency --limit/--asc and stats formatting edits (commit latest). compile verified.
+
+[M20] AGENT CODEX-1:
+AgentTrace turn #21; agent codex-1
+My work complete; core commands and fallback analytics implemented and committed. I stand ready.
+
+[M21] AGENT CODEX-2:
+AgentTrace turn #22; agent codex-2
+Verified rebuilt executable: flatten now matches reference byte layout (separator only between records); stats sample matches exact reference including Float sum 10; frequency --limit works. No further patches needed from me.
+
+[M22] AGENT CODEX-2:
+AgentTrace turn #23; agent codex-2
+I committed final xsv.py analytics patches (frequency options/sorting, stats formatting) as requested; git status clean.
+
+[M23] AGENT CODEX-3:
+AgentTrace turn #24; agent codex-3
+I added minimal join (inner/outer/cross flags) and committed current xsv.py; join smoke now matches reference.
+
+[M24] AGENT CODEX-2:
+AgentTrace turn #25; agent codex-2
+DONE
+
+[M25] AGENT CODEX-1:
+AgentTrace turn #26; agent codex-1
+DONE
+
+[M26] AGENT CODEX-3:
+AgentTrace turn #27; agent codex-3
+git clean; latest commits fc736c3/cfd8e2e etc include patches. Join code present and smoke matches inner join. Remaining fallback commands (cat columns, split/partition) still simplistic.
+
+[M27] AGENT CODEX-3:
+AgentTrace turn #28; agent codex-3
+Noticed main  output currently only , unlike full reference help listing; hidden help tests may fail. Command -h argparse also generic. Consider restoring full help text if time.
+
+[M28] AGENT CODEX-3:
+AgentTrace turn #29; agent codex-3
+I restored full top-level --help command listing and verified compile/syntax. Remaining subcommand help is generic argparse, but functional smoke commands pass.
+
+[M29] AGENT CODEX-3:
+AgentTrace turn #30; agent codex-3
+DONE
+
+[M30] AGENT CODEX-2:
+AgentTrace turn #31; agent codex-2
+Top-level full help is now present in xsv.py (likely codex-3 patch); compile verified and output matches reference listing. git status clean.
+
+[M31] AGENT CODEX-1:
+AgentTrace turn #32; agent codex-1
+Top-level help was already restored by teammate; I added support for the documented help subcommand, committed and verified compile.
+
+[M32] AGENT CODEX-2:
+AgentTrace turn #33; agent codex-2
+DONE
+
+[M33] AGENT CODEX-1:
+AgentTrace turn #34; agent codex-1
+DONE
+
+[M34] AGENT CODEX-2:
+AgentTrace turn #35; agent codex-2
+DONE
+
+[M35] AGENT CODEX-1:
+AgentTrace turn #36; agent codex-1
+DONE
+
+[M36] AGENT CODEX-2:
+AgentTrace turn #37; agent codex-2
+DONE
+
+[M37] AGENT CODEX-1:
+AgentTrace turn #38; agent codex-1
+DONE
+
+[M38] AGENT CODEX-1:
+AgentTrace turn #39; agent codex-1
+DONE
+
+[M39] AGENT CODEX-3:
+AgentTrace turn #40; agent codex-3
+Continued audit: added documented fixlengths --length and sample --seed support, compile/smoke verified, committed a578e45. Working tree clean.
+
+[M40] AGENT CODEX-2:
+AgentTrace turn #41; agent codex-2
+DONE
+
+[M41] AGENT CODEX-1:
+AgentTrace turn #42; agent codex-1
+DONE
+
+[M42] AGENT CODEX-3:
+AgentTrace turn #43; agent codex-3
+DONE
+
+
+Return exactly one record for each category:
+
+1. duplicated_work: Different agents independently repeat materially equivalent
+   analysis or execution without a clear verification, synthesis, or handoff
+   purpose. Do not count acknowledgements, context summaries, or deliberate
+   independent checks.
+2. weak_handoff: Requested work is not acknowledged or delivered, delivered
+   work is not integrated, ownership is unclear, or a request is abandoned.
+3. unintegrated_information: Relevant visible information is later ignored,
+   contradicted without resolution, or omitted from a decision despite a clear
+   opportunity to use it.
+
+Use found=false when evidence is insufficient. Explanations must cite the
+candidate messages using [M#]. message_numbers must contain the original turn
+numbers shown in the candidate message metadata, not the [M#] display labels.

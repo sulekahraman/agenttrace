@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    45
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code change and its outcome: an improved join implementation matching reference behavior, plus build status. It is primarily a result delivery, with a status update component.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Improved join to emit Cartesian matches for duplicate keys (reference behavior), commit included; build remains clean."
+    },
+    {
+      "field": "secondary_types",
+      "text": "build remains clean"
+    },
+    {
+      "field": "replies_to",
+      "text": "Improved join to emit Cartesian matches for duplicate keys (reference behavior), commit included; build remains clean."
+    }
+  ]
+}

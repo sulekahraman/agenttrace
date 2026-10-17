@@ -1,0 +1,26 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe results and observed behaviors for cat, columns, and join, which is a direct delivery of findings rather than a question or plan.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Cat/join probes: cat rows skips subsequent headers unless -n; columns defaults min row count, --pad emits empty fields."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "join header duplicates key columns (k,l,k,m), inner preserves right/hash ordering; --left/full pads missing with empties; --cross emits cartesian rows."
+    }
+  ]
+}

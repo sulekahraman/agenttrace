@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "critique_disagreement",
+    "clarification"
+  ],
+  "replies_to": [
+    15
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message asks another agent to make specific code changes: add args, implement limit/ascending, and tolerate --jobs. It also critiques current parser behavior as not handling documented options, but the main function is a request for work.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "please add args and implement limit/ascending"
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "Frequency parser rejects documented --limit/--asc"
+    },
+    {
+      "field": "clarification",
+      "text": "Also fallback parser should tolerate --jobs."
+    }
+  ]
+}

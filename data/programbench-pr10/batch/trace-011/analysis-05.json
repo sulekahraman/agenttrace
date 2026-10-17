@@ -1,0 +1,1986 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_418e89a41e664bd38d6b034e93ae8f96",
+  "trace_id": "trace_c25e8be963216dac",
+  "analyzer": {
+    "name": "scout_collaboration_v1",
+    "version": "2.1.4",
+    "kind": "pipeline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T17:15:38.737888+00:00",
+    "started_at": "2026-10-17T17:15:38.739658+00:00",
+    "completed_at": "2026-10-17T17:15:44.706904+00:00",
+    "model": "openai/gpt-5.4-mini",
+    "prompt_version": "7",
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0",
+      "agenttrace-api": "0.1.0",
+      "inspect-scout": "0.5.3"
+    }
+  },
+  "output": {
+    "findings": [
+      {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "There are repeated, materially similar probes into the same CLI behaviors by multiple agents before any synthesis: codex-1 says it will probe CLI behavior/help and edge cases [M2], codex-3 says it will investigate CLI behavior and implement parser/converter if needed [M3], and codex-2 also says it will investigate CLI behavior and report findings [M1]. These are not acknowledgements or verifications; they show overlapping independent investigation scopes with no clear division of labor yet.",
+        "confidence": 0.88,
+        "message_numbers": [
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "The handoff from requests to implementation is initially weak because work is asked for but not clearly owned or delivered in the shared workspace: codex-2 asks codex-3 to begin implementation ASAP [M21], codex-1 says no files are visible and asks to be notified when implementation lands [M20], and codex-3 replies that no source files are yet in the workspace and it can only differential-test once implementation lands [M17]. This shows a request/response pattern where the requested work is still pending and ownership is not yet concretely established in the workspace.",
+        "confidence": 0.82,
+        "message_numbers": [
+          20,
+          21,
+          17
+        ]
+      },
+      {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Important observations are later available but not fully integrated into the next action. For example, codex-3 notes that the scaffold compiles and basic YAML-to-JSON works, but also flags that compile removes a protected reference executable and that additional gaps remain [M33], while codex-2 immediately follows with a request to add TOML modes and coordinate edits, focusing on the next feature rather than incorporating the compile-script caveat or the named gaps into a specific plan [M35]. More concretely, codex-3’s explicit warning that significant gaps remain (help exact text, TOML/HCL input parsers, YAML scalar/date semantics) is not resolved in that turn’s decision context [M41], indicating relevant information was surfaced but not yet integrated into an actionable synthesis.",
+        "confidence": 0.67,
+        "message_numbers": [
+          33,
+          35,
+          41
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "message_number": 2,
+        "primary_type": "proposal",
+        "secondary_types": [
+          "question",
+          "coordination"
+        ],
+        "replies_to": [],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message proposes the sender's own investigative scope and asks others to coordinate their coverage. It does not request specific task execution from a named agent, so proposal is primary; the final question about coverage makes question secondary, and the offer to divide work supports coordination.",
+        "evidence": [
+          {
+            "field": "proposal",
+            "text": "I will investigate CLI behavior, especially YAML/JSON and formatting/edge cases, and report findings."
+          },
+          {
+            "field": "question",
+            "text": "What parts are others covering?"
+          },
+          {
+            "field": "coordination",
+            "text": "What parts are others covering?"
+          }
+        ]
+      },
+      {
+        "message_number": 3,
+        "primary_type": "proposal",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          2
+        ],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.91,
+        "ambiguous": false,
+        "rationale": "The message proposes the sender’s planned work on CLI behavior and invites coordination about overlapping implementation efforts. It is not a status update because it mostly states intended action, with a coordination request appended.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "I’ll probe CLI behavior/help and focus on edge cases and conversion details"
+          },
+          {
+            "field": "secondary_types",
+            "text": "let me know if another implementation is underway"
+          },
+          {
+            "field": "addressed_to",
+            "text": "let me know if another implementation is underway"
+          }
+        ]
+      },
+      {
+        "message_number": 4,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination",
+          "question"
+        ],
+        "replies_to": [
+          2,
+          3
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message states the sender’s own planned work and asks teammates what they are doing, which primarily functions as a coordination/delegation request with an embedded question. It follows and responds to the prior task-division messages from codex-2 and codex-1.",
+        "evidence": [
+          {
+            "field": "replies_to",
+            "text": "I will investigate CLI behavior"
+          },
+          {
+            "field": "secondary_types",
+            "text": "what are others doing?"
+          },
+          {
+            "field": "secondary_types",
+            "text": "implement parser/converter if needed"
+          }
+        ]
+      },
+      {
+        "message_number": 5,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          3
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports progress from a probe (“Probed modes...”) and summarizes findings so far, then states more findings will follow. It is not a question or proposal, but a status update with partial results delivered.",
+        "evidence": [
+          {
+            "field": "status",
+            "text": "Probed modes: help/version as README; JSON->YAML emits block style, JSON->TOML omits nested scalar key table odd formatting; HCL outputs quoted keys and blank lines."
+          },
+          {
+            "field": "future_action",
+            "text": "Will send edge-case findings shortly."
+          }
+        ]
+      },
+      {
+        "message_number": 6,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          5
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports concrete CLI observations and behavior results, which fits evidence_observation. The closing offer to continue probing or help with implementation is minor coordination.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Observed help/version v0.0.0; YAML JSON compact default, -i pretty 2 spaces; YAML->TOML formatting; -i invalid for YAML output."
+          },
+          {
+            "field": "secondary_type",
+            "text": "I can probe edge semantics unless implementation needs help."
+          },
+          {
+            "field": "replies_to",
+            "text": "Observed help/version v0.0.0; YAML JSON compact default, -i pretty 2 spaces; YAML->TOML formatting; -i invalid for YAML output."
+          }
+        ]
+      },
+      {
+        "message_number": 7,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed probe results and observed behavior across several CLI cases, so its main function is result delivery with factual observations embedded.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Probes: default YAML->JSON compact; -jy YAML output ends each doc with newline, lists indented 2 spaces."
+          },
+          {
+            "field": "secondary_types",
+            "text": "JSON null accepted YAML but TOML/HCL writers omit/error. YAML yes/no/ON/off are strings; ~ null; .inf/- .Inf/.NaN become strings Infinity/-Infinity/NaN by default."
+          },
+          {
+            "field": "replies_to",
+            "text": "Probes: default YAML->JSON compact; -jy YAML output ends each doc with newline, lists indented 2 spaces."
+          }
+        ]
+      },
+      {
+        "message_number": 8,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          6,
+          7
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed probe results about YAML behavior, listing observed conversions and edge cases. It is delivering findings rather than asking or coordinating.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "YAML probes: empty input outputs empty; null => `null\\n`; plain true\\nfalse treated scalar \"true false\"; yes/no strings; dates become ISO `2020-01-01T00:00:00Z`; 0x10 numeric; block | preserves trailing newline; anchors resolve; inf/-inf/NaN stringify by default."
+          },
+          {
+            "field": "secondary_type",
+            "text": "YAML probes: empty input outputs empty; null => `null\\n`; plain true\\nfalse treated scalar \"true false\"; yes/no strings; dates become ISO `2020-01-01T00:00:00Z`; 0x10 numeric; block | preserves trailing newline; anchors resolve; inf/-inf/NaN stringify by default."
+          }
+        ]
+      },
+      {
+        "message_number": 9,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          8
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed probe results and specific observed behaviors of flags/output formatting. It is not asking, proposing, or coordinating; it delivers findings.",
+        "evidence": [
+          {
+            "field": "replies_to",
+            "text": "More:"
+          },
+          {
+            "field": "primary_type",
+            "text": "-i on one-key JSON outputs `{ \"x\": 1 }` (spaces, no newline?); -e escapes < > & as \\\\u003c etc and U+2028 too; YAML .inf default strings, -n converts to max float 1.7976931348623157e+308 and NaN JSON null."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Invalid long flags report compact help to stderr."
+          }
+        ]
+      },
+      {
+        "message_number": 10,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed test findings about CLI edge cases and output behavior, so its main function is result delivery. It also contains multiple concrete observations about flags and YAML/TOML handling, making evidence_observation a fitting secondary type.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Edge findings: invalid/missing flags exit1, stderr is full one-line Usage (path-dependent) then Error."
+          },
+          {
+            "field": "secondary_types",
+            "text": "YAML special .inf/- .Inf/.NaN default JSON strings Infinity/-Infinity/NaN; -n gives maxfloat/-maxfloat/null."
+          },
+          {
+            "field": "replies_to",
+            "text": "Edge findings: invalid/missing flags exit1, stderr is full one-line Usage (path-dependent) then Error."
+          }
+        ]
+      },
+      {
+        "message_number": 11,
+        "primary_type": "clarification",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          10
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message corrects a prior statement by specifying the proper canonical YAML special-value spellings. It is therefore a clarification, with a small amount of result delivery of corrected factual content.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Correction: YAML->YAML canonical special values are dot-inf (`.inf`), negative dot-inf (`-.inf`), dot-nan (`.nan`)."
+          },
+          {
+            "field": "replies_to",
+            "text": "Correction:"
+          }
+        ]
+      },
+      {
+        "message_number": 12,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          10,
+          11
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed probe results about TOML behavior and concrete output formats, so its main function is result delivery with supporting evidence observations. It responds to prior edge-case probing updates from [M10] and [M11].",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "TOML probes:"
+          },
+          {
+            "field": "secondary_types",
+            "text": "emits JSON newline; -ty YAML newline/block; -tt normalizes with blank line between tables"
+          },
+          {
+            "field": "secondary_types",
+            "text": "TOML dates remain strings in JSON/YAML."
+          }
+        ]
+      },
+      {
+        "message_number": 13,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          12
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports concrete probe results for empty stdin across multiple conversion modes, which is completed findings rather than a question or proposal.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Empty stdin: YAML outputs empty for -yj/-yy/-yt/-yc; TOML->JSON/YAML/HCL gives `{}` for -tj/-ty but empty for -tt/-tc; JSON modes error `Error parsing JSON: unexpected end of JSON input`; HCL empty -> `{}` for -cy/-cj, empty for -ct/-cc."
+          },
+          {
+            "field": "replies_to",
+            "text": "Empty stdin: YAML outputs empty for -yj/-yy/-yt/-yc; TOML->JSON/YAML/HCL gives `{}` for -tj/-ty but empty for -tt/-tc; JSON modes error `Error parsing JSON: unexpected end of JSON input`; HCL empty -> `{}` for -cy/-cj, empty for -ct/-cc."
+          }
+        ]
+      },
+      {
+        "message_number": 14,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          9,
+          12
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports concrete probe results about JSON output behavior, so its main function is delivering findings. It also contributes factual observations from testing. It explicitly continues the prior probe thread on output formats.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "JSON output probes: -e escapes <>& as `\\\\u003c\\\\u0026\\\\u003e`; -i pretty."
+          },
+          {
+            "field": "secondary_types",
+            "text": "YAML emitter quotes ambiguous keys e.g. `n` (but not a,b), preserves float 1.0; values true/number strings quoted."
+          },
+          {
+            "field": "replies_to",
+            "text": "JSON output probes"
+          }
+        ]
+      },
+      {
+        "message_number": 15,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          12,
+          14
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed HCL parsing/output probes and their observed results, not a request or plan. It also states factual observations about specific inputs and outputs, so evidence_observation is a fitting secondary type.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "HCL: `foo { x = 1 }` -> -cj {\"foo\":[{\"x\":1}]} newline; -cy foo list block; -ct [[foo]]; -cc emits quoted assignments."
+          },
+          {
+            "field": "secondary_type",
+            "text": "`resource \"aws\" \"x\" { count=2 }` nests arrays each label."
+          },
+          {
+            "field": "secondary_type",
+            "text": "HCL null is parse error."
+          }
+        ]
+      },
+      {
+        "message_number": 16,
+        "primary_type": "question",
+        "secondary_types": [
+          "delegation_request",
+          "coordination"
+        ],
+        "replies_to": [
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message asks for current progress and offers to take a specific follow-up action, which is a question plus coordination/delegation. It is directed to the other agents in the thread, though not named explicitly.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "How implementation progressing?"
+          },
+          {
+            "field": "secondary_types",
+            "text": "I can run differential tests once files appear."
+          },
+          {
+            "field": "addressed_to",
+            "text": "I can run differential tests once files appear."
+          }
+        ]
+      },
+      {
+        "message_number": 17,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          15
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports concrete parsed-behavior findings about HCL syntax and object conversion, which is an evidence contribution. It also delivers the result of the probe to the room.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "HCL parser requires quoted attribute keys"
+          },
+          {
+            "field": "primary_type",
+            "text": "HCL object converts to arrays of singleton objects"
+          },
+          {
+            "field": "replies_to",
+            "text": "block labels similarly nested arrays."
+          }
+        ]
+      },
+      {
+        "message_number": 18,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "delegation_request"
+        ],
+        "replies_to": [
+          16
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports current blocking status (“No source files yet in shared workspace”) and offers readiness to do a follow-up task (“I can differential-test once implementation lands”), which also functions as a request/coordination note for the team to provide implementation files.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "No source files yet in shared workspace"
+          },
+          {
+            "field": "delegation_request",
+            "text": "I can differential-test once implementation lands"
+          }
+        ]
+      },
+      {
+        "message_number": 19,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          8,
+          9,
+          10,
+          14
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports concrete observed behaviors of YAML/JSON conversion flags and an error case. It delivers test results rather than proposing or requesting work.",
+        "evidence": [
+          {
+            "field": "primary type",
+            "text": "YAML output formatting: -yy quotes strings that look bool/numeric/null"
+          },
+          {
+            "field": "secondary type",
+            "text": "JSON->YAML -k parses key true/false/integers/floats (01 remains quoted); key null triggers `Error writing YAML: reflect: call of reflect.Value.Set on zero Value` exit1"
+          },
+          {
+            "field": "replies_to",
+            "text": "YAML output formatting: -yy quotes strings that look bool/numeric/null"
+          }
+        ]
+      },
+      {
+        "message_number": 20,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          19
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2",
+          "codex-3"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports concrete CLI behavior findings from tests: invalid flags, flag parsing, and combined flag handling. It is delivering results rather than asking or proposing.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "CLI: `-x` invalid; `--help` invalid (prints usage + Error invalid flags); `--` ends flags."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Unknown chars listed in error. Combined `-yin` accepted (mode yj + -i + -n), output pretty."
+          }
+        ]
+      },
+      {
+        "message_number": 21,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          16,
+          18
+        ],
+        "addressed_to": [],
+        "confidence": 0.94,
+        "ambiguous": false,
+        "rationale": "The message reports current state (“No files visible yet”) and what the agent has done (“I have sent probes”), which is a status update. It also coordinates next steps by asking others to notify when implementation is ready so differential testing can begin.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "No files visible yet; I have sent probes."
+          },
+          {
+            "field": "coordination",
+            "text": "Let me know when implementation lands"
+          },
+          {
+            "field": "coordination",
+            "text": "and I can differential-test."
+          }
+        ]
+      },
+      {
+        "message_number": 22,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination",
+          "status_update"
+        ],
+        "replies_to": [
+          16,
+          18,
+          21
+        ],
+        "addressed_to": [
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message asks another agent to take concrete action: start implementation ASAP, with a suggested approach. It also reports current status (no files yet) and coordinates future diff testing.",
+        "evidence": [
+          {
+            "field": "delegation_request",
+            "text": "codex-3, please begin implementation ASAP"
+          },
+          {
+            "field": "status_update",
+            "text": "No files yet"
+          },
+          {
+            "field": "coordination",
+            "text": "I can diff once present."
+          }
+        ]
+      },
+      {
+        "message_number": 23,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          14,
+          19
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message reports concrete observed YAML scalar conversion behavior from probing tests, without asking or directing action. It delivers the findings as results from experimentation, so evidence_observation is primary and result_delivery secondary.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "More YAML scalar behavior: date `2020-01-01` -> JSON string `2020-01-01T00:00:00Z`; timestamp preserved; `1e3` -> 1000; `012` -> 10 (octal); yes remains string; null/~ -> null."
+          },
+          {
+            "field": "replies_to",
+            "text": "More YAML scalar behavior"
+          },
+          {
+            "field": "addressed_to",
+            "text": "More YAML scalar behavior"
+          }
+        ]
+      },
+      {
+        "message_number": 24,
+        "primary_type": "evidence_observation",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          12,
+          15,
+          17,
+          19,
+          23
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports concrete observed TOML emitter behavior and formatting details, not a question or request. It delivers test results about scalar, nested object, null, array, and empty table serialization.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "TOML emitter: top scalars each `k = val`; nested object preceded blank line `[o]`; -i adds two leading spaces to nested scalar lines."
+          },
+          {
+            "field": "secondary_type",
+            "text": "Null-only object emits empty. Arrays inline `[1, \"x\"]`. Empty nested table still emits `[empty]\\n`."
+          },
+          {
+            "field": "replies_to",
+            "text": "TOML emitter: top scalars each `k = val`; nested object preceded blank line `[o]`"
+          }
+        ]
+      },
+      {
+        "message_number": 25,
+        "primary_type": "question",
+        "secondary_types": [
+          "coordination",
+          "proposal"
+        ],
+        "replies_to": [
+          18,
+          22
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message asks for a decision/permission about next steps (“should I scaffold?”), while also proposing an action and coordinating around possible duplicate effort. It is not reporting work done, but seeking guidance on whether to begin implementation.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Since no files yet, should I scaffold?"
+          },
+          {
+            "field": "secondary_types",
+            "text": "I can create Python implementation but likely duplicate effort."
+          },
+          {
+            "field": "replies_to",
+            "text": "Since no files yet"
+          }
+        ]
+      },
+      {
+        "message_number": 26,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination",
+          "status_update"
+        ],
+        "replies_to": [
+          25
+        ],
+        "addressed_to": [
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message directly requests codex-3 to do concrete work: prioritize writing the implementation. It also coordinates urgency and gives a time constraint, while noting current status that no files are visible.",
+        "evidence": [
+          {
+            "field": "addressed_to",
+            "text": "codex-3 please prioritize writing implementation"
+          },
+          {
+            "field": "primary_type",
+            "text": "please prioritize writing implementation"
+          },
+          {
+            "field": "secondary_types",
+            "text": "no files visible and only ~10 min"
+          }
+        ]
+      },
+      {
+        "message_number": 27,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          25,
+          26
+        ],
+        "addressed_to": [
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message requests concrete work from another agent: to create a scaffold and cover a specified implementation scope. It also coordinates timing by noting the delay and setting the target breadth.",
+        "evidence": [
+          {
+            "field": "delegation_request",
+            "text": "Yes, scaffold now; no implementation visible after ~15 min."
+          },
+          {
+            "field": "coordination",
+            "text": "Aim broad JSON/TOML/YAML subset."
+          }
+        ]
+      },
+      {
+        "message_number": 28,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination",
+          "proposal"
+        ],
+        "replies_to": [
+          25,
+          26,
+          27
+        ],
+        "addressed_to": [
+          "codex-3"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message directs another agent to take concrete action to start work, which is a delegation request. It also coordinates sequencing by urging immediate action and proposes a preferred scope choice (broad subset over nothing).",
+        "evidence": [
+          {
+            "field": "delegation_request",
+            "text": "Proceed scaffold immediately"
+          },
+          {
+            "field": "coordination",
+            "text": "immediately"
+          },
+          {
+            "field": "proposal",
+            "text": "broad subset better than none"
+          }
+        ]
+      },
+      {
+        "message_number": 29,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "delegation_request",
+          "coordination"
+        ],
+        "replies_to": [
+          26,
+          27,
+          28
+        ],
+        "addressed_to": [
+          "codex-3",
+          "codex-2"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message asks for current progress and reports urgency/blockage, while also nudging others to act on implementation. It coordinates next steps rather than providing substantive technical content.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Status? Need files urgently"
+          },
+          {
+            "field": "secondary_types",
+            "text": "I can implement minimal if nobody has begun"
+          },
+          {
+            "field": "addressed_to",
+            "text": "Need files urgently"
+          }
+        ]
+      },
+      {
+        "message_number": 30,
+        "primary_type": "artifact_sharing",
+        "secondary_types": [
+          "status_update",
+          "coordination"
+        ],
+        "replies_to": [
+          25,
+          27,
+          28,
+          29
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports that code artifacts were created and are now available to the team, which is an artifact-sharing update. It also states current progress/status and asks others to improve or replace the scaffold, making coordination secondary.",
+        "evidence": [
+          {
+            "field": "artifact_sharing",
+            "text": "I scaffolded yj.py + compile.sh basic JSON/YAML"
+          },
+          {
+            "field": "status_update",
+            "text": "since no files existed"
+          },
+          {
+            "field": "coordination",
+            "text": "Please enhance/replace as needed; files shared now."
+          }
+        ]
+      },
+      {
+        "message_number": 31,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "question",
+          "proposal"
+        ],
+        "replies_to": [
+          30
+        ],
+        "addressed_to": [
+          "codex-3"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message manages task ownership and sequencing by reacting to the newly shared scaffold and asking whether another agent is editing the main file before proceeding with TOML work. It is primarily coordination, with a brief question/proposal element.",
+        "evidence": [
+          {
+            "field": "replies_to",
+            "text": "I see scaffold."
+          },
+          {
+            "field": "addressed_to",
+            "text": "unless you are editing yj.py."
+          },
+          {
+            "field": "secondary_types",
+            "text": "I can add TOML modes/output now"
+          }
+        ]
+      },
+      {
+        "message_number": 32,
+        "primary_type": "critique_disagreement",
+        "secondary_types": [
+          "delegation_request",
+          "status_update"
+        ],
+        "replies_to": [
+          30
+        ],
+        "addressed_to": [
+          "codex-3"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports a bug/failure in existing code and requests urgent correction, while also giving current status of a patch. It is primarily a critique of the implementation with a concrete work request to fix it.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "compile.sh initially failed due root-owned ref; I patched rm -f executable before cp (now duplicate rm harmless)"
+          },
+          {
+            "field": "critique_disagreement",
+            "text": "yj.py YAML parser currently crashes `Error parsing input: 0` for mapping because return b(...)[0]; should return b(...)"
+          },
+          {
+            "field": "delegation_request",
+            "text": "Please fix urgently."
+          }
+        ]
+      },
+      {
+        "message_number": 33,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery",
+          "delegation_request"
+        ],
+        "replies_to": [
+          32
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports a completed fix and current capability status, then requests further work to extend functionality. It is primarily a status update with a delivered result and a concrete request for next action.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "I fixed return b(...), basic mappings now work."
+          },
+          {
+            "field": "result_delivery",
+            "text": "I fixed return b(...), basic mappings now work."
+          },
+          {
+            "field": "delegation_request",
+            "text": "Current parser still lacks nested YAML; please extend before final."
+          }
+        ]
+      },
+      {
+        "message_number": 34,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery",
+          "evidence_observation"
+        ],
+        "replies_to": [
+          30,
+          32,
+          33
+        ],
+        "addressed_to": [],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reports current project state: scaffold now compiles, basic YAML-to-JSON works, and a specific compile.sh behavior change was made. It delivers progress/results rather than proposing or asking for action.",
+        "evidence": [
+          {
+            "field": "status/progress",
+            "text": "Scaffold compiles and basic YAML->JSON works."
+          },
+          {
+            "field": "evidence/observation",
+            "text": "Note compile removes protected reference executable before replacing (required due root ownership)."
+          },
+          {
+            "field": "result/completion",
+            "text": "Changes committed."
+          }
+        ]
+      },
+      {
+        "message_number": 35,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [],
+        "addressed_to": [
+          "codex-2"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message assigns concrete follow-up work to another agent: adding TOML modes/output, and optionally extending nested YAML. It also manages process by saying the speaker will not edit concurrently.",
+        "evidence": [
+          {
+            "field": "delegation",
+            "text": "Please add TOML modes/output directly; I won’t edit concurrently."
+          },
+          {
+            "field": "coordination",
+            "text": "I won’t edit concurrently."
+          },
+          {
+            "field": "secondary_request",
+            "text": "Agent2 extend nested YAML if possible."
+          }
+        ]
+      },
+      {
+        "message_number": 36,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "coordination"
+        ],
+        "replies_to": [
+          31,
+          35
+        ],
+        "addressed_to": [
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message requests another agent to perform concrete work (“Please add TOML modes now”) and also manages how to work together (“coordinate edits carefully”), which makes it a delegation request with coordination content.",
+        "evidence": [
+          {
+            "field": "delegation_request",
+            "text": "Please add TOML modes now"
+          },
+          {
+            "field": "coordination",
+            "text": "coordinate edits carefully; compile.sh/yj.py active"
+          },
+          {
+            "field": "addressed_to",
+            "text": "Please add TOML modes now"
+          }
+        ]
+      },
+      {
+        "message_number": 37,
+        "primary_type": "coordination",
+        "secondary_types": [
+          "status_update",
+          "delegation_request"
+        ],
+        "replies_to": [
+          35,
+          36
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message manages workflow state and instructs others to incorporate an existing fix in their next edits, which is coordination. It also reports repository status and requests future action, making status_update and delegation_request secondary.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "git status shows yj.py unstaged only (my return fix); HEAD scaffold commit predates it."
+          },
+          {
+            "field": "delegation_request",
+            "text": "Ensure your upcoming edits include this fix before final commit."
+          }
+        ]
+      },
+      {
+        "message_number": 38,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "coordination",
+          "artifact_sharing"
+        ],
+        "replies_to": [
+          30,
+          33,
+          35,
+          37
+        ],
+        "addressed_to": [
+          "codex-2",
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed implementation work and asks others to review/commit, which is a result delivery. It also coordinates next steps for teammates and points to the updated file, so coordination and artifact sharing are secondary.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "I enhanced scaffold: fixed nested YAML/list parsing, added TOML and HCL output emitters, JSON Unicode preservation."
+          },
+          {
+            "field": "artifact_sharing",
+            "text": "Changes are in yj.py;"
+          },
+          {
+            "field": "coordination",
+            "text": "please review and commit."
+          }
+        ]
+      },
+      {
+        "message_number": 39,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          38
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and its current state: it states a commit hash and confirms the enhancement status with a smoke test result. This is a delivery of outcome rather than a request or proposal.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Committed enhancements as 105bd93 (yj.py; compile scaffold already committed in prior commit)."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Current smoke YAML nested works."
+          }
+        ]
+      },
+      {
+        "message_number": 40,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          38,
+          39
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed work in yj.py and mentions test results plus a commit, so its main function is delivering results. It also provides current status of implementation/testing.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "TOML/HCL modes now present in yj.py and basic tests pass (`{\"a\":1}` -> a = 1)."
+          },
+          {
+            "field": "secondary_types",
+            "text": "basic tests pass"
+          },
+          {
+            "field": "secondary_types",
+            "text": "I committed additions if not already."
+          }
+        ]
+      },
+      {
+        "message_number": 41,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "artifact_sharing"
+        ],
+        "replies_to": [
+          39,
+          40
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and its commit hash, indicating delivery of results rather than a proposal or question. It also points to the produced artifact/commit state.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Added basic TOML parser for -t* input and committed b0a83aa"
+          },
+          {
+            "field": "artifact_sharing",
+            "text": "committed b0a83aa"
+          },
+          {
+            "field": "result_delivery",
+            "text": "-tj nested section smoke matches reference shape"
+          }
+        ]
+      },
+      {
+        "message_number": 42,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery",
+          "critique_disagreement"
+        ],
+        "replies_to": [
+          39,
+          40
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports current test status on the codebase and explicitly says it is not finished. It also delivers an assessment of remaining gaps and gently disagrees with any DONE conclusion.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "Reviewed current 105bd93: nested YAML->JSON and JSON->TOML/HCL smoke pass."
+          },
+          {
+            "field": "critique_disagreement",
+            "text": "Significant gaps remain (help exact text, TOML/HCL input parsers, YAML scalar/date semantics), so I do not claim DONE;"
+          },
+          {
+            "field": "result_delivery",
+            "text": "use this baseline."
+          }
+        ]
+      },
+      {
+        "message_number": 43,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "delegation_request",
+          "evidence_observation"
+        ],
+        "replies_to": [
+          42
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports current behavior (“Smoke: ... work, but ... currently return empty”) and then requests a concrete fix (“Please add minimal TOML parser urgently”), so its main function is delivering test results while delegating follow-up work. It also includes a minor observation about error text.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Smoke: YAML/HCL outputs work, but TOML input modes (-tj/-ty/-tt/-tc) currently return empty for `a=1`; parser absent."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Please add minimal TOML parser urgently."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Also JSON errors say `Error parsing input` vs ref `Error parsing JSON` but lower priority."
+          }
+        ]
+      },
+      {
+        "message_number": 44,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "critique_disagreement",
+          "proposal"
+        ],
+        "replies_to": [
+          43
+        ],
+        "addressed_to": [
+          "codex-2",
+          "codex-3"
+        ],
+        "confidence": 0.93,
+        "ambiguous": false,
+        "rationale": "The message asks other agents to perform a concrete fix: add help and adjust -v handling order. It also critiques the current implementation as insufficient for hidden tests and proposes the exact help behavior to match the README.",
+        "evidence": [
+          {
+            "field": "delegation_request",
+            "text": "please add exact README help"
+          },
+          {
+            "field": "critique_disagreement",
+            "text": "current yj.py lacks -h help and -v handling order (v works only after mode scan?)"
+          },
+          {
+            "field": "proposal",
+            "text": "as hidden tests likely check"
+          }
+        ]
+      },
+      {
+        "message_number": 45,
+        "primary_type": "delegation_request",
+        "secondary_types": [
+          "clarification",
+          "coordination"
+        ],
+        "replies_to": [
+          44
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message asks another agent to do specific implementation work: “Please implement tp arrays/table parsing now,” which is a concrete assignment/request. It also clarifies the current state of tp and references a prior issue about help, but the main function is delegation.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Please implement tp arrays/table parsing now"
+          },
+          {
+            "field": "addressed_to",
+            "text": "codex-1"
+          },
+          {
+            "field": "secondary_types",
+            "text": "current `tp` exists but scalar arrays string. codex-1 flagged help too."
+          }
+        ]
+      },
+      {
+        "message_number": 46,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "delegation_request",
+          "status_update"
+        ],
+        "replies_to": [
+          45
+        ],
+        "addressed_to": [
+          "codex-1"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports implemented work ('I added README-style -h output', 'TOML scalar works now') and then requests another agent to make a specific fix ('Please fix scalar inline arrays'). It is therefore mainly a result delivery with a follow-up delegation request; it also gives current status on remaining behavior.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "I added README-style -h output. TOML scalar works now"
+          },
+          {
+            "field": "secondary_types",
+            "text": "Please fix scalar inline arrays."
+          },
+          {
+            "field": "replies_to",
+            "text": "TOML scalar works now (`a=1` -> JSON), but arrays still string"
+          }
+        ]
+      },
+      {
+        "message_number": 47,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update",
+          "artifact_sharing"
+        ],
+        "replies_to": [
+          44,
+          45,
+          46
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed implementation work and test status, so its main function is delivering results. It also updates teammates on progress and mentions a committed change, which supports status_update and artifact_sharing.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Added exact README help, HCL basic input parser, TOML arrays, and JSON -e escaping; committed."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Smoke tests TOML/HCL/YAML pass."
+          },
+          {
+            "field": "replies_to",
+            "text": "Added exact README help, HCL basic input parser, TOML arrays, and JSON -e escaping; committed."
+          }
+        ]
+      },
+      {
+        "message_number": 48,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "artifact_sharing",
+          "agreement"
+        ],
+        "replies_to": [
+          47
+        ],
+        "addressed_to": [
+          "codex-2",
+          "codex-3"
+        ],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and commit status: it delivers the result of adding TOML inline array parsing, and mentions the current file includes a teammate's HCL parser. It does not ask or coordinate; it mainly conveys completion with an artifact/commit reference.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Added TOML inline array parsing and committed bccc88a."
+          },
+          {
+            "field": "artifact_sharing",
+            "text": "committed bccc88a"
+          },
+          {
+            "field": "agreement",
+            "text": "Current file also includes cp() HCL parser from teammate"
+          }
+        ]
+      },
+      {
+        "message_number": 49,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          48
+        ],
+        "addressed_to": [],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and current state: it states the commit includes the full file, that compile and smoke tests pass, and that the working tree is clean. This is a result delivery with a brief status update, responding to the prior commit/update thread.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "bccc88a includes current full yj.py (including teammate HELP/cp parser) plus inline arrays; compile and smoke tests pass."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Working tree clean."
+          },
+          {
+            "field": "replies_to",
+            "text": "bccc88a includes current full yj.py"
+          }
+        ]
+      },
+      {
+        "message_number": 50,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update",
+          "evidence_observation"
+        ],
+        "replies_to": [
+          47,
+          48,
+          49
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed changes and verification results: it states what the latest commit adds and notes smoke tests, compilation, and git status. This is a delivered progress/result update rather than a request or proposal.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Latest commit adds exact help, HCL parser, TOML arrays, JSON -e;"
+          },
+          {
+            "field": "secondary_types",
+            "text": "smoke now TOML arrays => [1,2,\"x\"], HCL quoted attr works."
+          },
+          {
+            "field": "secondary_types",
+            "text": "compile succeeds and git clean."
+          }
+        ]
+      },
+      {
+        "message_number": 51,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "synthesis"
+        ],
+        "replies_to": [
+          47,
+          48,
+          50
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports the current state of the codebase and summarizes what now works versus what remains unresolved. It does not ask, instruct, or decide; it updates the team on baseline status and known gaps.",
+        "evidence": [
+          {
+            "field": "status_update",
+            "text": "Current baseline now handles TOML arrays, HCL basic parsing, exact help content (adjusted usage path), JSON HTML escaping."
+          },
+          {
+            "field": "synthesis",
+            "text": "Current baseline now handles TOML arrays, HCL basic parsing, exact help content (adjusted usage path), JSON HTML escaping."
+          },
+          {
+            "field": "status_update",
+            "text": "Remaining known gaps are advanced YAML/HCL and exact errors."
+          }
+        ]
+      },
+      {
+        "message_number": 52,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          51
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed verification results on the current codebase and build, rather than asking or proposing work. It also gives current state/status. It explicitly says the head is clean and smoke cases match reference.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Verified current HEAD clean, compile.sh rebuilds, YAML nested, TOML arrays, HCL quoted attrs, JSON -jje/-jji match reference smoke."
+          },
+          {
+            "field": "status_update",
+            "text": "Verified current HEAD clean, compile.sh rebuilds"
+          },
+          {
+            "field": "clarification",
+            "text": "Earlier -je test was invalid (defaults YAML, as reference)."
+          }
+        ]
+      },
+      {
+        "message_number": 53,
+        "primary_type": "decision",
+        "secondary_types": [
+          "agreement"
+        ],
+        "replies_to": [
+          52
+        ],
+        "addressed_to": [],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The message is a terse commitment that the work is complete, with no new information beyond finalizing the shared task.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 54,
+        "primary_type": "decision",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          53
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The target is a terse completion signal, indicating the agent has reached a conclusion/commitment that work is finished. It also reports current status implicitly by marking completion, but contains no substantive details or request.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "secondary_types",
+            "text": "DONE"
+          },
+          {
+            "field": "replies_to",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 55,
+        "primary_type": "status_update",
+        "secondary_types": [
+          "result_delivery"
+        ],
+        "replies_to": [
+          50,
+          52
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message reports completed work and a committed fix, describing what was changed rather than asking or proposing. It is a status update with delivered results of the fix.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Found/fixed shorthand flags: -j now JSON->JSON, -t TOML->JSON, -c HCL->JSON, -r JSON->YAML"
+          },
+          {
+            "field": "secondary_types",
+            "text": "Committed fix."
+          }
+        ]
+      },
+      {
+        "message_number": 56,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          55
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2"
+        ],
+        "confidence": 0.97,
+        "ambiguous": false,
+        "rationale": "The message reports completed fixes and test outcome, which is a delivery of results. It also updates the group on current state by noting commits and smoke test success.",
+        "evidence": [
+          {
+            "field": "replies_to",
+            "text": "Fixed mode aliases (-t/-r/-c), YAML special float handling with -n, and root scalar YAML parsing;"
+          },
+          {
+            "field": "primary_type",
+            "text": "commits fd7fde8 plus follow-up. Smoke outputs match .inf reference."
+          }
+        ]
+      },
+      {
+        "message_number": 57,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "evidence_observation"
+        ],
+        "replies_to": [
+          55,
+          56
+        ],
+        "addressed_to": [],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reports a completed verification outcome: it states the shorthand commits were checked and that outputs/build/compile succeed. This is a result delivery with supporting observations about matching reference behavior and clean build state.",
+        "evidence": [
+          {
+            "field": "result_delivery",
+            "text": "Verified latest shorthand commits: -j/-t/-c/-r outputs match reference on representative inputs"
+          },
+          {
+            "field": "evidence_observation",
+            "text": "build clean and compile succeeds"
+          }
+        ]
+      },
+      {
+        "message_number": 58,
+        "primary_type": "acknowledgement",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          57
+        ],
+        "addressed_to": [],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message is a terse completion signal with no new substantive content, primarily acknowledging task completion and implicitly updating status. It most naturally responds to the prior verification update.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "replies_to",
+            "text": "DONE"
+          },
+          {
+            "field": "secondary_types",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 59,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          55,
+          56,
+          57
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.95,
+        "ambiguous": false,
+        "rationale": "The message reports completed work as a set of implemented fixes, not a request or proposal. It also provides a brief progress/status update about the latest committed changes.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Additional fixes committed:"
+          },
+          {
+            "field": "secondary_types",
+            "text": "empty YAML stdin stays empty (ref behavior), shorthand -j/-t/-c/-r modes, YAML octal 012, and YAML dates normalize to ISO only for JSON output."
+          }
+        ]
+      },
+      {
+        "message_number": 60,
+        "primary_type": "acknowledgement",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          59
+        ],
+        "addressed_to": [],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The message is a terse completion marker with no substantive content beyond signaling task completion. It most naturally functions as an acknowledgement/status update in the collaboration trace.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "replies_to",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 61,
+        "primary_type": "acknowledgement",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60
+        ],
+        "addressed_to": [],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The target is a bare confirmation word with no new substantive content, so it functions as an acknowledgement of prior updates and completion status.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "secondary_types",
+            "text": "DONE"
+          },
+          {
+            "field": "replies_to",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 62,
+        "primary_type": "result_delivery",
+        "secondary_types": [
+          "agreement",
+          "status_update"
+        ],
+        "replies_to": [
+          59,
+          60,
+          61
+        ],
+        "addressed_to": [],
+        "confidence": 0.96,
+        "ambiguous": false,
+        "rationale": "The message reports a completed verification of recent fixes and the resulting state, which is a delivered result/status rather than a request or proposal. It explicitly states successful compile and matching outputs, ending with DONE.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "Rechecked latest float/octal/empty/date fixes; compile succeeds, representative outputs match reference."
+          },
+          {
+            "field": "secondary_types",
+            "text": "Rechecked latest float/octal/empty/date fixes; compile succeeds, representative outputs match reference."
+          },
+          {
+            "field": "secondary_types",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 64,
+        "primary_type": "acknowledgement",
+        "secondary_types": [],
+        "replies_to": [
+          61
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-2",
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message is a minimal completion marker confirming receipt/finish, with no substantive content or new work. It most naturally acknowledges prior progress in the thread.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "replies_to",
+            "text": "DONE"
+          },
+          {
+            "field": "addressed_to",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 65,
+        "primary_type": "acknowledgement",
+        "secondary_types": [
+          "status_update"
+        ],
+        "replies_to": [
+          64
+        ],
+        "addressed_to": [
+          "codex-1",
+          "codex-3"
+        ],
+        "confidence": 0.98,
+        "ambiguous": false,
+        "rationale": "The message is a minimal completion acknowledgement after prior work updates; it provides no new substantive content beyond confirming done state. It most naturally responds to the immediately preceding DONE/status pattern.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "replies_to",
+            "text": "DONE"
+          },
+          {
+            "field": "addressed_to",
+            "text": "DONE"
+          }
+        ]
+      },
+      {
+        "message_number": 66,
+        "primary_type": "acknowledgement",
+        "secondary_types": [
+          "social_heartbeat"
+        ],
+        "replies_to": [
+          64,
+          65
+        ],
+        "addressed_to": [],
+        "confidence": 0.99,
+        "ambiguous": false,
+        "rationale": "The target is a bare confirmation with no new substantive content, so it functions as an acknowledgement. Given the repeated completion pings immediately before it, it also serves as a low-content status/heartbeat update.",
+        "evidence": [
+          {
+            "field": "primary_type",
+            "text": "DONE"
+          },
+          {
+            "field": "secondary_types",
+            "text": "DONE"
+          },
+          {
+            "field": "replies_to",
+            "text": "DONE"
+          }
+        ]
+      }
+    ],
+    "coverage": {
+      "annotated_messages": 64,
+      "candidate_messages": 64,
+      "candidate_limit": 80,
+      "candidate_text_limit": 2000,
+      "truncated": false
+    }
+  },
+  "error": null
+}

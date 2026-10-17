@@ -1,0 +1,23 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    6
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports ongoing work and a new probe result, without asking or delegating. It’s primarily a progress/status update, with the probe phrase indicating an evidence contribution.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "More probes: fmt -t"
+    },
+    {
+      "field": "primary_type",
+      "text": "More probes: fmt -t"
+    }
+  ]
+}

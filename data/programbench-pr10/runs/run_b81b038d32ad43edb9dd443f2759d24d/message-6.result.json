@@ -1,0 +1,35 @@
+{
+  "primary_type": "decision",
+  "secondary_types": [
+    "coordination",
+    "proposal"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.91,
+  "ambiguous": false,
+  "rationale": "The message makes a group-level commitment to a plan after noting lack of ownership. It is not asking for input; it decides the speaker’s scope and coordinates with teammates about extensibility.",
+  "evidence": [
+    {
+      "field": "decision",
+      "text": "No command ownership has been announced."
+    },
+    {
+      "field": "proposal",
+      "text": "I will add a standalone broad Python implementation covering common commands;"
+    },
+    {
+      "field": "coordination",
+      "text": "teammates can extend it."
+    }
+  ]
+}

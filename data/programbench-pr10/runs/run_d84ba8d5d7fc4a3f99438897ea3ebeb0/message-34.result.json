@@ -1,0 +1,35 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    22,
+    26,
+    27,
+    28,
+    30
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.91,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behavior of the program’s error handling and output streams, which is an evidence observation. It also delivers those findings to the room as completed test results. The target does not ask a question or issue a request.",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "Malformed parse errors are stdout (not stderr):"
+    },
+    {
+      "field": "result_delivery",
+      "text": "e.g. bad YAML outputs `Error parsing YAML: ...` rc1."
+    },
+    {
+      "field": "result_delivery",
+      "text": "Invalid flags usage+Error also stdout; -k invalid appears stdout."
+    }
+  ]
+}

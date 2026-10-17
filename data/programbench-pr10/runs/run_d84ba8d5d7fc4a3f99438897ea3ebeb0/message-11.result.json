@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    9,
+    10
+  ],
+  "addressed_to": [],
+  "confidence": 0.91,
+  "ambiguous": false,
+  "rationale": "The message reports test results for several conversion directions and edge cases, functioning as completed findings rather than a question or proposal. It also contributes concrete observations about parser/formatter behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Conversions sample: JSON {a:1,s:x,arr:[1,true],o:{x:2}} -> -jy YAML plain; -jt ; -jc HCL emits each top-level as quoted assignment separated blank lines, arrays oddly  (drops bool); object . TOML same parses."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Conversions sample: JSON {a:1,s:x,arr:[1,true],o:{x:2}} -> -jy YAML plain; -jt ; -jc HCL emits each top-level as quoted assignment separated blank lines, arrays oddly  (drops bool); object . TOML same parses."
+    },
+    {
+      "field": "secondary_types",
+      "text": "HCL parser does NOT accept TOML-style [b] sections."
+    }
+  ]
+}

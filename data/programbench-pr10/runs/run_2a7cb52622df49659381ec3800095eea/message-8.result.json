@@ -1,0 +1,36 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "coordination",
+    "delegation_request"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message asks a direct question about ownership of the main Python CLI and offers to take on stats/fmt afterward, so its main function is question with coordination/delegation aspects.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "Are you implementing the main Python CLI?"
+    },
+    {
+      "field": "coordination",
+      "text": "No files changed yet in my view."
+    },
+    {
+      "field": "delegation_request",
+      "text": "I can add stats/fmt once scaffold exists."
+    }
+  ]
+}

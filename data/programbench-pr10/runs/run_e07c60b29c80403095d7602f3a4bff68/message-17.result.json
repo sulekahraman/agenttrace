@@ -1,0 +1,25 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    15
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message asks for a status update about whether another agent is writing code in their container, and it coordinates next steps by offering to run tests once compilation appears.",
+  "evidence": [
+    {
+      "field": "question",
+      "text": "are you writing in yours?"
+    },
+    {
+      "field": "coordination",
+      "text": "I can run broad differential tests once compile appears."
+    }
+  ]
+}

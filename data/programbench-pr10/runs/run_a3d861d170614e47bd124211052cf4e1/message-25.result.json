@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    19,
+    23
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on xsv.py fixes and invites review, which is primarily a delivery of results. It also coordinates next steps by asking others to review shared changes, and implicitly updates status that the patch is done.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I patched xsv.py: exact version, formatted --list, headers 3-space separator, flatten alignment/no-colon, default header labels only, -n 0-based and separators between records."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Changes are shared; please review."
+    }
+  ]
+}

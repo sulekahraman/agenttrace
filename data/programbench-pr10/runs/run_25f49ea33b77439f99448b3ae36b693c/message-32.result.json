@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "delegation_request",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    31
+  ],
+  "addressed_to": [
+    "codex-4"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message identifies specific defects and requests urgent fixes, which is chiefly a critique/disagreement. It also asks the other agent to act on those fixes, making it a delegation_request. The body contains concrete observations about missing integration and buggy behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Critical: advanced_impl.py isn't imported/integrated; command() lacks search/sort/sample/frequency/stats/table."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please fix urgently."
+    },
+    {
+      "field": "addressed_to",
+      "text": "Please fix urgently."
+    }
+  ]
+}

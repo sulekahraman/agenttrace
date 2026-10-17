@@ -1,0 +1,24 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    31,
+    34
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and its current state: help behavior was added, a commit was made, and the build was verified. This is a result/status update rather than a question or proposal.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Added nonempty top-level/command -h help (previously silent), committed."
+    },
+    {
+      "field": "status_update",
+      "text": "Build clean and compile tested."
+    }
+  ]
+}

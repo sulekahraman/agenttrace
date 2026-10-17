@@ -1,0 +1,28 @@
+{
+  "primary_type": "clarification",
+  "secondary_types": [
+    "result_delivery",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    12
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message corrects prior findings and consolidates the updated behavior of several commands, so its main function is clarification. It also delivers the corrected probe results as substantive content.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Correction: flatten default is a + 3 spaces + value, then newline; # separator line."
+    },
+    {
+      "field": "secondary_types",
+      "text": "-n numeric headers 0,1 and separator after every record including final. -c 3 truncates as hel...; custom separator gets newline appended."
+    },
+    {
+      "field": "replies_to",
+      "text": "Correction:"
+    }
+  ]
+}

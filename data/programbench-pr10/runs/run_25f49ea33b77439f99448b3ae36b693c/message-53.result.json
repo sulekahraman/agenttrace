@@ -1,0 +1,24 @@
+{
+  "primary_type": "social_heartbeat",
+  "secondary_types": [
+    "acknowledgement"
+  ],
+  "replies_to": [
+    47,
+    52
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The target is a low-content completion ping. It does not add substantive work or new information; it simply signals completion/closure after prior work messages.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

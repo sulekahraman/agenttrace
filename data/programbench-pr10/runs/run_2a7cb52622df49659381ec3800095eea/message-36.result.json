@@ -1,0 +1,30 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    34,
+    35
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports current project state and test status (“working tree clean; compile/count smoke pass”) while also conveying a completed status/result about the shared log and commit inclusion. It replies to prior commit/status messages from codex-2 and codex-1.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Shared log now includes agent2 commit 4622219 (stats + help), working tree clean; compile/count smoke pass."
+    },
+    {
+      "field": "replies_to",
+      "text": "agent2 commit 4622219 (stats + help)"
+    },
+    {
+      "field": "addressed_to",
+      "text": "agent2 commit 4622219"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_e6e64624fd734b8d8953b11cd6f825b0",
+  "trace_id": "trace_ae5cc6010f6d3028",
+  "analyzer": {
+    "name": "facts_v1",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:16:31.543284+00:00",
+    "started_at": "2026-10-17T16:16:31.542918+00:00",
+    "completed_at": "2026-10-17T16:16:31.558679+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "facts_v1",
+      "version": "0.1.0",
+      "schema": "commsfail/facts_v1/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/yj-2026-10-15/n4-round1/record-run",
+      "room_id": "rom_azRAk7YN8k",
+      "loaded_at": "2026-10-17T16:13:53+00:00"
+    },
+    "output": {
+      "applies": true,
+      "seats": {
+        "codex-1": {
+          "posts": 16,
+          "linked_posts": 16,
+          "turns": 6,
+          "commands": 52,
+          "failed_commands": 1,
+          "test_runs": 0,
+          "files_changed": [
+            "compile.sh",
+            "yj.py"
+          ]
+        },
+        "codex-2": {
+          "posts": 22,
+          "linked_posts": 22,
+          "turns": 8,
+          "commands": 60,
+          "failed_commands": 2,
+          "test_runs": 0,
+          "files_changed": [
+            ".gitignore",
+            "compile.sh",
+            "yj.py"
+          ]
+        },
+        "codex-3": {
+          "posts": 16,
+          "linked_posts": 16,
+          "turns": 6,
+          "commands": 50,
+          "failed_commands": 0,
+          "test_runs": 0,
+          "files_changed": [
+            ".gitignore",
+            "compile.sh",
+            "yj.py"
+          ]
+        },
+        "codex-4": {
+          "posts": 21,
+          "linked_posts": 21,
+          "turns": 5,
+          "commands": 67,
+          "failed_commands": 0,
+          "test_runs": 0,
+          "files_changed": [
+            "compile.sh",
+            "yj.py"
+          ]
+        }
+      },
+      "findings": [
+        {
+          "fact": "private_contradiction",
+          "mode": "D1",
+          "seq": 68,
+          "who": "codex-3",
+          "turn": 4,
+          "op": 2,
+          "excerpt": "Verified latest commit 9274f3a already includes -k validation. `printf a:1 | ./executable -k` exits 1 and prints usage plus exact error; clean status and rebuil…",
+          "why": "claims success; in the same turn its own final text says: Verified the `-k` validation fix: it now exits 1 with usage and the expected error. Build and smoke tests pass."
+        },
+        {
+          "fact": "private_contradiction",
+          "mode": "D1",
+          "seq": 69,
+          "who": "codex-2",
+          "turn": 6,
+          "op": 2,
+          "excerpt": "DONE",
+          "why": "claims success; in the same turn its own final text says: Patched and verified `-k` validation: - Returns exit code 1 for non-YAML output - Prints the usage and exact error messa…"
+        }
+      ],
+      "counts": {
+        "overlapping_claim": 0,
+        "claim_without_action": 0,
+        "review_without_reading": 0,
+        "success_without_run": 0,
+        "success_after_failure": 0,
+        "private_contradiction": 2,
+        "check_failed_after_done": 0
+      },
+      "by_mode": {
+        "D1": 2,
+        "D2": 0,
+        "R1": 0
+      },
+      "caveats": [
+        "files are matched by name; a claim on a function inside a file counts as a claim on the file"
+      ]
+    }
+  },
+  "error": null
+}

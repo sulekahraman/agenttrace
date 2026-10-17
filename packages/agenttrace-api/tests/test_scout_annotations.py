@@ -132,6 +132,15 @@ def test_invalid_annotation_is_regenerated_with_feedback(
     assert "VALIDATION FEEDBACK" not in prompts[0]
     assert "VALIDATION FEEDBACK" in prompts[1]
     assert "at most three items" in prompts[1]
+    if invalid == "evidence":
+        assert '["Earlier result."]' in prompts[1]
+        assert "shorter contiguous" in prompts[1]
+        assert "Preserve Markdown backticks" in prompts[1]
+        assert '"Please review #1."' in prompts[1]
+    if invalid == "reply":
+        assert "Rejected reply numbers: [2]" in prompts[1]
+        assert "Allowed reply numbers: [1]" in prompts[1]
+        assert "Use [] if no supplied earlier message applies" in prompts[1]
     assert "attempt 1/3 rejected" in caplog.text
     assert result.parsed.evidence[0].text == "Please review"
     assert result.parsed.replies_to == [1]

@@ -1,0 +1,30 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    14,
+    19
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed YAML scalar conversion behavior from probing tests, without asking or directing action. It delivers the findings as results from experimentation, so evidence_observation is primary and result_delivery secondary.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "More YAML scalar behavior: date `2020-01-01` -> JSON string `2020-01-01T00:00:00Z`; timestamp preserved; `1e3` -> 1000; `012` -> 10 (octal); yes remains string; null/~ -> null."
+    },
+    {
+      "field": "replies_to",
+      "text": "More YAML scalar behavior"
+    },
+    {
+      "field": "addressed_to",
+      "text": "More YAML scalar behavior"
+    }
+  ]
+}

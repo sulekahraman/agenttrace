@@ -1,0 +1,33 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed findings from help/probe inspection, giving concrete observed behaviors and availability of full help output. It is primarily delivering results, with supporting observations.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Help gathered; probes:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "default count excludes header; headers prints `1   name` etc, -j names only."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Full help output available from README/ref."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    29
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message proposes a next action: adding missing implementations before final, based on the current code gaps noted in msg29. It also coordinates effort by framing this as time-sensitive work for the team.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Current implementation lacks join/index/partition/split per msg29; hidden tests may cover."
+    },
+    {
+      "field": "primary_type",
+      "text": "If time, add simple implementations before final."
+    }
+  ]
+}

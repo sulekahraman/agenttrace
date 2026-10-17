@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    7
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors for cat and fixlengths commands from probing, without proposing or requesting work. It delivers test results/implementation behavior details, so evidence_observation is primary and result_delivery secondary.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "cat/fixlengths:"
+    },
+    {
+      "field": "primary_type",
+      "text": "cat rows uses first header only, ignores subsequent headers. cat columns combines all headers (a,b,c,d) and pairs data rows up to minimum by default; --pad extends."
+    },
+    {
+      "field": "secondary_type",
+      "text": "fixlengths computes max record width incl trailing? input header a,b; row 1; row 2,3,4 => outputs a,b then 1, then 2,3,4 (does not pad header to max); --length 2 truncates/pads each data incl header."
+    }
+  ]
+}

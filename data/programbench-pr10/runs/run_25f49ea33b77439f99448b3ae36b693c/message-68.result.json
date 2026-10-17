@@ -1,0 +1,19 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    66
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a minimal confirmation with no substantive content, functioning as acknowledgment/closure. Given the surrounding pattern of status updates ending with DONE, it also serves as a low-content presence signal.",
+  "evidence": [
+    {
+      "field": "text",
+      "text": "DONE"
+    }
+  ]
+}

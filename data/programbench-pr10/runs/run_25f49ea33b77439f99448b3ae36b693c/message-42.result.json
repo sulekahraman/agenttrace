@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    41
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code fix and its effect. It does not ask or propose; it delivers the result of patching advanced_impl stats and notes the behavior change.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "I patched advanced_impl stats"
+    },
+    {
+      "field": "primary_type",
+      "text": "lengths include empty fields (matching ref min_length), integer-valued float sum/min/max normalize"
+    },
+    {
+      "field": "secondary_types",
+      "text": "score now 7,3"
+    }
+  ]
+}

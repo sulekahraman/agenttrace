@@ -1,0 +1,23 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "decision"
+  ],
+  "replies_to": [
+    30
+  ],
+  "addressed_to": [],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a terse completion marker with no substantive content beyond confirming finish, so it is best labeled as an acknowledgement. In context it also signals a final group decision/closure, but the communicative function is primarily acknowledgement.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

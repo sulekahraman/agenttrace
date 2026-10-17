@@ -1,0 +1,28 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "decision"
+  ],
+  "replies_to": [
+    48,
+    49
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "A one-word completion message after the work wrap-up functions as a status update indicating the task is finished; it also implicitly signals closure/decision to end work. It is not asking or providing new content.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    },
+    {
+      "field": "replies_to",
+      "text": "DONE"
+    }
+  ]
+}

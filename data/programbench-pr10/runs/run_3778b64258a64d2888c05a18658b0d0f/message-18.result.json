@@ -1,0 +1,23 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "critique_disagreement"
+  ],
+  "replies_to": [
+    17
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a concrete observed discrepancy between reference and current output, serving as evidence of a bug. It also implicitly critiques the current implementation by saying block parsing is a major problem.",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "Even simple HCL block `foo { a=1 }`: ref {\"foo\":[{\"a\":1}]}, ours {\"a\":1};"
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "block parsing is major."
+    }
+  ]
+}

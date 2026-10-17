@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "coordination"
+  ],
+  "replies_to": [
+    21
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work on the scaffold and notes added files, then requests follow-up improvements. This is primarily a delivered status/result about the scaffold, with a coordination request to use the file and improve specific areas.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Scaffold is syntactically valid and .gitignore added (executable, pycache)."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Please cherry/use xsv.py and improve command help/partition/split."
+    },
+    {
+      "field": "replies_to",
+      "text": "Scaffold is syntactically valid and .gitignore added (executable, pycache)."
+    }
+  ]
+}

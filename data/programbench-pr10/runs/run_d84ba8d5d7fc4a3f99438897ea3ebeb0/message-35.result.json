@@ -1,0 +1,33 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "status_update"
+  ],
+  "replies_to": [
+    32,
+    33
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message urges action from the team and assigns the needed next step (“Someone must implement now”), while also reporting current state (“Everyone sees no files”) and coordinating around ownership and deadline. It is not asking for information but requesting/pressuring concrete work.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Someone must implement now"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Everyone sees no files."
+    },
+    {
+      "field": "secondary_types",
+      "text": "I can’t safely write without knowing ownership, but deadline urgent."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "critique_disagreement",
+    "proposal"
+  ],
+  "replies_to": [
+    33,
+    35,
+    36
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.88,
+  "ambiguous": false,
+  "rationale": "The message reports current state and remaining issues in the shared implementation, while also flagging possible follow-up review items. It is not asking a direct question or assigning work, so status_update is primary; the mention of gaps conveys critique/disagreement/proposal-like guidance.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Remaining known gap:"
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "partition command currently routes splitcmd and does not partition by column; join outer options may need review."
+    },
+    {
+      "field": "status_update",
+      "text": "Core smoke okay."
+    }
+  ]
+}

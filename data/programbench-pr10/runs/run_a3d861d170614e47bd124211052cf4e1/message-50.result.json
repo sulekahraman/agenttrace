@@ -1,0 +1,29 @@
+{
+  "primary_type": "clarification",
+  "secondary_types": [
+    "critique_disagreement",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    47
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message corrects a prior interpretation of slice behavior and retracts the need for a fix. It functions as a clarification, with a mild critique of the earlier diff usage and an observation about parser behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Correction: slice behavior is correct with spaced `-s 1`; my diff used attached `-s1`"
+    },
+    {
+      "field": "secondary_types",
+      "text": "which current parser (and likely reference) treats differently. No slice fix needed."
+    }
+  ]
+}

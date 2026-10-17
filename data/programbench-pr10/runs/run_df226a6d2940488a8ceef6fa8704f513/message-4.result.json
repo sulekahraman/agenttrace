@@ -1,0 +1,32 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination",
+    "question"
+  ],
+  "replies_to": [
+    2,
+    3
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message states the sender’s own planned work and asks teammates what they are doing, which primarily functions as a coordination/delegation request with an embedded question. It follows and responds to the prior task-division messages from codex-2 and codex-1.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "I will investigate CLI behavior"
+    },
+    {
+      "field": "secondary_types",
+      "text": "what are others doing?"
+    },
+    {
+      "field": "secondary_types",
+      "text": "implement parser/converter if needed"
+    }
+  ]
+}

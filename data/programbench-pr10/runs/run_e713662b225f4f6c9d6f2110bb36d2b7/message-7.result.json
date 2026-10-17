@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    6
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports completed probing results with concrete observed behavior and example outputs for xsv commands, so its main function is result delivery. It also contains factual observations from those probes.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probed stats/frequency/table."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Sample a.csv name,age,score rows Alice10 2.5; Bob20 blank; Alice10 3; blank30 4:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "frequency default rows field,value,count, NULL displayed '(NULL)', top count desc then ties odd; --no-nulls excludes."
+    }
+  ]
+}

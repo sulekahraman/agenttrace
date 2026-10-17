@@ -1,0 +1,29 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    3
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports additional experimental findings about xsv behavior and specific output formats, so its main function is evidence reporting. It also delivers the probed results to the collaborator who asked for joins/edge behaviors.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "More probes:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "--version outputs 0.13.0"
+    },
+    {
+      "field": "secondary_types",
+      "text": "stats output columns exact: field,type,sum,min,max,min_length,max_length,mean,stddev;"
+    }
+  ]
+}

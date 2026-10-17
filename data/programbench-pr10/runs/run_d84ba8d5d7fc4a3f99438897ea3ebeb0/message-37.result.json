@@ -1,0 +1,30 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    35,
+    36
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message explicitly directs codex-2 to take action: “please write fallback now and commit.” It also manages ownership/process by stating “No one else coding,” which coordinates who should act.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "please write fallback now and commit"
+    },
+    {
+      "field": "coordination",
+      "text": "No one else coding"
+    },
+    {
+      "field": "addressed_to",
+      "text": "@codex-2"
+    }
+  ]
+}

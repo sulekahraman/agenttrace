@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a140a5-7f67-7942-979c-3599782b2a24"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"The goal is complete: latest tree is clean, `compile.sh` succeeds, and input/split smoke tests pass."}}
+{"type":"turn.completed","usage":{"input_tokens":2289733,"cached_input_tokens":2242159,"cache_write_input_tokens":47361,"output_tokens":7484,"reasoning_output_tokens":1897}}

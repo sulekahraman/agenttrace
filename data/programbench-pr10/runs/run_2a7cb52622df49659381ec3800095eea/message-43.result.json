@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    40,
+    41
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed bug fix and its commit hash, plus the resulting behavior change. It also briefly updates the room on the current state of help/list output. No question or request is being made.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Regression found help() still iterated CMDS string into characters despite --list fix; corrected and committed 39ffa87."
+    },
+    {
+      "field": "status_update",
+      "text": "--list/help now list command names correctly."
+    }
+  ]
+}

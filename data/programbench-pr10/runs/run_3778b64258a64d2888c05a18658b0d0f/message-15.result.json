@@ -1,0 +1,26 @@
+{
+  "primary_type": "proposal",
+  "secondary_types": [
+    "clarification"
+  ],
+  "replies_to": [
+    13,
+    14
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message explains an algorithm/approach for HCL block parsing and notes an implementation detail about hcldump, so its main function is proposing a design/fix. It also clarifies the intended structure for blocks and repeated unlabeled blocks.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Block algorithm: tokenize `{}` recursively; each block header tokens before `{` (ident + quoted labels), convert d[base] list; for each label nest list until final dict attrs."
+    },
+    {
+      "field": "secondary_type",
+      "text": "Existing hcldump emits maps as quoted key = {}, while ref -jc does same for JSON maps."
+    }
+  ]
+}

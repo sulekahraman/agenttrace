@@ -1,0 +1,25 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery",
+    "synthesis"
+  ],
+  "replies_to": [
+    10,
+    11
+  ],
+  "addressed_to": [],
+  "confidence": 0.93,
+  "ambiguous": false,
+  "rationale": "The message reports concrete probe results about multiple commands/options, summarizing observed behavior rather than asking or proposing. It also synthesizes findings across flatten, table, fixlengths, and fmt.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Probes: flatten default output ; -n uses numeric headers 0,1 and separator after every record incl final."
+    },
+    {
+      "field": "secondary_types",
+      "text": "table defaults columns separated 2 spaces, min width 2;  yielded 4 spaces for 1-char col (width is minimum, pad adds). fixlengths no --length requires file and pads to max; --length accepts stdin, truncates/pads. fmt --quote-always quotes every field; --crlf uses CRLF."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "agenttrace/analysis-run.v1",
+  "id": "run_a3234de1531941cb8bdd492714c2090d",
+  "trace_id": "trace_f18bef1f6956af75",
+  "analyzer": {
+    "name": "example_kickstart",
+    "version": "0.1.0",
+    "kind": "offline"
+  },
+  "status": "completed",
+  "provenance": {
+    "created_at": "2026-10-17T16:14:25.749512+00:00",
+    "started_at": "2026-10-17T16:14:25.737816+00:00",
+    "completed_at": "2026-10-17T16:14:25.750474+00:00",
+    "model": null,
+    "prompt_version": null,
+    "input_schema": "commsfail/trace.v1",
+    "package_versions": {
+      "commsfail": "0.4.0"
+    }
+  },
+  "output": {
+    "record": "commsfail/record.v1",
+    "annotator": {
+      "name": "example_kickstart",
+      "version": "0.1.0",
+      "schema": "commsfail/example_kickstart/v1"
+    },
+    "source": {
+      "kind": "goal-run",
+      "path": "data/programbench-pr10/sources/xsv-2026-10-15/n2-round2/record-run",
+      "room_id": "rom_79bBNzemWi",
+      "loaded_at": "2026-10-17T16:13:52+00:00"
+    },
+    "output": {
+      "taxonomy": "state_gap@1",
+      "findings": [
+        {
+          "seq": 2,
+          "who": "codex-2",
+          "signal": "open_question",
+          "mode": "B1",
+          "group": "disagreement",
+          "excerpt": "I will probe reference help/core commands and implement broad Python CLI; what area are you handling?",
+          "why": "asks a question that no later post answers or cites"
+        },
+        {
+          "seq": 18,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "I committed final small fixes: search now tests each field independently; stats min/max length includes empty fields (matching reference). Compile/test passed.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 24,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Verified latest commits c60fb45/c472a31 include stats --everything and null lengths; compile + sample stats output works. Worktree currently ready.",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 26,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "Final regression found and fixed critical CLI parsing bug: select SELECTION INPUT and search REGEX INPUT previously treated the selector/regex as filename. Both…",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 27,
+          "who": "codex-1",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        },
+        {
+          "seq": 28,
+          "who": "codex-2",
+          "signal": "bare_claim",
+          "mode": "D1",
+          "group": "ungrounded",
+          "excerpt": "DONE",
+          "why": "says it is done or passes, and names no file, item or post a reader could check"
+        }
+      ],
+      "counts": {
+        "posts": 27,
+        "findings": 6,
+        "by_group": {
+          "disagreement": 1,
+          "ungrounded": 5
+        }
+      }
+    }
+  },
+  "error": null
+}

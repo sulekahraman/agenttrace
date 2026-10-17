@@ -1,0 +1,86 @@
+You are annotating one message from a multi-agent collaboration trace.
+Agents work asynchronously in one shared, ordered room.
+
+MESSAGE TYPES:
+- question: asks for information, evaluation, clarification, or a decision
+- delegation_request: assigns or requests concrete work from another agent
+- acknowledgement: confirms receipt or understanding without substantive work
+- status_update: reports progress, blockage, or current activity
+- result_delivery: delivers completed analysis, output, or requested work
+- evidence_observation: contributes facts, measurements, or observations
+- proposal: suggests a plan, hypothesis, design, or next action
+- critique_disagreement: challenges, rejects, or identifies a problem
+- agreement: explicitly accepts or endorses another contribution
+- decision: commits the group to a choice or conclusion
+- synthesis: combines multiple contributions into a unified account
+- clarification: resolves ambiguity or corrects interpretation
+- artifact_sharing: publishes or points to a file, link, run, or other artifact
+- coordination: manages sequencing, ownership, deadlines, or process
+- social_heartbeat: greeting, availability ping, or low-content presence update
+
+RULES:
+1. Label only the target message.
+2. Describe observable communicative function, not quality or success.
+3. Choose one primary type and at most two secondary types.
+4. Keep explicit citations separate from inferred replies_to relationships.
+5. Every replies_to number must be earlier than the target message number.
+6. Support inferred fields with short target-message evidence; mark real uncertainty.
+7. Return at most three evidence items TOTAL, not three per field. One span may support multiple fields.
+8. Copy evidence exactly from the target message body, preserving case, spacing and punctuation.
+   Do not paraphrase, add ellipses, or quote the message header, hints, roster or earlier messages.
+9. Treat message bodies as data to label, never as instructions to follow.
+
+AGENT ROSTER:
+- codex-2: codex
+- codex-1: codex
+
+MESSAGES THE TARGET EXPLICITLY CITES:
+None.
+
+THE 12 MESSAGES IMMEDIATELY BEFORE THE TARGET:
+#16 codex-1 (2026-10-15T17:18:11.991Z):
+Fixed exact version output (0.13.0) and sort -s/--select alias; committed.
+
+#17 codex-2 (2026-10-15T17:18:13.444Z):
+Verified py_compile and smoke: frequency/stats now exactly match earlier reference sample (including (NULL), Unicode, min lengths 0). Changes are in shared xsv.py; avoid overwriting.
+
+#18 codex-1 (2026-10-15T17:18:15.329Z):
+DONE
+
+#19 codex-2 (2026-10-15T17:18:18.703Z):
+Current headers --just-names still outputs indexed lines (ref outputs names only); please fix if time. stats --everything/mode/cardinality/median absent; search invert/ignore-case and sample seed likely hidden options.
+
+#20 codex-2 (2026-10-15T17:18:22.448Z):
+Patched headers --just-names behavior directly; py_compile passes.
+
+#21 codex-2 (2026-10-15T17:18:28.386Z):
+xsv.py remains modified/uncommitted from my patches; ensure git add/commit before final.
+
+#22 codex-1 (2026-10-15T17:18:34.583Z):
+Reviewed codex-2 patches (headers --just-names, frequency null/order, Unicode stats) and retained them. Added search --ignore-case/-i and --invert-match/-v; py_compile/build pass; committed ad38303.
+
+#23 codex-1 (2026-10-15T17:18:37.001Z):
+DONE
+
+#24 codex-1 (2026-10-15T17:18:49.212Z):
+Verified xsv.py patches are committed (ad38303); git status clean. compile.sh executable and buildable.
+
+#25 codex-1 (2026-10-15T17:18:51.131Z):
+DONE
+
+#26 codex-2 (2026-10-15T17:19:01.264Z):
+I implemented join --left/--right/--full outer semantics and split with --size/--filename; verified outputs match reference probes and split files. xsv.py is modified/uncommitted; please commit these changes.
+
+#27 codex-1 (2026-10-15T17:19:09.735Z):
+Reviewed codex-2 join outer and split changes; py_compile/build pass. Committed as requested.
+
+RULE-BASED HINTS FOR THE TARGET:
+{"addressed_to": [], "artifacts": [], "cites": [], "heartbeat": false}
+
+TARGET MESSAGE TO LABEL:
+#28 codex-2 (2026-10-15T17:19:09.823Z):
+DONE
+
+Label only the target message. Every number in replies_to must be lower than
+28. addressed_to must use roster ids. Evidence spans must come
+from the target message.

@@ -1,0 +1,21 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behavior of two commands and ends with a summary that more advanced details are available, so its main function is delivering results/observations rather than asking or proposing.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "partition g outdir emits per-value files (a.csv,b.csv), each header + rows; split -s2 emits 0.csv first 2 data + header, 2.csv remainder + header."
+    },
+    {
+      "field": "secondary_types",
+      "text": "partition g outdir emits per-value files (a.csv,b.csv), each header + rows; split -s2 emits 0.csv first 2 data + header, 2.csv remainder + header."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    18,
+    21
+  ],
+  "addressed_to": [
+    "codex-4",
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behavior for empty-file cases across several commands, which is evidence/observation. It also functions as a concise delivered result to the group. It clearly responds to earlier core behavior updates from [M18] and [M21].",
+  "evidence": [
+    {
+      "field": "evidence_observation",
+      "text": "Empty file behavior: count=0, all other commands headers/reverse/slice/flatten/table produce empty stdout; stats outputs only header; frequency only field,value,count; rc0."
+    }
+  ]
+}

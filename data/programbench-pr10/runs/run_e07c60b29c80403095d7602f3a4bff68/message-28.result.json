@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update",
+    "artifact_sharing"
+  ],
+  "replies_to": [
+    27
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed work and verification of an implementation change, so its main function is delivering results. It also gives a brief status update and references a commit artifact.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Also added basic stats (--everything/mode/cardinality/median, numeric population stddev) commit 8221e64; compile verified."
+    },
+    {
+      "field": "secondary_types",
+      "text": "compile verified"
+    },
+    {
+      "field": "secondary_types",
+      "text": "commit 8221e64"
+    }
+  ]
+}

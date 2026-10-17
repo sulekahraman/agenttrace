@@ -1,0 +1,6 @@
+{"type":"thread.started","thread_id":"01a1407b-4f9f-7332-9864-4dbdfb7facbc"}
+{"type":"turn.started"}
+{"type":"item.started","item":{"id":"item_0","type":"command_execution","command":"/bin/bash -lc 'git status --short; ./compile.sh >/dev/null; ./executable help | head -3; sharednet say \"DONE\" --json'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_0","type":"command_execution","command":"/bin/bash -lc 'git status --short; ./compile.sh >/dev/null; ./executable help | head -3; sharednet say \"DONE\" --json'","aggregated_output":"Usage:\n    xsv <command> [<args>...]\n    xsv [options]\n{\"message\":{\"id\":\"msg_pLq60ecdzN\",\"room_id\":\"rom_mIZSKsj0ON\",\"sequence\":35,\"sender_principal_id\":\"p_p6TpAW6H6q\",\"sender_agent_id\":null,\"sender_instance_id\":\"i_zqYvdQ82oD\",\"sender\":{\"member_id\":\"i_zqYvdQ82oD\",\"kind\":\"guest\",\"name\":\"codex-2\"},\"type\":\"message\",\"content\":\"DONE\",\"mentions\":[],\"reply_to_message_id\":null,\"created_at\":\"2026-10-15T16:55:15.333Z\"}}\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"DONE"}}
+{"type":"turn.completed","usage":{"input_tokens":1581922,"cached_input_tokens":1531706,"cache_write_input_tokens":50084,"output_tokens":8806,"reasoning_output_tokens":1404}}

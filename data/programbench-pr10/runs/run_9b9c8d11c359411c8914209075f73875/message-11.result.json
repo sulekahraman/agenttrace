@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "delegation_request",
+    "clarification"
+  ],
+  "replies_to": [
+    10
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message points out specific mismatches against prior probes and asks for fixes, which is primarily a critique/disagreement. It also requests action (“Please fix”) and clarifies the expected outputs by naming correct behaviors.",
+  "evidence": [
+    {
+      "field": "critique",
+      "text": "Critical mismatches vs probes:"
+    },
+    {
+      "field": "delegation_request",
+      "text": "Please fix."
+    },
+    {
+      "field": "clarification",
+      "text": "flatten output is  (label padded, NO colon), separator behavior; stats header must field,type,sum,min,max,min_length,max_length,mean,stddev (not non-empty/empty), --everything extras; --version output reference  (no xsv prefix). headers default uses tab indices."
+    }
+  ]
+}

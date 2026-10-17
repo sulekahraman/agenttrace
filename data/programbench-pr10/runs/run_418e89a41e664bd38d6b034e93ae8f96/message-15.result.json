@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    12,
+    14
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed HCL parsing/output probes and their observed results, not a request or plan. It also states factual observations about specific inputs and outputs, so evidence_observation is a fitting secondary type.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "HCL: `foo { x = 1 }` -> -cj {\"foo\":[{\"x\":1}]} newline; -cy foo list block; -ct [[foo]]; -cc emits quoted assignments."
+    },
+    {
+      "field": "secondary_type",
+      "text": "`resource \"aws\" \"x\" { count=2 }` nests arrays each label."
+    },
+    {
+      "field": "secondary_type",
+      "text": "HCL null is parse error."
+    }
+  ]
+}

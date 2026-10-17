@@ -1,0 +1,31 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    21,
+    25
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports a completed code change to xsv.py and describes the behavioral details of the patch, which is a result delivery. It also asks others to preserve the changes when merging, which is a coordination note.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I patched xsv.py flatten: aligned labels with 2 spaces, ASCII ... truncation, separator only between records (ref behavior), no separator when empty."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Please preserve when merging."
+    },
+    {
+      "field": "addressed_to",
+      "text": "Please preserve when merging."
+    }
+  ]
+}

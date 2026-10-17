@@ -1,0 +1,26 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "critique_disagreement",
+    "proposal"
+  ],
+  "replies_to": [],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message requests concrete work from the codebase/implementer by asking to patch specific mismatches. It also critiques the current implementation and proposes fixes, but the main function is delegation of work.",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "Please patch."
+    },
+    {
+      "field": "critique_disagreement",
+      "text": "key mismatches to fix"
+    },
+    {
+      "field": "proposal",
+      "text": "Inspect xsv.py: key mismatches to fix: headers default uses 3 spaces (), not tab; flatten output is  (no colon), labels -n are 0-based (,...), and separator printed after each record but likely no extra?"
+    }
+  ]
+}

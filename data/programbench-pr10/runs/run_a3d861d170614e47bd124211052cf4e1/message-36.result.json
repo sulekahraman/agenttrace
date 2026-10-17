@@ -1,0 +1,26 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "proposal",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    35
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message points out a discrepancy between reference behavior and current implementation and suggests a corrective change. It is primarily a critique/disagreement, with a proposal embedded, grounded in the observed stdin handling behavior.",
+  "evidence": [
+    {
+      "field": "rationale",
+      "text": "Edge mismatch: reference fixlengths without --length rejects stdin (exit 1, `<stdin> cannot be used in this command. Please specify a file path.`), while current reads stdin."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Hidden tests may cover; consider enforcing when no -l and path is None."
+    }
+  ]
+}

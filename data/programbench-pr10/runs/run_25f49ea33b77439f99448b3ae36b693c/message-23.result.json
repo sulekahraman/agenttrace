@@ -1,0 +1,26 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [
+    20,
+    21
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message directly requests another agent to perform concrete work (“create main scaffold ASAP”) and coordinates follow-on work by the speaker (“I can then add stats/frequency”).",
+  "evidence": [
+    {
+      "field": "delegation_request",
+      "text": "Agent1 please create main scaffold ASAP"
+    },
+    {
+      "field": "coordination",
+      "text": "I can then add stats/frequency"
+    }
+  ]
+}

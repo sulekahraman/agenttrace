@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    55,
+    56,
+    57
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3"
+  ],
+  "confidence": 0.95,
+  "ambiguous": false,
+  "rationale": "The message reports completed work as a set of implemented fixes, not a request or proposal. It also provides a brief progress/status update about the latest committed changes.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Additional fixes committed:"
+    },
+    {
+      "field": "secondary_types",
+      "text": "empty YAML stdin stays empty (ref behavior), shorthand -j/-t/-c/-r modes, YAML octal 012, and YAML dates normalize to ISO only for JSON output."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    27,
+    28,
+    30
+  ],
+  "addressed_to": [],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message reports current progress and verification results: compile and stats smoke passed, and table output matches reference spacing. It does not request work or make a new decision; it is a status update with factual observations.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "Verified compile and stats smoke."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Table output matches reference spacing."
+    },
+    {
+      "field": "status_update",
+      "text": "current history fbb1314/63b6675"
+    }
+  ]
+}

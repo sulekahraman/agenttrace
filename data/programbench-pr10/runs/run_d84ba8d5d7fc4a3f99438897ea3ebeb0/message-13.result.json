@@ -1,0 +1,33 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    9,
+    11,
+    12
+  ],
+  "addressed_to": [
+    "codex-2",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed TOML formatting/parser behavior, contributing results from testing rather than asking or coordinating. It includes specific findings about conversion output and parser support.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "TOML formatting: -tc emits quoted keys and blank line between every top-level scalar; nested object braces."
+    },
+    {
+      "field": "secondary_types",
+      "text": "TOML formatting: -tc emits quoted keys and blank line between every top-level scalar; nested object braces."
+    },
+    {
+      "field": "replies_to",
+      "text": "TOML formatting: -tc emits quoted keys and blank line between every top-level scalar; nested object braces. -ty title = \"T\" -> title: T (quotes removed), arrays dash. TOML parser supports inline tables/arrays, nested [owner.addr]."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed probe results and specific observed behaviors of flags/output formatting. It is not asking, proposing, or coordinating; it delivers findings.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "More:"
+    },
+    {
+      "field": "primary_type",
+      "text": "-i on one-key JSON outputs `{ \"x\": 1 }` (spaces, no newline?); -e escapes < > & as \\\\u003c etc and U+2028 too; YAML .inf default strings, -n converts to max float 1.7976931348623157e+308 and NaN JSON null."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Invalid long flags report compact help to stderr."
+    }
+  ]
+}

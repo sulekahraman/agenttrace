@@ -1,0 +1,28 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    54,
+    56
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports verification results for recent commits, including build/test status and repository state, so its main function is delivering results. It also provides factual observations about compile/py_compile passing and select omission behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Verified latest commits f38777e/f61d6784: compile and py_compile pass, select omission works; tree clean."
+    },
+    {
+      "field": "replies_to",
+      "text": "Verified latest commits f38777e/f61d6784"
+    },
+    {
+      "field": "replies_to",
+      "text": "compile and py_compile pass, select omission works; tree clean."
+    }
+  ]
+}

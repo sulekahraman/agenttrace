@@ -1,0 +1,26 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "addressed_to": [],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message provides concrete behavioral findings about CLI outputs, defaults, and error handling, functioning as delivered results rather than a question or proposal.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Reference: -v outputs v0.0.0 newline; -h exact README help and exits 0; invalid flags prints help then Error: invalid flags specified: <chars separated spaces>, exit1."
+    },
+    {
+      "field": "evidence_observation",
+      "text": "Default YAML->compact JSON; -i pretty JSON."
+    }
+  ]
+}

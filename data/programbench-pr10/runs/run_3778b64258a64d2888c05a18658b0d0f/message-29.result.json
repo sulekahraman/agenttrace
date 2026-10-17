@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    28
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports a completed fix and verification of the TOML pretty-print mismatch, which is a delivered result. It also gives current progress on a patch and commit, so it has a status-update aspect.",
+  "evidence": [
+    {
+      "field": "result_delivery",
+      "text": "Found TOML -i mismatch (nested attrs lacked 2-space indent), patched tomldump pretty mode and committed; verified -jti now matches reference."
+    },
+    {
+      "field": "status_update",
+      "text": "patched tomldump pretty mode and committed"
+    }
+  ]
+}

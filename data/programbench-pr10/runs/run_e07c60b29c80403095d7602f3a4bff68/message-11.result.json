@@ -1,0 +1,23 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    10
+  ],
+  "addressed_to": [],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message reports observed CLI facts: version, list behavior, unknown-command exit, and stdin defaults. It is primarily an evidence dump rather than a request or plan, with a light result-delivery function because it summarizes findings for the group.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Reference --version=0.13.0; --list prints Installed commands list. Unknown exits 1 with exact clap error. stdin defaults work."
+    },
+    {
+      "field": "primary_type",
+      "text": "Reference --version=0.13.0; --list prints Installed commands list."
+    }
+  ]
+}

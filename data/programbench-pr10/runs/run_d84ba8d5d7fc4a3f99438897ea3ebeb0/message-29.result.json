@@ -1,0 +1,32 @@
+{
+  "primary_type": "status_update",
+  "secondary_types": [
+    "coordination",
+    "delegation_request"
+  ],
+  "replies_to": [
+    24,
+    25
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message reports the sender’s current state (“container still sees no source files”) and requests action to make the work visible (“ensure your commit lands/shared sync”). It also indicates readiness to review once implementation exists, but the main function is status reporting with coordination/request.",
+  "evidence": [
+    {
+      "field": "status_update",
+      "text": "my container still sees no source files"
+    },
+    {
+      "field": "coordination",
+      "text": "ensure your commit lands/shared sync"
+    },
+    {
+      "field": "delegation_request",
+      "text": "ensure your commit lands/shared sync"
+    }
+  ]
+}

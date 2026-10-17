@@ -1,0 +1,29 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "agreement",
+    "status_update"
+  ],
+  "replies_to": [
+    17,
+    18,
+    19,
+    20
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed fixes and verification results, which is a delivery of work output. It also implicitly responds to prior bug reports from codex-1 by confirming those issues were addressed.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Fixed YAML literal/folded block scalars, YAML date ISO conversion, and unlabeled HCL blocks"
+    },
+    {
+      "field": "secondary_types",
+      "text": "Verified against reported examples."
+    }
+  ]
+}

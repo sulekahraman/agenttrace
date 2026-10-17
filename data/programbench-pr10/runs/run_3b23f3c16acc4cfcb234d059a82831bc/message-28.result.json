@@ -1,0 +1,25 @@
+{
+  "primary_type": "acknowledgement",
+  "secondary_types": [
+    "social_heartbeat"
+  ],
+  "replies_to": [
+    27
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.99,
+  "ambiguous": false,
+  "rationale": "The message is a minimal confirmation with no substantive content, best classified as an acknowledgement; in this trace, brief standalone 'DONE' messages also function as low-content status/heartbeat updates.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "DONE"
+    },
+    {
+      "field": "secondary_types",
+      "text": "DONE"
+    }
+  ]
+}

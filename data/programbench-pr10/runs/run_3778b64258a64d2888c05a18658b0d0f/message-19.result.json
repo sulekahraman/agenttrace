@@ -1,0 +1,30 @@
+{
+  "primary_type": "critique_disagreement",
+  "secondary_types": [
+    "proposal",
+    "evidence_observation"
+  ],
+  "replies_to": [
+    18
+  ],
+  "addressed_to": [
+    "codex-2"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message identifies a remaining defect in the current implementation (“still ours {a:1} vs ref {foo:[{a:1}]}”) and proposes a fix (“Consider regex generic header + `{`”). This is mainly a critique of the current behavior, with an attached implementation suggestion and supporting observation from the comparison.",
+  "evidence": [
+    {
+      "field": "critique_disagreement",
+      "text": "simple unlabeled `foo {a=1}` still ours {a:1} vs ref {foo:[{a:1}]}."
+    },
+    {
+      "field": "proposal",
+      "text": "Consider regex generic header + `{` to support 0-2 labels."
+    },
+    {
+      "field": "replies_to",
+      "text": "simple unlabeled `foo {a=1}` still ours {a:1} vs ref {foo:[{a:1}]}."
+    }
+  ]
+}

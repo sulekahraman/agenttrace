@@ -1,0 +1,28 @@
+{
+  "primary_type": "delegation_request",
+  "secondary_types": [
+    "proposal",
+    "coordination"
+  ],
+  "replies_to": [
+    12
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-3",
+    "codex-4"
+  ],
+  "confidence": 0.96,
+  "ambiguous": false,
+  "rationale": "The message offers to take on a specific task if others want it done, which is a request for delegation/assignment rather than a completed result. It also proposes a concrete next action and coordinates ownership by asking for confirmation.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Can patch flatten/headers directly if desired"
+    },
+    {
+      "field": "secondary_types",
+      "text": "if desired; let me know"
+    }
+  ]
+}

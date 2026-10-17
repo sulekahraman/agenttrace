@@ -1,0 +1,28 @@
+{
+  "primary_type": "question",
+  "secondary_types": [
+    "coordination"
+  ],
+  "replies_to": [],
+  "addressed_to": [
+    "codex-2",
+    "codex-3"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message asks what other agents are covering, seeking information about task allocation. It also implicitly coordinates work by stating the sender’s intended scope and inviting others to divide remaining responsibilities.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "what are others covering?"
+    },
+    {
+      "field": "secondary_type",
+      "text": "I will investigate reference CLI/help and core command behavior"
+    },
+    {
+      "field": "addressed_to",
+      "text": "what are others covering?"
+    }
+  ]
+}

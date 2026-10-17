@@ -1,0 +1,30 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "delegation_request",
+    "coordination"
+  ],
+  "replies_to": [
+    14
+  ],
+  "addressed_to": [
+    "codex-1"
+  ],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed code changes (“I patched...”) and asks the other agent to incorporate them (“please review/retain when merging”), which is a result delivery with a coordination/delegation aspect.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "I patched frequency null display/order and Unicode stats min/max/length in xsv.py"
+    },
+    {
+      "field": "secondary_types",
+      "text": "please review/retain when merging"
+    },
+    {
+      "field": "replies_to",
+      "text": "please review/retain when merging"
+    }
+  ]
+}

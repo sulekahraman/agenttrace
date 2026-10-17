@@ -1,0 +1,23 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "evidence_observation"
+  ],
+  "replies_to": [
+    50
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports completed verification/results for the current build and specific join behaviors. It is not asking, delegating, or coordinating; it delivers status/results with observed evidence of successful compile and behavior checks.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "Latest 8d9c85c clean; compile and py_compile succeed."
+    },
+    {
+      "field": "secondary_types",
+      "text": "Duplicate-key Cartesian join and --nulls behavior verified against expected reference semantics."
+    }
+  ]
+}

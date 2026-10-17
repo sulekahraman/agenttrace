@@ -1,0 +1,26 @@
+{
+  "primary_type": "result_delivery",
+  "secondary_types": [
+    "status_update"
+  ],
+  "replies_to": [
+    55
+  ],
+  "addressed_to": [
+    "codex-1",
+    "codex-2"
+  ],
+  "confidence": 0.97,
+  "ambiguous": false,
+  "rationale": "The message reports completed fixes and test outcome, which is a delivery of results. It also updates the group on current state by noting commits and smoke test success.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Fixed mode aliases (-t/-r/-c), YAML special float handling with -n, and root scalar YAML parsing;"
+    },
+    {
+      "field": "primary_type",
+      "text": "commits fd7fde8 plus follow-up. Smoke outputs match .inf reference."
+    }
+  ]
+}

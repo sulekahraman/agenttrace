@@ -1,0 +1,31 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "clarification",
+    "result_delivery"
+  ],
+  "replies_to": [
+    7,
+    8,
+    12,
+    14
+  ],
+  "addressed_to": [],
+  "confidence": 0.94,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed behaviors and error formats for option ordering, default input handling, help parsing, and empty stdin. It is primarily evidence reporting, with a small clarifying note about parser behavior.",
+  "evidence": [
+    {
+      "field": "primary_type",
+      "text": "More: options can be any order only if source/output pair recognized; -iyj works, -jyi errors (-i only valid output check due parser interpreting source?)."
+    },
+    {
+      "field": "primary_type",
+      "text": "`-` alone defaults. Errors parse as `Error parsing JSON: ...` stderr rc1."
+    },
+    {
+      "field": "primary_type",
+      "text": "`--help` treated invalid chars. Empty stdin => zero bytes."
+    }
+  ]
+}

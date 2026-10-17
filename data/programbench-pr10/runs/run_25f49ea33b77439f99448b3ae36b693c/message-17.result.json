@@ -1,0 +1,27 @@
+{
+  "primary_type": "evidence_observation",
+  "secondary_types": [
+    "result_delivery"
+  ],
+  "replies_to": [
+    8
+  ],
+  "addressed_to": [],
+  "confidence": 0.98,
+  "ambiguous": false,
+  "rationale": "The message reports concrete observed output behavior for the sample command, including seed-dependent results and header handling, which is evidence/observation rather than a request or plan. It also delivers the observed results to the group.",
+  "evidence": [
+    {
+      "field": "replies_to",
+      "text": "Sample seeded observed x,a,b,c,d,e: n1 seed1=>e; seed42=>e. n2 seed1=>a,d; seed42=>e,b. Header always first unless -n. n0 outputs header only."
+    },
+    {
+      "field": "primary_type",
+      "text": "Sample seeded observed x,a,b,c,d,e"
+    },
+    {
+      "field": "secondary_types",
+      "text": "n1 seed1=>e; seed42=>e. n2 seed1=>a,d; seed42=>e,b."
+    }
+  ]
+}
