@@ -89,7 +89,11 @@ export function CommunicationSetup({ report, defaultModel, setReport, onEvidence
         <p>{setup.ready ? "Provider dependencies and credential presence are ready; access is checked during execution." : "Provider setup required."}</p>
         {setup.issues.map((issue) => <p role="alert" key={issue.code}>{issue.message}</p>)}
         {!setup.ready && <p>Activate the server environment and install <code>{setup.install_command}</code> if needed. Configure provider credentials server-side, then restart <code>{setup.start_command}</code>. Never enter keys in this page.</p>}
-        {setup.coverage && <p>Raw turns: {setup.coverage.raw_turns}; wake records: {setup.coverage.wake_records}. Full model inputs and workspace history are not imported.</p>}
+        {setup.coverage && <p>Raw turns: {setup.coverage.raw_turns}; wake records: {setup.coverage.wake_records}.
+          {setup.coverage.recorded_inputs ? " Recorded turn inputs imported." : " Recorded turn inputs unavailable."}
+          {setup.coverage.workspace_history ? " Batch workspace history imported." : " Workspace history unavailable."}
+          {" Serialized model API requests are not imported."}
+        </p>}
       </div>}
       {error && <p role="alert" className="analysis-error">{error}</p>}
       <AnalysisResults analysis={run} onEvidence={onEvidence} />

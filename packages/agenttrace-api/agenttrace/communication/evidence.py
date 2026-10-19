@@ -187,6 +187,11 @@ def build_evidence(trace: Trace, raw_root: Path | None = None) -> dict:
                 and all(raw_complete.get((seat, number)) for (actor, number) in wakes if actor == seat and number <= turn)
             ),
         }
+    if raw_root is not None:
+        from .capture import enrich, load_capture
+        capture = load_capture(raw_root, trace)
+        if capture is not None:
+            enrich(events, coverage, capture, raw)
     bundle = {"schema": "agenttrace/communication-evidence.v1", "coverage": coverage, "events": events}
     bundle["sha256"] = digest(bundle)
     return bundle
@@ -198,7 +203,10 @@ def model_evidence(bundle: dict) -> dict:
     truncated = []
     omitted = []
     # Messages precede tool detail so long command output cannot hide the conversation.
-    ordered = sorted(bundle["events"], key=lambda event: event["kind"] not in ("post", "wake", "boundary"))
+    priorities = {"post": 0, "wake": 0, "boundary": 0, "input": 1, "delivery": 1, "workspace": 1}
+    ordered = sorted(bundle["events"], key=lambda event: (
+        priorities.get(event["kind"], 3 if event["kind"] == "detail" else 2),
+    ))
     for event in ordered:
         if remaining <= 0:
             omitted.append(event["id"])
@@ -231,6 +239,11 @@ def receipt_status(bundle: dict, post_id: str, dependent_id: str) -> str:
     published = parse_ts(post.get("timestamp"))
     operation = by_id.get(dependent.get("operation"), dependent)
     cutoff = parse_ts(operation.get("timestamp") or operation.get("turn_started_at"))
+    if receipt.get("source") == "validated_recorded_prompts_and_tool_outputs":
+        if (receipt.get("capture_complete") and not receipt.get("uncertain_channel") and published and cutoff
+                and published.tzinfo and cutoff.tzinfo and published <= cutoff):
+            return "not_received"
+        return "unknown"
     if (type(upper) is int and type(sequence) is int and sequence > upper
             and receipt.get("absence_checkable") and published and cutoff
             and published.tzinfo and cutoff.tzinfo and published <= cutoff):

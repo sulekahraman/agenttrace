@@ -1,0 +1,83 @@
+{
+  "runs": 12,
+  "agent_messages": 602,
+  "direct_provider_api_calls": 0,
+  "scout_positive_runs": {
+    "duplicated_work": 7,
+    "weak_handoff": 2,
+    "unintegrated_information": 0
+  },
+  "communication_class_statuses": {
+    "disclosure": {
+      "supported_failure": 11,
+      "undecidable": 1
+    },
+    "delivery": {
+      "undecidable": 12
+    },
+    "reading": {
+      "undecidable": 11,
+      "supported_failure": 1
+    },
+    "action": {
+      "undecidable": 12
+    }
+  },
+  "supported_incidents": {
+    "disclosure": 14,
+    "reading": 1
+  },
+  "undecidable_candidates": 7,
+  "evidence_shortened_events": 79,
+  "evidence_omitted_events": 771,
+  "visualizations": [
+    {
+      "run": "xsv-n2-round1",
+      "url": "http://127.0.0.1:3012/?trace=trace_810039cd98b3c8b0"
+    },
+    {
+      "run": "xsv-n2-round2",
+      "url": "http://127.0.0.1:3012/?trace=trace_f18bef1f6956af75"
+    },
+    {
+      "run": "xsv-n2-round3",
+      "url": "http://127.0.0.1:3012/?trace=trace_3ce5b38eb14b6137"
+    },
+    {
+      "run": "xsv-n3-round1",
+      "url": "http://127.0.0.1:3012/?trace=trace_f1509e7ad764d54a"
+    },
+    {
+      "run": "xsv-n3-round2",
+      "url": "http://127.0.0.1:3012/?trace=trace_abb6da728982d695"
+    },
+    {
+      "run": "xsv-n3-round3",
+      "url": "http://127.0.0.1:3012/?trace=trace_b7ff2953e20e3e5e"
+    },
+    {
+      "run": "xsv-n4-round1",
+      "url": "http://127.0.0.1:3012/?trace=trace_a49b03f1df3bca94"
+    },
+    {
+      "run": "xsv-n4-round2",
+      "url": "http://127.0.0.1:3012/?trace=trace_abaad9e890b53c8a"
+    },
+    {
+      "run": "xsv-n4-round3",
+      "url": "http://127.0.0.1:3012/?trace=trace_f4edfa23b99faa29"
+    },
+    {
+      "run": "yj-n2-round1",
+      "url": "http://127.0.0.1:3012/?trace=trace_b128ff4c92d47fa5"
+    },
+    {
+      "run": "yj-n3-round1",
+      "url": "http://127.0.0.1:3012/?trace=trace_c25e8be963216dac"
+    },
+    {
+      "run": "yj-n4-round1",
+      "url": "http://127.0.0.1:3012/?trace=trace_ae5cc6010f6d3028"
+    }
+  ]
+}

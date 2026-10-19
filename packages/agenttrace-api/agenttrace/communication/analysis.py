@@ -219,6 +219,16 @@ no_failure_found only for an actually assessable search with no qualifying evide
 undecidable when evidence cannot establish the transition, not_applicable only for solo input.
 Do not infer full observability from an evidence-level label. Respect per-agent coverage,
 missing full model inputs, absent workspace history, and every omitted/truncated event.
+When recorded_inputs is true, receipt comes from validated session prompts and completed
+model-visible tool outputs, not native command stdout. A command may finish after its tool
+wrapper already returned an empty result. Use receipt metadata at the dependent action start.
+Native action IDs and raw stream item IDs differ; their import is matched by checked stream
+order/content. call_link describes temporal association, not an explicit native parent ID.
+Core events can point to detail events; an excerpt does not establish the omitted remainder.
+Workspace snapshots are second-resolution message-batch checkpoints, not per-action
+snapshots. Never use snapshot_at_or_after as proof of an action's own effect or ordering
+within that second. Exact file-change diffs identify edits; concurrent shell writes can
+remain unattributable. Recorded opening messages are not serialized model API requests.
 """
 
 
@@ -303,7 +313,14 @@ async def analyze(bundle: dict, model: str, artifacts: Path) -> dict:
         "caveats": [
             "Automated causal judgments, not ground truth or calibrated confidence.",
             "Unknown evidence is not evidence of absence; repair does not erase an incident.",
-            "Full model inputs and workspace history are not imported by this experimental setup.",
+            (
+                "Recorded turn inputs are available, but complete serialized model API requests are not."
+                if supplied["coverage"].get("recorded_inputs") else "Full model inputs are not supplied."
+            ),
+            (
+                "Workspace snapshots are batch-level, not action-specific causal attribution."
+                if supplied["coverage"].get("workspace_history") else "Workspace history is not supplied."
+            ),
         ],
     }
     save_json(artifacts / "communication.result.json", output)

@@ -1,0 +1,116 @@
+{
+  "runs": 12,
+  "agent_messages": 602,
+  "direct_provider_api_calls": 0,
+  "independent_session_stages": 36,
+  "scout_rerun": false,
+  "scout_positive_runs": {
+    "duplicated_work": 7,
+    "weak_handoff": 2,
+    "unintegrated_information": 0
+  },
+  "communication_class_statuses": {
+    "disclosure": {
+      "undecidable": 7,
+      "no_failure_found": 4,
+      "supported_failure": 1
+    },
+    "delivery": {
+      "supported_failure": 6,
+      "undecidable": 2,
+      "no_failure_found": 4
+    },
+    "reading": {
+      "no_failure_found": 9,
+      "undecidable": 2,
+      "supported_failure": 1
+    },
+    "action": {
+      "no_failure_found": 7,
+      "undecidable": 5
+    }
+  },
+  "previous_communication_class_statuses": {
+    "disclosure": {
+      "supported_failure": 11,
+      "undecidable": 1
+    },
+    "delivery": {
+      "undecidable": 12
+    },
+    "reading": {
+      "undecidable": 11,
+      "supported_failure": 1
+    },
+    "action": {
+      "undecidable": 12
+    }
+  },
+  "supported_incidents": {
+    "disclosure": 1,
+    "delivery": 7,
+    "reading": 1,
+    "action": 0
+  },
+  "undecidable_incidents": 6,
+  "core_events_omitted": 0,
+  "core_events_clipped": 0,
+  "detail_events_omitted": 2225,
+  "detail_events_clipped": 62,
+  "capture": {
+    "recorded_inputs": 195,
+    "native_actions": 2322,
+    "native_sessions": 36,
+    "workspace_snapshots": 174
+  },
+  "visualizations": [
+    {
+      "run": "xsv-n2-round1",
+      "url": "http://127.0.0.1:3013/?trace=trace_810039cd98b3c8b0&analysis=run_rich12_xsv-n2-round1_communication"
+    },
+    {
+      "run": "xsv-n2-round2",
+      "url": "http://127.0.0.1:3013/?trace=trace_f18bef1f6956af75&analysis=run_rich12_xsv-n2-round2_communication"
+    },
+    {
+      "run": "xsv-n2-round3",
+      "url": "http://127.0.0.1:3013/?trace=trace_3ce5b38eb14b6137&analysis=run_rich12_xsv-n2-round3_communication"
+    },
+    {
+      "run": "xsv-n3-round1",
+      "url": "http://127.0.0.1:3013/?trace=trace_f1509e7ad764d54a&analysis=run_rich12_xsv-n3-round1_communication"
+    },
+    {
+      "run": "xsv-n3-round2",
+      "url": "http://127.0.0.1:3013/?trace=trace_abb6da728982d695&analysis=run_rich12_xsv-n3-round2_communication"
+    },
+    {
+      "run": "xsv-n3-round3",
+      "url": "http://127.0.0.1:3013/?trace=trace_b7ff2953e20e3e5e&analysis=run_rich12_xsv-n3-round3_communication"
+    },
+    {
+      "run": "xsv-n4-round1",
+      "url": "http://127.0.0.1:3013/?trace=trace_a49b03f1df3bca94&analysis=run_rich12_xsv-n4-round1_communication"
+    },
+    {
+      "run": "xsv-n4-round2",
+      "url": "http://127.0.0.1:3013/?trace=trace_abaad9e890b53c8a&analysis=run_rich12_xsv-n4-round2_communication"
+    },
+    {
+      "run": "xsv-n4-round3",
+      "url": "http://127.0.0.1:3013/?trace=trace_f4edfa23b99faa29&analysis=run_rich12_xsv-n4-round3_communication"
+    },
+    {
+      "run": "yj-n2-round1",
+      "url": "http://127.0.0.1:3013/?trace=trace_b128ff4c92d47fa5&analysis=run_rich12_yj-n2-round1_communication"
+    },
+    {
+      "run": "yj-n3-round1",
+      "url": "http://127.0.0.1:3013/?trace=trace_c25e8be963216dac&analysis=run_rich12_yj-n3-round1_communication"
+    },
+    {
+      "run": "yj-n4-round1",
+      "url": "http://127.0.0.1:3013/?trace=trace_ae5cc6010f6d3028&analysis=run_rich12_yj-n4-round1_communication"
+    }
+  ]
+}

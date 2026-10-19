@@ -32,7 +32,11 @@ function IncidentResults({ analysis, output, onEvidence }) {
       <p>Recovery: {incident.recovery.status} — {incident.recovery.explanation}</p>
       {citations(incident.recovery.evidence)}
     </article>)}
-    <p className="muted">Evidence: {output.coverage.supplied_events}/{output.coverage.total_events} events; {output.coverage.truncated_events.length} shortened; {output.coverage.omitted_events.length} omitted. Raw turns: {output.coverage.raw_turns}. Missing full model inputs and workspace history limit attribution.</p>
+    <p className="muted">Evidence: {output.coverage.supplied_events}/{output.coverage.total_events} events; {output.coverage.truncated_events.length} shortened; {output.coverage.omitted_events.length} omitted. Raw turns: {output.coverage.raw_turns}.
+      {output.coverage.recorded_inputs ? " Recorded turn inputs and model-visible tool outputs imported." : " Recorded turn inputs unavailable."}
+      {output.coverage.workspace_history ? " Batch workspace snapshots imported; concurrent action attribution remains limited." : " Workspace history unavailable."}
+      {" Serialized model API requests are not available."}
+    </p>
     {output.caveats.map((caveat) => <p className="muted" key={caveat}>{caveat}</p>)}
     <details><summary>Incident record, evidence and provenance</summary><pre>{JSON.stringify(analysis, null, 2)}</pre></details>
   </>;

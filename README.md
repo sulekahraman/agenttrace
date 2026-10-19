@@ -20,7 +20,15 @@ than adding application-specific dependencies to `commsfail`.
 
 ## Saved teammate results
 
-**Latest: [ProgramBench addendum — October 17](reports/2026-10-17-programbench/README.md)**:
+**Latest: [Richer-evidence reassessment — October 19](reports/2026-10-19-richer-evidence-12-runs/README.md)**:
+all seven metrics across the same 12 ProgramBench runs, with explicit metric
+definitions, Yes / No / Unknown decisions, and per-run annotator A/B versus
+final-adjudicator comparisons. The communication rerun retains nine supported
+failure incidents and six unresolved candidates; Scout flags are unchanged.
+Download the report HTML to share its tables and expandable findings.
+Visualization links require a local or shared AgentTrace viewer.
+
+**[ProgramBench addendum — October 17](reports/2026-10-17-programbench/README.md)**:
 12 additional runs (nine xsv, three yj), 60 selected completed analyses, and a
 six-page presentation PDF/HTML. Includes execution-log coverage, an audit of
 all four facts_v1 flags, and explicit Scout citation/label limitations.
@@ -168,6 +176,12 @@ provider and may incur charges.** Ingestion and viewing saved results do not.
 Allowlisted local ingestion freezes full supported Codex command outputs
 alongside normalized operations. Existing saved traces without this snapshot
 use normalized evidence only, never arbitrary paths in stored source metadata.
+When present, the v0.2 communication importer also validates input/action
+manifests against native sessions and imports batch workspace snapshots.
+Receipt comes from recorded model-visible outputs, not merely command stdout.
+Core summaries precede lower-priority full-detail events in the bounded input;
+clipping and omissions remain explicit. Re-ingest an enriched local export to
+refresh its saved evidence; historical analysis records remain unchanged.
 Each run retains its evidence hash, configuration hash, taxonomy/prompt versions,
 supplied excerpts and A/B/judge records. The UI shows severity, recovery,
 transition evidence, action quotations and message jumps. Saved-run links and

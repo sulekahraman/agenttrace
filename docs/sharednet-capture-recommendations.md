@@ -5,6 +5,12 @@ Reviewed `systemind-team/sharednet-client` branch `codex/bootstrap-base` at
 AgentTrace's experimental incident setup. These are proposals, not implemented
 SharedNet flags or commands.
 
+October 19 update: the richer export in `xisen-w/multi-agent-training#3`
+preserves native sessions and workspace history and derives input/action
+manifests. AgentTrace v0.2 now imports those records. Native-parent IDs,
+per-action workspace attribution and a serialized model-request capture are
+still distinct from derived temporal associations and batch snapshots.
+
 ## Preserve existing evidence first
 
 `goal run` already records `workspace.git`, raw turn streams and agents' session
