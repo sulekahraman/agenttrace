@@ -2,7 +2,8 @@
 
 AgentTrace combines the existing React trace explorer, reusable `commsfail`
 analysis, and Inspect Scout in one monorepo. Structural metrics and offline
-annotators work without a model; Scout runs only when explicitly requested.
+annotators work without a model; Scout and experimental communication-incident
+analysis run only when explicitly requested.
 
 | Path | Responsibility |
 | --- | --- |
@@ -145,6 +146,51 @@ narrative citations or semantic judgments are correct. Traces and run history pe
 not retried automatically. Re-ingesting unchanged content reuses its trace;
 changed content receives a new identifier.
 
+### Communication failure incidents (experimental)
+
+**Run communication analysis** selects the separate `communication_failures_v1`
+setup: Disclosure, Delivery, Reading and Action. Scout's three collaboration
+flags and historical results are unchanged. The new setup uses independent
+A/B model calls plus adjudication, exact evidence validation, and the first
+failed transition per incident. Results distinguish supported failures,
+assessable searches with no failure found, undecidable attribution and
+solo/not-applicable input. Repaired failures still count, with recovery recorded.
+
+The default model is `openai/gpt-5.4-mini`; set
+`AGENTTRACE_COMMUNICATION_MODEL` or edit **Communication model** to override it.
+Use **Communication provider setup** for dependency/credential checks. The
+same API `scout` extra supplies Inspect provider support; this does not run
+Scout's scanners. Three model steps are required, with up to three validation
+attempts per step. Provider errors fail explicitly instead of becoming negatives.
+**Running sends supplied messages and execution evidence to the configured
+provider and may incur charges.** Ingestion and viewing saved results do not.
+
+Allowlisted local ingestion freezes full supported Codex command outputs
+alongside normalized operations. Existing saved traces without this snapshot
+use normalized evidence only, never arbitrary paths in stored source metadata.
+Each run retains its evidence hash, configuration hash, taxonomy/prompt versions,
+supplied excerpts and A/B/judge records. The UI shows severity, recovery,
+transition evidence, action quotations and message jumps. Saved-run links and
+reloads do not start inference. This implements four classes, **not** the
+unavailable full pattern supplement, and has not been accuracy-calibrated.
+See the [short evidence-gap report](docs/communication-evidence.md).
+The [SharedNet capture recommendations](docs/sharednet-capture-recommendations.md)
+separate already-recorded evidence from proposed CLI instrumentation.
+
+To opt in from batch:
+
+```bash
+.venv/bin/python -m agenttrace.batch traces.json \
+  --output .agenttrace/communication-export --communication --model openai/gpt-5.4-mini
+```
+
+`--communication` is independent of `--scout`; `--model` applies to both when
+both are selected. Compatible communication runs are reused only when model,
+analyzer/prompt/taxonomy versions and evidence hash match. Use `--rerun` for
+fresh judgments. `GET /api/communication/setup?trace_id=...` reports setup and
+source coverage; explicitly start with
+`POST /api/traces/{trace_id}/analyses/communication_failures_v1`.
+
 ### Scout's native viewer
 
 Completed Scout runs have an **Open in Scout** link. It opens the exact saved
@@ -243,6 +289,7 @@ polling. The installed `agenttrace-batch` console command is equivalent to
 | `AGENTTRACE_DATA_DIR` | Override the SQLite and run-artifact directory |
 | `AGENTTRACE_SOURCE_ROOT` | Allow local goal-run/export paths only within this directory |
 | `AGENTTRACE_SCOUT_MODEL` | Default Scout `provider/model` identifier |
+| `AGENTTRACE_COMMUNICATION_MODEL` | Default experimental communication-incident `provider/model` |
 | `OPENAI_API_KEY` | Server-side key for the default OpenAI provider |
 | `AGENTTRACE_WEB_DIST` | Explicit built frontend path, useful for an installed API wheel |
 | `PORT` | Console server port; defaults to 3000 |

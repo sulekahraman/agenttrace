@@ -6,7 +6,7 @@ from pathlib import Path
 from fastapi.testclient import TestClient
 from jsonschema import validate
 
-from agenttrace.api import DEFAULT_SCOUT_MODEL, create_app
+from agenttrace.api import DEFAULT_SCOUT_MODEL, SCOUT_PROMPT_VERSION, SCOUT_VERSION, create_app
 from agenttrace.models import AnalysisRun
 from agenttrace.store import Store
 
@@ -126,6 +126,8 @@ def test_default_scout_model_is_used_when_omitted(tmp_path, share, monkeypatch):
         completed = wait_for_run(client, response.json()["id"])
         assert completed["status"] == "completed"
         assert completed["provenance"]["model"] == DEFAULT_SCOUT_MODEL
+        assert completed["analyzer"]["version"] == SCOUT_VERSION == "2.2.0"
+        assert completed["provenance"]["prompt_version"] == SCOUT_PROMPT_VERSION == "8"
 
 
 def test_facts_requires_execution_logs(client, trace_response):

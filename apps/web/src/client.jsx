@@ -4,6 +4,7 @@ import * as Plot from "@observablehq/plot";
 import { buildScoutTranscript } from "./scout.js";
 import { ingestTrace, loadSavedReport, nativeScoutUrl, requestJson, startAnalysis } from "./api.js";
 import { AnalysisResults } from "./analysis-results.jsx";
+import { CommunicationSetup } from "./communication-setup.jsx";
 import "./styles.css";
 
 const exampleUrl = "https://www.sharednet.ai/s/shr_iNiJPLkMnu4c5b7wYTfqVW4xf_CJBYWtNUBNyrof4Zg";
@@ -568,6 +569,8 @@ function App() {
             <p className="muted">Default: <code>{analyzers.find((analyzer) => analyzer.name === "scout_collaboration_v1")?.default_model || "Loading..."}</code>. Change the provider/model above to use another model. If setup is missing, Run Scout opens instructions before creating a run.</p>
             <AnalysisResults analysis={scoutRun} onEvidence={showEvidence} />
           </section>
+          <CommunicationSetup key={report.traceId} report={report} setReport={setReport} onEvidence={showEvidence}
+            defaultModel={traceAnalyzers.find((analyzer) => analyzer.name === "communication_failures_v1")?.default_model} />
           {analysisError && <p className="analysis-error" role="alert">{analysisError}</p>}
 
           <section className="panel span-2">

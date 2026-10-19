@@ -1,0 +1,748 @@
+{
+  "data_commit": "fd0be2ee134c2a355de55f3442c167652840bedd",
+  "report_commit": "18a4494b46dbab49867167cf671a7e00816a84be",
+  "files": [
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/collaboration.prompt.txt",
+      "local_path": "baseline/E1/collaboration.prompt.txt",
+      "git_blob_sha": "7d067727f65801ddf9b3bc84aee2b0031e122925",
+      "sha256": "2561611168bb80f6c6d8fa2f60489ad3b827c622b2ac840f6b3a1d951947bb29",
+      "bytes": 8547
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-1.prompt.txt",
+      "local_path": "baseline/E1/message-1.prompt.txt",
+      "git_blob_sha": "22f882dc929bb5f174ed367e0e665c38ad13bd07",
+      "sha256": "099acc43bbdcdf03a1288d33a6cd595a150c26322d62f9e5a138fe7ef03cf801",
+      "bytes": 10639
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-10.prompt.txt",
+      "local_path": "baseline/E1/message-10.prompt.txt",
+      "git_blob_sha": "ad64b7d8d9df4808c412e3e599fa995c8c3aeab7",
+      "sha256": "a7ca21518c5b3e9f7ee791a3ad0c0712a9f2e3249062c4ebf15cac3f01247645",
+      "bytes": 4116
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-11.prompt.txt",
+      "local_path": "baseline/E1/message-11.prompt.txt",
+      "git_blob_sha": "31e7746c6ec48fa14b20bdaa21432394d095b0be",
+      "sha256": "1f685f7cd138cbde700370b847843ca6f6a19a4ad6869edfc62fabeed72140d2",
+      "bytes": 4245
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-2.prompt.txt",
+      "local_path": "baseline/E1/message-2.prompt.txt",
+      "git_blob_sha": "2e96abbdbb7a064841421ec0d2a499b064a7ea4c",
+      "sha256": "f07e0c1cf39f832caff02eaf9afb2b66934b3730c08bdc57f5942c37136cff79",
+      "bytes": 3220
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-3.prompt.txt",
+      "local_path": "baseline/E1/message-3.prompt.txt",
+      "git_blob_sha": "dbd379290150d574e006c3833ba96d39502e57ee",
+      "sha256": "36803b43210dc2b0d29674f52f7979713fc0e78b87feb441eb1c95ab0af9185d",
+      "bytes": 3335
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-4.prompt.txt",
+      "local_path": "baseline/E1/message-4.prompt.txt",
+      "git_blob_sha": "58f9dea985ad6615bc1b1befd83587fe9284c606",
+      "sha256": "d8a44890dfc97f9d2aa6bdb353be54c991bffe0be6f3d2337982cacc7564b117",
+      "bytes": 3489
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-5.prompt.txt",
+      "local_path": "baseline/E1/message-5.prompt.txt",
+      "git_blob_sha": "60a7cc80e8c58bae92d93c7e78a740915935ecbe",
+      "sha256": "abc6206079839e37e0884c27dc33c7d9630eb0858b91f72b009865d9294315bf",
+      "bytes": 3643
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-6.prompt.txt",
+      "local_path": "baseline/E1/message-6.prompt.txt",
+      "git_blob_sha": "8b1e4a9d11f1f6f176e650c9b4cbd20111f2fec1",
+      "sha256": "ea3010a78351f1b98ca41b3f78075d2b8a4c094e0661c53c0951249175a67c56",
+      "bytes": 3755
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-7.prompt.txt",
+      "local_path": "baseline/E1/message-7.prompt.txt",
+      "git_blob_sha": "59a0536eb6a979e68373bc6eb3b7a0f315d78a78",
+      "sha256": "7904c74e142f68cbcb13c4bef42bf29debb80cb28e169b811535805ae99886a0",
+      "bytes": 3867
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-8.prompt.txt",
+      "local_path": "baseline/E1/message-8.prompt.txt",
+      "git_blob_sha": "58b2f88878f8847f28c10d8178abb5fdb22cfd0c",
+      "sha256": "a9ff2a81e6606819da6709321839bc472524eacc1a68d012f3b76951851a1b70",
+      "bytes": 3942
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/message-9.prompt.txt",
+      "local_path": "baseline/E1/message-9.prompt.txt",
+      "git_blob_sha": "0ee3ce199854ea2161646d20c7affdba5206bd86",
+      "sha256": "488a35fe1eaa23978d433e99f45bfccc26947aa3b77a2deac73b3af5bd266e15",
+      "bytes": 4017
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-001/report.json",
+      "local_path": "baseline/E1/report.json",
+      "git_blob_sha": "d1dbc5680e8294024e665af1dcb6c963abd51a7c",
+      "sha256": "1c6a2f4ca6005d06daac46c08a38a4509980b4c3d9d6c837d1441e9040b76fbd",
+      "bytes": 71817
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-001/analysis-05.json",
+      "local_path": "baseline/E1/run.json",
+      "git_blob_sha": "327039d14fae801c1688352cbf752e68ffadaa55",
+      "sha256": "5aca3368096540ba84d76f2a4922ba70bfd1b74e7323c8b6520e7003de846076",
+      "bytes": 13390
+    },
+    {
+      "source_path": "data/teammate-traces/sources/aziz-bundle-n4-r2/transcript.txt",
+      "local_path": "baseline/E1/transcript.txt",
+      "git_blob_sha": "d9a1e20362ea50b7c49918e279248976c85080ed",
+      "sha256": "51e365eee61705c899e72263108ccca8eaa2e0ca11ee0516fdc838f51dfa93a4",
+      "bytes": 11258
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/collaboration.prompt.txt",
+      "local_path": "baseline/E2/collaboration.prompt.txt",
+      "git_blob_sha": "8190166e5b035b268018d48241b86af82948c955",
+      "sha256": "40761e640128f7df5db38f25dd766dc87fbe99e5743ba7f23bbff8dc04bb2479",
+      "bytes": 11604
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-1.prompt.txt",
+      "local_path": "baseline/E2/message-1.prompt.txt",
+      "git_blob_sha": "adb1ba272a8e2fc58d3035a75bb1a8bf77833efb",
+      "sha256": "60c2cfbec00af5ad70e5a8822e4c4f10407d20dbef9121e966734a0af9d37d28",
+      "bytes": 10639
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-10.prompt.txt",
+      "local_path": "baseline/E2/message-10.prompt.txt",
+      "git_blob_sha": "ba3634ae8a90fc8756c2ee75fde973ae4cd94dde",
+      "sha256": "6b81a5b14bd4c49b9ca3af793b768830c77871cf2bb1e3a6fa4245dddf30a96b",
+      "bytes": 4101
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-11.prompt.txt",
+      "local_path": "baseline/E2/message-11.prompt.txt",
+      "git_blob_sha": "1d7edaa020985b6324d83511d52f3f7a1a8211b4",
+      "sha256": "44cf9e06e0a92a2c6d96a23c9e4d612aa024e1c6a67eacec32bf91ef2a1f3cc4",
+      "bytes": 4190
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-12.prompt.txt",
+      "local_path": "baseline/E2/message-12.prompt.txt",
+      "git_blob_sha": "578729994bf30885fa11f4d2953e92950c7bda7d",
+      "sha256": "ae32411ea03a5bc6855eee6e56de8bfb4bf0a3b3648e7cc3ee3b1502c45f915b",
+      "bytes": 4396
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-13.prompt.txt",
+      "local_path": "baseline/E2/message-13.prompt.txt",
+      "git_blob_sha": "980a464a5e82bc88e17b41b8632f62ba8e2bd324",
+      "sha256": "6ecace184a261adbaa03f50e35f80195653223c2d301d16cd6368b3726272a94",
+      "bytes": 4517
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-14.prompt.txt",
+      "local_path": "baseline/E2/message-14.prompt.txt",
+      "git_blob_sha": "86e40559c5b93aacc10b680e20ea92e5aefd6a3b",
+      "sha256": "59ddb8c97de06e91c72cf2c662d2559bee084874b59e5a66aa94c377d729b417",
+      "bytes": 4096
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-15.prompt.txt",
+      "local_path": "baseline/E2/message-15.prompt.txt",
+      "git_blob_sha": "2c209c7b59f8b5ad7ea0fb4d3046aa8ef91bb273",
+      "sha256": "ed9af0cbd2318e98a0c1fea55e9118f7e4c170ba4f894482e8522f11572461ab",
+      "bytes": 4123
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-16.prompt.txt",
+      "local_path": "baseline/E2/message-16.prompt.txt",
+      "git_blob_sha": "0bce1083f1676343725faf5bac366aa993af850d",
+      "sha256": "c87a30d8aeecc307043ee35c7db02a58b0f5315c97779084bed5d907206c5984",
+      "bytes": 4176
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-17.prompt.txt",
+      "local_path": "baseline/E2/message-17.prompt.txt",
+      "git_blob_sha": "2947a3f04b610507832c7d6cd3a42583f55c47c4",
+      "sha256": "d8110d34992e5a6f73fa4aac16f900467d874302c7d9b5b8b642c2dacc77a05f",
+      "bytes": 4289
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-2.prompt.txt",
+      "local_path": "baseline/E2/message-2.prompt.txt",
+      "git_blob_sha": "742b172a4397705782eecc33e9bc5b884a55002d",
+      "sha256": "7228cb5801764632303133d0620897bd9a196c1280612b1e6191b283348a8101",
+      "bytes": 3215
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-3.prompt.txt",
+      "local_path": "baseline/E2/message-3.prompt.txt",
+      "git_blob_sha": "b8f9c8b742a234337cb6548fbc1a1a2b822c6119",
+      "sha256": "86db95fde512cc30ddf082d8efaffc01cec54b0f2d71b212ae91aebb014d85ad",
+      "bytes": 3331
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-4.prompt.txt",
+      "local_path": "baseline/E2/message-4.prompt.txt",
+      "git_blob_sha": "7aac9dbcc2ff788f5128decd0985f4de1e0169a9",
+      "sha256": "8d166407aff0ec0f22aa5de6d76cdb38bca1ae4516720616b3e0118cf32e843c",
+      "bytes": 3462
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-5.prompt.txt",
+      "local_path": "baseline/E2/message-5.prompt.txt",
+      "git_blob_sha": "bec07811f186413c432c7de35bed79cb5c76a7da",
+      "sha256": "82b304e0a5fd65f14e0248bc8a422e4ed819f1e16f9f753770a3493b42c6a49a",
+      "bytes": 3534
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-6.prompt.txt",
+      "local_path": "baseline/E2/message-6.prompt.txt",
+      "git_blob_sha": "09062045925af95f562219e0d71f661f68ce9b27",
+      "sha256": "ec2e2ce4cb37feabdfe7a20fe7ba1653e620c8344624565883d362200daf3115",
+      "bytes": 3646
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-7.prompt.txt",
+      "local_path": "baseline/E2/message-7.prompt.txt",
+      "git_blob_sha": "608763726f36b7aade16802b7b74490e2fcbb7da",
+      "sha256": "8e6a34d09cc9300895c402ec38e7fb85bb4038d9472d53624ab4b6cf3899b9ef",
+      "bytes": 3767
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-8.prompt.txt",
+      "local_path": "baseline/E2/message-8.prompt.txt",
+      "git_blob_sha": "c3fab4810116313669470ce4b9c105446290faf2",
+      "sha256": "743692d258175a1c49fdcec3e91ea94c7c161f31c023580307cad8309e8802fe",
+      "bytes": 3882
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/message-9.prompt.txt",
+      "local_path": "baseline/E2/message-9.prompt.txt",
+      "git_blob_sha": "a33a74cf8735c054dcaed18402e41d092b3119b0",
+      "sha256": "eae1de8b724fb8a796a18dd8c2fa483e914a0e093ca4d452b3e18510eff5dba2",
+      "bytes": 3969
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-002/report.json",
+      "local_path": "baseline/E2/report.json",
+      "git_blob_sha": "e6b3864525bde0490e002c3465c6711c1fe4b9e3",
+      "sha256": "2de5a06c10cf948ad175f6a91da696d711fbfbfaac77b5a532734fe5121dd790",
+      "bytes": 79972
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-002/analysis-05.json",
+      "local_path": "baseline/E2/run.json",
+      "git_blob_sha": "28864b89eec7990c422c380a1552bcb8a50235bd",
+      "sha256": "b5581b3c7a9a2048fbcda2053e90d423fa6723ed159f1b8abcaba6748dc78e93",
+      "bytes": 18699
+    },
+    {
+      "source_path": "data/teammate-traces/sources/aziz-bundle-n4-r1/transcript.txt",
+      "local_path": "baseline/E2/transcript.txt",
+      "git_blob_sha": "a0165ff5aa46f340050be6907f2c365cef886bdc",
+      "sha256": "984f44452105972538d2a92c5b822a37db613679fa97c8eea5ebf331e61d19f8",
+      "bytes": 12112
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/collaboration.prompt.txt",
+      "local_path": "baseline/E3/collaboration.prompt.txt",
+      "git_blob_sha": "354d2d6c2918acde756b065a55ff3695ca2b3c2b",
+      "sha256": "0a82bcb4ecc11e6d0277a9a0e82bd63664027b5cbe7fe411f9867cf03af303f4",
+      "bytes": 8171
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-1.prompt.txt",
+      "local_path": "baseline/E3/message-1.prompt.txt",
+      "git_blob_sha": "3da61e3b2448aa458dd0dd8a8a2e2855788dcfad",
+      "sha256": "9f919b9f3b2e714c4f4595add04134f60d1b6c76f764df14ce38071c86d75393",
+      "bytes": 10869
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-10.prompt.txt",
+      "local_path": "baseline/E3/message-10.prompt.txt",
+      "git_blob_sha": "bbb74e38fb48894a8a32811d7f64ac1fb8610350",
+      "sha256": "fe75a03bcf77550bd94713ab748892b51e80268113e7483461a3f5ab4dd34380",
+      "bytes": 4263
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-2.prompt.txt",
+      "local_path": "baseline/E3/message-2.prompt.txt",
+      "git_blob_sha": "23285bb41313e7e4f30afe9e1635e95474c98932",
+      "sha256": "0926574132941b5e9c70f9d5b9b1d1aca396e7cdc6c199686adfb6dc947f70f4",
+      "bytes": 3209
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-3.prompt.txt",
+      "local_path": "baseline/E3/message-3.prompt.txt",
+      "git_blob_sha": "d24565aae4f232d62a9ca67440b13993483fdc21",
+      "sha256": "fee1ab7ac37aea95f87f62967ab662793d24afbe90c1c8d95b5e208084a299ce",
+      "bytes": 3389
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-4.prompt.txt",
+      "local_path": "baseline/E3/message-4.prompt.txt",
+      "git_blob_sha": "5b05b84ab0931255e9ec91cfc8d770a9cbd38ec1",
+      "sha256": "01e9f223616faab0b78d55e9343182a4c0606d67bc085ac60d7f8f2f6ea2bff2",
+      "bytes": 3472
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-5.prompt.txt",
+      "local_path": "baseline/E3/message-5.prompt.txt",
+      "git_blob_sha": "64fb1d8a4ab37e6774e754465bbd4b523f750bcf",
+      "sha256": "19169dcad2dc01f5828a7a808560047f4764ab9f3f311d47c6adf476de47d53d",
+      "bytes": 3556
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-6.prompt.txt",
+      "local_path": "baseline/E3/message-6.prompt.txt",
+      "git_blob_sha": "f0b8067d552855af106603326463afde7e5c6897",
+      "sha256": "ddf8a57db99651f378a7610836b2b6c69d964cddc43583080e4f7c48858dbe9f",
+      "bytes": 3713
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-7.prompt.txt",
+      "local_path": "baseline/E3/message-7.prompt.txt",
+      "git_blob_sha": "aa9abf43b99d504b602ddb40b248f674df03f768",
+      "sha256": "d6009d979df33d1564758a37e534ba0b71c149387d022db9f39dab1260f19300",
+      "bytes": 3845
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-8.prompt.txt",
+      "local_path": "baseline/E3/message-8.prompt.txt",
+      "git_blob_sha": "84a15b08efc89e3cae100e5f16af9e2344be1bf5",
+      "sha256": "24eaa6ca6dc47fd367b09ced5aef2abb5d1d3f29f37502f1537669304064e7fb",
+      "bytes": 3981
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/message-9.prompt.txt",
+      "local_path": "baseline/E3/message-9.prompt.txt",
+      "git_blob_sha": "4d6790e7306c55e76dadec1a21fcbf46b08b98b0",
+      "sha256": "5542d66a6107a3199a438f827409a9927ad589211977c6a34e8907536a57bd9e",
+      "bytes": 4093
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-003/report.json",
+      "local_path": "baseline/E3/report.json",
+      "git_blob_sha": "3f47a5a189d61bde7d092074bcd96b28cde9538d",
+      "sha256": "4c66dec8b341f017d090dfbaa32b5cbe6a5ac0d80197ba416fc838631732eb90",
+      "bytes": 68710
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-003/analysis-05.json",
+      "local_path": "baseline/E3/run.json",
+      "git_blob_sha": "5d5192074d33c67b19e3177d01af93f584f68a4b",
+      "sha256": "1bc9db78fd9cb05a4deb595ed80197bd0b6bd55f68f56af97e88af86a47e91cf",
+      "bytes": 12353
+    },
+    {
+      "source_path": "data/teammate-traces/sources/aziz-bundle-n3-r2/transcript.txt",
+      "local_path": "baseline/E3/transcript.txt",
+      "git_blob_sha": "5243e07c7bbb8c2bc9ded1101119d2557e5985bc",
+      "sha256": "aefa99d50ae1506eb500c44eebc8c55d51ec82849449909a9c22f333a569f531",
+      "bytes": 11327
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/collaboration.prompt.txt",
+      "local_path": "baseline/E4/collaboration.prompt.txt",
+      "git_blob_sha": "f3c2836e70adb0563f2e5f54857a3cf7de3fd6f8",
+      "sha256": "c285b39991a0961ddeed5a93ff9cc1b313ef24685334f80ea359b1062b9950e5",
+      "bytes": 6351
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/message-1.prompt.txt",
+      "local_path": "baseline/E4/message-1.prompt.txt",
+      "git_blob_sha": "9d40a3745c28040cedef157a92aef4d60a56e7b8",
+      "sha256": "69e3667ec526fcf6d2e7c75e0013736aa4071b49439cf6e7bf9c1b4ec921b3ae",
+      "bytes": 4486
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/message-2.prompt.txt",
+      "local_path": "baseline/E4/message-2.prompt.txt",
+      "git_blob_sha": "2c148ff39ef8ec9c7b9902ea08d323fa17705ae0",
+      "sha256": "7a55ad1b73fe8a317d82d78d5a4c0ed1ff732a4a9fb6b23357f3c3df8312170f",
+      "bytes": 3185
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/message-3.prompt.txt",
+      "local_path": "baseline/E4/message-3.prompt.txt",
+      "git_blob_sha": "f603d95b1a17d51b975527b05dd6e44bc1112a7b",
+      "sha256": "623357bb87a130151bf2157bafdb48f97bf17664d4283ab4b77049a5f2eeded5",
+      "bytes": 3315
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/message-4.prompt.txt",
+      "local_path": "baseline/E4/message-4.prompt.txt",
+      "git_blob_sha": "7da3479db76dc27e01bfa63973e9e51fd5f8e5d4",
+      "sha256": "9ae5045c36d72ab01f752f604cfc00e5444c24d0c8cd6c5036e0fe794146c3a6",
+      "bytes": 3419
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/message-5.prompt.txt",
+      "local_path": "baseline/E4/message-5.prompt.txt",
+      "git_blob_sha": "fba4081b03f3b9784cc51b03d4485a7b3a3c991b",
+      "sha256": "5ac0f7d266fd96b6b4ec1e684a9135cb6dfeab12ecf94b17469f28324b3d150d",
+      "bytes": 3601
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/message-6.prompt.txt",
+      "local_path": "baseline/E4/message-6.prompt.txt",
+      "git_blob_sha": "76e09f2ab3bf63e0112b220d6c3e6bed1421ae46",
+      "sha256": "19a2f9b234773b67d49f7db731c8cdcd2257914057b430f7db76b3e0b1a75528",
+      "bytes": 3657
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/message-7.prompt.txt",
+      "local_path": "baseline/E4/message-7.prompt.txt",
+      "git_blob_sha": "7c7fd772c4926f37970f63cdb4afdec810a4bf68",
+      "sha256": "dfcd57d7284f04b7e7bd3cd5fef1e9472c29539d6bc93ff77411203c73cd1b2c",
+      "bytes": 3738
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-004/report.json",
+      "local_path": "baseline/E4/report.json",
+      "git_blob_sha": "eaac1588b6b29344c6d3f53d5bca8af015cf26f6",
+      "sha256": "38c1ded24d3bb750c0d3e41ee3e892013d362f5b1185777a7e9b6f27eeb93548",
+      "bytes": 35684
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-004/analysis-05.json",
+      "local_path": "baseline/E4/run.json",
+      "git_blob_sha": "b3d0e69ec28df030dfa1b26fa16332cc2f4d3d6e",
+      "sha256": "71aafdcdfa20e3004cd6a176de71bf01b804c7b0174614ffeb891cc150f12892",
+      "bytes": 8941
+    },
+    {
+      "source_path": "data/teammate-traces/sources/aziz-merger-n3/transcript.txt",
+      "local_path": "baseline/E4/transcript.txt",
+      "git_blob_sha": "f47d29974a494e18bd47c1e8fd12bca92205ac85",
+      "sha256": "97db5c394d46b84c605366cc852813f33ab45d7ac89bb1e0831d0e643c371b46",
+      "bytes": 2514
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_ec9c12ad964d4b2a94bb2e13a75529a5/collaboration.prompt.txt",
+      "local_path": "baseline/E5/collaboration.prompt.txt",
+      "git_blob_sha": "41b6f066b8a746c0c535460365df26472cc783b9",
+      "sha256": "3451bf5770117ee32baa5707ced41f15c14e77337a542d07f95a2ef234581f33",
+      "bytes": 3036
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_ec9c12ad964d4b2a94bb2e13a75529a5/message-1.prompt.txt",
+      "local_path": "baseline/E5/message-1.prompt.txt",
+      "git_blob_sha": "433f08578f5908f9be067fccfe728b9cdf446a87",
+      "sha256": "ebd4c6a44c35fb2ced5022dbf2e3a92db492a1a106274e9c3dc96a0baafbb4de",
+      "bytes": 3385
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_ec9c12ad964d4b2a94bb2e13a75529a5/message-2.prompt.txt",
+      "local_path": "baseline/E5/message-2.prompt.txt",
+      "git_blob_sha": "d44aecf3ea0a500fb7497b9890339640de0a3ed4",
+      "sha256": "20399928da4a59f7d1d314d70fe5db3a5cff55a94ca566d9bbd3a2e51c29374e",
+      "bytes": 3271
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-005/report.json",
+      "local_path": "baseline/E5/report.json",
+      "git_blob_sha": "3977f429e5c8c9448c08345123030f42176265b1",
+      "sha256": "33ba7c3c326c9416a67891747e306a2721f2227127de6b7c8aaa9651ebe721ac",
+      "bytes": 22317
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-005/analysis-05.json",
+      "local_path": "baseline/E5/run.json",
+      "git_blob_sha": "d697e124adeb8cd46dc0b90b811b8ac7cc17325c",
+      "sha256": "1446be8ebefe15e680da374c76cb543f668474251bc61e40e650d5c0ce9fe8ce",
+      "bytes": 4558
+    },
+    {
+      "source_path": "data/teammate-traces/sources/xiangqian-noop007i2-solo/transcript.txt",
+      "local_path": "baseline/E5/transcript.txt",
+      "git_blob_sha": "522e2acc78516412c3e7fa52dfdb0762ef221018",
+      "sha256": "0e375b0e4868a6665bfc9ee1603f59a99f8ec630f0901d489bc94f32ffa7ebcf",
+      "bytes": 1216
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/collaboration.prompt.txt",
+      "local_path": "baseline/E6/collaboration.prompt.txt",
+      "git_blob_sha": "c8740b04053dbee43cffe1c88c57cce5a547ad19",
+      "sha256": "f12eeaf4321f8bcc1493708de736dc2409204a436930b377472ebd72712f9da5",
+      "bytes": 9618
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/message-1.prompt.txt",
+      "local_path": "baseline/E6/message-1.prompt.txt",
+      "git_blob_sha": "ddfd257dd52699c34e647d44cb3bd0a2ee236bf2",
+      "sha256": "6062ce4c51abbbb331200afc7ccc920c697dc42d22ee04eaa8aaf5a0a82105be",
+      "bytes": 3510
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/message-2.prompt.txt",
+      "local_path": "baseline/E6/message-2.prompt.txt",
+      "git_blob_sha": "9a171001447df3cdd3589f1eb047bb13ed7fb133",
+      "sha256": "bfcb2c5c30ba22316f11fe140e8aa604fc8212f9f9f35a7fbad743b73f691fc4",
+      "bytes": 4077
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/message-3.prompt.txt",
+      "local_path": "baseline/E6/message-3.prompt.txt",
+      "git_blob_sha": "ed22ceff964c0f11ccc4928f9fc3547318fcd5c1",
+      "sha256": "57ef01b532ba2ddff75bb7b31b76d57d19ed146dd7df2e9e43d628a240ce7e7c",
+      "bytes": 4797
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/message-4.prompt.txt",
+      "local_path": "baseline/E6/message-4.prompt.txt",
+      "git_blob_sha": "27d030f12cfcae82ce1b7debb1e85fb17ec7ac5c",
+      "sha256": "d70ca8a4f61112790efa017b54252084a76b74c3e2d9f84dfc5e88879213cd6f",
+      "bytes": 5271
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/message-5.prompt.txt",
+      "local_path": "baseline/E6/message-5.prompt.txt",
+      "git_blob_sha": "65b9dab1877bd4f7540d37b60666673a8239947e",
+      "sha256": "2e0b0d9cc3f71f0e3672fadd98b5ff22462a5bc67eb6c248706fb32f55541f7f",
+      "bytes": 4766
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/message-6.prompt.txt",
+      "local_path": "baseline/E6/message-6.prompt.txt",
+      "git_blob_sha": "da766b044dbe73b4bb922af34c58f924f5bdb423",
+      "sha256": "fc3b442ac5203bd00c3e005f0da2b19a416e4c6a156eff8705562e2182ab4456",
+      "bytes": 5425
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/message-7.prompt.txt",
+      "local_path": "baseline/E6/message-7.prompt.txt",
+      "git_blob_sha": "9a1001f7e2742892d3e22d3898ae68a8630f285c",
+      "sha256": "e8eb3662bf357c3216597c50406a2d0a5b2f4b628e4d3d0c3a54787c45f8139a",
+      "bytes": 6147
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-006/report.json",
+      "local_path": "baseline/E6/report.json",
+      "git_blob_sha": "ea6b9c8e7a4cb89f7f444965ab173c9991973e3e",
+      "sha256": "9d20a52c2fbfbf20a72d5d0ca79249ae0c3f3c57fb2885349404cbaa3d4dd9b5",
+      "bytes": 40430
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-006/analysis-05.json",
+      "local_path": "baseline/E6/run.json",
+      "git_blob_sha": "71f29895376aba47b5a2cb8f5c7412ccbdeeb536",
+      "sha256": "8a979d882851381ad63295ac9424a0c27fb9dbae3738966466992323c23c6f6c",
+      "bytes": 10552
+    },
+    {
+      "source_path": "data/teammate-traces/sources/xiangqian-noop007i2-pev/transcript.txt",
+      "local_path": "baseline/E6/transcript.txt",
+      "git_blob_sha": "cdf6993227d92a36aebc1d221aaaa44c446b5176",
+      "sha256": "83c844fba7e8b35e9a08fe4b8dda6d0443d4829c6aee45933321e2bf598a261f",
+      "bytes": 5725
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_c4de7935f4c045c3b68fa1a00ef321b5/collaboration.prompt.txt",
+      "local_path": "baseline/E7/collaboration.prompt.txt",
+      "git_blob_sha": "4f82887d5e6c692d46710d2c3857a84c93efef43",
+      "sha256": "99ab1e55ae63b894157e5298e37baa772a3821ab41a6d64ca073e2552af2e807",
+      "bytes": 2136
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_c4de7935f4c045c3b68fa1a00ef321b5/message-1.prompt.txt",
+      "local_path": "baseline/E7/message-1.prompt.txt",
+      "git_blob_sha": "dda168d629f4d815680be968bfe1e311181f1bec",
+      "sha256": "63653266d76afd090c340fbb26dcb0421b6e9c7b650e6d85a61d5ef974f09300",
+      "bytes": 2790
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-007/report.json",
+      "local_path": "baseline/E7/report.json",
+      "git_blob_sha": "aabe1d28bc31e70e14dc809f708aede2a4dfe3eb",
+      "sha256": "faec450156ac233f6b7282106f66025e0de18fc0af624964907dfd26b446968f",
+      "bytes": 20005
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-007/analysis-05.json",
+      "local_path": "baseline/E7/run.json",
+      "git_blob_sha": "9962ed13455111889f25a12ce08d37a1a012e86c",
+      "sha256": "1558875079f900ae83ce515fb7fabb40d4632cbd1f9425d8dc126e23035dee23",
+      "bytes": 3055
+    },
+    {
+      "source_path": "data/teammate-traces/sources/xiangqian-noop-stalled/transcript.txt",
+      "local_path": "baseline/E7/transcript.txt",
+      "git_blob_sha": "d5f530548262fc4b56820b9286e23169cb69d8f9",
+      "sha256": "47d47b5a2deca2138eefe2047a01539dc7a6627b84583b2f6261a05ba512cde6",
+      "bytes": 745
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_d7b71d27ce23419b84e9179606943b13/collaboration.prompt.txt",
+      "local_path": "baseline/E8/collaboration.prompt.txt",
+      "git_blob_sha": "d8400f021f044448f2374024730f99f2867f3b9d",
+      "sha256": "83609d5ae09cbd19ee2f1b3a0d5039af8574ec76c6f2f02b8ee50cec65ea1f30",
+      "bytes": 3446
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_d7b71d27ce23419b84e9179606943b13/message-1.prompt.txt",
+      "local_path": "baseline/E8/message-1.prompt.txt",
+      "git_blob_sha": "05ed8e4946adf0939383d3359eb8a9805fddfcd4",
+      "sha256": "5e2a4783af5fd8bd7b958cc6eb793746ba1cfc675d46a7b6e7402545cb801c69",
+      "bytes": 3418
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_d7b71d27ce23419b84e9179606943b13/message-2.prompt.txt",
+      "local_path": "baseline/E8/message-2.prompt.txt",
+      "git_blob_sha": "cef5083838120d3a73f5098d93ce6b39d27cb7af",
+      "sha256": "2790bdc8f7c58c02795129c7cf560ad46d3675dd3f83e62e4d24f5ae33e9a0ed",
+      "bytes": 3643
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-008/report.json",
+      "local_path": "baseline/E8/report.json",
+      "git_blob_sha": "25312b2a037d98091c60d33c1142fc4ac2754e21",
+      "sha256": "825e675bfeb2b58f5286da17d46116173b9781030c40f6c6fb1701320977b208",
+      "bytes": 22368
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-008/analysis-05.json",
+      "local_path": "baseline/E8/run.json",
+      "git_blob_sha": "342e6f01d013065ba5fd701a313d189b4994cfeb",
+      "sha256": "bc2ff75a9511a7dfd15436fe74c66c5c10f4b3517e64123233778d3494a3f9a5",
+      "bytes": 4203
+    },
+    {
+      "source_path": "data/teammate-traces/sources/xiangqian-gpqa027-solo/transcript.txt",
+      "local_path": "baseline/E8/transcript.txt",
+      "git_blob_sha": "b601a9904a60f0ee03aaf97063f79fda7e709275",
+      "sha256": "0571e7ddac0cb9a1d586e0d33620cbef29d1dc096a3cc1c60831207dd8427f17",
+      "bytes": 1621
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/collaboration.prompt.txt",
+      "local_path": "baseline/E9/collaboration.prompt.txt",
+      "git_blob_sha": "5b3839130490a13d14d059ab4227e19387589c31",
+      "sha256": "12f672734772c96fa5b1a520dcb308c1cad5bb6a186f0b456d9f46f23018b3e1",
+      "bytes": 14980
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-1.prompt.txt",
+      "local_path": "baseline/E9/message-1.prompt.txt",
+      "git_blob_sha": "b730b95cd0b59b1d3f7ec0e90706fbe493ecc21e",
+      "sha256": "3e0dc550479f25be7f06a66a6520b7d815236622a9bc3eb77c6c560938c37c39",
+      "bytes": 3543
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-10.prompt.txt",
+      "local_path": "baseline/E9/message-10.prompt.txt",
+      "git_blob_sha": "152be3d8f45a8cb507a7d88ee3087bf11ce1e053",
+      "sha256": "d0cabbbf48a48080736aaa05e76e35581bae481a9fd8917eb606a5e245dedcf3",
+      "bytes": 7605
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-11.prompt.txt",
+      "local_path": "baseline/E9/message-11.prompt.txt",
+      "git_blob_sha": "52390b0d353a28848c8deeb2349362f1e361ddfe",
+      "sha256": "b7babe9b816d74d859abe899cd5d27ad43a4561ce640530d2d4b3202a6b4af95",
+      "bytes": 7737
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-12.prompt.txt",
+      "local_path": "baseline/E9/message-12.prompt.txt",
+      "git_blob_sha": "3260a9e5699a8798316e021f399e683cc3e0611e",
+      "sha256": "a43f0d20a05873afab53c0fb367b24d02c7e2e6fecd8080588b434290460e1fd",
+      "bytes": 8136
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-13.prompt.txt",
+      "local_path": "baseline/E9/message-13.prompt.txt",
+      "git_blob_sha": "fe8fdeed6c27edc87bbfbcedff179433eefe2d32",
+      "sha256": "43af82b8130b2394fd59cc19111d326b4fa11f2eb0c72a8959a9f54a6d2e12fa",
+      "bytes": 9859
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-2.prompt.txt",
+      "local_path": "baseline/E9/message-2.prompt.txt",
+      "git_blob_sha": "707ec189890f316e6ff630ca5a6ab44a37fe38e9",
+      "sha256": "56fb9cbb1b024fcf3f261a5d917cca163d2b58db7ebf258599e2f562169c187d",
+      "bytes": 3603
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-3.prompt.txt",
+      "local_path": "baseline/E9/message-3.prompt.txt",
+      "git_blob_sha": "dbb9a8e017c47992ec3beb5eff84bf22732f911b",
+      "sha256": "4318bc74b980575270ee83bfe1f17089de4bf81d4fb29113cad52c62e8d07524",
+      "bytes": 5124
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-4.prompt.txt",
+      "local_path": "baseline/E9/message-4.prompt.txt",
+      "git_blob_sha": "fd441768510a888f4128d2e4eea521c349a842f5",
+      "sha256": "cde62b8d5afc5965415960356e9f8db03a3e7860a92d114bc5d2938177bc82f0",
+      "bytes": 4738
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-5.prompt.txt",
+      "local_path": "baseline/E9/message-5.prompt.txt",
+      "git_blob_sha": "317c8dbfd13151029bd989c07c7f964bc7b697ff",
+      "sha256": "5ade82f6185cc5bf63dfe1b80cc5e1da8fd3205835c954603ae125c67f940494",
+      "bytes": 5312
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-6.prompt.txt",
+      "local_path": "baseline/E9/message-6.prompt.txt",
+      "git_blob_sha": "48e98cadb61e3e7af30e4c02242a0b57549369af",
+      "sha256": "a99470de6bb4686b5fc2e18cf455b9aefd9e41700cd144206a710ebc51dd978c",
+      "bytes": 6169
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-7.prompt.txt",
+      "local_path": "baseline/E9/message-7.prompt.txt",
+      "git_blob_sha": "fac7947c88dd7d7a168ac3b833cce86560401697",
+      "sha256": "5e76da374956991622305c978cee2b9da011491ed3ed2473548b728652c3cae4",
+      "bytes": 6169
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-8.prompt.txt",
+      "local_path": "baseline/E9/message-8.prompt.txt",
+      "git_blob_sha": "e35845e67e4d4d98725836057e10c9c12287fa13",
+      "sha256": "b612895d7c89b7413315e66dc72350cd9bd3938bf7f804db4f3cb382d8511925",
+      "bytes": 7750
+    },
+    {
+      "source_path": "data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/message-9.prompt.txt",
+      "local_path": "baseline/E9/message-9.prompt.txt",
+      "git_blob_sha": "dd0f060fab4edd74f4567635112234ba2a14a6ab",
+      "sha256": "d6dfbeced0e4dc69e236db323c5e95e8a79745e885baefbd3ba676d1910d58f7",
+      "bytes": 6792
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-009/report.json",
+      "local_path": "baseline/E9/report.json",
+      "git_blob_sha": "8df986dab7b558dba816db9e4fac42ec6dbcb4a3",
+      "sha256": "2cc6ab2539cef5bab12670fff039c38156500a4b2c64889b5c70302df232379f",
+      "bytes": 55423
+    },
+    {
+      "source_path": "data/teammate-traces/batch/trace-009/analysis-05.json",
+      "local_path": "baseline/E9/run.json",
+      "git_blob_sha": "2faf1918288080b1a224b29b02d21927f2a1b464",
+      "sha256": "bfb3497213f627d827eccf81ef559a5605f2bc5f8d818cca764c2105f933f7ff",
+      "bytes": 17512
+    },
+    {
+      "source_path": "data/teammate-traces/sources/xiangqian-gpqa027-pev/transcript.txt",
+      "local_path": "baseline/E9/transcript.txt",
+      "git_blob_sha": "a54f136cabb81efdf68f4a580a1f2ffa4c116811",
+      "sha256": "7f7dd3622f922475d2526c87ae7ff090a7b19c4668a743b60d849d1d95bb2a39",
+      "bytes": 8424
+    }
+  ]
+}

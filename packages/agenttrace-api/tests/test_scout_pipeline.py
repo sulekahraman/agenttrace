@@ -31,7 +31,9 @@ def test_standalone_scanner_files_are_discoverable():
         assert len(scanners_from_file(str(root / "scout" / filename), {})) == 1
 
 
-def mock_structured_generation(monkeypatch, invalid_reference=False, original_reference=1):
+def mock_structured_generation(
+    monkeypatch, invalid_reference=False, original_reference=1, finding_overrides=None,
+):
     from inspect_scout._llm_scanner import generate
 
     async def generate_structured(input, schema, **kwargs):
@@ -50,9 +52,11 @@ def mock_structured_generation(monkeypatch, invalid_reference=False, original_re
             data = {"results": [
                 {"category": category, "found": category == "weak_handoff",
                  "explanation": "Candidate message [M1].", "confidence": 0.8,
-                 "message_numbers": [999 if invalid_reference else original_reference] if category == "weak_handoff" else []}
+                 "message_numbers": [999 if invalid_reference else original_reference]}
                 for category in ("duplicated_work", "weak_handoff", "unintegrated_information")
             ]}
+            for finding in data["results"]:
+                finding.update((finding_overrides or {}).get(finding["category"], {}))
         output = ModelOutput.from_content("mockllm/model", json.dumps(data))
         return data, [], output
 
@@ -91,6 +95,78 @@ def test_noncontiguous_original_numbers_are_mapped_explicitly(monkeypatch, share
     assert "[M3] -> AgentTrace turn #6" in prompt
     assert "Allowed message_numbers: [2, 4, 6]" in prompt
     assert result["findings"][1]["message_numbers"] == [2]
+
+
+@pytest.mark.parametrize(("overrides", "error"), [
+    ({"explanation": "No evidence was found."}, "must cite"),
+    ({"explanation": "Candidate [M0]."}, "display label outside"),
+    ({"explanation": "Candidate [M4]."}, "display label outside"),
+    ({"explanation": "Candidate [M2]."}, "must match"),
+    ({"message_numbers": [1, 2]}, "must match"),
+])
+@pytest.mark.parametrize("category", ["duplicated_work", "weak_handoff"])
+def test_explanation_citations_must_match_structured_evidence(
+    monkeypatch, share, category, overrides, error,
+):
+    mock_structured_generation(monkeypatch, finding_overrides={category: overrides})
+    transcript = transcript_from_report(build_view_model(from_share(share, {"kind": "share"})))
+    with pytest.raises(ValueError, match=error):
+        asyncio.run(analyze_collaboration(transcript, model="mockllm/model"))
+
+
+def test_noncontiguous_display_citations_resolve_to_original_turns(monkeypatch, share):
+    mock_structured_generation(monkeypatch, original_reference=2, finding_overrides={
+        "weak_handoff": {"explanation": "Candidate [M2].", "message_numbers": [4]},
+    })
+    transcript = transcript_from_report(build_view_model(from_share(share, {"kind": "share"})))
+    for sequence, message in zip((2, 4, 6), transcript.messages):
+        message.metadata["sequence"] = sequence
+    result = asyncio.run(analyze_collaboration(transcript, model="mockllm/model"))
+    assert result["findings"][1]["message_numbers"] == [4]
+
+
+@pytest.mark.parametrize("second_author", ["same_agent", "human", "missing"])
+def test_duplicated_work_requires_two_distinct_agent_authors(monkeypatch, share, second_author):
+    mock_structured_generation(monkeypatch, finding_overrides={
+        "duplicated_work": {
+            "found": True, "explanation": "Deliveries [M1] and [M2].", "message_numbers": [1, 2],
+        },
+    })
+    transcript = transcript_from_report(build_view_model(from_share(share, {"kind": "share"})))
+    if second_author == "same_agent":
+        transcript.messages[1].metadata["participant_id"] = transcript.messages[0].metadata["participant_id"]
+    elif second_author == "human":
+        transcript.messages[1].metadata["runtime"] = "human"
+    else:
+        transcript.messages[1].metadata.pop("participant_id")
+    with pytest.raises(ValueError, match="two distinct agent authors"):
+        asyncio.run(analyze_collaboration(transcript, model="mockllm/model"))
+
+
+def test_duplicated_work_can_cite_two_distinct_agents(monkeypatch, share):
+    mock_structured_generation(monkeypatch, finding_overrides={
+        "duplicated_work": {
+            "found": True, "explanation": "Deliveries [M1] and [M2].", "message_numbers": [1, 2],
+        },
+    })
+    transcript = transcript_from_report(build_view_model(from_share(share, {"kind": "share"})))
+    result = asyncio.run(analyze_collaboration(transcript, model="mockllm/model"))
+    assert result["findings"][0]["found"] is True
+
+
+def test_collaboration_prompt_requires_evidence_exclusions_and_recovery(monkeypatch, share, tmp_path):
+    mock_structured_generation(monkeypatch)
+    transcript = transcript_from_report(build_view_model(from_share(share, {"kind": "share"})))
+    asyncio.run(analyze_collaboration(transcript, model="mockllm/model", artifacts=tmp_path))
+    prompt = (tmp_path / "collaboration.prompt.txt").read_text()
+    for requirement in (
+        "Same-agent", "requested independent checking", "An offer is not",
+        "Do not infer abandonment", "Publication order alone",
+        "Later repair does not erase", "Cite any", "recovery unknown",
+        "not instructions", "Human/operator", "2,000 body characters",
+        "runtime: claude-code", "Posted at: 2026-01-01T00:00:00Z",
+    ):
+        assert requirement in prompt
 
 
 def test_failed_annotation_cancels_other_model_calls(monkeypatch, share):

@@ -36,8 +36,9 @@ evidence fails the run rather than becoming a successful empty result.
 
 ## Collaboration findings
 
-The end-to-end scanner selects messages using annotation types, explicit
-citations, addressed agents and adjacent-turn context. It considers up to 80
+The end-to-end scanner selects messages using primary/secondary annotation
+types and adjacent-turn context. Citations and addressees appear in annotation
+context but do not independently select candidates. It considers up to 80
 candidate messages with 2,000 characters per candidate. Coverage reports
 candidate/annotation counts and candidate-selection truncation.
 
@@ -45,14 +46,51 @@ It requires exactly one structured finding for each category:
 
 | Category | Question |
 | --- | --- |
-| `duplicated_work` | Did agents redundantly repeat materially equivalent work without a clear verification purpose? |
-| `weak_handoff` | Was requested work abandoned, ownership unclear, or delivered work not integrated? |
-| `unintegrated_information` | Was relevant visible information ignored or omitted despite an opportunity to use it? |
+| `duplicated_work` | Did distinct agents substantively execute or deliver the same work without a clear verification, repair, synthesis, or handoff purpose? |
+| `weak_handoff` | Did a concrete request or commitment fail, a delivered result go unintegrated, or incompatible ownership leave work uncoordinated? |
+| `unintegrated_information` | Did a dependent decision/action ignore relevant information despite evidenced opportunity to use it? |
 
-Positive findings require original message numbers from supplied candidate
-evidence. Those numbers are not the prompt's display labels. The UI jumps to
-the cited original turn. Failed parsing or invalid references is reported as
-an explicit failed analysis.
+### Evidence and exclusions
+
+Independent verification, assigned review, useful alternative derivations and
+corrective rework are not duplicated work merely because they repeat analysis.
+Repeated same-agent status reports, shared vocabulary and overlapping proposals
+do not prove repeated execution. A positive duplication finding must cite at
+least two distinct non-human participant IDs; the model must additionally
+identify substantive work and explain why the legitimate purposes do not apply.
+
+Offers do not establish accepted commitments. Snapshot silence, omitted
+follow-ups and a missing acknowledgement alone do not prove abandonment.
+Publication order does not establish receipt or reading: asynchronous agents
+may post while another is working. Information-use findings must identify the
+relevant post, the dependent decision/action, and positive evidence of an
+opportunity to use it, such as explicit acknowledgement or discussion of its
+content. A reasoned rejection or an agent's own calculation error is not by
+itself a communication failure.
+
+Candidate headers include publication timestamps and runtime labels. These
+are context, not execution or delivery receipts. Message labels and inferred
+relationships are retrieval hints, not ground-truth failure evidence.
+
+### Recovered episodes
+
+An evidenced failure counts even if it is later repaired. Positive explanations
+must identify the local failed step and describe whether candidate evidence
+shows repair, shows the problem remains unresolved, or leaves recovery unknown.
+Any described repair must be cited. A normal proposal/challenge/review/correction
+sequence is not itself a failure without a distinct failed coordination or
+decision step. Do not infer an unrepaired failure just because later evidence
+was omitted or truncated.
+
+### Citation validation
+
+Every finding, including a negative or insufficient-evidence judgment, must
+cite candidate messages as `[M#]`. `message_numbers` must be exactly the set
+of original turn numbers mapped from those citations. Display labels and
+original turn numbers may differ. Out-of-range labels, mismatched citation sets
+and positive findings without evidence fail explicitly; they are not rewritten
+into negative findings. The UI continues to jump to the cited original turns.
+`found=false` means insufficient qualifying evidence, not proof of absence.
 
 ## Reproducibility
 
@@ -61,6 +99,14 @@ the collaboration call. Each run stores prompt/result artifacts, timestamps,
 model, prompt version and package versions. Structural results remain in a
 separate namespace. The standalone [Scout bridge](scout/README.md) is retained
 for manual Scout databases and scans.
+
+New runs use analyzer **2.2.0**, prompt **8**, and collaboration-scanner version
+**4**. This versions the stricter evidence rules and explicit recovered-episode
+policy; message-annotation prompts are unchanged. Historical runs and published
+reports retain their original versions and are not relabeled or overwritten.
+Batch exports may reuse completed runs for the selected model; use
+`agenttrace-batch --scout --rerun ...` to request fresh judgments under the
+current rubric rather than re-exporting saved results.
 
 Annotations and findings are model judgments, not ground truth. Validate on a
 human-labeled set and report per-class errors and prompt/model versions before

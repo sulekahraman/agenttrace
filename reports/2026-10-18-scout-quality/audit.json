@@ -1,0 +1,211 @@
+{
+  "schema": "agenttrace/scout-evidence-audit.v1",
+  "reviewer": "GPT-6.1 Sol (parent assistant)",
+  "review_kind": "Non-blind, single-reviewer AI evidence audit; not human ground truth",
+  "reference_unit": "One collaboration category per trace, not one distinct failure episode",
+  "rubric": {
+    "supported_positive": "Visible posts support the operational definition; this does not independently verify execution or task failure.",
+    "supported_negative": "Visible interaction supplies a concrete reason to reject the flag, such as explicitly requested independent verification or a contradiction resolved through normal review.",
+    "uncertain": "The visible record or operational definition does not resolve applicability; exclude from error counts.",
+    "not_applicable": "Solo condition: no inter-agent collaboration to evaluate; exclude from error counts.",
+    "unobservable": "Task-only record: no visible agent behavior; exclude from error counts."
+  },
+  "limitations": [
+    "The reviewer has seen portions of the baseline report and findings; this is not a blinded or independent human evaluation.",
+    "Full visible agent posts were reviewed, not execution logs, artifact histories, private reasoning, or benchmark grades.",
+    "Coding positives concern competing ownership and reported execution; the posts do not prove which commands ran or which agent caused an overwrite.",
+    "Recovered episodes require interpretation: the scanner gives no minimum persistence or severity threshold.",
+    "Do not present agreement with these labels as validated model accuracy or extrapolate rates beyond this convenience sample."
+  ],
+  "cases": [
+    {
+      "ref": "E1",
+      "category": "duplicated_work",
+      "label": "supported_positive",
+      "message_numbers": [3, 4, 6, 7, 11],
+      "reason": "Different agents claim and then report completing tasks 5-7, with the same output files, without a stated independent-verification purpose. This supports reported duplicate work, not independently observed repeat execution."
+    },
+    {
+      "ref": "E1",
+      "category": "weak_handoff",
+      "label": "supported_positive",
+      "message_numbers": [2, 3, 4, 5, 8],
+      "reason": "Incompatible task splits and concurrent self-claims make ownership unclear. Task 4 is subsequently taken explicitly. Eventual completion does not erase the earlier ownership ambiguity included in this definition."
+    },
+    {
+      "ref": "E1",
+      "category": "unintegrated_information",
+      "label": "supported_positive",
+      "message_numbers": [3, 4, 5, 6, 7, 11],
+      "reason": "Later completion claims remain inconsistent with the competing visible allocations and prior completion reports. The record supports unreconciled ownership/progress information, conditional on the agents' reports."
+    },
+    {
+      "ref": "E2",
+      "category": "duplicated_work",
+      "label": "supported_positive",
+      "message_numbers": [5, 6, 7, 10, 13, 14, 17],
+      "reason": "Two agents report the same tasks 5-7 completed; two also report task 4 output. These are stronger duplicate-work evidence than repeated status updates alone."
+    },
+    {
+      "ref": "E2",
+      "category": "weak_handoff",
+      "label": "supported_positive",
+      "message_numbers": [2, 3, 4, 8, 12, 15, 16, 17],
+      "reason": "Conflicting allocations, a conditional claim on task 3, and competing requests not to overwrite the same plans establish unclear ownership. Actual write ordering is not observable."
+    },
+    {
+      "ref": "E2",
+      "category": "unintegrated_information",
+      "label": "supported_positive",
+      "message_numbers": [12, 14, 15, 16, 17],
+      "reason": "The final visible report announces another task-3 overwrite despite preceding restoration and no-overwrite messages, without reconciling the ownership conflict. This is a conversational inconsistency; it does not prove the writer saw the warning before writing."
+    },
+    {
+      "ref": "E3",
+      "category": "duplicated_work",
+      "label": "supported_positive",
+      "message_numbers": [5, 6, 9, 10],
+      "reason": "Different agents explicitly report completing overlapping tasks and files. The positive is supported by cross-agent claims, not by the same agent repeating a status report."
+    },
+    {
+      "ref": "E3",
+      "category": "weak_handoff",
+      "label": "supported_positive",
+      "message_numbers": [2, 3, 4, 6, 9, 10],
+      "reason": "Inconsistent ownership allocations are followed by a request to skip already completed tasks and a later conflicting delivery. Ownership/integration is visibly weak, although execution causality is not established."
+    },
+    {
+      "ref": "E3",
+      "category": "unintegrated_information",
+      "label": "supported_positive",
+      "message_numbers": [6, 8, 9, 10],
+      "reason": "A later agent reports writing already completed tasks after an explicit skip request; a subsequent message reports repairing overwritten outputs. The visible completion/ownership information is not reconciled before that report."
+    },
+    {
+      "ref": "E4",
+      "category": "duplicated_work",
+      "label": "supported_positive",
+      "message_numbers": [2, 3, 4, 5, 7],
+      "reason": "Multiple agents independently claim the whole merge task and report writing its outputs despite requests not to duplicate. No separate checking-only purpose is stated."
+    },
+    {
+      "ref": "E4",
+      "category": "weak_handoff",
+      "label": "uncertain",
+      "message_numbers": [2, 3, 5, 7],
+      "reason": "Possible missed flag: competing whole-task ownership claims fit the ownership-is-unclear clause, even without a named transfer request. However, every writer reports completion and no explicit transfer is abandoned. Whether overlap alone is also a handoff failure is a definition boundary; exclude from error counts rather than assert a confirmed false negative."
+    },
+    {
+      "ref": "E4",
+      "category": "unintegrated_information",
+      "label": "uncertain",
+      "message_numbers": [2, 3, 4, 5, 7],
+      "reason": "The posts suggest non-integration of no-duplication requests, but all agent posts arrive within about eight seconds. Publication order does not establish a clear opportunity to see and use a message before acting. Do not force this into an error count."
+    },
+    {
+      "ref": "E5",
+      "category": "duplicated_work",
+      "label": "not_applicable",
+      "message_numbers": [1, 2],
+      "reason": "Solo condition; no inter-agent duplicated work can be evaluated."
+    },
+    {
+      "ref": "E5",
+      "category": "weak_handoff",
+      "label": "not_applicable",
+      "message_numbers": [1, 2],
+      "reason": "Solo condition; no inter-agent handoff can be evaluated."
+    },
+    {
+      "ref": "E5",
+      "category": "unintegrated_information",
+      "label": "not_applicable",
+      "message_numbers": [1, 2],
+      "reason": "Solo condition; do not treat a possible task-answer error as an inter-agent information-use failure."
+    },
+    {
+      "ref": "E6",
+      "category": "duplicated_work",
+      "label": "supported_negative",
+      "message_numbers": [2, 3, 4, 6],
+      "reason": "The Planner explicitly requests an independent Verifier recheck. Repeated arithmetic and alternative packing checks serve that purpose and are excluded by the duplicated-work definition."
+    },
+    {
+      "ref": "E6",
+      "category": "weak_handoff",
+      "label": "uncertain",
+      "message_numbers": [2, 3, 4, 5, 6, 7],
+      "reason": "Executor and Verifier have explicit roles and reach a PASS after resolving a temporary file-existence disagreement. There is no abandoned request or persistent ownership gap, but the broad delivered-work-not-integrated clause could count the initial mismatch. The definition has no persistence threshold; do not call this a confirmed false positive."
+    },
+    {
+      "ref": "E6",
+      "category": "unintegrated_information",
+      "label": "uncertain",
+      "message_numbers": [3, 4, 5, 6, 7],
+      "reason": "The Verifier initially contradicts the file-existence report but later explicitly checks and accepts the file and the Executor's argument. A strict unresolved-contradiction reading rejects the flag; a broader ignored-at-any-step reading admits it. The current definition does not settle whether recovered mismatches count, so exclude this cell from error counts."
+    },
+    {
+      "ref": "E7",
+      "category": "duplicated_work",
+      "label": "unobservable",
+      "message_numbers": [1],
+      "reason": "Only the task/operator post is visible; no agent behavior is observed."
+    },
+    {
+      "ref": "E7",
+      "category": "weak_handoff",
+      "label": "unobservable",
+      "message_numbers": [1],
+      "reason": "Silence in a snapshot cannot distinguish incomplete capture, no execution, or a failed handoff."
+    },
+    {
+      "ref": "E7",
+      "category": "unintegrated_information",
+      "label": "unobservable",
+      "message_numbers": [1],
+      "reason": "No visible decision or agent response exists to evaluate information use."
+    },
+    {
+      "ref": "E8",
+      "category": "duplicated_work",
+      "label": "not_applicable",
+      "message_numbers": [1, 2],
+      "reason": "Solo condition; no inter-agent duplicated work can be evaluated."
+    },
+    {
+      "ref": "E8",
+      "category": "weak_handoff",
+      "label": "not_applicable",
+      "message_numbers": [1, 2],
+      "reason": "Solo condition; no inter-agent handoff can be evaluated."
+    },
+    {
+      "ref": "E8",
+      "category": "unintegrated_information",
+      "label": "not_applicable",
+      "message_numbers": [1, 2],
+      "reason": "Solo condition; correctness of the chemistry answer is not a collaboration label."
+    },
+    {
+      "ref": "E9",
+      "category": "duplicated_work",
+      "label": "supported_negative",
+      "message_numbers": [2, 3, 4, 5, 8, 10, 11],
+      "reason": "Independent derivation, explicit verification requests, and specific counterarguments are purposeful checks. Repeating chemistry reasoning to resolve a disagreement is excluded from duplicated work."
+    },
+    {
+      "ref": "E9",
+      "category": "weak_handoff",
+      "label": "uncertain",
+      "message_numbers": [5, 6, 7, 8, 10, 11, 12, 13],
+      "reason": "Ownership is explicit and correction requests receive responses, but review/file-state reports are inconsistent and activity continues after PASS. The broad delivered-work-not-integrated clause might include a transient mismatch; there is no reliable artifact timeline or persistence threshold to settle that interpretation."
+    },
+    {
+      "ref": "E9",
+      "category": "unintegrated_information",
+      "label": "supported_positive",
+      "message_numbers": [1, 4, 5, 6, 10, 12],
+      "reason": "Executor's B decision in #6 does not integrate the already visible C6 argument and D option, even though it acknowledges that argument as a caveat. Later messages explicitly challenge and withdraw that decision. This supports a local, subsequently repaired information-use failure, not a claim that the final answer is wrong."
+    }
+  ]
+}

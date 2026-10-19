@@ -14,6 +14,7 @@ from urllib.parse import urlencode, urlsplit
 import httpx
 
 from .models import now
+from .communication import NAME as COMMUNICATION
 
 
 def save_json(path: Path, value: dict):
@@ -52,10 +53,13 @@ def request(client, method: str, path: str, **kwargs):
 
 def run_batch(client, entries: list[dict], output: Path, server: str, *,
               scout: bool = False, model: str | None = None, rerun: bool = False,
+              communication: bool = False,
               wait_timeout: float = 1800, poll_interval: float = 2) -> dict:
     result = {"schema": "agenttrace/batch.v1", "created_at": now(), "server": server,
               "scout_requested": scout, "traces": []}
     setup = None
+    if communication:
+        result["communication_requested"] = True
     if scout:
         try:
             setup = request(client, "GET", "/api/scout/setup",
@@ -88,35 +92,48 @@ def run_batch(client, entries: list[dict], output: Path, server: str, *,
             analyzers = [a for a in report["analyzers"] if a["kind"] == "offline"]
             if scout:
                 analyzers.append({"name": "scout_collaboration_v1", "available": True})
+            if communication:
+                analyzers.append({"name": COMMUNICATION, "available": True})
             for analyzer in analyzers:
                 name = analyzer["name"]
+                pipeline = name in ("scout_collaboration_v1", COMMUNICATION)
+                selected_setup = setup
+                if name == COMMUNICATION:
+                    selected_setup = request(client, "GET", "/api/communication/setup", params={
+                        "trace_id": identifier, **({"model": model} if model else {}),
+                    })
                 record = {"analyzer": name}
                 item["analyses"].append(record)
                 if not analyzer["available"]:
                     record.update(status="unavailable", reason=analyzer["unavailable_reason"])
                     checkpoint()
                     continue
-                selected_model = setup.get("model") if name == "scout_collaboration_v1" else None
+                selected_model = selected_setup.get("model") if pipeline else None
                 different_model_active = next((
-                    a for a in previous if name == "scout_collaboration_v1"
+                    a for a in previous if pipeline
                     and a["analyzer"]["name"] == name and a["status"] in ("queued", "running")
-                    and a["provenance"].get("model") != selected_model
+                    and (a["provenance"].get("model") != selected_model or (
+                        name == COMMUNICATION and a["provenance"].get("configuration_sha256")
+                        != selected_setup["configuration_sha256"]
+                    ))
                 ), None)
                 if different_model_active:
-                    record.update(status="blocked", reason="Scout is already active with a different model.",
+                    record.update(status="blocked", reason="Scout is already active with a different model." if name != COMMUNICATION else "Communication analysis is active with a different configuration.",
                                   run_id=different_model_active["id"])
                     item["status"] = "incomplete"
                     checkpoint()
                     continue
                 compatible = [
                     a for a in previous if a["analyzer"]["name"] == name
-                    and (name != "scout_collaboration_v1" or a["provenance"].get("model") == selected_model)
+                    and (not pipeline or a["provenance"].get("model") == selected_model)
+                    and (name != COMMUNICATION or a["provenance"].get("configuration_sha256")
+                         == selected_setup["configuration_sha256"])
                 ]
                 active = next((a for a in compatible if a["status"] in ("queued", "running")), None)
                 completed = next((a for a in compatible if a["status"] == "completed"), None)
                 analysis = active or (completed if not rerun else None)
-                if analysis is None and name == "scout_collaboration_v1" and not setup["ready"]:
-                    record.update(status="blocked", setup=setup)
+                if analysis is None and pipeline and not selected_setup["ready"]:
+                    record.update(status="blocked", setup=selected_setup)
                     item["status"] = "incomplete"
                     checkpoint()
                     continue
@@ -131,8 +148,10 @@ def run_batch(client, entries: list[dict], output: Path, server: str, *,
                         run_id=analysis["id"], status=analysis["status"], reused=reused,
                         url=f"{server}/?{urlencode({'trace': identifier, 'run': analysis['id']})}",
                     )
-                    if name == "scout_collaboration_v1" and analysis["provenance"].get("model") != selected_model:
-                        raise ValueError("Server returned a Scout run for a different model; requested analysis was not started.")
+                    if pipeline and analysis["provenance"].get("model") != selected_model:
+                        raise ValueError("Server returned a pipeline run for a different model; requested analysis was not started.")
+                    if name == COMMUNICATION and analysis["provenance"].get("configuration_sha256") != selected_setup["configuration_sha256"]:
+                        raise ValueError("Server returned a communication run for a different configuration.")
                     checkpoint()
                     deadline = time.monotonic() + wait_timeout
                     while analysis["status"] in ("queued", "running"):
@@ -193,13 +212,14 @@ def main():
     parser.add_argument("--output", type=Path, required=True, help="Private export directory; index.json includes links.")
     parser.add_argument("--server", type=local_server, default="http://127.0.0.1:3000")
     parser.add_argument("--scout", action="store_true", help="Explicitly send traces to the configured model provider; charges may apply.")
-    parser.add_argument("--model", help="Scout provider/model; otherwise use the server default.")
-    parser.add_argument("--rerun", action="store_true", help="Rerun completed analyses, including paid Scout when selected.")
+    parser.add_argument("--communication", action="store_true", help="Run experimental four-class incident analysis; raw trace evidence goes to the configured provider and charges may apply.")
+    parser.add_argument("--model", help="Provider/model for explicitly selected pipelines; otherwise use their server defaults.")
+    parser.add_argument("--rerun", action="store_true", help="Rerun completed analyses, including paid pipelines when selected.")
     parser.add_argument("--wait-timeout", type=positive, default=1800)
     parser.add_argument("--poll-interval", type=positive, default=2)
     args = parser.parse_args()
-    if args.model and not args.scout:
-        parser.error("--model requires --scout.")
+    if args.model and not (args.scout or args.communication):
+        parser.error("--model requires --scout or --communication.")
     try:
         data = json.loads(args.input.read_text())
     except (OSError, ValueError) as error:
@@ -215,9 +235,12 @@ def main():
         parser.error("Provide a nonempty traces array; each entry needs trace_id, url, or source.")
     if args.scout:
         print("Scout explicitly requested: trace content will go to the configured provider; charges may apply.", file=sys.stderr)
+    if args.communication:
+        print("Communication analysis explicitly requested: trace evidence goes to the configured provider; charges may apply.", file=sys.stderr)
     with httpx.Client(base_url=args.server, timeout=60) as client:
         result = run_batch(client, entries, args.output, args.server, scout=args.scout,
                            model=args.model, rerun=args.rerun,
+                           communication=args.communication,
                            wait_timeout=args.wait_timeout, poll_interval=args.poll_interval)
     print(f"Results and links: {args.output / 'index.json'}")
     return 0 if all(t["status"] == "completed" for t in result["traces"]) else 1

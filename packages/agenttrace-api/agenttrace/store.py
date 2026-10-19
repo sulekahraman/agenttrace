@@ -14,7 +14,7 @@ class Store:
 
     def __init__(self, directory: Path):
         self.directory = directory
-        directory.mkdir(parents=True, exist_ok=True)
+        directory.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.database = directory / "agenttrace.sqlite3"
         with self._connect() as connection:
             connection.executescript(
@@ -28,8 +28,14 @@ class Store:
                     FOREIGN KEY(trace_id) REFERENCES traces(id)
                 );
                 CREATE INDEX IF NOT EXISTS runs_trace ON runs(trace_id);
+                CREATE TABLE IF NOT EXISTS trace_evidence (
+                    trace_id TEXT PRIMARY KEY,
+                    content TEXT NOT NULL,
+                    FOREIGN KEY(trace_id) REFERENCES traces(id)
+                );
                 """
             )
+        self.database.chmod(0o600)
 
     @contextmanager
     def _connect(self):
@@ -62,6 +68,19 @@ class Store:
                 "DO UPDATE SET content = excluded.content",
                 (run["id"], run["trace_id"], json.dumps(run, ensure_ascii=False)),
             )
+
+    def save_evidence(self, trace_id: str, evidence: dict):
+        with self._connect() as connection:
+            connection.execute(
+                "INSERT INTO trace_evidence VALUES (?, ?) ON CONFLICT(trace_id) "
+                "DO UPDATE SET content = excluded.content",
+                (trace_id, json.dumps(evidence, ensure_ascii=False)),
+            )
+
+    def get_evidence(self, trace_id: str) -> dict | None:
+        with self._connect() as connection:
+            row = connection.execute("SELECT content FROM trace_evidence WHERE trace_id = ?", (trace_id,)).fetchone()
+        return json.loads(row[0]) if row else None
 
     def get_run(self, run_id: str) -> dict | None:
         with self._connect() as connection:

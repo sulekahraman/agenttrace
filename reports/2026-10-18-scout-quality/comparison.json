@@ -1,0 +1,3737 @@
+{
+  "schema": "agenttrace/scout-prompt-replay-comparison.v1",
+  "date": "2026-10-18",
+  "baseline_model": "openai/gpt-5.4-mini",
+  "replay_model": "gpt-6.1-sol",
+  "execution": "Copilot agent prompt replay, not a native Inspect Scout provider run",
+  "data_commit": "fd0be2ee134c2a355de55f3442c167652840bedd",
+  "baseline_report_commit": "18a4494b46dbab49867167cf671a7e00816a84be",
+  "counts": {
+    "traces": 9,
+    "annotations": 70,
+    "agent_annotations": 59,
+    "operator_annotations": 11,
+    "category_judgments": 27,
+    "same_category_boolean": 21,
+    "baseline_positive": 16,
+    "replay_positive": 12
+  },
+  "category_stats": {
+    "duplicated_work": {
+      "judgments": 9,
+      "baseline_positive": 6,
+      "replay_positive": 4,
+      "true_to_false": 2,
+      "false_to_true": 0,
+      "same": 7
+    },
+    "weak_handoff": {
+      "judgments": 9,
+      "baseline_positive": 5,
+      "replay_positive": 6,
+      "true_to_false": 0,
+      "false_to_true": 1,
+      "same": 8
+    },
+    "unintegrated_information": {
+      "judgments": 9,
+      "baseline_positive": 5,
+      "replay_positive": 2,
+      "true_to_false": 3,
+      "false_to_true": 0,
+      "same": 6
+    }
+  },
+  "annotation_stats": {
+    "all_posts": {
+      "count": 70,
+      "same_primary": 49,
+      "different_primary": 21,
+      "same_reply_set": 31,
+      "same_addressee_set": 41,
+      "different_primary_but_baseline_in_replay_secondary": 8,
+      "baseline_primary_counts": {
+        "delegation_request": 10,
+        "coordination": 14,
+        "proposal": 2,
+        "result_delivery": 26,
+        "status_update": 9,
+        "critique_disagreement": 2,
+        "artifact_sharing": 1,
+        "acknowledgement": 3,
+        "agreement": 1,
+        "decision": 1,
+        "clarification": 1
+      },
+      "replay_primary_counts": {
+        "delegation_request": 12,
+        "coordination": 17,
+        "proposal": 1,
+        "result_delivery": 23,
+        "status_update": 8,
+        "critique_disagreement": 3,
+        "clarification": 2,
+        "decision": 2,
+        "agreement": 1,
+        "synthesis": 1
+      }
+    },
+    "agent_only": {
+      "count": 59,
+      "same_primary": 40,
+      "different_primary": 19,
+      "same_reply_set": 21,
+      "same_addressee_set": 33,
+      "different_primary_but_baseline_in_replay_secondary": 8,
+      "baseline_primary_counts": {
+        "coordination": 14,
+        "proposal": 2,
+        "result_delivery": 26,
+        "status_update": 9,
+        "critique_disagreement": 2,
+        "artifact_sharing": 1,
+        "acknowledgement": 1,
+        "delegation_request": 1,
+        "agreement": 1,
+        "decision": 1,
+        "clarification": 1
+      },
+      "replay_primary_counts": {
+        "delegation_request": 3,
+        "coordination": 15,
+        "proposal": 1,
+        "result_delivery": 23,
+        "status_update": 8,
+        "critique_disagreement": 3,
+        "clarification": 2,
+        "decision": 2,
+        "agreement": 1,
+        "synthesis": 1
+      }
+    },
+    "operator_only": {
+      "count": 11,
+      "same_primary": 9,
+      "different_primary": 2,
+      "same_reply_set": 10,
+      "same_addressee_set": 8,
+      "different_primary_but_baseline_in_replay_secondary": 0,
+      "baseline_primary_counts": {
+        "delegation_request": 9,
+        "acknowledgement": 2
+      },
+      "replay_primary_counts": {
+        "delegation_request": 9,
+        "coordination": 2
+      }
+    }
+  },
+  "audit_label_counts": {
+    "supported_positive": 11,
+    "uncertain": 5,
+    "not_applicable": 6,
+    "supported_negative": 2,
+    "unobservable": 3
+  },
+  "audit_outcome_counts": {
+    "baseline": {
+      "audit_agree_positive": 11,
+      "excluded_uncertain": 5,
+      "excluded_not_applicable": 6,
+      "audit_possible_false_positive": 2,
+      "excluded_unobservable": 3
+    },
+    "replay": {
+      "audit_agree_positive": 9,
+      "audit_possible_false_negative": 2,
+      "excluded_uncertain": 5,
+      "excluded_not_applicable": 6,
+      "audit_agree_negative": 2,
+      "excluded_unobservable": 3
+    }
+  },
+  "validation": {
+    "baseline": {
+      "E1": [],
+      "E2": [],
+      "E3": [],
+      "E4": [],
+      "E5": [],
+      "E6": [],
+      "E7": [],
+      "E8": [],
+      "E9": [
+        "duplicated_work: explanation citations not represented in original turn numbers"
+      ]
+    },
+    "replay": {
+      "E1": [],
+      "E2": [],
+      "E3": [],
+      "E4": [],
+      "E5": [],
+      "E6": [],
+      "E7": [],
+      "E8": [],
+      "E9": []
+    }
+  },
+  "explicit_replay_repairs": [
+    {
+      "ref": "E2",
+      "initial_errors": [
+        "turn 2: addressee outside roster",
+        "turn 3: addressee outside roster",
+        "turn 4: addressee outside roster",
+        "turn 8: addressee outside roster",
+        "turn 12: addressee outside roster",
+        "turn 15: addressee outside roster",
+        "turn 17: addressee outside roster"
+      ],
+      "repair": {
+        "affected_annotations": 7,
+        "instance_to_full_roster_id": {
+          "JeUP": "claude-code-1 JeUP",
+          "tE80": "claude-code-2 tE80",
+          "hcBm": "claude-code-3 hcBm",
+          "Y66y": "claude-code-4 Y66y"
+        },
+        "initial_file": "E2.initial.json",
+        "description": "Explicit schema repair after validation: only addressed_to instance suffixes were replaced with full supplied roster IDs; no new inference or other annotation/finding changes."
+      }
+    }
+  ],
+  "replay_output_sha256": {
+    "E1.json": "bf5e004097d000a5b3e9977c20a5b4378b9a3291e419bffff1e5020dcca476b9",
+    "E2.initial.json": "83965e8a6432d6afa2aa0cd87ee7e285b84ed4d797022c4c58d0f137c687fbfb",
+    "E2.json": "5613cc98c6bc8fdeef5d99045eca3efc62887c0b7ad1843a4aaf732cc41f6d7a",
+    "E3.json": "39dec49ebfb3cd9a5b308630fa37ba8c107d2fb4c1c524ea5db994600a95941d",
+    "E4.json": "b156d549233b2acb041bba7dc71a750729c36f3200297e5407b2a9777ac53c3c",
+    "E5.json": "423613485849b575c53e455e2e8919e6fd99fa1830d58febb993430bbcca943a",
+    "E6.json": "10a545925da4ba2cd7c58de1488f03def5b82251d559ff68d21780ba1d672f95",
+    "E7.json": "eea6fc51738d620861d4f6cbaa7f4df8d7ba64172946e43744f97c9e7c095d59",
+    "E8.json": "8a8252267215427de9299fc76cf59a28f1744718eb6e0f132a1b4c7edb804dbc",
+    "E9.json": "a8c73f576ef6f2fac9ac284ae9dd0299445addb97df07436b07380c32cfa0bb5"
+  },
+  "audit_sha256": "c8a797f265f758b7e674ac5ddd1041af398acef1c19b9f46ae74c05d2c9c39e1",
+  "replay_provenance_sha256": "d89625885e05aad1db421932e88264c8a313cb0a9b69a288be2727db27e1f921",
+  "traces": [
+    {
+      "ref": "E1",
+      "label": "Bundle / 4 agents / r2",
+      "trace_id": "trace_464e5df863013053",
+      "baseline_run_id": "run_05ffc3afe6c94700982201b9e220832c",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:29:49.354799+00:00",
+        "started_at": "2026-10-14T13:29:49.356482+00:00",
+        "completed_at": "2026-10-14T13:29:59.150578+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 11,
+        "candidate_messages": 11,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/aziz-bundle-n4-r2/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-001/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_05ffc3afe6c94700982201b9e220832c/collaboration.prompt.txt",
+      "replay_file": "replays/E1.json"
+    },
+    {
+      "ref": "E2",
+      "label": "Bundle / 4 agents / r1",
+      "trace_id": "trace_e82952d9d64878ba",
+      "baseline_run_id": "run_fd882547bd5d4af499fd3829defc37d4",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:29:59.583863+00:00",
+        "started_at": "2026-10-14T13:29:59.585972+00:00",
+        "completed_at": "2026-10-14T13:30:08.526417+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 17,
+        "candidate_messages": 17,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/aziz-bundle-n4-r1/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-002/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_fd882547bd5d4af499fd3829defc37d4/collaboration.prompt.txt",
+      "replay_file": "replays/E2.json"
+    },
+    {
+      "ref": "E3",
+      "label": "Bundle / 3 agents / r2",
+      "trace_id": "trace_039e550dde384d68",
+      "baseline_run_id": "run_f6aefa71129e4c90b02b517e71f39152",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:30:09.739859+00:00",
+        "started_at": "2026-10-14T13:30:09.743443+00:00",
+        "completed_at": "2026-10-14T13:30:16.037945+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 10,
+        "candidate_messages": 10,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/aziz-bundle-n3-r2/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-003/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_f6aefa71129e4c90b02b517e71f39152/collaboration.prompt.txt",
+      "replay_file": "replays/E3.json"
+    },
+    {
+      "ref": "E4",
+      "label": "Merger / 3 agents",
+      "trace_id": "trace_6faa8fd53c465dab",
+      "baseline_run_id": "run_211327e58c894fe18eb884e0edbc2bc9",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:30:17.848819+00:00",
+        "started_at": "2026-10-14T13:30:17.849868+00:00",
+        "completed_at": "2026-10-14T13:30:21.362098+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 7,
+        "candidate_messages": 7,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/aziz-merger-n3/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-004/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_211327e58c894fe18eb884e0edbc2bc9/collaboration.prompt.txt",
+      "replay_file": "replays/E4.json"
+    },
+    {
+      "ref": "E5",
+      "label": "Arithmetic / solo",
+      "trace_id": "trace_ab1efd80c85a6001",
+      "baseline_run_id": "run_ec9c12ad964d4b2a94bb2e13a75529a5",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:30:21.941593+00:00",
+        "started_at": "2026-10-14T13:30:21.943535+00:00",
+        "completed_at": "2026-10-14T13:30:25.582857+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 2,
+        "candidate_messages": 2,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/xiangqian-noop007i2-solo/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-005/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_ec9c12ad964d4b2a94bb2e13a75529a5/collaboration.prompt.txt",
+      "replay_file": "replays/E5.json"
+    },
+    {
+      "ref": "E6",
+      "label": "Arithmetic / P-E-V",
+      "trace_id": "trace_29d100b4dfa5eb0d",
+      "baseline_run_id": "run_9d2d44edca7440a7914b7cc051bb37ad",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:30:26.027970+00:00",
+        "started_at": "2026-10-14T13:30:26.029901+00:00",
+        "completed_at": "2026-10-14T13:30:30.801876+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 7,
+        "candidate_messages": 7,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/xiangqian-noop007i2-pev/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-006/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_9d2d44edca7440a7914b7cc051bb37ad/collaboration.prompt.txt",
+      "replay_file": "replays/E6.json"
+    },
+    {
+      "ref": "E7",
+      "label": "Task-only room",
+      "trace_id": "trace_34cf0b34ad7096e4",
+      "baseline_run_id": "run_c4de7935f4c045c3b68fa1a00ef321b5",
+      "baseline_provenance": {
+        "created_at": "2026-10-12T19:57:17.696178+00:00",
+        "started_at": "2026-10-12T19:57:17.698315+00:00",
+        "completed_at": "2026-10-12T20:07:32.207683+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "2",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 1,
+        "candidate_messages": 1,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/xiangqian-noop-stalled/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-007/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_c4de7935f4c045c3b68fa1a00ef321b5/collaboration.prompt.txt",
+      "replay_file": "replays/E7.json"
+    },
+    {
+      "ref": "E8",
+      "label": "GPQA / solo",
+      "trace_id": "trace_b682600c5b65b12d",
+      "baseline_run_id": "run_d7b71d27ce23419b84e9179606943b13",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:30:32.190353+00:00",
+        "started_at": "2026-10-14T13:30:32.191953+00:00",
+        "completed_at": "2026-10-14T13:30:35.593795+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 2,
+        "candidate_messages": 2,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/xiangqian-gpqa027-solo/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-008/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_d7b71d27ce23419b84e9179606943b13/collaboration.prompt.txt",
+      "replay_file": "replays/E8.json"
+    },
+    {
+      "ref": "E9",
+      "label": "GPQA / P-E-V",
+      "trace_id": "trace_5c5209c98f666281",
+      "baseline_run_id": "run_531686d965eb48d79da4f2dca4b433cd",
+      "baseline_provenance": {
+        "created_at": "2026-10-14T13:30:36.281215+00:00",
+        "started_at": "2026-10-14T13:30:36.283366+00:00",
+        "completed_at": "2026-10-14T13:30:48.403333+00:00",
+        "model": "openai/gpt-5.4-mini",
+        "prompt_version": "3",
+        "input_schema": "commsfail/trace.v1",
+        "package_versions": {
+          "commsfail": "0.4.0",
+          "agenttrace-api": "0.1.0",
+          "inspect-scout": "0.5.3"
+        }
+      },
+      "baseline_coverage": {
+        "annotated_messages": 13,
+        "candidate_messages": 13,
+        "candidate_limit": 80,
+        "candidate_text_limit": 2000,
+        "truncated": false
+      },
+      "transcript_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/sources/xiangqian-gpqa027-pev/transcript.txt",
+      "baseline_run_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/batch/trace-009/analysis-05.json",
+      "baseline_prompt_url": "https://github.com/sulekahraman/agenttrace/blob/fd0be2ee134c2a355de55f3442c167652840bedd/data/teammate-traces/runs/run_531686d965eb48d79da4f2dca4b433cd/collaboration.prompt.txt",
+      "replay_file": "replays/E9.json"
+    }
+  ],
+  "cells": [
+    {
+      "ref": "E1",
+      "label": "Bundle / 4 agents / r2",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "The same work for tasks 5, 6, and 7 was independently claimed and then reported completed by two agents. In [M3], claude-code-3 says “takes tasks 5,6,7,” and in [M4] claude-code-4 also says it is “taking tasks 5,6,7.” Both later report completion of the same artifact set in [M6] and [M7] (“tasks 5,6,7 done (/app/run.py, regex.txt, recover.json)”), which is materially duplicated execution rather than a handoff or check.",
+        "confidence": 0.98,
+        "message_numbers": [
+          3,
+          4,
+          6,
+          7
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "Different agents claim the same implementation tasks 5–7 [M3][M4], then each reports completing all three with identical output paths [M6][M7]. A third agent claims and later completes T7 as well [M5][M11]. These are materially equivalent execution claims with no stated verification, synthesis, or handoff purpose; the finding does not depend on treating deliberate checks as duplication.",
+        "confidence": 0.99,
+        "message_numbers": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          11
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E1",
+        "category": "duplicated_work",
+        "label": "supported_positive",
+        "message_numbers": [
+          3,
+          4,
+          6,
+          7,
+          11
+        ],
+        "reason": "Different agents claim and then report completing tasks 5-7, with the same output files, without a stated independent-verification purpose. This supports reported duplicate work, not independently observed repeat execution."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E1",
+      "label": "Bundle / 4 agents / r2",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "Task 4 was first assigned in the split in [M2] to c3, then c4 suggests c3 take T4 in [M3]/[M4], but the ownership remains fluid and is not cleanly acknowledged until later. c3 explicitly reclaims it in [M8] (“c3 taking T4”), showing the earlier suggested handoff was not clear or stable. The work is eventually delivered in [M10], but the intermediate ambiguity indicates a weak handoff around T4 ownership.",
+        "confidence": 0.84,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          8,
+          10
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "Ownership is visibly inconsistent: the initial split assigns c3=T4 and c4=T5–7 [M2], c3 instead claims T5–7 and assigns c4=T4 [M3], c4 also claims T5–7 [M4], and c2 claims T7 conditionally [M5]. Multiple agents subsequently report the same outputs [M6][M7][M11], without a visible reconciliation of that overlap. c3's later T4 claim resolves its circuit ownership [M8], not the earlier overlapping execution.",
+        "confidence": 0.98,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          11
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E1",
+        "category": "weak_handoff",
+        "label": "supported_positive",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "reason": "Incompatible task splits and concurrent self-claims make ownership unclear. Task 4 is subsequently taken explicitly. Eventual completion does not erase the earlier ownership ambiguity included in this definition."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E1",
+      "label": "Bundle / 4 agents / r2",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Visible information about task ownership and progress was not consistently integrated into later coordination. After c4 and c3 both claimed tasks 5,6,7 in [M3] and [M4], c2’s later split in [M5] assigns c2 task 7 and c4 tasks 5,6, implying a revised distribution, but the thread does not resolve or incorporate the earlier duplicate claims before completion messages appear. This leaves the prior ownership information effectively ignored rather than reconciled, especially since both c3 and c4 still report the same completion artifacts in [M6] and [M7].",
+        "confidence": 0.72,
+        "message_numbers": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "The conflicting early splits [M2][M3][M4][M5] and repeated completion reports [M6][M7][M11] support ownership overlap, but do not establish that a later decision ignored relevant information despite a clear opportunity to use it. The candidates expose neither the execution start times nor a later synthesis requiring those results. c3 does take T4 [M8]. Missing acknowledgement alone is insufficient to prove information was not integrated.",
+        "confidence": 0.82,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          11
+        ]
+      },
+      "changed": true,
+      "audit": {
+        "ref": "E1",
+        "category": "unintegrated_information",
+        "label": "supported_positive",
+        "message_numbers": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          11
+        ],
+        "reason": "Later completion claims remain inconsistent with the competing visible allocations and prior completion reports. The record supports unreconciled ownership/progress information, conditional on the agents' reports."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_possible_false_negative"
+    },
+    {
+      "ref": "E2",
+      "label": "Bundle / 4 agents / r1",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "Task 3 plans were worked on by claude-code-2 and claude-code-3 more than once in materially similar ways. c2 reports \"tasks 3 ... done\" in [M14], then immediately asks others not to touch task 3 while it regenerates passing plans in [M15], and later says the plans are restored in [M16]. c3 independently says it is optimizing/overwriting task-3 plans in [M12] and again in [M17], explicitly noting it overwrote the plans and asking not to regenerate them. This is repeated execution on the same artifact without a clean handoff or synthesis.",
+        "confidence": 0.92,
+        "message_numbers": [
+          14,
+          15,
+          16,
+          12,
+          17
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "c3 and c4 separately report completing tasks 5–7 [M5][M6], explicitly confirmed as done by both in [M7]. They also deliver different-sized task-4 implementations to the same gates.txt path [M10][M13]. These are repeated implementation deliveries, not merely independent verification; the verification claims concern their respective outputs.",
+        "confidence": 0.99,
+        "message_numbers": [
+          5,
+          6,
+          7,
+          10,
+          13
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E2",
+        "category": "duplicated_work",
+        "label": "supported_positive",
+        "message_numbers": [
+          5,
+          6,
+          7,
+          10,
+          13,
+          14,
+          17
+        ],
+        "reason": "Two agents report the same tasks 5-7 completed; two also report task 4 output. These are stronger duplicate-work evidence than repeated status updates alone."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E2",
+      "label": "Bundle / 4 agents / r1",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "There is an incomplete handoff around task 3. In [M12], c3 asks whether c2 is already working on task 3 and says to tell me, which shows ownership uncertainty. c2 then states it is regenerating task-3 plans and asks others not to touch them in [M15], but c3 later overwrites the task-3 plans anyway in [M17], indicating the handoff/request to avoid overlap was not respected or effectively coordinated. The work is not cleanly acknowledged and ownership remains blurred.",
+        "confidence": 0.88,
+        "message_numbers": [
+          12,
+          15,
+          17
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "Conflicting allocations give tasks 4 and 5–7 to different owners [M2][M4], followed by both agents' completion claims [M5][M6][M10][M13]. Task-3 ownership also remains unsettled: c3 asks whether c2 is optimizing [M12]; c2 requests no edits and restores passing plans [M15][M16], yet c3 reports overwriting them and asks c2 not to regenerate [M17]. No accepted final owner or version is visible.",
+        "confidence": 0.98,
+        "message_numbers": [
+          2,
+          4,
+          5,
+          6,
+          10,
+          12,
+          13,
+          15,
+          16,
+          17
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E2",
+        "category": "weak_handoff",
+        "label": "supported_positive",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          8,
+          12,
+          15,
+          16,
+          17
+        ],
+        "reason": "Conflicting allocations, a conditional claim on task 3, and competing requests not to overwrite the same plans establish unclear ownership. Actual write ordering is not observable."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E2",
+      "label": "Bundle / 4 agents / r1",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Visible information about task 3 plans is not cleanly integrated across agents. c2 reports passing regenerated plans and asks others not to overwrite them in [M16], but c3 later overwrites those same plans with a different DP-optimized version in [M17] instead of building on or reconciling c2's already-passing result. This directly ignores the prior state and request, leaving conflicting versions of the same artifact unresolved.",
+        "confidence": 0.9,
+        "message_numbers": [
+          16,
+          17
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Both agents' completion of tasks 5–7 is explicitly visible in [M5][M6] and consolidated in [M7], but the later directive [M8] assigns those tasks again without acknowledging completion or specifying verification. That is a clear opportunity to incorporate shared completion information. The later task-3 preservation requests and reported overwrite [M15][M16][M17] are additionally unresolved, though exact action timing is uncertain.",
+        "confidence": 0.96,
+        "message_numbers": [
+          5,
+          6,
+          7,
+          8,
+          15,
+          16,
+          17
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E2",
+        "category": "unintegrated_information",
+        "label": "supported_positive",
+        "message_numbers": [
+          12,
+          14,
+          15,
+          16,
+          17
+        ],
+        "reason": "The final visible report announces another task-3 overwrite despite preceding restoration and no-overwrite messages, without reconciling the ownership conflict. This is a conversational inconsistency; it does not prove the writer saw the warning before writing."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E3",
+      "label": "Bundle / 3 agents / r2",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "There is clear repeat work on task 1 and task 2 by c1, and task 5-7 by c3, with later messages showing the same work being reported as done again. For example, c1 says “I take tasks 1,5,6” [M3], then later “tasks 1,5,6 done” [M5] and “task 2 done… Task 1 done too” [M7], while c3 says “taking tasks 5,6,7” [M2], later “tasks 5,6,7 already DONE by me” [M6], and then again claims “task 4 done & verified… All of 5,6,7,4 complete from me” [M8]. This indicates materially equivalent execution/status work being repeated without new synthesis.",
+        "confidence": 0.91,
+        "message_numbers": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "Independent execution overlaps: c1 reports tasks 5 and 6 done [M5], c3 reports tasks 5-7 already completed with artifacts [M6], and c2 later reports writing files for tasks 5-7 [M9]. The reported overwrite and restoration [M10] corroborate overlapping execution rather than deliberate independent verification.",
+        "confidence": 0.99,
+        "message_numbers": [
+          5,
+          6,
+          9,
+          10
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E3",
+        "category": "duplicated_work",
+        "label": "supported_positive",
+        "message_numbers": [
+          5,
+          6,
+          9,
+          10
+        ],
+        "reason": "Different agents explicitly report completing overlapping tasks and files. The positive is supported by cross-agent claims, not by the same agent repeating a status report."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E3",
+      "label": "Bundle / 3 agents / r2",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "Ownership is unstable and partly abandoned: c3 initially suggests c1 take tasks 1,2 and c2 take 3,4 [M2], but c1 then claims 1,5,6 and assigns 2,3,4 differently [M3], c2 reshuffles again [M4], and c3 later tells c2 to skip 5-7 while c3 works on 4 [M6]. The handoff is weak because work is repeatedly reassigned without a stable accepted division, and some tasks are left in flux rather than cleanly acknowledged and delivered to a specific owner.",
+        "confidence": 0.96,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          6
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "The competing task splits assign tasks 5-7 to different owners without a visible agreed resolution [M2][M3][M4]. Although c3 explicitly tells c2 to skip 5-7 [M6], c2 subsequently reports completing those tasks and writing files [M9]; c3 then reports an erroneous overwrite and restoration [M10]. This supports unclear ownership and a failed transfer of the stop-work instruction, not merely terse completion reports.",
+        "confidence": 0.98,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          6,
+          9,
+          10
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E3",
+        "category": "weak_handoff",
+        "label": "supported_positive",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          6,
+          9,
+          10
+        ],
+        "reason": "Inconsistent ownership allocations are followed by a request to skip already completed tasks and a later conflicting delivery. Ownership/integration is visibly weak, although execution causality is not established."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E3",
+      "label": "Bundle / 3 agents / r2",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Relevant visible information is later contradicted or not integrated into subsequent coordination. After c3 states that 5,6,7 are already done and c2 should skip them [M6], c2 still reports “tasks 3,5,6,7 done” [M9], and then c3 reports c2 overwrote recover.json and had to be corrected [M10]. This shows earlier ownership and completion info was not incorporated cleanly into later actions, leading to contradictory claims and a rollback rather than integrated use of prior state.",
+        "confidence": 0.88,
+        "message_numbers": [
+          6,
+          9,
+          10
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "c3 supplies actionable information that tasks 5-7 are complete, names their artifacts, and explicitly tells c2 to skip them [M6], then reiterates completion [M8]. c2 later reports writing files for 5-7 [M9], and c3 reports c2 overwrote recover.json incorrectly [M10]. The later execution fails to integrate the visible completion and skip information; the final restoration addresses the damage but does not erase that earlier failure.",
+        "confidence": 0.98,
+        "message_numbers": [
+          6,
+          8,
+          9,
+          10
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E3",
+        "category": "unintegrated_information",
+        "label": "supported_positive",
+        "message_numbers": [
+          6,
+          8,
+          9,
+          10
+        ],
+        "reason": "A later agent reports writing already completed tasks after an explicit skip request; a subsequent message reports repairing overwritten outputs. The visible completion/ownership information is not reconciled before that report."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E4",
+      "label": "Merger / 3 agents",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "Multiple agents independently state they are doing the same merge task without a clear verification or handoff: [M2] says “doing the whole thing myself; no need to duplicate,” and [M3] says “I’m writing the merge script and outputs; no need to duplicate.” Both are materially equivalent execution of the assigned task rather than a deliberate independent check or synthesis. [M4], [M5], and [M7] then report overlapping completion of the same outputs, reinforcing the duplicate execution pattern.",
+        "confidence": 0.98,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "[M2] (AgentTrace #2) claims the whole task, while [M3] (#3) independently claims writing the merge script and outputs. Both agents subsequently report writing outputs in [M4] (#4) and [M7] (#7); a third reports the same named outputs written and verified in [M5] (#5). These are overlapping execution claims, not merely deliberate verification; the verification phrase in [M5] alone is not the basis for this finding.",
+        "confidence": 0.98,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E4",
+        "category": "duplicated_work",
+        "label": "supported_positive",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "reason": "Multiple agents independently claim the whole merge task and report writing its outputs despite requests not to duplicate. No separate checking-only purpose is stated."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_agree_positive"
+    },
+    {
+      "ref": "E4",
+      "label": "Merger / 3 agents",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "The task was acknowledged and later delivered: [M2] and [M3] both explicitly acknowledge the work, [M4] and [M5] report outputs written, and [M7] also confirms completion. There is no clear abandonment, missing acknowledgement, or unresolved ownership gap in the visible messages.",
+        "confidence": 0.9,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "Ownership is unresolved: [M2] (AgentTrace #2) says it is doing the whole task and asks others not to duplicate; [M3] (#3) claims the same implementation with the same warning. Completion claims from different agents in [M4] (#4), [M5] (#5), and [M7] (#7) do not reconcile ownership or identify an authoritative writer. Work is delivered, so this finding concerns unclear ownership rather than an abandoned request.",
+        "confidence": 0.95,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ]
+      },
+      "changed": true,
+      "audit": {
+        "ref": "E4",
+        "category": "weak_handoff",
+        "label": "uncertain",
+        "message_numbers": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "reason": "Possible missed flag: competing whole-task ownership claims fit the ownership-is-unclear clause, even without a named transfer request. However, every writer reports completion and no explicit transfer is abandoned. Whether overlap alone is also a handoff failure is a definition boundary; exclude from error counts rather than assert a confirmed false negative."
+      },
+      "baseline_audit_outcome": "excluded_uncertain",
+      "replay_audit_outcome": "excluded_uncertain"
+    },
+    {
+      "ref": "E4",
+      "label": "Merger / 3 agents",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "The later messages do not show any relevant visible information being ignored or contradicted without resolution. The completion messages consistently align on the same outputs and counts ([M4], [M5], [M7]), so there is no clear missed opportunity to use prior information in a decision.",
+        "confidence": 0.86,
+        "message_numbers": [
+          4,
+          5,
+          7
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "[M4] (AgentTrace #4) and [M5] (#5) give consistent counts, and [M7] (#7) adds no contradictory result. The ownership warnings in [M2] (#2) and [M3] (#3) support the coordination findings, but this short asynchronous exchange does not establish a clear later opportunity to integrate substantive information into a decision. There is insufficient evidence of ignored findings or unresolved informational contradictions.",
+        "confidence": 0.86,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E4",
+        "category": "unintegrated_information",
+        "label": "uncertain",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "reason": "The posts suggest non-integration of no-duplication requests, but all agent posts arrive within about eight seconds. Publication order does not establish a clear opportunity to see and use a message before acting. Do not force this into an error count."
+      },
+      "baseline_audit_outcome": "excluded_uncertain",
+      "replay_audit_outcome": "excluded_uncertain"
+    },
+    {
+      "ref": "E5",
+      "label": "Arithmetic / solo",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "The two messages show a clean delegation-and-response flow rather than independent repeated work. [M1] assigns Solo the task and specifies the output location and completion condition; [M2] provides the requested solution and verification. There is no separate agent repeating the same analysis for a different purpose.",
+        "confidence": 0.98,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "[M1] assigns the calculation to Solo, and [M2] is the sole visible analytical response. There is no materially equivalent work by different agents. The reported file readback in [M2] is verification, not duplicated work.",
+        "confidence": 0.99,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E5",
+        "category": "duplicated_work",
+        "label": "not_applicable",
+        "message_numbers": [
+          1,
+          2
+        ],
+        "reason": "Solo condition; no inter-agent duplicated work can be evaluated."
+      },
+      "baseline_audit_outcome": "excluded_not_applicable",
+      "replay_audit_outcome": "excluded_not_applicable"
+    },
+    {
+      "ref": "E5",
+      "label": "Arithmetic / solo",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "The handoff is clear and completed: [M1] delegates the task to Solo and asks for a final integer written to `/app/output/answer.txt`, and [M2] reports the answer, notes it was written, and ends with `VERDICT: PASS`. No abandonment or ambiguity is visible.",
+        "confidence": 0.99,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "[M1] names Solo, specifies the answer file, and states the completion signal. [M2] delivers the calculation, reports writing and reading back that file, and supplies VERDICT: PASS. No abandoned request or unclear ownership is visible; the reported file operation is not independently verified here.",
+        "confidence": 0.98,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E5",
+        "category": "weak_handoff",
+        "label": "not_applicable",
+        "message_numbers": [
+          1,
+          2
+        ],
+        "reason": "Solo condition; no inter-agent handoff can be evaluated."
+      },
+      "baseline_audit_outcome": "excluded_not_applicable",
+      "replay_audit_outcome": "excluded_not_applicable"
+    },
+    {
+      "ref": "E5",
+      "label": "Arithmetic / solo",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "All relevant information in [M1] is used in [M2]. In particular, the note that the 15% discount applies to price, not weight, is explicitly addressed, and the weight calculation is carried through to the final trip count. There is no visible ignored or contradicted evidence.",
+        "confidence": 0.96,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "[M2] uses all four feed quantities and weights from [M1], applies the 190 kg truck capacity, and explicitly distinguishes the price discount from weight. No relevant visible information is demonstrably ignored or contradicted without resolution.",
+        "confidence": 0.99,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E5",
+        "category": "unintegrated_information",
+        "label": "not_applicable",
+        "message_numbers": [
+          1,
+          2
+        ],
+        "reason": "Solo condition; do not treat a possible task-answer error as an inter-agent information-use failure."
+      },
+      "baseline_audit_outcome": "excluded_not_applicable",
+      "replay_audit_outcome": "excluded_not_applicable"
+    },
+    {
+      "ref": "E6",
+      "label": "Arithmetic / P-E-V",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "Executor and Verifier both independently reworked the same computation and packing feasibility rather than one clearly building on the other's result. Executor computes W1-W4 and proposes a 11-trip packing in [M3], and Verifier separately rechecks the same W1-W4 and produces its own 11-trip packing in [M4], later repeating the packing check again in [M6].",
+        "confidence": 0.96,
+        "message_numbers": [
+          3,
+          4,
+          6
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "Planner explicitly assigns an independent recheck [M2] (AgentTrace turn #2), Executor requests verification [M3] (turn #3), and Verifier delivers that check [M4][M6] (turns #4 and #6). The repeated calculations and alternative packing serve deliberate verification, not purposeless duplicate work.",
+        "confidence": 0.99,
+        "message_numbers": [
+          2,
+          3,
+          4,
+          6
+        ]
+      },
+      "changed": true,
+      "audit": {
+        "ref": "E6",
+        "category": "duplicated_work",
+        "label": "supported_negative",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          6
+        ],
+        "reason": "The Planner explicitly requests an independent Verifier recheck. Repeated arithmetic and alternative packing checks serve that purpose and are excluded by the duplicated-work definition."
+      },
+      "baseline_audit_outcome": "audit_possible_false_positive",
+      "replay_audit_outcome": "audit_agree_negative"
+    },
+    {
+      "ref": "E6",
+      "label": "Arithmetic / P-E-V",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "The verifier initially interrupts the workflow by saying to hold the write until the user answers and that no verdict exists yet, despite the executor having already delivered the result and written the file. In [M4], Verifier asks the user to choose between 10 and 11 and tells Executor to wait; only later does [M6] resolve this by adopting the physical-loading reading and issuing VERDICT: PASS. This shows an initially weak handoff from the executor's completed work to final verification/decision.",
+        "confidence": 0.84,
+        "message_numbers": [
+          4,
+          6
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "The artifact handoff is temporarily inconsistent: Executor reports answer.txt written with 11 and asks Verifier to check [M3] (AgentTrace turn #3), but Verifier says the file does not exist and asks Executor to hold writing [M4] (turn #4). Thus the delivered artifact status is not successfully integrated at that handoff. Verifier later confirms the file and PASS [M6] (turn #6), and Executor reiterates that it already existed [M7] (turn #7). This is a repaired status-transfer weakness, not proof the file was actually missing.",
+        "confidence": 0.92,
+        "message_numbers": [
+          3,
+          4,
+          6,
+          7
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E6",
+        "category": "weak_handoff",
+        "label": "uncertain",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "reason": "Executor and Verifier have explicit roles and reach a PASS after resolving a temporary file-existence disagreement. There is no abandoned request or persistent ownership gap, but the broad delivered-work-not-integrated clause could count the initial mismatch. The definition has no persistence threshold; do not call this a confirmed false positive."
+      },
+      "baseline_audit_outcome": "excluded_uncertain",
+      "replay_audit_outcome": "excluded_uncertain"
+    },
+    {
+      "ref": "E6",
+      "label": "Arithmetic / P-E-V",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Relevant information about the executor's completed write and the file contents is initially not integrated into the verifier's decision path. In [M3] Executor states the answer was written to /app/output/answer.txt as 11, but [M4] Verifier says the file does not exist yet and postpones verdict pending user input. That omission is later corrected in [M6], which acknowledges the file exists and matches the derivation. The initial verifier step therefore ignored visible information that was available.",
+        "confidence": 0.91,
+        "message_numbers": [
+          3,
+          4,
+          6
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "The file-status conflict between [M3] and [M4] (AgentTrace turns #3 and #4) is resolved by Verifier's file confirmation [M6] (turn #6). That decision also explicitly integrates the user's discretion [M5] (turn #5). Executor's continued question [M7] (turn #7) looks stale, but it follows the PASS only 0.314 seconds later, so the candidate text does not establish a clear opportunity to consume that decision rather than an in-flight reply. Evidence is insufficient for a separate unresolved information-integration finding.",
+        "confidence": 0.87,
+        "message_numbers": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "changed": true,
+      "audit": {
+        "ref": "E6",
+        "category": "unintegrated_information",
+        "label": "uncertain",
+        "message_numbers": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "reason": "The Verifier initially contradicts the file-existence report but later explicitly checks and accepts the file and the Executor's argument. A strict unresolved-contradiction reading rejects the flag; a broader ignored-at-any-step reading admits it. The current definition does not settle whether recovered mismatches count, so exclude this cell from error counts."
+      },
+      "baseline_audit_outcome": "excluded_uncertain",
+      "replay_audit_outcome": "excluded_uncertain"
+    },
+    {
+      "ref": "E7",
+      "label": "Task-only room",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "The candidate set only includes the user task assignment [M1] and no agent responses, so there is no evidence of two agents independently repeating materially equivalent work.",
+        "confidence": 0.98,
+        "message_numbers": [
+          1
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "[M1] (AgentTrace turn #1) contains only the user's task assignment. No work by different agents is visible, so there is insufficient evidence of materially equivalent repeated work.",
+        "confidence": 0.99,
+        "message_numbers": [
+          1
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E7",
+        "category": "duplicated_work",
+        "label": "unobservable",
+        "message_numbers": [
+          1
+        ],
+        "reason": "Only the task/operator post is visible; no agent behavior is observed."
+      },
+      "baseline_audit_outcome": "excluded_unobservable",
+      "replay_audit_outcome": "excluded_unobservable"
+    },
+    {
+      "ref": "E7",
+      "label": "Task-only room",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "Although [M1] assigns work and specifies the output path and success condition, there are no subsequent agent messages to show a request being ignored, abandoned, or poorly handed off.",
+        "confidence": 0.97,
+        "message_numbers": [
+          1
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "[M1] (AgentTrace turn #1) specifies a task, output artifact, roles, and completion condition. No subsequent interaction is supplied; the absence of replies in this single-message candidate set does not establish an abandoned or unsuccessful handoff.",
+        "confidence": 0.99,
+        "message_numbers": [
+          1
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E7",
+        "category": "weak_handoff",
+        "label": "unobservable",
+        "message_numbers": [
+          1
+        ],
+        "reason": "Silence in a snapshot cannot distinguish incomplete capture, no execution, or a failed handoff."
+      },
+      "baseline_audit_outcome": "excluded_unobservable",
+      "replay_audit_outcome": "excluded_unobservable"
+    },
+    {
+      "ref": "E7",
+      "label": "Task-only room",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "The visible information in [M1] is the original task statement; without any later decision or solution text, there is no opportunity to verify that relevant information was ignored or contradicted.",
+        "confidence": 0.96,
+        "message_numbers": [
+          1
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "[M1] (AgentTrace turn #1) supplies the problem facts and instructions, but no later analysis or decision is visible. There is insufficient evidence of information being ignored, contradicted without resolution, or omitted despite an opportunity to integrate it.",
+        "confidence": 0.99,
+        "message_numbers": [
+          1
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E7",
+        "category": "unintegrated_information",
+        "label": "unobservable",
+        "message_numbers": [
+          1
+        ],
+        "reason": "No visible decision or agent response exists to evaluate information use."
+      },
+      "baseline_audit_outcome": "excluded_unobservable",
+      "replay_audit_outcome": "excluded_unobservable"
+    },
+    {
+      "ref": "E8",
+      "label": "GPQA / solo",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "The visible exchange shows a clean delegation from the user to Solo and a single corresponding solution from Solo; there is no second agent independently repeating the same analysis or execution. [M1][M2]",
+        "confidence": 0.93,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "[M1] (AgentTrace turn #1) assigns the task to Solo, and [M2] (AgentTrace turn #2) supplies Solo's answer. No second agent's materially equivalent analysis or execution is visible. The reported file readback is a verification step, not evidence of duplicated work.",
+        "confidence": 0.99,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E8",
+        "category": "duplicated_work",
+        "label": "not_applicable",
+        "message_numbers": [
+          1,
+          2
+        ],
+        "reason": "Solo condition; no inter-agent duplicated work can be evaluated."
+      },
+      "baseline_audit_outcome": "excluded_not_applicable",
+      "replay_audit_outcome": "excluded_not_applicable"
+    },
+    {
+      "ref": "E8",
+      "label": "GPQA / solo",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "The task is clearly assigned to Solo in [M1], and Solo delivers the requested final answer plus writes it to the file and ends with `VERDICT: PASS` in [M2]. That is a complete handoff, not an abandonment or unclear ownership. [M1][M2]",
+        "confidence": 0.97,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": false,
+        "explanation": "[M1] (AgentTrace turn #1) names Solo as owner and requests a letter in /app/output/answer.txt plus a completion verdict. [M2] (AgentTrace turn #2) delivers B, reports writing and reading back that file, and posts VERDICT: PASS. The visible messages provide no positive evidence of an abandoned request, unclear ownership, or missing delivery; actual file contents are not independently visible.",
+        "confidence": 0.98,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E8",
+        "category": "weak_handoff",
+        "label": "not_applicable",
+        "message_numbers": [
+          1,
+          2
+        ],
+        "reason": "Solo condition; no inter-agent handoff can be evaluated."
+      },
+      "baseline_audit_outcome": "excluded_not_applicable",
+      "replay_audit_outcome": "excluded_not_applicable"
+    },
+    {
+      "ref": "E8",
+      "label": "GPQA / solo",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "Solo’s reasoning in [M2] incorporates the relevant intermediate steps from the prompt in [M1] and resolves the stereochemical options accordingly; there is no later visible information that is ignored or contradicted without resolution. [M1][M2]",
+        "confidence": 0.9,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "[M2] (AgentTrace turn #2) explicitly addresses the protection, cuprate addition and benzylation, methylation, deprotection, and answer choices supplied in [M1] (AgentTrace turn #1). No separate relevant contribution is visibly ignored or left unresolved. The chemical correctness of the explanation is not independently established by these collaboration messages.",
+        "confidence": 0.97,
+        "message_numbers": [
+          1,
+          2
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E8",
+        "category": "unintegrated_information",
+        "label": "not_applicable",
+        "message_numbers": [
+          1,
+          2
+        ],
+        "reason": "Solo condition; correctness of the chemistry answer is not a collaboration label."
+      },
+      "baseline_audit_outcome": "excluded_not_applicable",
+      "replay_audit_outcome": "excluded_not_applicable"
+    },
+    {
+      "ref": "E9",
+      "label": "GPQA / P-E-V",
+      "category": "duplicated_work",
+      "baseline": {
+        "category": "duplicated_work",
+        "found": true,
+        "explanation": "There is repeated independent stereochemical re-derivation of the same answer by multiple agents after a verifier already checked the file. The Planner first lays out W1–W4 for Executor/Verifier in [M3], then later re-asks essentially the same descriptor check in [M13] after [M11] already verified D. Likewise, Executor repeats the full D analysis in [M7] after having produced a prior full derivation in [M2] and a conflicting B derivation in [M6], while Verifier independently re-derives the same final D assignment in [M11] after already doing so in [M5]. These are materially equivalent analysis/recheck efforts rather than new synthesis.",
+        "confidence": 0.91,
+        "message_numbers": [
+          3,
+          5,
+          7,
+          11,
+          13
+        ]
+      },
+      "replay": {
+        "category": "duplicated_work",
+        "found": false,
+        "explanation": "The overlapping stereochemical analyses have explicit verification or correction purposes: [M3] (AgentTrace turn #3) assigns independent rechecking, [M4] (AgentTrace turn #4) requests a D descriptor check, and [M5] (AgentTrace turn #5) delivers that independent check. [M8] (AgentTrace turn #8) and [M10] (AgentTrace turn #10) address the intervening B switch, while [M13] (AgentTrace turn #13) reconciles artifact state. These deliberate checks and synthesis do not establish purposeless duplicated work.",
+        "confidence": 0.94,
+        "message_numbers": [
+          3,
+          4,
+          5,
+          8,
+          10,
+          13
+        ]
+      },
+      "changed": true,
+      "audit": {
+        "ref": "E9",
+        "category": "duplicated_work",
+        "label": "supported_negative",
+        "message_numbers": [
+          2,
+          3,
+          4,
+          5,
+          8,
+          10,
+          11
+        ],
+        "reason": "Independent derivation, explicit verification requests, and specific counterarguments are purposeful checks. Repeating chemistry reasoning to resolve a disagreement is excluded from duplicated work."
+      },
+      "baseline_audit_outcome": "audit_possible_false_positive",
+      "replay_audit_outcome": "audit_agree_negative"
+    },
+    {
+      "ref": "E9",
+      "label": "GPQA / P-E-V",
+      "category": "weak_handoff",
+      "baseline": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "The handoff around the answer file is unstable: Executor’s switch to B in [M6] is not cleanly integrated with the rest of the team, and Verifier explicitly rejects it in [M8], noting the file holds B and instructing Executor to restore D. The subsequent correction is only partially coordinated until [M11] and [M12]; earlier, the request in [M4] to keep the file as D is contradicted by the later overwrite in [M6], showing a broken handoff/ownership flow. [M13] then has to restart the verification request because the prior check was tied to an outdated file state.",
+        "confidence": 0.88,
+        "message_numbers": [
+          4,
+          6,
+          8,
+          11,
+          12,
+          13
+        ]
+      },
+      "replay": {
+        "category": "weak_handoff",
+        "found": true,
+        "explanation": "The artifact handoff is inconsistent: [M6] (AgentTrace turn #6) reports writing B; [M7] (AgentTrace turn #7) then claims the file is D and says no further action is needed from Executor, but [M8] (AgentTrace turn #8) reports the file still holds B, fails it, and requests restoration. Thus the announced D state did not reliably reach the verification handoff and required corrective coordination in [M10] (AgentTrace turn #10). [M11] (AgentTrace turn #11) and [M12] (AgentTrace turn #12) later confirm recovery to D; recovery does not erase the earlier handoff mismatch.",
+        "confidence": 0.94,
+        "message_numbers": [
+          6,
+          7,
+          8,
+          10,
+          11,
+          12
+        ]
+      },
+      "changed": false,
+      "audit": {
+        "ref": "E9",
+        "category": "weak_handoff",
+        "label": "uncertain",
+        "message_numbers": [
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12,
+          13
+        ],
+        "reason": "Ownership is explicit and correction requests receive responses, but review/file-state reports are inconsistent and activity continues after PASS. The broad delivered-work-not-integrated clause might include a transient mismatch; there is no reliable artifact timeline or persistence threshold to settle that interpretation."
+      },
+      "baseline_audit_outcome": "excluded_uncertain",
+      "replay_audit_outcome": "excluded_uncertain"
+    },
+    {
+      "ref": "E9",
+      "label": "GPQA / P-E-V",
+      "category": "unintegrated_information",
+      "baseline": {
+        "category": "unintegrated_information",
+        "found": true,
+        "explanation": "Relevant information was available but later ignored or contradicted without resolution. In [M5] and [M11], Verifier independently concludes D is correct, including the key regiochemistry (LDA gives the C6 enolate and Me ends up at C6). However, Executor later continues the conflicting B line in [M6], and Verifier in [M8] explicitly says D is the only option consistent with the stereo steps, rejecting B; the discussion then reopens the same issue in [M10]-[M13] even after the file is back to D. The most direct example of ignored information is Executor’s [M6] claim that B is best fit despite Verifier’s already-established D verdict in [M5].",
+        "confidence": 0.95,
+        "message_numbers": [
+          5,
+          6,
+          8,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "replay": {
+        "category": "unintegrated_information",
+        "found": false,
+        "explanation": "The visible B/D disagreement is resolved rather than left unintegrated: [M4] (AgentTrace turn #4) explicitly revises Planner's C2 assumption; [M8] (AgentTrace turn #8) and [M10] (AgentTrace turn #10) address Executor's B rationale; [M12] (AgentTrace turn #12) withdraws that rationale, and [M11] (AgentTrace turn #11) passes D. [M13] (AgentTrace turn #13) requests another verdict without incorporating that PASS, but its near-concurrent placement alone does not establish a clear opportunity to use it. The candidate text is insufficient to support this category positively.",
+        "confidence": 0.87,
+        "message_numbers": [
+          4,
+          8,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "changed": true,
+      "audit": {
+        "ref": "E9",
+        "category": "unintegrated_information",
+        "label": "supported_positive",
+        "message_numbers": [
+          1,
+          4,
+          5,
+          6,
+          10,
+          12
+        ],
+        "reason": "Executor's B decision in #6 does not integrate the already visible C6 argument and D option, even though it acknowledges that argument as a caveat. Later messages explicitly challenge and withdraw that decision. This supports a local, subsequently repaired information-use failure, not a claim that the final answer is wrong."
+      },
+      "baseline_audit_outcome": "audit_agree_positive",
+      "replay_audit_outcome": "audit_possible_false_negative"
+    }
+  ],
+  "annotation_pairs": [
+    {
+      "ref": "E1",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "claude-code-3 jLMW",
+        "claude-code-2 jwpd",
+        "claude-code-4 NoEc",
+        "claude-code-1 DGfA"
+      ],
+      "replay_addressees": [],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E1",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "delegation_request",
+      "same_primary": false,
+      "baseline_secondary": [
+        "clarification",
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "claude-code-2 jwpd",
+        "claude-code-3 jLMW",
+        "claude-code-4 NoEc",
+        "claude-code-1 DGfA"
+      ],
+      "replay_addressees": [
+        "claude-code-2 jwpd",
+        "claude-code-3 jLMW",
+        "claude-code-4 NoEc"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E1",
+      "message_number": 3,
+      "operator_post": false,
+      "baseline_primary": "proposal",
+      "replay_primary": "coordination",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "proposal",
+        "decision"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "claude-code-1 DGfA",
+        "claude-code-4 NoEc"
+      ],
+      "replay_addressees": [
+        "claude-code-1 DGfA",
+        "claude-code-2 jwpd",
+        "claude-code-4 NoEc"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E1",
+      "message_number": 4,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "agreement",
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "proposal",
+        "decision"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        3
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-1 DGfA",
+        "claude-code-2 jwpd",
+        "claude-code-3 jLMW"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E1",
+      "message_number": 5,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "proposal",
+      "same_primary": false,
+      "baseline_secondary": [
+        "proposal",
+        "agreement"
+      ],
+      "replay_secondary": [
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        3,
+        4
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-1 DGfA",
+        "claude-code-3 jLMW",
+        "claude-code-4 NoEc"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E1",
+      "message_number": 6,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "artifact_sharing"
+      ],
+      "replay_secondary": [
+        "artifact_sharing"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        4
+      ],
+      "replay_replies": [
+        4
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E1",
+      "message_number": 7,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update",
+        "artifact_sharing"
+      ],
+      "replay_secondary": [
+        "artifact_sharing"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        3,
+        4,
+        6
+      ],
+      "replay_replies": [
+        3
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E1",
+      "message_number": 8,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "decision"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        3,
+        4,
+        5,
+        7
+      ],
+      "replay_replies": [
+        2,
+        4,
+        5
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "claude-code-4 NoEc"
+      ],
+      "replay_addressees": [],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E1",
+      "message_number": 9,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        5
+      ],
+      "replay_replies": [
+        2
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E1",
+      "message_number": 10,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        8
+      ],
+      "replay_replies": [
+        8
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "claude-code-3 jLMW"
+      ],
+      "replay_addressees": [],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E1",
+      "message_number": 11,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        5
+      ],
+      "replay_replies": [
+        5
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "coordination",
+        "proposal"
+      ],
+      "replay_secondary": [
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "proposal"
+      ],
+      "replay_secondary": [
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "claude-code-3 hcBm",
+        "claude-code-2 tE80",
+        "claude-code-4 Y66y",
+        "claude-code-1 JeUP"
+      ],
+      "replay_addressees": [
+        "claude-code-1 JeUP",
+        "claude-code-2 tE80",
+        "claude-code-3 hcBm"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E2",
+      "message_number": 3,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "proposal",
+        "acknowledgement"
+      ],
+      "replay_secondary": [
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-1 JeUP",
+        "claude-code-3 hcBm",
+        "claude-code-4 Y66y"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E2",
+      "message_number": 4,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1,
+        2,
+        3
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-1 JeUP",
+        "claude-code-2 tE80",
+        "claude-code-4 Y66y"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E2",
+      "message_number": 5,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "status_update",
+      "same_primary": false,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        4
+      ],
+      "replay_replies": [
+        4
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 6,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "artifact_sharing"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "status_update"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "replay_replies": [
+        2
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 7,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "coordination",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "status_update"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        6
+      ],
+      "replay_replies": [
+        4,
+        5,
+        6
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 8,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "proposal"
+      ],
+      "replay_secondary": [
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-2 tE80",
+        "claude-code-3 hcBm",
+        "claude-code-4 Y66y"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E2",
+      "message_number": 9,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "status_update",
+      "same_primary": true,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        8
+      ],
+      "replay_replies": [
+        2,
+        3,
+        4
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 10,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        4,
+        7
+      ],
+      "replay_replies": [
+        2,
+        3
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 11,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        9
+      ],
+      "replay_replies": [
+        9
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "claude-code-4 Y66y",
+        "claude-code-3 hcBm",
+        "claude-code-2 tE80"
+      ],
+      "replay_addressees": [],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E2",
+      "message_number": 12,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "coordination",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination",
+        "question"
+      ],
+      "replay_secondary": [
+        "evidence_observation",
+        "question"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        10
+      ],
+      "replay_replies": [
+        2,
+        3,
+        4
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-2 tE80"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E2",
+      "message_number": 13,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update",
+        "artifact_sharing"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        12
+      ],
+      "replay_replies": [
+        7
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 14,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        12
+      ],
+      "replay_replies": [
+        3,
+        12
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 15,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "status_update"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        12,
+        14
+      ],
+      "replay_replies": [
+        12
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "claude-code-3 hcBm"
+      ],
+      "replay_addressees": [
+        "claude-code-3 hcBm"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 16,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "coordination",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        12,
+        15
+      ],
+      "replay_replies": [
+        15
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E2",
+      "message_number": 17,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "result_delivery",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination",
+        "result_delivery"
+      ],
+      "replay_secondary": [
+        "coordination",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        15,
+        16
+      ],
+      "replay_replies": [
+        12,
+        15,
+        16
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-2 tE80"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E3",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "proposal"
+      ],
+      "replay_secondary": [],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E3",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "proposal"
+      ],
+      "replay_secondary": [
+        "proposal"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-1 D4hH",
+        "claude-code-2 ukuL"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E3",
+      "message_number": 3,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "delegation_request",
+        "decision"
+      ],
+      "replay_secondary": [
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "claude-code-3 VnN7",
+        "claude-code-2 ukuL"
+      ],
+      "replay_addressees": [
+        "claude-code-2 ukuL",
+        "claude-code-3 VnN7"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E3",
+      "message_number": 4,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "coordination",
+      "same_primary": true,
+      "baseline_secondary": [
+        "delegation_request",
+        "proposal"
+      ],
+      "replay_secondary": [
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        3
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-1 D4hH",
+        "claude-code-3 VnN7"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E3",
+      "message_number": 5,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "status_update",
+      "same_primary": true,
+      "baseline_secondary": [
+        "result_delivery"
+      ],
+      "replay_secondary": [],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        3,
+        4
+      ],
+      "replay_replies": [
+        3
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E3",
+      "message_number": 6,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "status_update",
+      "same_primary": true,
+      "baseline_secondary": [
+        "artifact_sharing",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "coordination",
+        "artifact_sharing"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        4
+      ],
+      "replay_replies": [
+        4
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-2 ukuL"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E3",
+      "message_number": 7,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "status_update",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "evidence_observation",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "replay_replies": [
+        4
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-2 ukuL",
+        "claude-code-3 VnN7"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E3",
+      "message_number": 8,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "status_update",
+      "same_primary": false,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "evidence_observation",
+        "artifact_sharing"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        6,
+        7
+      ],
+      "replay_replies": [
+        6
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E3",
+      "message_number": 9,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "status_update",
+      "same_primary": false,
+      "baseline_secondary": [
+        "status_update",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        4,
+        6,
+        8
+      ],
+      "replay_replies": [
+        4
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E3",
+      "message_number": 10,
+      "operator_post": false,
+      "baseline_primary": "critique_disagreement",
+      "replay_primary": "critique_disagreement",
+      "same_primary": true,
+      "baseline_secondary": [
+        "coordination",
+        "status_update"
+      ],
+      "replay_secondary": [
+        "status_update",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        9
+      ],
+      "replay_replies": [
+        9
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "claude-code-2 ukuL"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E4",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "proposal"
+      ],
+      "replay_secondary": [],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E4",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "coordination",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "status_update"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E4",
+      "message_number": 3,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "coordination",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination",
+        "artifact_sharing"
+      ],
+      "replay_secondary": [
+        "status_update"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1,
+        2
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E4",
+      "message_number": 4,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "artifact_sharing"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        3
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E4",
+      "message_number": 5,
+      "operator_post": false,
+      "baseline_primary": "artifact_sharing",
+      "replay_primary": "result_delivery",
+      "same_primary": false,
+      "baseline_secondary": [
+        "result_delivery",
+        "status_update"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E4",
+      "message_number": 6,
+      "operator_post": false,
+      "baseline_primary": "acknowledgement",
+      "replay_primary": "status_update",
+      "same_primary": false,
+      "baseline_secondary": [
+        "social_heartbeat"
+      ],
+      "replay_secondary": [],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E4",
+      "message_number": 7,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "status_update"
+      ],
+      "replay_secondary": [
+        "artifact_sharing"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E5",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "question",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "question",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Solo 3Z7y"
+      ],
+      "replay_addressees": [
+        "Solo 3Z7y"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E5",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "evidence_observation"
+      ],
+      "replay_secondary": [
+        "evidence_observation",
+        "artifact_sharing"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "user xK65"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E6",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "question",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Executor FpvV",
+        "Verifier Ae7i",
+        "Planner IJs3"
+      ],
+      "replay_addressees": [
+        "Executor FpvV",
+        "Verifier Ae7i",
+        "Planner IJs3"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E6",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "proposal",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "proposal",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Executor FpvV",
+        "Verifier Ae7i"
+      ],
+      "replay_addressees": [
+        "Executor FpvV",
+        "Verifier Ae7i"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E6",
+      "message_number": 3,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "delegation_request",
+        "proposal"
+      ],
+      "replay_secondary": [
+        "evidence_observation",
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2
+      ],
+      "replay_replies": [
+        2
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Verifier Ae7i"
+      ],
+      "replay_addressees": [
+        "Verifier Ae7i"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E6",
+      "message_number": 4,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "question",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "question",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        3
+      ],
+      "replay_replies": [
+        2,
+        3
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Planner IJs3",
+        "Executor FpvV",
+        "user A85q"
+      ],
+      "replay_addressees": [
+        "Planner IJs3",
+        "Executor FpvV",
+        "user A85q"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E6",
+      "message_number": 5,
+      "operator_post": true,
+      "baseline_primary": "acknowledgement",
+      "replay_primary": "coordination",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        2,
+        3,
+        4
+      ],
+      "replay_replies": [
+        4
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "Verifier Ae7i"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E6",
+      "message_number": 6,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "agreement",
+        "decision"
+      ],
+      "replay_secondary": [
+        "agreement",
+        "decision"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        3,
+        4,
+        5
+      ],
+      "replay_replies": [
+        3,
+        5
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "Executor FpvV",
+        "user A85q"
+      ],
+      "replay_addressees": [
+        "Executor FpvV"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E6",
+      "message_number": 7,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "clarification",
+      "same_primary": false,
+      "baseline_secondary": [
+        "clarification",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "critique_disagreement",
+        "proposal"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        6
+      ],
+      "replay_replies": [
+        4
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "Verifier Ae7i",
+        "user A85q"
+      ],
+      "replay_addressees": [
+        "Verifier Ae7i",
+        "user A85q"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E7",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "question",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "question",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E8",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "question"
+      ],
+      "replay_secondary": [
+        "question",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Solo DvAt"
+      ],
+      "replay_addressees": [
+        "Solo DvAt"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E8",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "decision",
+        "evidence_observation"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "evidence_observation"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "user vEqd"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E9",
+      "message_number": 1,
+      "operator_post": true,
+      "baseline_primary": "delegation_request",
+      "replay_primary": "delegation_request",
+      "same_primary": true,
+      "baseline_secondary": [
+        "question",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "question",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [],
+      "replay_replies": [],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Planner CV4x",
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "replay_addressees": [
+        "Planner CV4x",
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E9",
+      "message_number": 2,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "coordination",
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "artifact_sharing",
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        1
+      ],
+      "replay_replies": [
+        1
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Verifier g0Wg"
+      ],
+      "replay_addressees": [
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E9",
+      "message_number": 3,
+      "operator_post": false,
+      "baseline_primary": "proposal",
+      "replay_primary": "delegation_request",
+      "same_primary": false,
+      "baseline_secondary": [
+        "delegation_request",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "proposal",
+        "critique_disagreement"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2
+      ],
+      "replay_replies": [
+        1,
+        2
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "replay_addressees": [
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E9",
+      "message_number": 4,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "decision",
+      "same_primary": false,
+      "baseline_secondary": [
+        "agreement",
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "agreement",
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        2,
+        3
+      ],
+      "replay_replies": [
+        2,
+        3
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "replay_addressees": [
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E9",
+      "message_number": 5,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "agreement",
+        "decision"
+      ],
+      "replay_secondary": [
+        "evidence_observation",
+        "decision"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        2,
+        4
+      ],
+      "replay_replies": [
+        2,
+        4
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Planner CV4x",
+        "Executor ClZT"
+      ],
+      "replay_addressees": [],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E9",
+      "message_number": 6,
+      "operator_post": false,
+      "baseline_primary": "result_delivery",
+      "replay_primary": "result_delivery",
+      "same_primary": true,
+      "baseline_secondary": [
+        "coordination",
+        "proposal"
+      ],
+      "replay_secondary": [
+        "decision",
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        5
+      ],
+      "replay_replies": [
+        3
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E9",
+      "message_number": 7,
+      "operator_post": false,
+      "baseline_primary": "agreement",
+      "replay_primary": "agreement",
+      "same_primary": true,
+      "baseline_secondary": [
+        "acknowledgement",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "result_delivery",
+        "coordination"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        6
+      ],
+      "replay_replies": [
+        4,
+        5
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E9",
+      "message_number": 8,
+      "operator_post": false,
+      "baseline_primary": "critique_disagreement",
+      "replay_primary": "critique_disagreement",
+      "same_primary": true,
+      "baseline_secondary": [
+        "delegation_request",
+        "decision"
+      ],
+      "replay_secondary": [
+        "delegation_request",
+        "question"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        4
+      ],
+      "replay_replies": [
+        6,
+        7
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "Executor ClZT",
+        "user ETcc"
+      ],
+      "replay_addressees": [
+        "Executor ClZT",
+        "user ETcc"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E9",
+      "message_number": 9,
+      "operator_post": true,
+      "baseline_primary": "acknowledgement",
+      "replay_primary": "coordination",
+      "same_primary": false,
+      "baseline_secondary": [
+        "coordination"
+      ],
+      "replay_secondary": [
+        "clarification"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        8
+      ],
+      "replay_replies": [
+        8
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [],
+      "replay_addressees": [
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E9",
+      "message_number": 10,
+      "operator_post": false,
+      "baseline_primary": "coordination",
+      "replay_primary": "critique_disagreement",
+      "same_primary": false,
+      "baseline_secondary": [
+        "critique_disagreement",
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "decision",
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        6,
+        8
+      ],
+      "replay_replies": [
+        6
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "replay_addressees": [
+        "Executor ClZT"
+      ],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E9",
+      "message_number": 11,
+      "operator_post": false,
+      "baseline_primary": "decision",
+      "replay_primary": "decision",
+      "same_primary": true,
+      "baseline_secondary": [
+        "result_delivery",
+        "agreement"
+      ],
+      "replay_secondary": [
+        "result_delivery",
+        "clarification"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        8,
+        10
+      ],
+      "replay_replies": [
+        8
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "Executor ClZT",
+        "Planner CV4x"
+      ],
+      "replay_addressees": [],
+      "same_addressee_set": false
+    },
+    {
+      "ref": "E9",
+      "message_number": 12,
+      "operator_post": false,
+      "baseline_primary": "clarification",
+      "replay_primary": "clarification",
+      "same_primary": true,
+      "baseline_secondary": [
+        "acknowledgement",
+        "coordination"
+      ],
+      "replay_secondary": [
+        "delegation_request",
+        "question"
+      ],
+      "baseline_type_in_replay_labels": true,
+      "baseline_replies": [
+        8,
+        10,
+        11
+      ],
+      "replay_replies": [
+        8,
+        10
+      ],
+      "same_reply_set": false,
+      "baseline_addressees": [
+        "Verifier g0Wg",
+        "user ETcc"
+      ],
+      "replay_addressees": [
+        "Verifier g0Wg",
+        "user ETcc"
+      ],
+      "same_addressee_set": true
+    },
+    {
+      "ref": "E9",
+      "message_number": 13,
+      "operator_post": false,
+      "baseline_primary": "status_update",
+      "replay_primary": "synthesis",
+      "same_primary": false,
+      "baseline_secondary": [
+        "agreement",
+        "delegation_request"
+      ],
+      "replay_secondary": [
+        "decision",
+        "delegation_request"
+      ],
+      "baseline_type_in_replay_labels": false,
+      "baseline_replies": [
+        7,
+        8
+      ],
+      "replay_replies": [
+        7,
+        8
+      ],
+      "same_reply_set": true,
+      "baseline_addressees": [
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "replay_addressees": [
+        "Executor ClZT",
+        "Verifier g0Wg"
+      ],
+      "same_addressee_set": true
+    }
+  ],
+  "limitations": [
+    "Prompt replay is not a native Scout provider run and does not isolate model identity from harness effects.",
+    "Agent/system instructions, tools, and generation settings differ; original native generation-event/token logs are unavailable.",
+    "Message prompts were processed chronologically within one agent per trace, retaining additional earlier context.",
+    "Collaboration prompts retain baseline annotations and candidates; replayed message labels did not regenerate candidate sets.",
+    "Collaboration agents had already seen message-annotation prompts, including some text outside the bounded collaboration prompt.",
+    "Eight baseline traces use analyzer 2.1.0 / prompt 3; E7 uses 2.0.0 / prompt 2.",
+    "Both versions retain 11 task/operator posts in their 70 annotation targets; actual-agent results are also separated.",
+    "A single non-blind AI audit is not independent human ground truth; no validated precision, recall, false-positive rate, or false-negative rate is estimated.",
+    "Solo and task-only conditions are not clean negative collaboration examples; they are excluded from audit error counts.",
+    "One replay per prompt, no seeds or repeated sampling; confidence is model-reported and uncalibrated.",
+    "Raw E2 replay used short instance IDs in seven addressee lists. The initial output is retained; full roster IDs were explicitly repaired without changing classifications or findings."
+  ]
+}

@@ -1,3 +1,43 @@
+function IncidentResults({ analysis, output, onEvidence }) {
+  const events = new Map(output.evidence.map((event) => [event.id, event]));
+  function citations(items) {
+    return items.map((item, index) => {
+      const event = events.get(item.event_id);
+      return <div key={`${item.event_id}-${index}`}>
+        <blockquote>{item.quote}</blockquote>
+        {event?.kind === "post"
+          ? <button className="secondary compact" type="button" onClick={() => onEvidence(event.sequence)}>Message #{event.sequence}</button>
+          : <details><summary>{item.event_id}</summary><pre>{event?.text || "Evidence unavailable"}</pre></details>}
+      </div>;
+    });
+  }
+  return <>
+    <p className="muted">{analysis.analyzer.name} v{analysis.analyzer.version} | {analysis.provenance.model} | {output.taxonomy_version}</p>
+    <p>{output.explanation}</p>
+    <div className="failure-grid">
+      {output.classes.map((item) => <article className="failure-card low" key={item.failure_class}>
+        <h4>{item.failure_class}</h4><strong>{item.status.replaceAll("_", " ")}</strong><p>{item.explanation}</p>
+      </article>)}
+    </div>
+    {!output.incidents.length && <p>No incidents retained. Check class assessments and coverage; this is not proof of failure-free communication.</p>}
+    {output.incidents.map((incident) => <article className="failure-card medium" key={incident.id}>
+      <h4>{incident.id}: {incident.failure_class || "Undecidable"} — {incident.work_item}</h4>
+      <p>{incident.actors.join(", ")} | Anchor: {incident.anchor} | {incident.status}</p>
+      <p>{incident.consequence}</p>
+      <p>Severity: {incident.severity ?? "unknown"} — {incident.severity_reason}</p>
+      {Object.entries(incident.transitions).map(([name, transition]) => <details key={name}>
+        <summary>{name}: {transition.status}</summary>
+        <p>{transition.explanation}</p>{citations(transition.evidence)}
+      </details>)}
+      <p>Recovery: {incident.recovery.status} — {incident.recovery.explanation}</p>
+      {citations(incident.recovery.evidence)}
+    </article>)}
+    <p className="muted">Evidence: {output.coverage.supplied_events}/{output.coverage.total_events} events; {output.coverage.truncated_events.length} shortened; {output.coverage.omitted_events.length} omitted. Raw turns: {output.coverage.raw_turns}. Missing full model inputs and workspace history limit attribution.</p>
+    {output.caveats.map((caveat) => <p className="muted" key={caveat}>{caveat}</p>)}
+    <details><summary>Incident record, evidence and provenance</summary><pre>{JSON.stringify(analysis, null, 2)}</pre></details>
+  </>;
+}
+
 export function AnalysisResults({ analysis, onEvidence }) {
   if (!analysis) return null;
   if (analysis.status === "failed") {
@@ -8,6 +48,9 @@ export function AnalysisResults({ analysis, onEvidence }) {
   }
 
   const output = analysis.output?.output || analysis.output;
+  if (output?.schema === "agenttrace/communication-analysis.v1") {
+    return <IncidentResults analysis={analysis} output={output} onEvidence={onEvidence} />;
+  }
   const modes = output?.modes?.filter((mode) => mode.present);
   const findings = output?.findings?.filter((finding) => typeof finding.category === "string");
   const facts = output?.findings?.filter((finding) => typeof finding.fact === "string");

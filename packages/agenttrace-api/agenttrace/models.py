@@ -23,6 +23,9 @@ class Provenance(BaseModel):
     completed_at: str | None = None
     model: str | None = None
     prompt_version: str | None = None
+    taxonomy_version: str | None = None
+    evidence_sha256: str | None = None
+    configuration_sha256: str | None = None
     input_schema: str = "commsfail/trace.v1"
     package_versions: dict[str, str] = Field(default_factory=dict)
 

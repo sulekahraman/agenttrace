@@ -22,17 +22,47 @@ from .models import AnalysisRun, Analyzer, Provenance, now
 from .sources import MAX_SOURCE_BYTES, Source, load_source
 from .store import Store
 from .view_model import build_view_model, trace_id
+from .communication import NAME as COMMUNICATION, VERSION as COMMUNICATION_VERSION
+from .communication import PROMPT_VERSION as COMMUNICATION_PROMPT_VERSION, TAXONOMY_VERSION
+from .communication.analysis import analyze as communication_pipeline
+from .communication.evidence import build_evidence, digest
 
 logger = logging.getLogger(__name__)
 REPOSITORY = Path(__file__).resolve().parents[3]
 SCOUT = "scout_collaboration_v1"
 DEFAULT_SCOUT_MODEL = "openai/gpt-5.4-mini"
-SCOUT_VERSION = "2.1.4"
-SCOUT_PROMPT_VERSION = "7"
+SCOUT_VERSION = "2.2.0"
+SCOUT_PROMPT_VERSION = "8"
 
 
 def default_scout_model() -> str:
     return os.getenv("AGENTTRACE_SCOUT_MODEL", "").strip() or DEFAULT_SCOUT_MODEL
+
+
+def default_communication_model() -> str:
+    return os.getenv("AGENTTRACE_COMMUNICATION_MODEL", "").strip() or DEFAULT_SCOUT_MODEL
+
+
+def communication_setup(model: str, evidence: dict | None = None) -> dict:
+    setup = scout_setup(model)
+    setup["analyzer"] = COMMUNICATION
+    setup["title"] = "Communication failures"
+    setup["issues"] = [
+        {**issue, "message": "Install the API's scout extra for Inspect provider dependencies."
+         if issue["code"] == "scout_not_installed" else issue["message"]}
+        for issue in setup["issues"]
+    ]
+    setup["experimental"] = True
+    setup["version"] = COMMUNICATION_VERSION
+    setup["prompt_version"] = COMMUNICATION_PROMPT_VERSION
+    setup["taxonomy_version"] = TAXONOMY_VERSION
+    setup["coverage"] = evidence["coverage"] if evidence else None
+    setup["configuration_sha256"] = digest({
+        "analyzer": COMMUNICATION, "version": COMMUNICATION_VERSION,
+        "prompt_version": COMMUNICATION_PROMPT_VERSION, "taxonomy_version": TAXONOMY_VERSION,
+        "model": model, "evidence_sha256": evidence["sha256"] if evidence else None,
+    })
+    return setup
 
 
 def scout_viewer_base_url() -> str:
@@ -75,6 +105,11 @@ def analyzer_catalog(trace: Trace | None = None) -> list[dict]:
             ) if not supported else None,
         })
     available.append({
+        "name": COMMUNICATION, "version": COMMUNICATION_VERSION, "kind": "pipeline",
+        "available": importlib.util.find_spec("inspect_scout") is not None,
+        "default_model": default_communication_model(), "experimental": True,
+    })
+    available.append({
         "name": SCOUT, "version": SCOUT_VERSION, "kind": "pipeline",
         "available": importlib.util.find_spec("inspect_scout") is not None,
         "default_model": default_scout_model(),
@@ -107,6 +142,7 @@ def create_app(
     source_root: Path | None = None,
     web_dist: Path | None = None,
     scout_runner: Callable = scout_pipeline,
+    communication_runner: Callable = communication_pipeline,
 ) -> FastAPI:
     data_dir = data_dir or Path(os.getenv("AGENTTRACE_DATA_DIR", Path.cwd() / ".agenttrace"))
     if source_root is None and os.getenv("AGENTTRACE_SOURCE_ROOT"):
@@ -195,25 +231,29 @@ def create_app(
         store().save_run(analysis.record())
         return analysis.record()
 
-    async def run_scout(analysis: AnalysisRun):
+    async def run_pipeline(analysis: AnalysisRun, evidence: dict | None = None):
         try:
             async with semaphore:
                 analysis.status = "running"
                 analysis.provenance.started_at = now()
                 store().save_run(analysis.record())
-                report = report_for(analysis.trace_id)
                 artifacts = data_dir / "runs" / analysis.id
                 artifacts.mkdir(parents=True, exist_ok=True)
-                analysis.output = await scout_runner(
-                    report, analysis.provenance.model, artifacts
-                )
+                if analysis.analyzer.name == COMMUNICATION:
+                    from .batch import save_json
+                    save_json(artifacts / "evidence.json", evidence)
+                    analysis.output = await communication_runner(evidence, analysis.provenance.model, artifacts)
+                else:
+                    analysis.output = await scout_runner(
+                        report_for(analysis.trace_id), analysis.provenance.model, artifacts,
+                    )
                 analysis.status = "completed"
         except asyncio.CancelledError:
             analysis.status = "failed"
             analysis.error = "API stopped before this analysis completed. Start a new run."
             raise
         except Exception as error:
-            logger.exception("Scout analysis %s failed", analysis.id)
+            logger.exception("Pipeline analysis %s failed", analysis.id)
             analysis.status = "failed"
             analysis.error = str(error)
         finally:
@@ -235,6 +275,17 @@ def create_app(
             raise HTTPException(status_code=422, detail="Enter a non-empty provider/model identifier.")
         return scout_setup(selected)
 
+    @app.get("/api/communication/setup")
+    def get_communication_setup(model: str | None = None, trace_id: str | None = None):
+        selected = default_communication_model() if model is None else model.strip()
+        if not selected:
+            raise HTTPException(status_code=422, detail="Enter a non-empty provider/model identifier.")
+        evidence = None
+        if trace_id:
+            trace = require_trace(trace_id)
+            evidence = store().get_evidence(trace_id) or build_evidence(trace)
+        return communication_setup(selected, evidence)
+
     @app.post("/api/analyze")
     @app.post("/api/traces")
     def ingest(request: TraceRequest):
@@ -244,10 +295,13 @@ def create_app(
         try:
             trace = load_source(source, source_root)
             build_view_model(trace)  # Validate before persistence or analysis.
+            raw_root = (source_root / source.value).resolve() if source.type == "local" and source_root else None
+            evidence = build_evidence(trace, raw_root)
         except (OSError, ValueError, KeyError, TypeError) as error:
             raise HTTPException(status_code=400, detail=str(error)) from error
         identifier = trace_id(trace)
         store().save_trace(identifier, trace)
+        store().save_evidence(identifier, evidence)
         existing = {analysis["analyzer"]["name"] for analysis in store().list_runs(identifier)}
         for name in ("agenttrace_heuristics_v1", "regex_v1"):
             if name not in existing:
@@ -269,30 +323,39 @@ def create_app(
 
     @app.post("/api/traces/{identifier}/analyses/{name}", status_code=202)
     async def start_analysis(identifier: str, name: str, request: AnalysisRequest):
-        require_trace(identifier)
-        if name != SCOUT:
+        trace = require_trace(identifier)
+        if name not in (SCOUT, COMMUNICATION):
             return await asyncio.to_thread(offline_analysis, identifier, name)
-        model = request.model.strip() if request.model is not None else default_scout_model()
+        default_model = default_communication_model if name == COMMUNICATION else default_scout_model
+        model = request.model.strip() if request.model is not None else default_model()
         if not model:
             raise HTTPException(status_code=422, detail="Enter a non-empty provider/model identifier.")
-        # Reuse an active run to avoid accidental duplicate model charges.
+        evidence = (store().get_evidence(identifier) or build_evidence(trace)) if name == COMMUNICATION else None
+        setup = communication_setup(model, evidence) if name == COMMUNICATION else None
+        # Reuse only a compatible active run to avoid accidental duplicate model charges.
         for previous in store().list_runs(identifier):
-            if previous["analyzer"]["name"] == SCOUT and previous["status"] in ("queued", "running"):
+            if previous["analyzer"]["name"] == name and previous["status"] in ("queued", "running"):
+                if name == COMMUNICATION and previous["provenance"].get("configuration_sha256") != setup["configuration_sha256"]:
+                    raise HTTPException(status_code=409, detail="Communication analysis is active with a different configuration.")
                 return previous
-        if scout_runner is scout_pipeline:
-            setup = scout_setup(model)
+        native = communication_runner is communication_pipeline if name == COMMUNICATION else scout_runner is scout_pipeline
+        if native:
+            setup = setup if name == COMMUNICATION else scout_setup(model)
             if not setup["ready"]:
                 missing_package = any(issue["code"] == "scout_not_installed" for issue in setup["issues"])
                 raise HTTPException(status_code=503 if missing_package else 422, detail={
-                    "code": "scout_setup_required",
+                    "code": "communication_setup_required" if name == COMMUNICATION else "scout_setup_required",
                     "message": " ".join(issue["message"] for issue in setup["issues"]),
                     "setup": setup,
                 })
         analysis = AnalysisRun(
             trace_id=identifier,
-            analyzer=Analyzer(name=SCOUT, version=SCOUT_VERSION, kind="pipeline"),
+            analyzer=Analyzer(name=name, version=COMMUNICATION_VERSION if name == COMMUNICATION else SCOUT_VERSION, kind="pipeline"),
             provenance=Provenance(
-                model=model, prompt_version=SCOUT_PROMPT_VERSION,
+                model=model, prompt_version=COMMUNICATION_PROMPT_VERSION if name == COMMUNICATION else SCOUT_PROMPT_VERSION,
+                taxonomy_version=TAXONOMY_VERSION if name == COMMUNICATION else None,
+                evidence_sha256=evidence["sha256"] if evidence else None,
+                configuration_sha256=setup["configuration_sha256"] if name == COMMUNICATION else None,
                 package_versions={
                     package: version(package) for package in ("commsfail", "agenttrace-api")
                 },
@@ -301,7 +364,7 @@ def create_app(
         if importlib.util.find_spec("inspect_scout") is not None:
             analysis.provenance.package_versions["inspect-scout"] = version("inspect-scout")
         store().save_run(analysis.record())
-        task = asyncio.create_task(run_scout(analysis))
+        task = asyncio.create_task(run_pipeline(analysis, evidence))
         tasks.add(task)
         task.add_done_callback(tasks.discard)
         return analysis.record()

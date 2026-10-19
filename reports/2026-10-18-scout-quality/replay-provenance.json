@@ -1,0 +1,59 @@
+{
+  "schema": "agenttrace/copilot-prompt-replay-provenance.v1",
+  "date": "2026-10-18",
+  "requested_model": "gpt-6.1-sol",
+  "provider_surface": "Copilot general-purpose agent tool with explicit model override",
+  "native_scout_run": false,
+  "authorization": "User selected replaying saved Scout prompts with GPT-6.1 Sol here and documenting the execution difference.",
+  "baseline_report_commit": "18a4494b46dbab49867167cf671a7e00816a84be",
+  "baseline_data_commit": "fd0be2ee134c2a355de55f3442c167652840bedd",
+  "agents": [
+    {"ref": "E1", "agent_id": "34c9a0a1-5f79-4449-bd27-7de33cb4f196", "model": "gpt-6.1-sol"},
+    {"ref": "E2", "agent_id": "a255bf9e-59d2-4456-891c-2b96547d9a24", "model": "gpt-6.1-sol"},
+    {"ref": "E3", "agent_id": "1eb3a9a7-72bd-485e-99ea-e9248571464a", "model": "gpt-6.1-sol"},
+    {"ref": "E4", "agent_id": "e7bc53f6-19f2-483b-bf5d-4bc5f3a39f61", "model": "gpt-6.1-sol"},
+    {"ref": "E5", "agent_id": "13fa47d5-1e11-430a-b9f7-c8229a2773b7", "model": "gpt-6.1-sol"},
+    {"ref": "E6", "agent_id": "6fbf0c95-d39c-43cc-8011-0cc502752aa8", "model": "gpt-6.1-sol"},
+    {"ref": "E7", "agent_id": "9cfd63e3-f2dd-48ee-ad6e-99006189ca91", "model": "gpt-6.1-sol"},
+    {"ref": "E8", "agent_id": "f11dfb85-0a9a-468f-b5d3-ab95f1d35f5c", "model": "gpt-6.1-sol"},
+    {"ref": "E9", "agent_id": "2dcc34fd-61fd-43ed-88f3-184fa249fec8", "model": "gpt-6.1-sol"}
+  ],
+  "message_stage": {
+    "target_count": 70,
+    "chronology": "One target prompt read and its annotation persisted before the next target prompt within each trace.",
+    "isolation_limit": "Agent retains previous prompts and annotations; native per-message bounded-context isolation is not reproduced.",
+    "baseline_findings_supplied": false
+  },
+  "collaboration_stage": {
+    "prompt_count": 9,
+    "judgment_count": 27,
+    "annotation_index": "Original GPT-5.4-mini annotation index held fixed",
+    "candidate_text": "Original saved candidate text held fixed",
+    "replayed_message_annotations_used_for_candidate_selection": false,
+    "isolation_limit": "Agents already saw the message-stage prompts; not a clean isolated fixed-evidence provider comparison.",
+    "baseline_findings_supplied": false
+  },
+  "output_repair": {
+    "trace": "E2",
+    "affected_annotation_count": 7,
+    "issue": "Short instance suffixes instead of full supplied roster IDs in addressed_to",
+    "initial_output": "replays/E2.initial.json",
+    "final_output": "replays/E2.json",
+    "repair_scope": "Expand unambiguous roster IDs only; preserve all classifications, reply edges, evidence, confidence, and collaboration findings."
+  },
+  "generation_configuration": {
+    "temperature": null,
+    "seed": null,
+    "reasoning_effort": null,
+    "context_tier": null,
+    "note": "Unspecified harness defaults; do not infer provider settings or match them to baseline native calls."
+  },
+  "token_usage": null,
+  "provider_cost": null,
+  "limitations": [
+    "No native Inspect Scout scan log or provider API model identifier was produced.",
+    "No claim of model-only causal improvement.",
+    "No repeated stochastic trials.",
+    "No independent human gold labels."
+  ]
+}

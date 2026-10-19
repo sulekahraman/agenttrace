@@ -155,3 +155,72 @@ def test_ui_ingestion_scout_evidence_and_reload(tmp_path, monkeypatch):
             server.should_exit = True
             thread.join(timeout=10)
             assert not thread.is_alive()
+
+
+def test_communication_setup_incident_action_evidence_and_replay(tmp_path, monkeypatch):
+    from playwright.sync_api import expect, sync_playwright
+    import uvicorn
+    from agenttrace.api import create_app
+    from agenttrace.communication import NAME
+    from agenttrace.communication.evidence import build_evidence
+    from agenttrace.store import Store
+    from agenttrace.view_model import trace_id
+    from test_communication import mock_communication_generation, reading_assessment, synthetic_record
+
+    trace = synthetic_record(tmp_path / "source")
+    data = tmp_path / "data"
+    store = Store(data)
+    identifier = trace_id(trace)
+    store.save_trace(identifier, trace)
+    store.save_evidence(identifier, build_evidence(trace, tmp_path / "source"))
+    calls = mock_communication_generation(monkeypatch, reading_assessment())
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("AGENTTRACE_COMMUNICATION_MODEL", raising=False)
+    server = uvicorn.Server(uvicorn.Config(create_app(data_dir=data), log_level="error"))
+    with socket.socket() as listener:
+        listener.bind(("127.0.0.1", 0))
+        listener.listen()
+        thread = threading.Thread(target=server.run, kwargs={"sockets": [listener]})
+        thread.start()
+        try:
+            for _ in range(100):
+                if server.started:
+                    break
+                time.sleep(0.02)
+            assert server.started
+            with sync_playwright() as playwright:
+                browser = playwright.chromium.launch()
+                try:
+                    page = browser.new_page()
+                    errors = []
+                    page.on("pageerror", lambda error: errors.append(str(error)))
+                    page.goto(f"http://127.0.0.1:{listener.getsockname()[1]}/?trace={identifier}")
+                    panel = page.get_by_role("region", name="Communication failure analysis setup")
+                    expect(panel.get_by_label("Communication model", exact=True)).to_have_value("openai/gpt-5.4-mini")
+                    panel.get_by_role("button", name="Communication provider setup", exact=True).click()
+                    expect(panel.get_by_role("alert")).to_contain_text("OPENAI_API_KEY")
+                    assert not calls
+                    panel.get_by_label("Communication model", exact=True).fill("mockllm/model")
+                    panel.get_by_role("button", name="Run communication analysis", exact=True).click()
+                    panel.get_by_role("heading", name="incident-1: reading", exact=False).wait_for(timeout=15000)
+                    expect(panel).to_contain_text("Recovery: repaired")
+                    panel.get_by_text("reading: failed", exact=True).click()
+                    panel.get_by_role("button", name="Message #2", exact=True).click()
+                    expect(page.locator("tbody tr")).to_have_count(1)
+                    expect(page.locator("tbody tr")).to_contain_text("I understood blue")
+                    panel.get_by_text("action:beta:1:1", exact=True).click()
+                    expect(panel.locator("pre").filter(has_text="echo 'using blue'").first).to_be_visible()
+                    assert calls == ["A", "B", "judge"]
+                    page.reload()
+                    panel.get_by_role("heading", name="incident-1: reading", exact=False).wait_for()
+                    expect(panel.get_by_label("Communication model", exact=True)).to_have_value("mockllm/model")
+                    assert calls == ["A", "B", "judge"]
+                    saved = page.request.get(f"http://127.0.0.1:{listener.getsockname()[1]}/api/traces/{identifier}/analyses").json()
+                    assert len([run for run in saved if run["analyzer"]["name"] == NAME]) == 1
+                    assert not errors, errors
+                finally:
+                    browser.close()
+        finally:
+            server.should_exit = True
+            thread.join(timeout=10)
+            assert not thread.is_alive()
