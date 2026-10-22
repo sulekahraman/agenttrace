@@ -74,7 +74,7 @@ export function CommunicationSetup({ report, defaultModel, setReport, onEvidence
   return (
     <section className="panel span-2" aria-label="Communication failure analysis setup">
       <h2>Communication failure incidents</h2>
-      <p><strong>Experimental, separate from Scout.</strong> Checks Disclosure, Delivery, Reading and Action using two independent annotations and adjudication. Missing evidence remains undecidable.</p>
+      <p><strong>Experimental, separate from Scout.</strong> Checks Disclosure, Delivery, Reading and Action using independent A/B evidence discovery, full-window review and adjudication: five model steps, up to fifteen generation attempts with validation retries. Observed breakdowns count even without proven downstream harm; unknown decisions explain why.</p>
       <p className="muted">Running sends supplied messages and execution evidence to the selected provider; charges apply. Keep confidential traces on a locally configured provider.</p>
       <div className="analysis-controls">
         <label>Communication model

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from itertools import zip_longest
 from pathlib import Path
 
 from commsfail import Trace
@@ -10,6 +11,7 @@ from commsfail.sources.sharednet import SAY_RE, is_board_command, parse_ts, post
 
 TEXT_LIMIT = 8000
 INPUT_LIMIT = 240000
+REVIEW_TEXT_LIMIT = 1200000
 
 
 def digest(value: dict) -> str:
@@ -204,9 +206,15 @@ def model_evidence(bundle: dict) -> dict:
     omitted = []
     # Messages precede tool detail so long command output cannot hide the conversation.
     priorities = {"post": 0, "wake": 0, "boundary": 0, "input": 1, "delivery": 1, "workspace": 1}
-    ordered = sorted(bundle["events"], key=lambda event: (
-        priorities.get(event["kind"], 3 if event["kind"] == "detail" else 2),
-    ))
+    core = [event for event in bundle["events"] if event["kind"] != "detail"]
+    groups = {}
+    for event in bundle["events"]:
+        if event["kind"] == "detail":
+            groups.setdefault(event.get("actor"), []).append(event)
+    details = [
+        event for group in zip_longest(*groups.values()) for event in group if event is not None
+    ]
+    ordered = sorted(core, key=lambda event: priorities.get(event["kind"], 2)) + details
     for event in ordered:
         if remaining <= 0:
             omitted.append(event["id"])
@@ -223,9 +231,124 @@ def model_evidence(bundle: dict) -> dict:
             **bundle["coverage"], "total_events": len(bundle["events"]), "supplied_events": len(events),
             "truncated_events": truncated, "omitted_events": omitted,
             "text_limit": TEXT_LIMIT, "input_text_limit": INPUT_LIMIT,
+            "review_text_limit": REVIEW_TEXT_LIMIT,
         },
         "events": events,
     }
+
+
+def window_bounds(window: dict, events: dict):
+    actors = window["actors"]
+    if not actors or len(set(actors)) != len(actors):
+        raise ValueError("Evidence window requires distinct actors.")
+    try:
+        start = parse_ts(events[window["start_event"]].get("timestamp"))
+        end = parse_ts(events[window["end_event"]].get("timestamp"))
+    except KeyError as error:
+        raise ValueError("Evidence window references an unknown event.") from error
+    if not start or not end or not start.tzinfo or not end.tzinfo or end < start:
+        raise ValueError("Evidence window requires ordered timezone-aware event times.")
+    return start, end
+
+
+def retrieve_evidence(bundle: dict, windows: list[dict]) -> dict:
+    """Restore full evidence for requested actor/time windows, without clipping it."""
+    source = {event["id"]: event for event in bundle["events"]}
+    discovery = model_evidence(bundle)
+    selected = {event["id"]: event for event in discovery["events"] if event["kind"] != "detail"}
+    certificates = []
+    for window in windows:
+        if not set(window["actors"]) <= set(bundle["coverage"]["agents"]):
+            raise ValueError("Evidence window references an unknown actor.")
+        start, end = window_bounds(window, source)
+        required = set()
+        untimed_actions = False
+        for event in bundle["events"]:
+            relevant_actor = event.get("actor") in window["actors"]
+            parent = source.get(event.get("parent"), event)
+            at = parse_ts(parent.get("timestamp"))
+            finished = parse_ts(parent.get("completed_at"))
+            completed = finished or at
+            if (relevant_actor and event["id"].startswith("action:")
+                    and (not at or not at.tzinfo or not finished or not finished.tzinfo or finished < at)):
+                untimed_actions = True
+            if (at and at.tzinfo and completed and completed.tzinfo and at <= end and completed >= start
+                    and (relevant_actor or event["kind"] == "workspace"
+                         or event.get("parent", "").startswith("workspace:"))):
+                selected[event["id"]] = event
+                required.add(event["id"])
+        coverage = bundle["coverage"]
+        gaps = []
+        for key in list(required):
+            event = source[key]
+            if event["kind"] not in ("post", "detail") and '"full_detail_event"' in event["text"]:
+                detail_id = json.loads(event["text"]).get("full_detail_event")
+                if detail_id is not None:
+                    if detail_id not in source:
+                        gaps.append("missing_full_details")
+                    else:
+                        selected[detail_id] = source[detail_id]
+                        required.add(detail_id)
+        if not coverage["raw_outputs"] or not set(window["actors"]) <= set(coverage["agents_with_logs"]):
+            gaps.append("missing_author_logs")
+        if untimed_actions:
+            gaps.append("untimed_actions")
+        for key in ("incomplete_tool_calls", "capture_compactions"):
+            if any(str(item).split(":", 1)[0] in window["actors"] for item in coverage.get(key, [])):
+                gaps.append(key)
+        for missing in coverage["missing_raw_turns"]:
+            actor, number = missing.rsplit(":", 1)
+            if actor not in window["actors"]:
+                continue
+            wakes = sorted(
+                (event["turn"], parse_ts(event.get("timestamp")))
+                for event in bundle["events"] if event["kind"] == "wake" and event.get("actor") == actor
+            )
+            began = next((at for turn, at in wakes if turn == int(number)), None)
+            following = next((at for turn, at in wakes if turn > int(number)), None)
+            if (not began or not began.tzinfo or (following and not following.tzinfo)
+                    or (began <= end and (not following or following > start))):
+                gaps.append("missing_raw_turns")
+        for event in bundle["events"]:
+            if (event["kind"] == "input" and event.get("actor") in window["actors"]
+                    and event["id"].removeprefix("input:") in coverage.get("incomplete_session_turns", [])):
+                gaps.append("incomplete_session_turns")
+        if any(not source[key].get("raw") for key in required if key.startswith("action:")):
+            gaps.append("missing_raw_actions")
+        certificates.append({
+            "window": window, "required_events": sorted(required),
+            "source_complete": not gaps, "source_gaps": sorted(set(gaps)),
+        })
+    events = [selected[event["id"]] for event in bundle["events"] if event["id"] in selected]
+    text_size = sum(len(event["text"]) for event in events)
+    if text_size > REVIEW_TEXT_LIMIT:
+        raise ValueError(
+            f"Requested full-evidence windows use {text_size} text characters, "
+            f"exceeding the review budget of {REVIEW_TEXT_LIMIT}; "
+            "request narrower windows. No requested detail was silently omitted."
+        )
+    omitted = [key for key in source if key not in selected]
+    truncated = [key for key in selected if selected[key]["text"] != source[key]["text"]]
+    return {
+        "schema": bundle["schema"], "sha256": bundle["sha256"], "events": events,
+        "coverage": {
+            **bundle["coverage"], "total_events": len(source), "supplied_events": len(events),
+            "omitted_events": omitted, "truncated_events": truncated,
+            "retrieval_windows": certificates, "retrieval_policy": "full-window-v1",
+            "input_text_limit": REVIEW_TEXT_LIMIT,
+        },
+    }
+
+
+def complete_window(bundle: dict, window: dict) -> bool:
+    supplied = {event["id"] for event in bundle["events"]}
+    truncated = set(bundle["coverage"]["truncated_events"])
+    return any(
+        certificate["window"] == window and certificate["source_complete"]
+        and set(certificate["required_events"]) <= supplied
+        and not set(certificate["required_events"]) & truncated
+        for certificate in bundle["coverage"].get("retrieval_windows", [])
+    )
 
 
 def receipt_status(bundle: dict, post_id: str, dependent_id: str) -> str:

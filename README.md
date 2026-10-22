@@ -20,7 +20,17 @@ than adding application-specific dependencies to `commsfail`.
 
 ## Saved teammate results
 
-**Latest: [Richer-evidence reassessment — October 19](reports/2026-10-19-richer-evidence-12-runs/README.md)**:
+**Latest: [Fresh Scout + communication v0.3 — October 21 cohort](reports/2026-10-21-v03-12-runs/README.md)**:
+fresh Scout annotations and seven-metric results for all 12 ProgramBench runs,
+with per-run AgentTrace visualization links and downloadable evidence.
+**Mixed communication-review protocol:** six runs completed independent A/B
+reviews plus a judge; after nine review jobs failed, the user approved direct,
+non-blind parent-session recovery for the other six. Those recoveries inspected
+all agent posts and selected full native details, not the complete A/B windows.
+The report distinguishes these methods and explains each Unknown; this is not
+a uniform independent-review benchmark.
+
+**[Richer-evidence reassessment — October 19](reports/2026-10-19-richer-evidence-12-runs/README.md)**:
 all seven metrics across the same 12 ProgramBench runs, with explicit metric
 definitions, Yes / No / Unknown decisions, and per-run annotator A/B versus
 final-adjudicator comparisons. The communication rerun retains nine supported
@@ -159,17 +169,21 @@ changed content receives a new identifier.
 **Run communication analysis** selects the separate `communication_failures_v1`
 setup: Disclosure, Delivery, Reading and Action. Scout's three collaboration
 flags and historical results are unchanged. The new setup uses independent
-A/B model calls plus adjudication, exact evidence validation, and the first
+A/B evidence searches, full-window reviews and adjudication, exact evidence validation, and the first
 failed transition per incident. Results distinguish supported failures,
 assessable searches with no failure found, undecidable attribution and
 solo/not-applicable input. Repaired failures still count, with recovery recorded.
+A directly observed breakdown can count without proven downstream harm;
+impact and uncertainty reasons are recorded separately.
 
 The default model is `openai/gpt-5.4-mini`; set
 `AGENTTRACE_COMMUNICATION_MODEL` or edit **Communication model** to override it.
 Use **Communication provider setup** for dependency/credential checks. The
 same API `scout` extra supplies Inspect provider support; this does not run
-Scout's scanners. Three model steps are required, with up to three validation
-attempts per step. Provider errors fail explicitly instead of becoming negatives.
+Scout's scanners. Five model steps are required for multi-agent traces:
+two independent searches, two independent reviews and one judge, with up to
+three validation attempts per step (normally 5, at most 15 application generation
+attempts; solo input uses 0). Provider errors fail explicitly instead of becoming negatives.
 **Running sends supplied messages and execution evidence to the configured
 provider and may incur charges.** Ingestion and viewing saved results do not.
 
@@ -180,7 +194,11 @@ When present, the v0.2 communication importer also validates input/action
 manifests against native sessions and imports batch workspace snapshots.
 Receipt comes from recorded model-visible outputs, not merely command stdout.
 Core summaries precede lower-priority full-detail events in the bounded input;
-clipping and omissions remain explicit. Re-ingest an enriched local export to
+clipping and omissions remain explicit. In v0.3, detail discovery is actor-balanced;
+requested actor/time windows restore full evidence without clipping. Scoped
+completeness, rather than unrelated omissions elsewhere, governs absence claims
+and negative searches. Over-budget retrieval fails explicitly, never silently
+truncates evidence. Re-ingest an enriched local export to
 refresh its saved evidence; historical analysis records remain unchanged.
 Each run retains its evidence hash, configuration hash, taxonomy/prompt versions,
 supplied excerpts and A/B/judge records. The UI shows severity, recovery,
@@ -188,6 +206,9 @@ transition evidence, action quotations and message jumps. Saved-run links and
 reloads do not start inference. This implements four classes, **not** the
 unavailable full pattern supplement, and has not been accuracy-calibrated.
 See the [short evidence-gap report](docs/communication-evidence.md).
+The [annotator-flow diagram and exact prompt reference](docs/communication-analysis-flow.html)
+explain both Scout and communication pipelines. The saved October 19 results
+remain v0.2/prompt 2; they have **not** been rerun with this v0.3 protocol.
 The [SharedNet capture recommendations](docs/sharednet-capture-recommendations.md)
 separate already-recorded evidence from proposed CLI instrumentation.
 

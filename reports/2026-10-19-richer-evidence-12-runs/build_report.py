@@ -33,6 +33,11 @@ CLASS_LABELS = {
     "undecidable": "Unknown - cannot determine",
     "not_applicable": "N/A - solo run",
 }
+COMPACT_CLASS_LABELS = {
+    "supported_failure": "yes",
+    "no_failure_found": "no",
+    "undecidable": "unknown",
+}
 STATUS_CSS = {
     "supported_failure": "positive", "no_failure_found": "negative",
     "undecidable": "muted", "not_applicable": "muted",
@@ -201,7 +206,7 @@ def render(result):
             f'<tr><th><a href="#metric-{name}">{METRIC_NAMES[name]}</a></th><td>{old}/12</td><td>{counts.get("supported_failure", 0)}/12</td>'
             f"<td>{counts.get('no_failure_found', 0)}/12</td><td>{counts.get('undecidable', 0)}/12</td></tr>"
         )
-    scout_table, communication_table, details = [], [], []
+    combined_table, scout_table, communication_table, details = [], [], [], []
     for row in result["runs"]:
         output = row["communication"]["output"]
         flags = {finding["category"]: finding["found"] for finding in row["scout"]["output"]["findings"]}
@@ -211,10 +216,18 @@ def render(result):
             for name in SCOUT
         ]
         scout_table.append("<tr>" + run_cell + "".join(scout_cells) + "</tr>")
+        combined_cells = [run_cell] + [
+            f'<td class="{"positive" if flags[name] else "muted"}">{"yes" if flags[name] else "no"}</td>'
+            for name in SCOUT
+        ]
         cells = [run_cell]
         for item in sorted(output["classes"], key=lambda item: COMMUNICATION.index(item["failure_class"])):
             status = item["status"]
             cells.append(f'<td class="{STATUS_CSS[status]}" title="{escape(item["explanation"], quote=True)}">{CLASS_LABELS[status]}</td>')
+            combined_cells.append(
+                f'<td class="{STATUS_CSS[status]}" title="{escape(item["explanation"], quote=True)}">{COMPACT_CLASS_LABELS[status]}</td>'
+            )
+        combined_table.append("<tr>" + "".join(combined_cells) + "</tr>")
         communication_table.append("<tr>" + "".join(cells) + "</tr>")
         supported = sum(incident["status"] == "supported" for incident in output["incidents"])
         unresolved = sum(incident["status"] == "undecidable" for incident in output["incidents"])
@@ -283,11 +296,34 @@ code{background:#edf0f3;padding:1px 4px}li p{margin:5px 0}h2{margin-top:32px}
 </style><main>
 <h1>Richer evidence: 12-run reassessment</h1>
 <p class="muted">October 19, 2026 · GPT-6.1 Sol session agents · communication v0.2.0 / prompt 2 · no direct provider API calls</p>
+<p class="note"><b>Protocol update, not a results update:</b> these saved judgments remain v0.2 / prompt 2.
+See the <a href="../../docs/communication-analysis-flow.html">new data-flow diagram, call counts and exact prompts</a>
+for v0.3's targeted full-evidence retrieval, explicit uncertainty reasons and separate impact assessment.
+These 12 runs have not been rerun under v0.3.</p>
 """
     page += (
         f"<p><b>Final model-adjudicated failure incidents (not runs):</b> {escape(incidents)}. "
         f"<b>{summary['undecidable_incidents']} unresolved candidate incidents</b> are retained separately, "
         "not counted as flagged failures. These are model judgments, not verified ground truth.</p>"
+        "<h2>All seven failure flags together</h2>"
+        "<p>One row per run; each cell is a failure flag, not an incident count. "
+        "Scout flags are unchanged from the earlier analysis. Communication flags are the final model adjudicator's decisions, "
+        "not individual A/B proposals. Linked run names require the local AgentTrace viewer.</p>"
+        '<div class="scroll"><table id="combined-results"><thead><tr>'
+        '<th rowspan="2" scope="col">Run / open AgentTrace visualization</th>'
+        '<th colspan="3" scope="colgroup">Scout (prior binary flags)</th>'
+        '<th colspan="4" scope="colgroup">Communication incidents (final adjudicator)</th></tr><tr>'
+        + "".join(
+            f'<th scope="col"><a href="#metric-{name}">{METRIC_NAMES[name]}</a></th>'
+            for name in (*SCOUT, *COMMUNICATION)
+        )
+        + "</tr></thead><tbody>" + "".join(combined_table) + "</tbody></table></div>"
+        '<p id="combined-legend"><b>Legend:</b> <b>yes</b> = the analysis flagged this failure type in the run '
+        "(for communication, at least one supported incident was retained by the final adjudicator). "
+        "<b>no</b> = no qualifying failure was flagged; for communication, the adjudicator could assess the type "
+        "and found no qualifying incident within the supplied evidence. This is not proof of absence. "
+        "<b>unknown</b> = the communication evidence was insufficient for a decision; neither yes nor no. "
+        "Scout is binary and has no unknown output. Later repair does not change an evidenced yes to no.</p>"
         "<h2>How to read the decisions</h2>"
         "<p><b>Scout:</b> the prior Scout analysis returned one binary failure flag per metric per run. "
         "<b>Communication:</b> independent annotators A and B proposed incidents; a separate model adjudicator "

@@ -13,7 +13,43 @@ runs; incident totals count individual failures. Expand a run to compare
 annotator A, annotator B and the final adjudicator, including candidate rejections.
 Rejecting one candidate does not necessarily make the run's metric negative.
 
+**Protocol update, not a results update:** these remain v0.2/prompt 2 judgments.
+The new [annotator-flow diagram and exact prompts](../../docs/communication-analysis-flow.html)
+describe v0.3's targeted full-evidence retrieval, explicit uncertainty reasons and
+separate impact assessment. These 12 runs have not been rerun under v0.3.
+
 ## Latest results
+
+### All seven failure flags together
+
+One row per run; each cell is a failure flag, not an incident count. Scout flags
+are unchanged from the earlier analysis. Incident flags are the final
+communication adjudicator's decisions, not individual A/B proposals.
+
+| Run | Scout: duplicated work | Scout: weak handoff | Scout: unintegrated information | Incident: disclosure failure | Incident: delivery failure | Incident: reading failure | Incident: action failure |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| xsv-n2-round1 | no | no | no | unknown | yes | no | no |
+| xsv-n2-round2 | no | no | no | no | yes | no | unknown |
+| xsv-n2-round3 | no | no | no | unknown | yes | unknown | unknown |
+| xsv-n3-round1 | yes | yes | no | unknown | yes | no | no |
+| xsv-n3-round2 | yes | no | no | no | unknown | no | no |
+| xsv-n3-round3 | yes | no | no | unknown | yes | no | unknown |
+| xsv-n4-round1 | yes | no | no | yes | no | no | no |
+| xsv-n4-round2 | no | no | no | no | yes | no | no |
+| xsv-n4-round3 | yes | no | no | unknown | no | no | no |
+| yj-n2-round1 | no | no | no | unknown | no | unknown | unknown |
+| yj-n3-round1 | yes | no | no | no | no | no | no |
+| yj-n4-round1 | yes | yes | no | unknown | unknown | yes | unknown |
+
+**Legend:** **yes** means the analysis flagged this failure type in the run
+(for communication, the final adjudicator retained at least one supported
+incident). **no** means no qualifying failure was flagged; for communication,
+the type was assessable and no qualifying incident was found within the supplied
+evidence. It is not proof of absence. **unknown** means the communication evidence
+was insufficient for a decision: neither yes nor no. Scout is binary and has no
+unknown output. Later repair does not change an evidenced yes to no.
+
+### Communication totals
 
 | Communication failure type | Runs with a final failure flag | Runs with no qualifying failure found | Runs with inconclusive evidence | Supported failure incidents |
 | --- | --- | --- | --- | --- |

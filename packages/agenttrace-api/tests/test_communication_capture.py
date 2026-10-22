@@ -162,7 +162,7 @@ def test_local_api_ingestion_persists_richer_evidence_without_generation(tmp_pat
         assert response.status_code == 200, response.text
         identifier = response.json()["traceId"]
         setup = client.get("/api/communication/setup", params={"trace_id": identifier}).json()
-        assert setup["version"] == "0.2.0"
+        assert setup["version"] == "0.3.0"
         assert setup["coverage"]["recorded_inputs"]
         assert setup["coverage"]["workspace_history"]
         runs = client.get(f"/api/traces/{identifier}/analyses").json()

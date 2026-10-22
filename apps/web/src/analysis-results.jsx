@@ -17,6 +17,8 @@ function IncidentResults({ analysis, output, onEvidence }) {
     <div className="failure-grid">
       {output.classes.map((item) => <article className="failure-card low" key={item.failure_class}>
         <h4>{item.failure_class}</h4><strong>{item.status.replaceAll("_", " ")}</strong><p>{item.explanation}</p>
+        {item.unknown_reasons?.length > 0 && <p>Unknown because: {item.unknown_reasons.map((reason) => reason.replaceAll("_", " ")).join("; ")}.</p>}
+        {item.evidence_scope?.length > 0 && <p className="muted">Reviewed scopes: {item.evidence_scope.map((scope) => `${scope.actors.join(", ")}: ${scope.start_event} to ${scope.end_event}`).join("; ")}. This is not a whole-run absence guarantee.</p>}
       </article>)}
     </div>
     {!output.incidents.length && <p>No incidents retained. Check class assessments and coverage; this is not proof of failure-free communication.</p>}
@@ -24,6 +26,8 @@ function IncidentResults({ analysis, output, onEvidence }) {
       <h4>{incident.id}: {incident.failure_class || "Undecidable"} — {incident.work_item}</h4>
       <p>{incident.actors.join(", ")} | Anchor: {incident.anchor} | {incident.status}</p>
       <p>{incident.consequence}</p>
+      {incident.impact_status && <p>Downstream impact: {incident.impact_status.replaceAll("_", " ")}. A failure can count without proven harm.</p>}
+      {incident.unknown_reasons?.length > 0 && <p>Unknown because: {incident.unknown_reasons.map((reason) => reason.replaceAll("_", " ")).join("; ")}.</p>}
       <p>Severity: {incident.severity ?? "unknown"} — {incident.severity_reason}</p>
       {Object.entries(incident.transitions).map(([name, transition]) => <details key={name}>
         <summary>{name}: {transition.status}</summary>
@@ -38,6 +42,9 @@ function IncidentResults({ analysis, output, onEvidence }) {
       {" Serialized model API requests are not available."}
     </p>
     {output.caveats.map((caveat) => <p className="muted" key={caveat}>{caveat}</p>)}
+    {output.execution && <p className="muted">{output.execution.count_basis
+      ? `Saved session-stage responses validated: ${output.execution.generation_attempts}. ${output.execution.count_basis}`
+      : `Application LLM generation attempts: ${output.execution.generation_attempts}. Includes validation retries, not provider-internal retries.`}</p>}
     <details><summary>Incident record, evidence and provenance</summary><pre>{JSON.stringify(analysis, null, 2)}</pre></details>
   </>;
 }

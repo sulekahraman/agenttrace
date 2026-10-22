@@ -1,0 +1,249 @@
+{
+  "model": "copilot-session/gpt-6.1-sol",
+  "communication_version": "0.3.0",
+  "runs": 12,
+  "fresh_scout_annotations": 602,
+  "fresh_scout_findings": 36,
+  "communication_class_decisions": 48,
+  "session_jobs": {
+    "launched_agent_contexts": 66,
+    "succeeded_agent_contexts": 57,
+    "failed_agent_contexts": 9,
+    "scout": 12,
+    "search": 24,
+    "review": 24,
+    "judge": 6,
+    "direct_assessments": 6,
+    "direct_reviewer_session": "141c12e0-1ebe-4856-92f6-738fb99cce57",
+    "direct_reviewer_contexts": 1,
+    "direct_context_is_shared": true,
+    "count_basis": "Prior launched agent jobs; six additional direct assessments share the existing parent context, not six new independent jobs."
+  },
+  "review_protocol": {
+    "kind": "mixed",
+    "independent_ab_judge_traces": 6,
+    "direct_single_session_traces": 6,
+    "full_cohort_ab_agreement": "not applicable: mixed protocols"
+  },
+  "flags_by_metric": {
+    "duplicated_work": {
+      "yes": 7,
+      "no": 5,
+      "unknown": 0
+    },
+    "weak_handoff": {
+      "yes": 2,
+      "no": 10,
+      "unknown": 0
+    },
+    "unintegrated_information": {
+      "yes": 0,
+      "no": 12,
+      "unknown": 0
+    },
+    "disclosure": {
+      "yes": 11,
+      "no": 0,
+      "unknown": 1
+    },
+    "delivery": {
+      "yes": 9,
+      "no": 1,
+      "unknown": 2
+    },
+    "reading": {
+      "yes": 0,
+      "no": 4,
+      "unknown": 8
+    },
+    "action": {
+      "yes": 0,
+      "no": 4,
+      "unknown": 8
+    }
+  },
+  "supported_incidents": {
+    "disclosure": 33,
+    "delivery": 13,
+    "reading": 0,
+    "action": 0
+  },
+  "unresolved_incident_candidates": 6,
+  "supported_incidents_with_observed_impact": 1,
+  "unknown_class_reasons": {
+    "unclear_understanding": 16,
+    "evidence_not_retrieved": 14,
+    "ambiguous_cause": 6,
+    "unclear_obligation": 1
+  },
+  "rows": [
+    {
+      "slug": "xsv-n2-round1",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_810039cd98b3c8b0&analysis=run_v03fresh12_xsv-n2-round1_communication",
+      "communication_review_method": "direct single-session",
+      "flags": {
+        "duplicated_work": "no",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "xsv-n2-round2",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_f18bef1f6956af75&analysis=run_v03fresh12_xsv-n2-round2_communication",
+      "communication_review_method": "direct single-session",
+      "flags": {
+        "duplicated_work": "no",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "xsv-n2-round3",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_3ce5b38eb14b6137&analysis=run_v03fresh12_xsv-n2-round3_communication",
+      "communication_review_method": "direct single-session",
+      "flags": {
+        "duplicated_work": "no",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "unknown",
+        "delivery": "yes",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "xsv-n3-round1",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_f1509e7ad764d54a&analysis=run_v03fresh12_xsv-n3-round1_communication",
+      "communication_review_method": "direct single-session",
+      "flags": {
+        "duplicated_work": "yes",
+        "weak_handoff": "yes",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "xsv-n3-round2",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_abb6da728982d695&analysis=run_v03fresh12_xsv-n3-round2_communication",
+      "communication_review_method": "direct single-session",
+      "flags": {
+        "duplicated_work": "yes",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "unknown",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "xsv-n3-round3",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_b7ff2953e20e3e5e&analysis=run_v03fresh12_xsv-n3-round3_communication",
+      "communication_review_method": "direct single-session",
+      "flags": {
+        "duplicated_work": "yes",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "xsv-n4-round1",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_a49b03f1df3bca94&analysis=run_v03fresh12_xsv-n4-round1_communication",
+      "communication_review_method": "independent A/B + judge",
+      "flags": {
+        "duplicated_work": "yes",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "no",
+        "reading": "no",
+        "action": "no"
+      }
+    },
+    {
+      "slug": "xsv-n4-round2",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_abaad9e890b53c8a&analysis=run_v03fresh12_xsv-n4-round2_communication",
+      "communication_review_method": "independent A/B + judge",
+      "flags": {
+        "duplicated_work": "no",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "no",
+        "action": "no"
+      }
+    },
+    {
+      "slug": "xsv-n4-round3",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_f4edfa23b99faa29&analysis=run_v03fresh12_xsv-n4-round3_communication",
+      "communication_review_method": "independent A/B + judge",
+      "flags": {
+        "duplicated_work": "yes",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "unknown",
+        "reading": "no",
+        "action": "no"
+      }
+    },
+    {
+      "slug": "yj-n2-round1",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_b128ff4c92d47fa5&analysis=run_v03fresh12_yj-n2-round1_communication",
+      "communication_review_method": "independent A/B + judge",
+      "flags": {
+        "duplicated_work": "no",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "yj-n3-round1",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_c25e8be963216dac&analysis=run_v03fresh12_yj-n3-round1_communication",
+      "communication_review_method": "independent A/B + judge",
+      "flags": {
+        "duplicated_work": "yes",
+        "weak_handoff": "no",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "unknown",
+        "action": "unknown"
+      }
+    },
+    {
+      "slug": "yj-n4-round1",
+      "agenttrace_url": "http://127.0.0.1:3014/?trace=trace_ae5cc6010f6d3028&analysis=run_v03fresh12_yj-n4-round1_communication",
+      "communication_review_method": "independent A/B + judge",
+      "flags": {
+        "duplicated_work": "yes",
+        "weak_handoff": "yes",
+        "unintegrated_information": "no",
+        "disclosure": "yes",
+        "delivery": "yes",
+        "reading": "no",
+        "action": "no"
+      }
+    }
+  ]
+}
